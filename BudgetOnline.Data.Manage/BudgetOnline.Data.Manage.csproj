@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F192A0A1-3F2F-41FB-9E91-257D35D8C027}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BudgetOnline.Data.Manage</RootNamespace>
+    <AssemblyName>BudgetOnline.Data.Manage</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AutoMapper.3.0.0\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\packages\AutoMapper.3.0.0\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="MiniProfiler">
+      <HintPath>..\packages\MiniProfiler.2.0.2\lib\net40\MiniProfiler.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Contracts\IStatisticsTotalOnDateDetailsRepository.cs" />
+    <Compile Include="Contracts\IStatisticsTotalOnDateRepository.cs" />
+    <Compile Include="Contracts\IAuthenticationDataHelper.cs" />
+    <Compile Include="Contracts\ITransactionStatisticsRepository.cs" />
+    <Compile Include="Contracts\IUserPermissionRepository.cs" />
+    <Compile Include="Contracts\IPermissionRepository.cs" />
+    <Compile Include="Contracts\ICurrencyRateRepository.cs" />
+    <Compile Include="Contracts\IPeriodTypeRepository.cs" />
+    <Compile Include="Contracts\IPlannedTransactionRepository.cs" />
+    <Compile Include="Contracts\ITransactionSearchHelper.cs" />
+    <Compile Include="Contracts\ITransactionTagRepository.cs" />
+    <Compile Include="Contracts\ICategoryRepository.cs" />
+    <Compile Include="Contracts\ITransactionLinkRepository.cs" />
+    <Compile Include="Contracts\ITagRepository.cs" />
+    <Compile Include="Contracts\IAccountRepository.cs" />
+    <Compile Include="Contracts\ICurrencyRepository.cs" />
+    <Compile Include="Contracts\ITransactionRepository.cs" />
+    <Compile Include="Contracts\ISectionAdminRepository.cs" />
+    <Compile Include="Contracts\IRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Contracts\ISectionRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Contracts\ISettingRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Contracts\ISourceContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Contracts\IUserConnectRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Contracts\IUserPasswordRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Contracts\IUserRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repositories\StatisticsTotalOnDateDetailRepository.cs" />
+    <Compile Include="Repositories\StatisticsTotalOnDateRepository.cs" />
+    <Compile Include="TransactionStatisticsSearchOptions.cs" />
+    <Compile Include="PlannedTransactionSearchOptions.cs" />
+    <Compile Include="DatabaseContext.cs" />
+    <Compile Include="Exceptions\UpdateException.cs" />
+    <Compile Include="Exceptions\InsertException.cs" />
+    <Compile Include="Exceptions\DataException.cs" />
+    <Compile Include="Exceptions\DeleteAffectSeveralRowsException.cs" />
+    <Compile Include="Exceptions\DeleteException.cs" />
+    <Compile Include="Helpers\TypeMappingHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AccountRepository.cs" />
+    <Compile Include="Repositories\CategoryRepository.cs" />
+    <Compile Include="Repositories\TransactionStatisticsRepository.cs" />
+    <Compile Include="Repositories\UserPermissionRepository.cs" />
+    <Compile Include="Repositories\PermissionRepository.cs" />
+    <Compile Include="Repositories\CurrencyRateRepository.cs" />
+    <Compile Include="Repositories\PeriodTypeRepository.cs" />
+    <Compile Include="Repositories\PlannedTransactionRepository.cs" />
+    <Compile Include="Repositories\TransactionTagRepository.cs" />
+    <Compile Include="Repositories\TransactionLinkRepository.cs" />
+    <Compile Include="Repositories\TagRepository.cs" />
+    <Compile Include="Repositories\CurrencyRepository.cs" />
+    <Compile Include="Repositories\TransactionRepository.cs" />
+    <Compile Include="Repositories\SectionAdminRepository.cs" />
+    <Compile Include="Repositories\InternalRepository.cs" />
+    <Compile Include="Repositories\UserConnectRepository.cs" />
+    <Compile Include="Repositories\SectionRepository.cs" />
+    <Compile Include="Repositories\UserPasswordRepository.cs" />
+    <Compile Include="Repositories\SettingRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="TransactionSearchOptions.cs" />
+    <Compile Include="Types\Complex\TransactionJoined.cs" />
+    <Compile Include="Types\Complex\LinkedTransactions.cs" />
+    <Compile Include="Types\Complex\UserConnectInfo.cs" />
+    <Compile Include="Types\Simple\Category.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Types\Simple\Account.cs" />
+    <Compile Include="Types\Simple\CurrentCurrencyRate.cs" />
+    <Compile Include="Types\Simple\StatisticsTotalOnDate.cs" />
+    <Compile Include="Types\Simple\StatisticsTotalOnDateDetail.cs" />
+    <Compile Include="Types\Simple\TransactionTotal.cs" />
+    <Compile Include="Types\Simple\UserPermission.cs" />
+    <Compile Include="Types\Simple\CurrencyRate.cs" />
+    <Compile Include="Types\Simple\PeriodType.cs" />
+    <Compile Include="Types\Simple\Permission.cs" />
+    <Compile Include="Types\Simple\PlannedTransaction.cs" />
+    <Compile Include="Types\Simple\TransactionTag.cs" />
+    <Compile Include="Types\Simple\TransactionLink.cs" />
+    <Compile Include="Types\Simple\Tag.cs" />
+    <Compile Include="Types\Simple\Currency.cs" />
+    <Compile Include="Types\Simple\Section.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Types\Simple\SectionAdmin.cs" />
+    <Compile Include="Types\Simple\Setting.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Types\Simple\Transaction.cs" />
+    <Compile Include="Types\Simple\User.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Types\Simple\UserConnect.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Types\Simple\UserConnectStatuses.cs" />
+    <Compile Include="Types\Simple\UserPassword.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BudgetOnline.Common\BudgetOnline.Common.csproj">
+      <Project>{24D83CBA-7F7F-4559-9CC7-839423401CE1}</Project>
+      <Name>BudgetOnline.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BudgetOnline.Data.MSSQL\BudgetOnline.Data.MSSQL.csproj">
+      <Project>{B95BC364-B773-41A0-9BA8-6F4D732FCF98}</Project>
+      <Name>BudgetOnline.Data.MSSQL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

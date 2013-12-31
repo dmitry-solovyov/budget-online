@@ -1,0 +1,17 @@
+﻿@model BudgetOnline.Web.ViewModels.CurrentUserViewModel
+@{
+	Layout = null;
+}
+
+@if(Model.IsLoggedOn)  {
+	<div>Пользователь: <a href="@Url.Action("index", "profile")">@Model.Email</a></div>
+	<div>
+		<a href="@Url.Action("index", "logout")">Log out</a>
+	</div>
+} else {
+	<div>
+		<a href="@Url.Action("index", "login")">Login</a>
+	</div>
+}
+
+

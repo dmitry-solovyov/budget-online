@@ -1,0 +1,21 @@
+﻿@using BudgetOnline.Web.Areas.Admin.Models
+@model IEnumerable<PeriodTypeListViewModel>
+@{
+    ViewBag.Title = "Периоды";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+@Html.BudgetOnlineWeb().SubmitNormalButton().Caption("Новая запись").RedirectTo(Url.Action("create")).Build()
+
+@(Html.BudgetOnlineWeb()
+    .Table<PeriodTypeListViewModel>()
+    .Css("table table-striped")
+    .Rows(Model)
+    .Columns(columns =>
+                {
+                    columns.Icon().IconCss(m => m.IsDisabled ? "icon-lock" : "").Span(1);
+                    columns.Bound(m => m.Name).Span(9);
+                    columns.Commands().Cell(m => m.Commands).Span(2);
+                })
+    .Build()
+    )

@@ -1,0 +1,110 @@
+﻿@using BudgetOnline.UI.Models
+@using BudgetOnline.UI.Models.SelectItems
+@using BudgetOnline.Web.ViewModels
+@model TransactionListViewModel
+@{
+    ViewBag.Title = "Transactions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row-fluid" style="margin-bottom: .5em">
+    <div class="span4">
+        @Html.BudgetOnlineWeb().SubmitNormalButton().Caption("Новая запись").Css("btn").RedirectTo(Url.Action("create")).Build()
+    </div>
+    <div class="span4">
+    </div>
+    <div class="span4">
+    </div>
+</div>
+
+<div class="row-fluid">
+    <div class=" well">
+        <form class="navbar-form" action="list" id="searchFilterForm" method="POST">
+        <div class="row-fluid compact">
+            <div class="span2">
+                С
+            </div>
+            <div class="span2">
+                По
+            </div>
+            <div class="span3">
+                <span>Текст</span>
+            </div>
+            <div class="span3">
+                <span>Категория</span>
+            </div>
+            <div class="span2">
+                На странице
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span2">
+                @(new BudgetOnline.UI.Views.DateEditBox().Render(new DateEditModel { Date = Model.Search.FromDate, Name = "fromDate", Span = 12 }))
+            </div>
+            <div class="span2">
+                @(new BudgetOnline.UI.Views.DateEditBox().Render(new DateEditModel { Date = Model.Search.ToDate, Name = "toDate", Span = 12 }))
+            </div>
+            <div class="span3">
+                @Html.TextBox("search", Model.Search.Text ?? string.Empty, new { @class = "span12" })
+            </div>
+            <div class="span3">
+				@(new BudgetOnline.UI.Views.Editors.SelectList().Render(new SelectItemsModel(), "Category", "span12", false))
+            </div>
+            <div class="span2">
+                @(new BudgetOnline.UI.Views.Editors.SelectList().Render(Model.Search.Pages, "PageSize", "span12", false))
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span12">
+                @Html.BudgetOnlineWeb().SubmitNormalButton().Caption("Поиск").Css("btn").Build()
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+<div class="row-fluid">
+    <div id="listOutput">
+        @Html.Partial("~/Views/Transactions/_List.cshtml", Model)
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //$('#searchFilterForm').bind('submit', searchFormSubmit);
+    });
+    $(window).load(function () {
+        //loadListData();
+    });
+
+    function searchFormSubmit(evt) {
+        evt.preventDefault();
+        //loadListData();
+    }
+    
+    function deleteRecord(id) {
+        var response = confirm("Удалить запись?");
+        if (response) {
+            $.postdatas({
+                url: '@Url.Action("Delete")',
+                datas: [{ name: "id", value: "" + id}]
+            });
+        }
+    }
+    
+    function loadListData() {
+        showIndicatorFor($("#listOutput").parent(), 'progress');
+        //$("#listOutput").empty();
+        $.ajax({
+            url: $('#searchFilterForm').attr('action'),
+            data: $('#searchFilterForm').serialize(),
+            type: 'POST',
+            dataType: 'html',
+            cache: false,
+            success: function (responseText) {
+                $("#listOutput").html(responseText);
+                hideIndicatorFor($("#listOutput").parent(), 'progress');
+            }
+        });
+    }
+</script>
+@section RightBar
+{
+}

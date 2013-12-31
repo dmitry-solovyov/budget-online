@@ -1,0 +1,40 @@
+﻿@using BudgetOnline.UI.Models.SelectItems
+@functions {
+    int GetRowsCount(int itemsCount, int columns)
+    {
+        return Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(itemsCount) / columns));
+    }
+}
+@helper Render(SelectItemsModel model, string propertyName, string cssClass, bool multiSelect, int columns)
+    {
+    int rows = GetRowsCount(model.Items.Count(), columns);
+    for (int r = 0; r < rows; r++)
+    {
+    <div class="row-fluid">
+        @{
+        for (int c = 0; c < columns; c++)
+        {
+            var index = r * columns + c;
+            if (index < model.Items.Count())
+            {
+                var item = model.Items.ElementAt(index);
+            <div class="span@(Convert.ToInt32(Math.Ceiling(12m / columns)))">
+                <label class="checkbox inline">
+                    <input type="checkbox" id="@item.Value" name="@(propertyName)[@(item.Value)]" value="@item.Text" @(new HtmlString(item.Selected ? "checked='checked'" : string.Empty))/>
+                    @item.Text
+                </label>
+            </div>
+            }
+        }
+        }
+    </div>
+    }
+    
+    
+    @*<select class="selectpicker" multiple data-selected-text-format="count>3">
+        @foreach (var item in model.Items)
+        {
+            <option value="@item.Value" title="@item.Tooltip">@item.Text</option>
+        }
+    </select>*@
+}

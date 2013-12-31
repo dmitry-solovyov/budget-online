@@ -1,0 +1,434 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Budget" EntityNamespace="BudgetOnline.Data.MSSQL" ContextNamespace="BudgetOnline.Data.MSSQL" Class="BudgetOnlineDBDataContext" Serialization="Unidirectional" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.Accounts" Member="Accounts">
+    <Type Name="Account">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SectionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
+      <Column Name="ShowForIncome" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ShowForOutcome" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ShowForTransfer" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Icon" Type="System.String" DbType="NChar(512)" CanBeNull="true" />
+      <Column Name="IsDefault" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsDisabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsExternal" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedWhen" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UpdatedWhen" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Account_CategoryTemplate" Member="CategoryTemplates" ThisKey="Id" OtherKey="FromAccountId" Type="CategoryTemplate" />
+      <Association Name="Account_CategoryTemplate1" Member="CategoryTemplates_Accounts_Tos" ThisKey="Id" OtherKey="ToAccountId" Type="CategoryTemplate" />
+      <Association Name="Account_PlannedTransaction" Member="PlannedTransactions" ThisKey="Id" OtherKey="AccountId" Type="PlannedTransaction" />
+      <Association Name="Account_Transaction" Member="Transactions" ThisKey="Id" OtherKey="AccountId" Type="Transaction" />
+      <Association Name="Section_Account" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Categories" Member="Categories">
+    <Type Name="Category">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SectionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
+      <Column Name="Icon" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
+      <Column Name="IsDefault" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsDisabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedWhen" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UpdatedWhen" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Category_Category" Member="Categories_Categories" ThisKey="Id" OtherKey="ParentId" Type="Category" />
+      <Association Name="Category_PlannedTransaction" Member="PlannedTransactions" ThisKey="Id" OtherKey="CategoryId" Type="PlannedTransaction" />
+      <Association Name="Category_Transaction" Member="Transactions" ThisKey="Id" OtherKey="CategoryId" Type="Transaction" />
+      <Association Name="Category_Category" Member="Parent" ThisKey="ParentId" OtherKey="Id" Type="Category" IsForeignKey="true" />
+      <Association Name="Section_Category" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
+      <Association Name="User_Category" Member="User" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CategoryTemplates" Member="CategoryTemplates">
+    <Type Name="CategoryTemplate">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
+      <Column Name="SectionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FromAccountId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ToAccountId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsDisabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedWhen" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedWhen" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Account_CategoryTemplate" Member="Account" ThisKey="FromAccountId" OtherKey="Id" Type="Account" IsForeignKey="true" />
+      <Association Name="Account_CategoryTemplate1" Member="ToAccount" ThisKey="ToAccountId" OtherKey="Id" Type="Account" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Currencies" Member="Currencies">
+    <Type Name="Currency">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SectionId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Symbol" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
+      <Column Name="IsDefault" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsDisabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedWhen" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UpdatedWhen" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Currency_CurrencyRate" Member="CurrencyRates" ThisKey="Id" OtherKey="BaseCurrencyId" Type="CurrencyRate" />
+      <Association Name="Currency_CurrencyRate1" Member="CurrencyRates_Currencies1s" ThisKey="Id" OtherKey="TargetCurrencyId" Type="CurrencyRate" />
+      <Association Name="Currency_PlannedTransaction" Member="PlannedTransactions" ThisKey="Id" OtherKey="CurrencyId" Type="PlannedTransaction" />
+      <Association Name="Currency_StatisticsTotalOnDateDetail" Member="StatisticsTotalOnDateDetails" ThisKey="Id" OtherKey="CurrencyId" Type="StatisticsTotalOnDateDetail" />
+      <Association Name="Currency_Transaction" Member="Transactions" ThisKey="Id" OtherKey="CurrencyId" Type="Transaction" />
+      <Association Name="Section_Currency" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CurrencyRates" Member="CurrencyRates">
+    <Type Name="CurrencyRate">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SectionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="BaseCurrencyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TargetCurrencyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Rate" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="IsDisabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedWhen" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedWhen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Currency_CurrencyRate" Member="Currency" ThisKey="BaseCurrencyId" OtherKey="Id" Type="Currency" IsForeignKey="true" />
+      <Association Name="Currency_CurrencyRate1" Member="TargetCurrency" ThisKey="TargetCurrencyId" OtherKey="Id" Type="Currency" IsForeignKey="true" />
+      <Association Name="Section_CurrencyRate" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
+      <Association Name="User_CurrencyRate" Member="User" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="User_CurrencyRate1" Member="UpdatedByUser" ThisKey="UpdatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DateTitles" Member="DateTitles">
+    <Type Name="DateTitle">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SectionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedWhen" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedWhen" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Section_DateTitle" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
+      <Association Name="User_DateTitle" Member="User" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="User_DateTitle1" Member="UpdatedByUser" ThisKey="UpdatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Directions" Member="Directions">
+    <Type Name="Direction">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
+      <Column Name="Sign" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PeriodTypes" Member="PeriodTypes">
+    <Type Name="PeriodType">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
+      <Column Name="Hours" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Days" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Weeks" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="WorkingDays" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Monthes" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Quarters" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Years" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="IsDefault" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="PeriodType_PlannedTransaction" Member="PlannedTransactions" ThisKey="Id" OtherKey="PeriodTypeId" Type="PlannedTransaction" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Permissions" Member="Permissions">
+    <Type Name="Permission">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
+      <Association Name="Permission_UserPermission" Member="UserPermissions" ThisKey="Id" OtherKey="PermissionId" Type="UserPermission" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PlannedTransactions" Member="PlannedTransactions">
+    <Type Name="PlannedTransaction">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SectionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PeriodTypeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TransactionTypeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AccountId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FromDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ToDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Sum" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="CurrencyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
+      <Column Name="Tags" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
+      <Column Name="IsDisabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedWhen" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UpdatedWhen" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Account_PlannedTransaction" Member="Account" ThisKey="AccountId" OtherKey="Id" Type="Account" IsForeignKey="true" />
+      <Association Name="Category_PlannedTransaction" Member="Category" ThisKey="CategoryId" OtherKey="Id" Type="Category" IsForeignKey="true" />
+      <Association Name="Currency_PlannedTransaction" Member="Currency" ThisKey="CurrencyId" OtherKey="Id" Type="Currency" IsForeignKey="true" />
+      <Association Name="PeriodType_PlannedTransaction" Member="PeriodType" ThisKey="PeriodTypeId" OtherKey="Id" Type="PeriodType" IsForeignKey="true" />
+      <Association Name="Section_PlannedTransaction" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
+      <Association Name="TransactionType_PlannedTransaction" Member="TransactionType" ThisKey="TransactionTypeId" OtherKey="Id" Type="TransactionType" IsForeignKey="true" />
+      <Association Name="User_PlannedTransaction" Member="User" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="User_PlannedTransaction1" Member="UpdatedByUser" ThisKey="UpdatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SectionAdmins" Member="SectionAdmins">
+    <Type Name="SectionAdmin">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SectionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedWhen" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BlockedWhen" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="BlockedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Section_SectionAdmin" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
+      <Association Name="User_SectionAdmin" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sections" Member="Sections">
+    <Type Name="Section">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
+      <Column Name="IsDisabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedWhen" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UpdatedWhen" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Section_Account" Member="Accounts" ThisKey="Id" OtherKey="SectionId" Type="Account" />
+      <Association Name="Section_Category" Member="Categories" ThisKey="Id" OtherKey="SectionId" Type="Category" />
+      <Association Name="Section_Currency" Member="Currencies" ThisKey="Id" OtherKey="SectionId" Type="Currency" />
+      <Association Name="Section_CurrencyRate" Member="CurrencyRates" ThisKey="Id" OtherKey="SectionId" Type="CurrencyRate" />
+      <Association Name="Section_DateTitle" Member="DateTitles" ThisKey="Id" OtherKey="SectionId" Type="DateTitle" />
+      <Association Name="Section_PlannedTransaction" Member="PlannedTransactions" ThisKey="Id" OtherKey="SectionId" Type="PlannedTransaction" />
+      <Association Name="Section_SectionAdmin" Member="SectionAdmins" ThisKey="Id" OtherKey="SectionId" Type="SectionAdmin" />
+      <Association Name="Section_Setting" Member="Settings" ThisKey="Id" OtherKey="SectionId" Type="Setting" />
+      <Association Name="Section_StatisticsTotalOnDate" Member="StatisticsTotalOnDates" ThisKey="Id" OtherKey="SectionId" Type="StatisticsTotalOnDate" />
+      <Association Name="Section_Tag" Member="Tags" ThisKey="Id" OtherKey="SectionId" Type="Tag" />
+      <Association Name="Section_Transaction" Member="Transactions" ThisKey="Id" OtherKey="SectionId" Type="Transaction" />
+      <Association Name="Section_TransactionTag" Member="TransactionTags" ThisKey="Id" OtherKey="SectionId" Type="TransactionTag" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Settings" Member="Settings">
+    <Type Name="Setting">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SectionId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Value" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IsDisabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedWhen" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Section_Setting" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
+      <Association Name="User_Setting" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StatisticsTotalOnDateDetails" Member="StatisticsTotalOnDateDetails">
+    <Type Name="StatisticsTotalOnDateDetail">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TotalOnDateId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CurrencyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Sum" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Association Name="Currency_StatisticsTotalOnDateDetail" Member="Currency" ThisKey="CurrencyId" OtherKey="Id" Type="Currency" IsForeignKey="true" />
+      <Association Name="StatisticsTotalOnDate_StatisticsTotalOnDateDetail" Member="StatisticsTotalOnDate" ThisKey="TotalOnDateId" OtherKey="Id" Type="StatisticsTotalOnDate" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StatisticsTotalOnDates" Member="StatisticsTotalOnDates">
+    <Type Name="StatisticsTotalOnDate">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SectionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TotalOnDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedWhen" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="StatisticsTotalOnDate_StatisticsTotalOnDateDetail" Member="StatisticsTotalOnDateDetails" ThisKey="Id" OtherKey="TotalOnDateId" Type="StatisticsTotalOnDateDetail" />
+      <Association Name="Section_StatisticsTotalOnDate" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
+      <Association Name="User_StatisticsTotalOnDate" Member="User" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tags" Member="Tags">
+    <Type Name="Tag">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SectionId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Hits" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsDisabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedWhen" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UpdatedWhen" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Tag_TransactionTag" Member="TransactionTags" ThisKey="Id" OtherKey="TagId" Type="TransactionTag" />
+      <Association Name="Section_Tag" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
+      <Association Name="User_Tag" Member="User" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="User_Tag1" Member="UpdatedByUser" ThisKey="UpdatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TransactionLinks" Member="TransactionLinks">
+    <Type Name="TransactionLink">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ChildId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedWhen" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Transaction_TransactionLink" Member="Transaction" ThisKey="ChildId" OtherKey="Id" Type="Transaction" IsForeignKey="true" />
+      <Association Name="Transaction_TransactionLink1" Member="Parent" ThisKey="ParentId" OtherKey="Id" Type="Transaction" IsForeignKey="true" />
+      <Association Name="User_TransactionLink" Member="User" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Transactions" Member="Transactions">
+    <Type Name="Transaction">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SectionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LinkedId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LinkedAsParent" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TransactionTypeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AccountId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Sum" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Formula" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CurrencyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Tags" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
+      <Column Name="IsNotForStatistics" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsDisabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedWhen" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedWhen" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Transaction_TransactionLink" Member="TransactionLinks" ThisKey="Id" OtherKey="ChildId" Type="TransactionLink" />
+      <Association Name="Transaction_TransactionLink1" Member="TransactionLinks_Transactions_Parents" ThisKey="Id" OtherKey="ParentId" Type="TransactionLink" />
+      <Association Name="Transaction_Transaction" Member="Transactions_Transactions_LinkedIds" ThisKey="Id" OtherKey="LinkedId" Type="Transaction" />
+      <Association Name="Transaction_TransactionTag" Member="TransactionTags" ThisKey="Id" OtherKey="TransactionId" Type="TransactionTag" />
+      <Association Name="Account_Transaction" Member="Account" ThisKey="AccountId" OtherKey="Id" Type="Account" IsForeignKey="true" />
+      <Association Name="Category_Transaction" Member="Category" ThisKey="CategoryId" OtherKey="Id" Type="Category" IsForeignKey="true" />
+      <Association Name="Currency_Transaction" Member="Currency" ThisKey="CurrencyId" OtherKey="Id" Type="Currency" IsForeignKey="true" />
+      <Association Name="Section_Transaction" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
+      <Association Name="Transaction_Transaction" Member="Linked" ThisKey="LinkedId" OtherKey="Id" Type="Transaction" IsForeignKey="true" />
+      <Association Name="TransactionType_Transaction" Member="TransactionType" ThisKey="TransactionTypeId" OtherKey="Id" Type="TransactionType" IsForeignKey="true" />
+      <Association Name="User_Transaction" Member="User" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="User_Transaction1" Member="UpdatedByUser" ThisKey="UpdatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TransactionTags" Member="TransactionTags">
+    <Type Name="TransactionTag">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SectionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TransactionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TagId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Tag" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IsDisabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedWhen" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedWhen" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Section_TransactionTag" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
+      <Association Name="Tag_TransactionTag" Member="TransactionTags_Tag" ThisKey="TagId" OtherKey="Id" Type="Tag" IsForeignKey="true" />
+      <Association Name="Transaction_TransactionTag" Member="Transaction" ThisKey="TransactionId" OtherKey="Id" Type="Transaction" IsForeignKey="true" DeleteOnNull="true" />
+      <Association Name="User_TransactionTag" Member="User" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="User_TransactionTag1" Member="UpdatedByUser" ThisKey="UpdatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TransactionTypes" Member="TransactionTypes">
+    <Type Name="TransactionType">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
+      <Association Name="TransactionType_PlannedTransaction" Member="PlannedTransactions" ThisKey="Id" OtherKey="TransactionTypeId" Type="PlannedTransaction" />
+      <Association Name="TransactionType_Transaction" Member="Transactions" ThisKey="Id" OtherKey="TransactionTypeId" Type="Transaction" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserConnects" Member="UserConnects">
+    <Type Name="UserConnect">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserConnectStatusId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedWhen" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserConnectStatuses" Member="UserConnectStatuses">
+    <Type Name="UserConnectStatuse">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserPasswords" Member="UserPasswords">
+    <Type Name="UserPassword">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MemoriableWord" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(512) NOT NULL" CanBeNull="false" />
+      <Column Name="IsDisabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedWhen" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="User_UserPassword" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserPermissions" Member="UserPermissions">
+    <Type Name="UserPermission">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PermissionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedWhen" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Permission_UserPermission" Member="Permission" ThisKey="PermissionId" OtherKey="Id" Type="Permission" IsForeignKey="true" />
+      <Association Name="User_UserPermission" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="User_UserPermission1" Member="CreatedByUser" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SectionId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ContactPhoneNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Avatar" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Culture" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="IsDisabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsForsePassword" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedWhen" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UpdatedWhen" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="User_Category" Member="Categories" ThisKey="Id" OtherKey="CreatedBy" Type="Category" />
+      <Association Name="User_CurrencyRate" Member="CurrencyRates" ThisKey="Id" OtherKey="CreatedBy" Type="CurrencyRate" />
+      <Association Name="User_CurrencyRate1" Member="CurrencyRates_Users1s" ThisKey="Id" OtherKey="UpdatedBy" Type="CurrencyRate" />
+      <Association Name="User_DateTitle" Member="DateTitles" ThisKey="Id" OtherKey="CreatedBy" Type="DateTitle" />
+      <Association Name="User_DateTitle1" Member="DateTitles_Users_UpdatedBies" ThisKey="Id" OtherKey="UpdatedBy" Type="DateTitle" />
+      <Association Name="User_PlannedTransaction" Member="PlannedTransactions" ThisKey="Id" OtherKey="CreatedBy" Type="PlannedTransaction" />
+      <Association Name="User_PlannedTransaction1" Member="PlannedTransactions_Users_Updateds" ThisKey="Id" OtherKey="UpdatedBy" Type="PlannedTransaction" />
+      <Association Name="User_SectionAdmin" Member="SectionAdmins" ThisKey="Id" OtherKey="UserId" Type="SectionAdmin" />
+      <Association Name="User_Setting" Member="Settings" ThisKey="Id" OtherKey="UserId" Type="Setting" />
+      <Association Name="User_StatisticsTotalOnDate" Member="StatisticsTotalOnDates" ThisKey="Id" OtherKey="CreatedBy" Type="StatisticsTotalOnDate" />
+      <Association Name="User_Tag" Member="Tags" ThisKey="Id" OtherKey="CreatedBy" Type="Tag" />
+      <Association Name="User_Tag1" Member="Tags_Users_Updateds" ThisKey="Id" OtherKey="UpdatedBy" Type="Tag" />
+      <Association Name="User_TransactionLink" Member="TransactionLinks" ThisKey="Id" OtherKey="CreatedBy" Type="TransactionLink" />
+      <Association Name="User_Transaction" Member="Transactions" ThisKey="Id" OtherKey="CreatedBy" Type="Transaction" />
+      <Association Name="User_Transaction1" Member="Transactions_Users_Updateds" ThisKey="Id" OtherKey="UpdatedBy" Type="Transaction" />
+      <Association Name="User_TransactionTag" Member="TransactionTags" ThisKey="Id" OtherKey="CreatedBy" Type="TransactionTag" />
+      <Association Name="User_TransactionTag1" Member="TransactionTags_Users_Updateds" ThisKey="Id" OtherKey="UpdatedBy" Type="TransactionTag" />
+      <Association Name="User_UserPassword" Member="UserPasswords" ThisKey="Id" OtherKey="UserId" Type="UserPassword" />
+      <Association Name="User_UserPermission" Member="UserPermissions" ThisKey="Id" OtherKey="UserId" Type="UserPermission" />
+      <Association Name="User_UserPermission1" Member="UserPermissions_Users1s" ThisKey="Id" OtherKey="CreatedBy" Type="UserPermission" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserSettings" Member="UserSettings">
+    <Type Name="UserSetting">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
+      <Column Name="DefaultValue" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

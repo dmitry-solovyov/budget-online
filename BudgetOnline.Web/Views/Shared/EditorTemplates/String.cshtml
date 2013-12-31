@@ -1,0 +1,22 @@
+﻿@model string
+@{
+	var placeholder = "";
+	if (ViewData.ModelMetadata.AdditionalValues.ContainsKey("placeholder"))
+	{
+		placeholder = ViewData.ModelMetadata.AdditionalValues["placeholder"].ToString();
+	}
+	ModelState state = ViewData.ModelState[ViewData.ModelMetadata.PropertyName];
+	var value = Model ?? string.Empty;
+
+	var css = new List<string> {"input-block-level"};
+
+	if (state != null && state.Errors.Count > 0)
+	{
+		css.Add("input-validation-error");
+	}
+	if (!string.IsNullOrWhiteSpace(ViewData.ModelMetadata.GetSpan()))
+	{
+        css.Add(ViewData.ModelMetadata.GetSpan());
+	}
+}
+@Html.TextBox("", value, new { @class = string.Join(" ", css), placeholder })

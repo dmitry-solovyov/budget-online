@@ -1,0 +1,540 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 20.25, 46.25" name="BudgetOnlineDB">
+  <DataContextMoniker Name="/BudgetOnlineDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="14876722-db7b-4cab-add1-bd1715353e85" absoluteBounds="12.5, 12, 2, 3.6939111328125023">
+      <DataClassMoniker Name="/BudgetOnlineDBDataContext/Account" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c36fb50f-477f-4879-bb9f-43d8cb967f5e" absoluteBounds="12.515000000596046, 12.46000000089407, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8717a006-b600-436d-beb6-3c14af19c162" absoluteBounds="9.375, 18.125, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/BudgetOnlineDBDataContext/Category" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d08b9399-58f7-4111-8a2d-073dca993c75" absoluteBounds="9.3900000005960464, 18.58500000089407, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="295632d7-6104-4e54-a690-8ac06d340a96" absoluteBounds="15.25, 12.375, 2, 2.9247054036458309">
+      <DataClassMoniker Name="/BudgetOnlineDBDataContext/CategoryTemplate" />
+      <nestedChildShapes>
+        <elementListCompartment Id="97ef6192-20e7-4076-8cbe-6737d0a10f31" absoluteBounds="15.265000000596046, 12.83500000089407, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="04da1afa-6a34-4489-b877-47de30564549" absoluteBounds="6.75, 10.375, 2, 2.9247054036458309">
+      <DataClassMoniker Name="/BudgetOnlineDBDataContext/Currency" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7dc9cd6b-b877-4c1f-9732-77f902f9df05" absoluteBounds="6.7650000005960464, 10.83500000089407, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="18871699-7429-4fb5-857a-09c39a5af131" absoluteBounds="6.5, 18.625, 2, 2.3478011060506105">
+      <DataClassMoniker Name="/BudgetOnlineDBDataContext/DateTitle" />
+      <nestedChildShapes>
+        <elementListCompartment Id="99281c25-ce6e-4e75-9a39-100ef1eb0b12" absoluteBounds="6.5150000005960464, 19.08500000089407, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c913e912-6235-4c00-b116-4adfefd37844" absoluteBounds="0.75, 0.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/BudgetOnlineDBDataContext/Direction" />
+      <nestedChildShapes>
+        <elementListCompartment Id="87c1db3b-e4e4-448c-b01d-6724e72425ac" absoluteBounds="0.76500000000000057, 1.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dbda4aa6-557c-4c51-9474-2a3c65fe49ea" absoluteBounds="0.75, 23.125, 2, 1.3862939458340406">
+      <DataClassMoniker Name="/BudgetOnlineDBDataContext/Permission" />
+      <nestedChildShapes>
+        <elementListCompartment Id="486d25da-0395-4e94-9d93-a1bd5eac7124" absoluteBounds="0.76500000059604645, 23.58500000089407, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="02fb2b5a-ae0c-4836-8b9e-ba6b6944c514" absoluteBounds="6.5, 21.75, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/BudgetOnlineDBDataContext/SectionAdmin" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f90d941e-ea24-4a4e-b57c-104acb1f75cf" absoluteBounds="6.5150000000000006, 22.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="41991349-15c4-40a7-8663-0299194c9c1f" absoluteBounds="4, 10.625, 2, 2.3478011067708344">
+      <DataClassMoniker Name="/BudgetOnlineDBDataContext/Section" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e9b1adb4-e332-4567-aefb-bf2bbceb5f19" absoluteBounds="4.0150000005960464, 11.08500000089407, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ecd347a6-5101-4ab6-a166-5e59d7c83a25" absoluteBounds="6.5, 14.5, 2, 2.5401025390625023">
+      <DataClassMoniker Name="/BudgetOnlineDBDataContext/Setting" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d91add08-e0a4-47b9-88ae-a1453da79870" absoluteBounds="6.5150000000000006, 14.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bf0a2efa-8ed3-425c-8bdd-8ad7504e9071" absoluteBounds="3.5, 15.5, 2, 2.5401025390625023">
+      <DataClassMoniker Name="/BudgetOnlineDBDataContext/Tag" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f3a2f236-f781-4a74-bdc4-b6b6d874eae4" absoluteBounds="3.5149999999999997, 15.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4c2fdc05-d288-40b0-a386-d6819bf80418" absoluteBounds="12.375, 17.5, 2, 4.6554182942708309">
+      <DataClassMoniker Name="/BudgetOnlineDBDataContext/Transaction" />
+      <nestedChildShapes>
+        <elementListCompartment Id="452ddbfa-ac08-4521-940c-263457ecd2db" absoluteBounds="12.390000000596046, 17.96000000089407, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a218860d-4b7f-4c77-a522-0b1bf53312f5" absoluteBounds="18, 17.5, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/BudgetOnlineDBDataContext/TransactionTag" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4c0fd246-5373-45cb-b604-9e626659c59c" absoluteBounds="18.015, 17.96, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ccab2826-7796-4c49-9f6b-ea845eca1edf" absoluteBounds="12.5, 23.5, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/BudgetOnlineDBDataContext/TransactionType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="37b0a9d6-dd42-4183-8856-ca634cb8fa12" absoluteBounds="12.515000000596046, 23.96000000089407, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4cc80208-3576-4f42-a27d-adc5b1547596" absoluteBounds="3.75, 0.75, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/BudgetOnlineDBDataContext/UserConnect" />
+      <nestedChildShapes>
+        <elementListCompartment Id="32a59e2e-ee38-4cf0-9cdd-fc778ec476d6" absoluteBounds="3.7650000000000006, 1.2100000000000009, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="da6f2d46-1168-4940-8139-d497116c637e" absoluteBounds="0.75, 3.75, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/BudgetOnlineDBDataContext/UserConnectStatuse" />
+      <nestedChildShapes>
+        <elementListCompartment Id="72882dc3-5f2c-4e33-b359-d8fe38f3eff8" absoluteBounds="0.76500000000000057, 4.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="01afc16f-4ac1-41c9-8f69-20845f4ba26e" absoluteBounds="3.5, 43.875, 2, 2.1554996743798256">
+      <DataClassMoniker Name="/BudgetOnlineDBDataContext/UserPassword" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f69fadec-e018-483f-b707-a9602bcd2a8f" absoluteBounds="3.5150000005960464, 44.33500000089407, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cd0b0cb7-cdc3-4dc4-9924-52004600642a" absoluteBounds="3.5, 21.875, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/BudgetOnlineDBDataContext/UserPermission" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8cbb83d5-a8c6-471a-a679-2c1a84b0848c" absoluteBounds="3.5150000000000006, 22.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cb28a34e-4b8a-4392-b9dc-9d93c136c874" absoluteBounds="0.75, 18.125, 2, 3.3093082681298256">
+      <DataClassMoniker Name="/BudgetOnlineDBDataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7b9e7f32-28de-4d1b-8bb7-5fc953d1da00" absoluteBounds="0.76500000059604645, 18.58500000089407, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a6624060-ff62-4920-8e6e-953e213df9a7" absoluteBounds="3.75, 3.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/BudgetOnlineDBDataContext/UserSetting" />
+      <nestedChildShapes>
+        <elementListCompartment Id="74110b0e-de43-4993-bf39-5c562ace13df" absoluteBounds="3.7650000000000006, 4.2100000000000009, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(14.5 : 13.8373527018229); (15.25 : 13.8373527018229)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Account/Account_CategoryTemplate" />
+      <nodes>
+        <classShapeMoniker Id="14876722-db7b-4cab-add1-bd1715353e85" />
+        <classShapeMoniker Id="295632d7-6104-4e54-a690-8ac06d340a96" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(14.5 : 13.0436763509115); (15.25 : 13.0436763509115)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Account/Account_CategoryTemplate1" />
+      <nodes>
+        <classShapeMoniker Id="14876722-db7b-4cab-add1-bd1715353e85" />
+        <classShapeMoniker Id="295632d7-6104-4e54-a690-8ac06d340a96" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6 : 11.7989005533854); (6.16666666666667 : 11.7989005533854 : JumpStart); (6.33333333333333 : 11.7989005533854 : JumpEnd); (6.75 : 11.7989005533854)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Section/Section_Currency" />
+      <nodes>
+        <classShapeMoniker Id="41991349-15c4-40a7-8663-0299194c9c1f" />
+        <classShapeMoniker Id="04da1afa-6a34-4489-b877-47de30564549" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.78125 : 12.9728011067708); (5.78125 : 20.8405989579732); (5.78385666666667 : 20.8405989579732 : JumpStart); (6.00521083333333 : 20.8405989579732 : JumpEnd); (6.29166666666667 : 20.8405989579732 : JumpStart); (6.45833333333333 : 20.8405989579732 : JumpEnd); (6.5 : 20.8405989579732)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Section/Section_DateTitle" />
+      <nodes>
+        <classShapeMoniker Id="41991349-15c4-40a7-8663-0299194c9c1f" />
+        <classShapeMoniker Id="18871699-7429-4fb5-857a-09c39a5af131" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 18.71875); (2.79166666666667 : 18.71875 : JumpStart); (3.33333333333333 : 18.71875 : JumpEnd); (5.69791666666667 : 18.71875 : JumpStart); (6.00521083333333 : 18.71875 : JumpEnd); (6.5 : 18.71875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/User/User_DateTitle" />
+      <nodes>
+        <classShapeMoniker Id="cb28a34e-4b8a-4392-b9dc-9d93c136c874" />
+        <classShapeMoniker Id="18871699-7429-4fb5-857a-09c39a5af131" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 18.3125005); (3.29166666666667 : 18.3125005 : JumpStart); (3.45833333333333 : 18.3125005 : JumpEnd); (5.69791666666667 : 18.3125005 : JumpStart); (6.00521083333333 : 18.3125005 : JumpEnd); (7.5 : 18.3125005); (7.5 : 18.625)]" fixedFrom="Algorithm" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/User/User_DateTitle1" />
+      <nodes>
+        <classShapeMoniker Id="cb28a34e-4b8a-4392-b9dc-9d93c136c874" />
+        <classShapeMoniker Id="18871699-7429-4fb5-857a-09c39a5af131" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.9218775 : 12.9728011067708); (5.9218775 : 23.8069482421875); (6.5 : 23.8069482421875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Section/Section_SectionAdmin" />
+      <nodes>
+        <classShapeMoniker Id="41991349-15c4-40a7-8663-0299194c9c1f" />
+        <classShapeMoniker Id="02fb2b5a-ae0c-4836-8b9e-ba6b6944c514" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 20.545022323143); (2.76991483201842 : 20.579211172117 : JumpStart); (2.85380323422958 : 20.7232268440151 : JumpEnd); (3.5625 : 21.9398841912067); (3.5625 : 21.125); (5.78385666666667 : 21.125 : JumpStart); (6.00521083333333 : 21.125 : JumpEnd); (6.125 : 21.125); (6.5 : 21.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/User/User_SectionAdmin" />
+      <nodes>
+        <classShapeMoniker Id="cb28a34e-4b8a-4392-b9dc-9d93c136c874" />
+        <classShapeMoniker Id="02fb2b5a-ae0c-4836-8b9e-ba6b6944c514" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.6406225 : 12.9728011067708); (5.6406225 : 14.96875); (5.69791666666667 : 14.96875 : JumpStart); (6.00521083333333 : 14.96875 : JumpEnd); (6.5 : 14.96875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Section/Section_Setting" />
+      <nodes>
+        <classShapeMoniker Id="41991349-15c4-40a7-8663-0299194c9c1f" />
+        <classShapeMoniker Id="ecd347a6-5101-4ab6-a166-5e59d7c83a25" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.218748 : 18.125); (1.218748 : 15.2343775); (1.93229266666667 : 15.2343775 : JumpStart); (2.09895933333333 : 15.2343775 : JumpEnd); (2.46354466666667 : 15.2343775 : JumpStart); (2.63021133333333 : 15.2343775 : JumpEnd); (4.66666666666667 : 15.2343775 : JumpStart); (4.83333333333333 : 15.2343775 : JumpEnd); (5.69791666666667 : 15.2343775 : JumpStart); (6.00521083333333 : 15.2343775 : JumpEnd); (6.5 : 15.2343775)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/User/User_Setting" />
+      <nodes>
+        <classShapeMoniker Id="cb28a34e-4b8a-4392-b9dc-9d93c136c874" />
+        <classShapeMoniker Id="ecd347a6-5101-4ab6-a166-5e59d7c83a25" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.75 : 12.9728011067708); (4.75 : 15.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Section/Section_Tag" />
+      <nodes>
+        <classShapeMoniker Id="41991349-15c4-40a7-8663-0299194c9c1f" />
+        <classShapeMoniker Id="bf0a2efa-8ed3-425c-8bdd-8ad7504e9071" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.281252 : 18.125); (2.281252 : 16.7700512695313); (2.46354466666667 : 16.7700512695313 : JumpStart); (2.63021133333333 : 16.7700512695313 : JumpEnd); (3.5 : 16.7700512695313)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/User/User_Tag" />
+      <nodes>
+        <classShapeMoniker Id="cb28a34e-4b8a-4392-b9dc-9d93c136c874" />
+        <classShapeMoniker Id="bf0a2efa-8ed3-425c-8bdd-8ad7504e9071" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 18.125); (1.75 : 17.4363294042969); (1.93229266666667 : 17.4363294042969 : JumpStart); (2.09895933333333 : 17.4363294042969 : JumpEnd); (2.19791866666667 : 17.4363294042969 : JumpStart); (2.36458533333333 : 17.4363294042969 : JumpEnd); (2.46354466666667 : 17.4363294042969 : JumpStart); (2.63021133333333 : 17.4363294042969 : JumpEnd); (3.5 : 17.4363294042969)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/User/User_Tag1" />
+      <nodes>
+        <classShapeMoniker Id="cb28a34e-4b8a-4392-b9dc-9d93c136c874" />
+        <classShapeMoniker Id="bf0a2efa-8ed3-425c-8bdd-8ad7504e9071" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(13.0842307692308 : 22.1554182942708); (13.0842307692308 : 22.4054182942708); (13.6796153846154 : 22.4054182942708); (13.6796153846154 : 22.1554182942708)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Transaction/Transaction_Transaction" />
+      <nodes>
+        <classShapeMoniker Id="4c2fdc05-d288-40b0-a386-d6819bf80418" />
+        <classShapeMoniker Id="4c2fdc05-d288-40b0-a386-d6819bf80418" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6 : 12.4171028300781); (6.16666666666667 : 12.4171028300781 : JumpStart); (6.33333333333333 : 12.4171028300781 : JumpEnd); (6.5 : 12.4171028300781); (6.5 : 13.5497054036458); (8.54166416666667 : 13.5497054036458 : JumpStart); (8.80208458333333 : 13.5497054036458 : JumpEnd); (11.9166666666667 : 13.5497054036458 : JumpStart); (12.0833333333333 : 13.5497054036458 : JumpEnd); (12.25 : 13.5497054036458); (12.25 : 15.9439111328125); (12.2916666666667 : 15.9439111328125 : JumpStart); (12.4583333333333 : 15.9439111328125 : JumpEnd); (13.3541666666667 : 15.9439111328125 : JumpStart); (13.5208333333333 : 15.9439111328125 : JumpEnd); (14.6666666666667 : 15.9439111328125 : JumpStart); (14.8333333333333 : 15.9439111328125 : JumpEnd); (18.468748 : 15.9439111328125); (18.468748 : 17.5)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Section/Section_TransactionTag" />
+      <nodes>
+        <classShapeMoniker Id="41991349-15c4-40a7-8663-0299194c9c1f" />
+        <classShapeMoniker Id="a218860d-4b7f-4c77-a522-0b1bf53312f5" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(14.375 : 17.53125); (14.7916666666667 : 17.53125 : JumpStart); (14.9583333333333 : 17.53125 : JumpEnd); (15.3697886666667 : 17.53125 : JumpStart); (15.5364553333333 : 17.53125 : JumpEnd); (15.6354146666667 : 17.53125 : JumpStart); (15.8020813333333 : 17.53125 : JumpEnd); (15.9010406666667 : 17.53125 : JumpStart); (16.0677073333333 : 17.53125 : JumpEnd); (16.1666666666667 : 17.53125 : JumpStart); (16.3333333333333 : 17.53125 : JumpEnd); (16.6979186666667 : 17.53125 : JumpStart); (16.8645853333333 : 17.53125 : JumpEnd); (18 : 17.53125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Transaction/Transaction_TransactionTag" />
+      <nodes>
+        <classShapeMoniker Id="4c2fdc05-d288-40b0-a386-d6819bf80418" />
+        <classShapeMoniker Id="a218860d-4b7f-4c77-a522-0b1bf53312f5" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 19.9046563840649); (2.79166666666667 : 19.9046563840649 : JumpStart); (3.08333333333333 : 19.9046563840649 : JumpEnd); (3.25 : 19.9046563840649); (3.25 : 18.5); (5.69791666666667 : 18.5 : JumpStart); (6.00521083333333 : 18.5 : JumpEnd); (7.41666666666667 : 18.5 : JumpStart); (7.58333333333333 : 18.5 : JumpEnd); (8.54166416666667 : 18.5 : JumpStart); (8.80208458333333 : 18.5 : JumpEnd); (9.125 : 18.5); (9.125 : 17.875); (11.6666666666667 : 17.875 : JumpStart); (11.8333333333333 : 17.875 : JumpEnd); (11.9166666666667 : 17.875 : JumpStart); (12.0833333333333 : 17.875 : JumpEnd); (12.125 : 17.875); (12.125 : 17.25); (13.3541666666667 : 17.25 : JumpStart); (13.5208333333333 : 17.25 : JumpEnd); (14.7916666666667 : 17.25 : JumpStart); (14.9583333333333 : 17.25 : JumpEnd); (15.3697886666667 : 17.25 : JumpStart); (15.5364553333333 : 17.25 : JumpEnd); (15.6354146666667 : 17.25 : JumpStart); (15.8020813333333 : 17.25 : JumpEnd); (16.1666666666667 : 17.25 : JumpStart); (16.3333333333333 : 17.25 : JumpEnd); (16.6979186666667 : 17.25 : JumpStart); (16.8645853333333 : 17.25 : JumpEnd); (18.3854146666667 : 17.25 : JumpStart); (18.5520813333333 : 17.25 : JumpEnd); (18.7838536666667 : 17.25 : JumpStart); (18.9505203333333 : 17.25 : JumpEnd); (19.265626 : 17.25); (19.265626 : 17.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/User/User_TransactionTag" />
+      <nodes>
+        <classShapeMoniker Id="cb28a34e-4b8a-4392-b9dc-9d93c136c874" />
+        <classShapeMoniker Id="a218860d-4b7f-4c77-a522-0b1bf53312f5" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 20.7007343260974); (2.75736812270119 : 20.7007343260974 : JumpStart); (2.92403478936785 : 20.7007343260974 : JumpEnd); (3 : 20.7007343260974); (3 : 18.375); (5.69791666666667 : 18.375 : JumpStart); (6.00521083333333 : 18.375 : JumpEnd); (8.54166416666667 : 18.375 : JumpStart); (8.80208458333333 : 18.375 : JumpEnd); (8.875 : 18.375); (8.875 : 17.625); (11.6666666666667 : 17.625 : JumpStart); (11.8333333333333 : 17.625 : JumpEnd); (11.875 : 17.625); (11.875 : 17); (13.3541666666667 : 17 : JumpStart); (13.5208333333333 : 17 : JumpEnd); (14.7916666666667 : 17 : JumpStart); (14.9583333333333 : 17 : JumpEnd); (15.3697886666667 : 17 : JumpStart); (15.5364553333333 : 17 : JumpEnd); (15.6354146666667 : 17 : JumpStart); (15.8020813333333 : 17 : JumpEnd); (16.6979186666667 : 17 : JumpStart); (16.8645853333333 : 17 : JumpEnd); (18.3854146666667 : 17 : JumpStart); (18.5520813333333 : 17 : JumpEnd); (18.867187 : 17); (18.867187 : 17.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/User/User_TransactionTag1" />
+      <nodes>
+        <classShapeMoniker Id="cb28a34e-4b8a-4392-b9dc-9d93c136c874" />
+        <classShapeMoniker Id="a218860d-4b7f-4c77-a522-0b1bf53312f5" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 21.4343082681298); (2.20215297364912 : 21.5842220985041 : JumpStart); (2.36035102635088 : 21.6366735417555 : JumpEnd); (3.15625 : 21.9005582681298); (3.15625 : 44.9527498371899); (3.5 : 44.9527498371899)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/User/User_UserPassword" />
+      <nodes>
+        <classShapeMoniker Id="cb28a34e-4b8a-4392-b9dc-9d93c136c874" />
+        <classShapeMoniker Id="01afc16f-4ac1-41c9-8f69-20845f4ba26e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.95313 : 12.9728011067708); (5.95313 : 13.9311027018229); (8.54166416666667 : 13.9311027018229 : JumpStart); (8.80208458333333 : 13.9311027018229 : JumpEnd); (11.9166666666667 : 13.9311027018229 : JumpStart); (12.0833333333333 : 13.9311027018229 : JumpEnd); (12.1666666666667 : 13.9311027018229 : JumpStart); (12.4583333333333 : 13.9311027018229 : JumpEnd); (12.5 : 13.9311027018229)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Section/Section_Account" />
+      <nodes>
+        <classShapeMoniker Id="41991349-15c4-40a7-8663-0299194c9c1f" />
+        <classShapeMoniker Id="14876722-db7b-4cab-add1-bd1715353e85" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="25378ab7-59ae-49b8-9c17-79b57a04b714" absoluteBounds="18, 20.875, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/BudgetOnlineDBDataContext/TransactionLink" />
+      <nestedChildShapes>
+        <elementListCompartment Id="68f50f13-1d39-495d-9365-da3dff1db28f" absoluteBounds="18.015, 21.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(14.375 : 22.0568668619792); (15.6354141666667 : 22.0568668619792 : JumpStart); (15.8020808333333 : 22.0568668619792 : JumpEnd); (16.1666666666667 : 22.0568668619792 : JumpStart); (16.3333333333333 : 22.0568668619792 : JumpEnd); (17.5416666666667 : 22.0568668619792 : JumpStart); (17.7083333333333 : 22.0568668619792 : JumpEnd); (18 : 22.0568668619792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Transaction/Transaction_TransactionLink" />
+      <nodes>
+        <classShapeMoniker Id="4c2fdc05-d288-40b0-a386-d6819bf80418" />
+        <classShapeMoniker Id="25378ab7-59ae-49b8-9c17-79b57a04b714" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(12.6983628846154 : 22.1554182942708); (12.6983628846154 : 22.5256575520833); (14.0064743589744 : 22.5256575520833 : JumpStart); (14.173141025641 : 22.5256575520833 : JumpEnd); (15.6354141666667 : 22.5256575520833 : JumpStart); (15.8020808333333 : 22.5256575520833 : JumpEnd); (16.1666666666667 : 22.5256575520833 : JumpStart); (16.3333333333333 : 22.5256575520833 : JumpEnd); (18 : 22.5256575520833)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Transaction/Transaction_TransactionLink1" />
+      <nodes>
+        <classShapeMoniker Id="4c2fdc05-d288-40b0-a386-d6819bf80418" />
+        <classShapeMoniker Id="25378ab7-59ae-49b8-9c17-79b57a04b714" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 21.4343082681298); (1.75 : 21.625); (2.19791866666667 : 21.625 : JumpStart); (2.4084759562662 : 21.625 : JumpEnd); (2.67641675328978 : 21.625 : JumpStart); (2.84308341995645 : 21.625 : JumpEnd); (3.13805987204527 : 21.625 : JumpStart); (3.46241488078749 : 21.625 : JumpEnd); (3.47916666666667 : 21.625 : JumpStart); (3.64583333333333 : 21.625 : JumpEnd); (5.83854416666667 : 21.625 : JumpStart); (6.00521083333333 : 21.625 : JumpEnd); (6.04166666666667 : 21.625 : JumpStart); (6.20833333333333 : 21.625 : JumpEnd); (6.25 : 21.625); (6.25 : 21.5); (6.26666666666667 : 21.5 : JumpStart); (6.43333333333333 : 21.5 : JumpEnd); (8.54166416666667 : 21.5 : JumpStart); (8.80208458333333 : 21.5 : JumpEnd); (9.58378255128205 : 21.5 : JumpStart); (9.75044921794872 : 21.5 : JumpEnd); (10.0008974358974 : 21.5 : JumpStart); (10.1675641025641 : 21.5 : JumpEnd); (10.5962820512821 : 21.5 : JumpStart); (10.7629487179487 : 21.5 : JumpEnd); (12.125 : 21.5); (12.125 : 22.2804182942708); (12.6150295512821 : 22.2804182942708 : JumpStart); (12.7816962179487 : 22.2804182942708 : JumpEnd); (13.0008974358974 : 22.2804182942708 : JumpStart); (13.1675641025641 : 22.2804182942708 : JumpEnd); (13.5962820512821 : 22.2804182942708 : JumpStart); (13.7629487179487 : 22.2804182942708 : JumpEnd); (14.0064743589744 : 22.2804182942708 : JumpStart); (14.173141025641 : 22.2804182942708 : JumpEnd); (15.6354141666667 : 22.2804182942708 : JumpStart); (15.8020808333333 : 22.2804182942708 : JumpEnd); (16.1666666666667 : 22.2804182942708 : JumpStart); (16.3333333333333 : 22.2804182942708 : JumpEnd); (17.625 : 22.2804182942708); (17.625 : 21.4346814309896); (18 : 21.4346814309896)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/User/User_TransactionLink" />
+      <nodes>
+        <classShapeMoniker Id="cb28a34e-4b8a-4392-b9dc-9d93c136c874" />
+        <classShapeMoniker Id="25378ab7-59ae-49b8-9c17-79b57a04b714" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 16.7700512695313); (5.69791666666667 : 16.7700512695313 : JumpStart); (6.00521083333333 : 16.7700512695313 : JumpEnd); (6.25 : 16.7700512695313); (6.25 : 17.4247054036458); (8.54166416666667 : 17.4247054036458 : JumpStart); (8.80208458333333 : 17.4247054036458 : JumpEnd); (11.6666666666667 : 17.4247054036458 : JumpStart); (12.2083333333333 : 17.4247054036458 : JumpEnd); (12.25 : 17.4247054036458); (12.25 : 17.375); (13.3541666666667 : 17.375 : JumpStart); (13.5208333333333 : 17.375 : JumpEnd); (14.7916666666667 : 17.375 : JumpStart); (14.9583333333333 : 17.375 : JumpEnd); (15.3697886666667 : 17.375 : JumpStart); (15.5364553333333 : 17.375 : JumpEnd); (15.6354146666667 : 17.375 : JumpStart); (15.8020813333333 : 17.375 : JumpEnd); (16.1666666666667 : 17.375 : JumpStart); (16.3333333333333 : 17.375 : JumpEnd); (16.6979186666667 : 17.375 : JumpStart); (16.8645853333333 : 17.375 : JumpEnd); (18.3854146666667 : 17.375 : JumpStart); (18.5520813333333 : 17.375 : JumpEnd); (18.7838536666667 : 17.375 : JumpStart); (18.9505203333333 : 17.375 : JumpEnd); (19.1822926666667 : 17.375 : JumpStart); (19.3489593333333 : 17.375 : JumpEnd); (19.664065 : 17.375); (19.664065 : 17.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Tag/Tag_TransactionTag" />
+      <nodes>
+        <classShapeMoniker Id="bf0a2efa-8ed3-425c-8bdd-8ad7504e9071" />
+        <classShapeMoniker Id="a218860d-4b7f-4c77-a522-0b1bf53312f5" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.0842307692308 : 21.2420068359375); (10.0842307692308 : 21.7420068359375); (10.6796153846154 : 21.7420068359375); (10.6796153846154 : 21.2420068359375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Category/Category_Category" />
+      <nodes>
+        <classShapeMoniker Id="8717a006-b600-436d-beb6-3c14af19c162" />
+        <classShapeMoniker Id="8717a006-b600-436d-beb6-3c14af19c162" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.8359375 : 12.9728011067708); (5.8359375 : 18.21875025); (5.83854416666667 : 18.21875025 : JumpStart); (6.00521083333333 : 18.21875025 : JumpEnd); (8.54166416666667 : 18.21875025 : JumpStart); (8.95833333333333 : 18.21875025 : JumpEnd); (9.04166666666667 : 18.21875025 : JumpStart); (9.33333333333333 : 18.21875025 : JumpEnd); (9.375 : 18.21875025)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Section/Section_Category" />
+      <nodes>
+        <classShapeMoniker Id="41991349-15c4-40a7-8663-0299194c9c1f" />
+        <classShapeMoniker Id="8717a006-b600-436d-beb6-3c14af19c162" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.484374 : 18.125); (1.484374 : 17.875); (1.66666666666667 : 17.875 : JumpStart); (1.83333333333333 : 17.875 : JumpEnd); (1.93229266666667 : 17.875 : JumpStart); (2.09895933333333 : 17.875 : JumpEnd); (2.19791866666667 : 17.875 : JumpStart); (2.36458533333333 : 17.875 : JumpEnd); (2.46354466666667 : 17.875 : JumpStart); (2.63021133333333 : 17.875 : JumpEnd); (3.375 : 17.875); (3.375 : 18.4375); (5.69791666666667 : 18.4375 : JumpStart); (6.00521083333333 : 18.4375 : JumpEnd); (7.41666666666667 : 18.4375 : JumpStart); (7.58333333333333 : 18.4375 : JumpEnd); (8.54166416666667 : 18.4375 : JumpStart); (8.80208458333333 : 18.4375 : JumpEnd); (9 : 18.4375); (9 : 19.8710029179688); (9.375 : 19.8710029179688)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/User/User_Category" />
+      <nodes>
+        <classShapeMoniker Id="cb28a34e-4b8a-4392-b9dc-9d93c136c874" />
+        <classShapeMoniker Id="8717a006-b600-436d-beb6-3c14af19c162" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="37c995d5-10cd-427b-bf40-1f1d22e0fbd2" absoluteBounds="15.25, 17.625, 2, 4.2708154296875023">
+      <DataClassMoniker Name="/BudgetOnlineDBDataContext/PlannedTransaction" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6f69f73a-e875-4692-b307-d41a90124622" absoluteBounds="15.265000000596046, 18.08500000089407, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(14.5 : 15.6939111328125); (14.875 : 16.0689111328125); (14.875 : 19.7604077148438); (15.25 : 19.7604077148438)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Account/Account_PlannedTransaction" />
+      <nodes>
+        <classShapeMoniker Id="14876722-db7b-4cab-add1-bd1715353e85" />
+        <classShapeMoniker Id="37c995d5-10cd-427b-bf40-1f1d22e0fbd2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.375 : 19.6835034179688); (11.7916666666667 : 19.6835034179688 : JumpStart); (11.9583333333333 : 19.6835034179688 : JumpEnd); (12 : 19.6835034179688); (12 : 17.125); (13.3541666666667 : 17.125 : JumpStart); (13.5208333333333 : 17.125 : JumpEnd); (14.7916666666667 : 17.125 : JumpStart); (14.9583333333333 : 17.125 : JumpEnd); (15.3697886666667 : 17.125 : JumpStart); (15.5364553333333 : 17.125 : JumpEnd); (15.6354146666667 : 17.125 : JumpStart); (15.8020813333333 : 17.125 : JumpEnd); (16.25 : 17.125); (16.25 : 17.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Category/Category_PlannedTransaction" />
+      <nodes>
+        <classShapeMoniker Id="8717a006-b600-436d-beb6-3c14af19c162" />
+        <classShapeMoniker Id="37c995d5-10cd-427b-bf40-1f1d22e0fbd2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 11.8373527018229); (12 : 11.8373527018229); (12 : 16.1939111328125); (12.2916666666667 : 16.1939111328125 : JumpStart); (12.4583333333333 : 16.1939111328125 : JumpEnd); (13.3541666666667 : 16.1939111328125 : JumpStart); (13.5208333333333 : 16.1939111328125 : JumpEnd); (14.7916666666667 : 16.1939111328125 : JumpStart); (14.9583333333333 : 16.1939111328125 : JumpEnd); (16.781252 : 16.1939111328125); (16.781252 : 17.625)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Currency/Currency_PlannedTransaction" />
+      <nodes>
+        <classShapeMoniker Id="04da1afa-6a34-4489-b877-47de30564549" />
+        <classShapeMoniker Id="37c995d5-10cd-427b-bf40-1f1d22e0fbd2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6 : 11.1806982766927); (6.25 : 11.1806982766927); (6.25 : 13.6747054036458); (8.54166416666667 : 13.6747054036458 : JumpStart); (8.80208458333333 : 13.6747054036458 : JumpEnd); (11.9166666666667 : 13.6747054036458 : JumpStart); (12.0833333333333 : 13.6747054036458 : JumpEnd); (12.1666666666667 : 13.6747054036458 : JumpStart); (12.3333333333333 : 13.6747054036458 : JumpEnd); (12.375 : 13.6747054036458); (12.375 : 16.3189111328125); (13.3541666666667 : 16.3189111328125 : JumpStart); (13.5208333333333 : 16.3189111328125 : JumpEnd); (14.7916666666667 : 16.3189111328125 : JumpStart); (14.9583333333333 : 16.3189111328125 : JumpEnd); (15.718748 : 16.3189111328125); (15.718748 : 17.625)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Section/Section_PlannedTransaction" />
+      <nodes>
+        <classShapeMoniker Id="41991349-15c4-40a7-8663-0299194c9c1f" />
+        <classShapeMoniker Id="37c995d5-10cd-427b-bf40-1f1d22e0fbd2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 19.1710756920325); (2.79166666666667 : 19.1710756920325 : JumpStart); (3.08333333333333 : 19.1710756920325 : JumpEnd); (3.125 : 19.1710756920325); (3.125 : 18.5625); (5.69791666666667 : 18.5625 : JumpStart); (6.00521083333333 : 18.5625 : JumpEnd); (8.54166416666667 : 18.5625 : JumpStart); (8.80208458333333 : 18.5625 : JumpEnd); (8.91666666666667 : 18.5625 : JumpStart); (9.08333333333333 : 18.5625 : JumpEnd); (9.25 : 18.5625); (9.25 : 18); (11.75 : 18); (11.75 : 16.875); (13.3541666666667 : 16.875 : JumpStart); (13.5208333333333 : 16.875 : JumpEnd); (14.7916666666667 : 16.875 : JumpStart); (14.9583333333333 : 16.875 : JumpEnd); (15.453122 : 16.875); (15.453122 : 17.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/User/User_PlannedTransaction" />
+      <nodes>
+        <classShapeMoniker Id="cb28a34e-4b8a-4392-b9dc-9d93c136c874" />
+        <classShapeMoniker Id="37c995d5-10cd-427b-bf40-1f1d22e0fbd2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(14.5 : 24.1931469726563); (15.6354141666667 : 24.1931469726563 : JumpStart); (15.8020808333333 : 24.1931469726563 : JumpEnd); (16.25 : 24.1931469726563); (16.25 : 21.8958154296875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/TransactionType/TransactionType_PlannedTransaction" />
+      <nodes>
+        <classShapeMoniker Id="ccab2826-7796-4c49-9f6b-ea845eca1edf" />
+        <classShapeMoniker Id="37c995d5-10cd-427b-bf40-1f1d22e0fbd2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 20.3026953550811); (2.875 : 20.3026953550811); (2.875 : 18.375); (5.69791666666667 : 18.375 : JumpStart); (6.00521083333333 : 18.375 : JumpEnd); (8.54166416666667 : 18.375 : JumpStart); (8.70833083333333 : 18.375 : JumpEnd); (8.75 : 18.375); (8.75 : 17.75); (8.79166666666667 : 17.75 : JumpStart); (8.95833333333333 : 17.75 : JumpEnd); (11.6666666666667 : 17.75 : JumpStart); (11.8333333333333 : 17.75 : JumpEnd); (11.9166666666667 : 17.75 : JumpStart); (12.0833333333333 : 17.75 : JumpEnd); (12.1875 : 17.75); (12.1875 : 17.3125); (13.3541666666667 : 17.3125 : JumpStart); (13.5208333333333 : 17.3125 : JumpEnd); (14.7916666666667 : 17.3125 : JumpStart); (14.9583333333333 : 17.3125 : JumpEnd); (15.3697886666667 : 17.3125 : JumpStart); (15.5364553333333 : 17.3125 : JumpEnd); (15.6354146666667 : 17.3125 : JumpStart); (15.8020813333333 : 17.3125 : JumpEnd); (15.984374 : 17.3125); (15.984374 : 17.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/User/User_PlannedTransaction1" />
+      <nodes>
+        <classShapeMoniker Id="cb28a34e-4b8a-4392-b9dc-9d93c136c874" />
+        <classShapeMoniker Id="37c995d5-10cd-427b-bf40-1f1d22e0fbd2" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="f453c679-e175-465d-827a-7306e83e8c1f" absoluteBounds="12.5, 25.625, 2, 2.9247054036458309">
+      <DataClassMoniker Name="/BudgetOnlineDBDataContext/PeriodType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d1f8d776-5e2a-4a82-8611-4c29e44e8b74" absoluteBounds="12.515000000596046, 26.08500000089407, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(14.5 : 27.0873527018229); (15.7187475 : 27.0873527018229); (15.7187475 : 21.8958154296875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/PeriodType/PeriodType_PlannedTransaction" />
+      <nodes>
+        <classShapeMoniker Id="f453c679-e175-465d-827a-7306e83e8c1f" />
+        <classShapeMoniker Id="37c995d5-10cd-427b-bf40-1f1d22e0fbd2" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="9f6fbeda-d0e5-444e-aa2b-533c17409679" absoluteBounds="9.5, 14.375, 2, 2.924705403645838">
+      <DataClassMoniker Name="/BudgetOnlineDBDataContext/CurrencyRate" />
+      <nestedChildShapes>
+        <elementListCompartment Id="44eec8df-7207-40ec-98bb-c98d2b6dde0f" absoluteBounds="9.5150000005960464, 14.83500000089407, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.65625 : 13.2997054036458); (8.65625 : 17.2011539713542); (9.5 : 17.2011539713542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Currency/Currency_CurrencyRate" />
+      <nodes>
+        <classShapeMoniker Id="04da1afa-6a34-4489-b877-47de30564549" />
+        <classShapeMoniker Id="9f6fbeda-d0e5-444e-aa2b-533c17409679" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.6875025 : 13.2997054036458); (8.6875025 : 17.1699014713542); (9.5 : 17.1699014713542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Currency/Currency_CurrencyRate1" />
+      <nodes>
+        <classShapeMoniker Id="04da1afa-6a34-4489-b877-47de30564549" />
+        <classShapeMoniker Id="9f6fbeda-d0e5-444e-aa2b-533c17409679" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.7499975 : 12.9728011067708); (5.7499975 : 14.40625); (5.75260416666667 : 14.40625 : JumpStart); (6.00521083333333 : 14.40625 : JumpEnd); (8.54166416666667 : 14.40625 : JumpStart); (8.80208458333333 : 14.40625 : JumpEnd); (9.5 : 14.40625)]" manuallyRouted="true" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Section/Section_CurrencyRate" />
+      <nodes>
+        <classShapeMoniker Id="41991349-15c4-40a7-8663-0299194c9c1f" />
+        <classShapeMoniker Id="9f6fbeda-d0e5-444e-aa2b-533c17409679" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.015626 : 18.125); (2.015626 : 14.421875); (4.66666666666667 : 14.421875 : JumpStart); (4.83333333333333 : 14.421875 : JumpEnd); (5.55728916666667 : 14.421875 : JumpStart); (6.00521083333333 : 14.421875 : JumpEnd); (8.54166416666667 : 14.421875 : JumpStart); (8.80208458333333 : 14.421875 : JumpEnd); (9.5 : 14.421875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/User/User_CurrencyRate" />
+      <nodes>
+        <classShapeMoniker Id="cb28a34e-4b8a-4392-b9dc-9d93c136c874" />
+        <classShapeMoniker Id="9f6fbeda-d0e5-444e-aa2b-533c17409679" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.546878 : 18.125); (2.546878 : 14.390625); (4.66666666666667 : 14.390625 : JumpStart); (4.83333333333333 : 14.390625 : JumpEnd); (5.55728916666667 : 14.390625 : JumpStart); (6.00521083333333 : 14.390625 : JumpEnd); (8.54166416666667 : 14.390625 : JumpStart); (8.80208458333333 : 14.390625 : JumpEnd); (9.5 : 14.390625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/User/User_CurrencyRate1" />
+      <nodes>
+        <classShapeMoniker Id="cb28a34e-4b8a-4392-b9dc-9d93c136c874" />
+        <classShapeMoniker Id="9f6fbeda-d0e5-444e-aa2b-533c17409679" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 23.3854484049479); (3.07291666666667 : 23.3854484049479 : JumpStart); (3.23958333333333 : 23.3854484049479 : JumpEnd); (3.5 : 23.3854484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Permission/Permission_UserPermission" />
+      <nodes>
+        <classShapeMoniker Id="dbda4aa6-557c-4c51-9474-2a3c65fe49ea" />
+        <classShapeMoniker Id="cd0b0cb7-cdc3-4dc4-9924-52004600642a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 19.7796541340649); (2.875 : 21.5408457296683); (2.875 : 21.218669748748); (3.531330251252 : 21.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/User/User_UserPermission" />
+      <nodes>
+        <classShapeMoniker Id="cb28a34e-4b8a-4392-b9dc-9d93c136c874" />
+        <classShapeMoniker Id="cd0b0cb7-cdc3-4dc4-9924-52004600642a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.19307692307692 : 21.4343082681298); (3 : 21.7058467296683); (3 : 21.4036067946214); (3.5 : 21.9036067946214)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/User/User_UserPermission1" />
+      <nodes>
+        <classShapeMoniker Id="cb28a34e-4b8a-4392-b9dc-9d93c136c874" />
+        <classShapeMoniker Id="cd0b0cb7-cdc3-4dc4-9924-52004600642a" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="29ad1df8-277f-492f-91a1-ac71737f3967" absoluteBounds="9.25, 23, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/BudgetOnlineDBDataContext/StatisticsTotalOnDateDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="90571eab-9c5e-4a73-93b3-54724dd1cd3b" absoluteBounds="9.2650000005960464, 23.46000000089407, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2de7bc64-667b-492e-be91-536d773d9af3" absoluteBounds="3.5, 18.875, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/BudgetOnlineDBDataContext/StatisticsTotalOnDate" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f5c61228-d193-41e8-88d1-e0d89eeef167" absoluteBounds="3.5150000000000006, 19.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.6249975 : 13.2997054036458); (8.6249975 : 24.2732975260417); (9.25 : 24.2732975260417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Currency/Currency_StatisticsTotalOnDateDetail" />
+      <nodes>
+        <classShapeMoniker Id="04da1afa-6a34-4489-b877-47de30564549" />
+        <classShapeMoniker Id="29ad1df8-277f-492f-91a1-ac71737f3967" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 20.2344246074219); (5.69791666666667 : 20.2344246074219 : JumpStart); (6.00521083333333 : 20.2344246074219 : JumpEnd); (6.375 : 20.2344246074219); (6.375 : 21.3670068359375); (8.54166416666667 : 21.3670068359375 : JumpStart); (8.80208458333333 : 21.3670068359375 : JumpEnd); (9.66711588461538 : 21.3670068359375); (9.66711588461538 : 23)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/StatisticsTotalOnDate/StatisticsTotalOnDate_StatisticsTotalOnDateDetail" />
+      <nodes>
+        <classShapeMoniker Id="2de7bc64-667b-492e-be91-536d773d9af3" />
+        <classShapeMoniker Id="29ad1df8-277f-492f-91a1-ac71737f3967" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.804685 : 12.9728011067708); (5.804685 : 19.7604484049479); (5.5 : 19.7604484049479)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Section/Section_StatisticsTotalOnDate" />
+      <nodes>
+        <classShapeMoniker Id="41991349-15c4-40a7-8663-0299194c9c1f" />
+        <classShapeMoniker Id="2de7bc64-667b-492e-be91-536d773d9af3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 19.074219375); (2.79166666666667 : 19.074219375 : JumpStart); (3.33333333333333 : 19.074219375 : JumpEnd); (3.5 : 19.074219375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/User/User_StatisticsTotalOnDate" />
+      <nodes>
+        <classShapeMoniker Id="cb28a34e-4b8a-4392-b9dc-9d93c136c874" />
+        <classShapeMoniker Id="2de7bc64-667b-492e-be91-536d773d9af3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(13.4375 : 15.6939111328125); (13.4375 : 17.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Account/Account_Transaction" />
+      <nodes>
+        <classShapeMoniker Id="14876722-db7b-4cab-add1-bd1715353e85" />
+        <classShapeMoniker Id="4c2fdc05-d288-40b0-a386-d6819bf80418" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.375 : 18.8417517089844); (11.7916666666667 : 18.8417517089844 : JumpStart); (12.0833333333333 : 18.8417517089844 : JumpEnd); (12.375 : 18.8417517089844)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Category/Category_Transaction" />
+      <nodes>
+        <classShapeMoniker Id="8717a006-b600-436d-beb6-3c14af19c162" />
+        <classShapeMoniker Id="4c2fdc05-d288-40b0-a386-d6819bf80418" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.71875125 : 13.2997054036458); (8.71875125 : 21.59375); (9.58378255128205 : 21.59375 : JumpStart); (9.75044921794872 : 21.59375 : JumpEnd); (10.0008974358974 : 21.59375 : JumpStart); (10.1675641025641 : 21.59375 : JumpEnd); (10.5962820512821 : 21.59375 : JumpStart); (10.7629487179487 : 21.59375 : JumpEnd); (12.0416666666667 : 21.59375 : JumpStart); (12.2083333333333 : 21.59375 : JumpEnd); (12.375 : 21.59375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Currency/Currency_Transaction" />
+      <nodes>
+        <classShapeMoniker Id="04da1afa-6a34-4489-b877-47de30564549" />
+        <classShapeMoniker Id="4c2fdc05-d288-40b0-a386-d6819bf80418" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.86719 : 12.9728011067708); (5.86719 : 21.4335034179688); (6.04166666666667 : 21.4335034179688 : JumpStart); (6.20833333333333 : 21.4335034179688 : JumpEnd); (6.22676871744792 : 21.4335034179688 : JumpStart); (6.39343538411458 : 21.4335034179688 : JumpEnd); (8.54166416666667 : 21.4335034179688 : JumpStart); (8.80208458333333 : 21.4335034179688 : JumpEnd); (10.0008974358974 : 21.4335034179688 : JumpStart); (10.1675641025641 : 21.4335034179688 : JumpEnd); (10.5962820512821 : 21.4335034179688 : JumpStart); (10.7629487179487 : 21.4335034179688 : JumpEnd); (11.7916666666667 : 21.4335034179688 : JumpStart); (11.9583333333333 : 21.4335034179688 : JumpEnd); (12.375 : 21.4335034179688)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/Section/Section_Transaction" />
+      <nodes>
+        <classShapeMoniker Id="41991349-15c4-40a7-8663-0299194c9c1f" />
+        <classShapeMoniker Id="4c2fdc05-d288-40b0-a386-d6819bf80418" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(14.0898076923077 : 23.5); (14.0898076923077 : 22.1554182942708)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/TransactionType/TransactionType_Transaction" />
+      <nodes>
+        <classShapeMoniker Id="ccab2826-7796-4c49-9f6b-ea845eca1edf" />
+        <classShapeMoniker Id="4c2fdc05-d288-40b0-a386-d6819bf80418" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.281252 : 21.4343082681298); (2.281252 : 21.7468082681298); (2.6091934763182 : 21.7468082681298 : JumpStart); (2.77586014298486 : 21.7468082681298 : JumpEnd); (3.25986814017509 : 21.7468082681298 : JumpStart); (3.64583333333333 : 21.7468082681298 : JumpEnd); (5.83854416666667 : 21.7468082681298 : JumpStart); (6.00521083333333 : 21.7468082681298 : JumpEnd); (6.125 : 21.7468082681298); (6.125 : 21.3045068359375); (6.14937076822917 : 21.3045068359375 : JumpStart); (6.31603743489583 : 21.3045068359375 : JumpEnd); (8.54166416666667 : 21.3045068359375 : JumpStart); (8.80208458333333 : 21.3045068359375 : JumpEnd); (11.75 : 21.3045068359375); (11.75 : 20.5272509179688); (11.7916666666667 : 20.5272509179688 : JumpStart); (11.9583333333333 : 20.5272509179688 : JumpEnd); (12.375 : 20.5272509179688)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/User/User_Transaction" />
+      <nodes>
+        <classShapeMoniker Id="cb28a34e-4b8a-4392-b9dc-9d93c136c874" />
+        <classShapeMoniker Id="4c2fdc05-d288-40b0-a386-d6819bf80418" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.218748 : 21.4343082681298); (1.218748 : 21.8093082681298); (2.7976988382485 : 21.8093082681298 : JumpStart); (2.96436550491517 : 21.8093082681298 : JumpEnd); (3.32236814017509 : 21.8093082681298 : JumpStart); (3.64583333333333 : 21.8093082681298 : JumpEnd); (5.83854416666667 : 21.8093082681298 : JumpStart); (6.00521083333333 : 21.8093082681298 : JumpEnd); (6.3125 : 21.8093082681298); (6.3125 : 21.5545068359375); (8.54166416666667 : 21.5545068359375 : JumpStart); (8.70833083333333 : 21.5545068359375 : JumpEnd); (9.58378255128205 : 21.5545068359375 : JumpStart); (9.75044921794872 : 21.5545068359375 : JumpEnd); (10.0008974358974 : 21.5545068359375 : JumpStart); (10.1675641025641 : 21.5545068359375 : JumpEnd); (10.5962820512821 : 21.5545068359375 : JumpStart); (10.7629487179487 : 21.5545068359375 : JumpEnd); (11.875 : 21.5545068359375); (11.875 : 18.3271233544922); (11.9166666666667 : 18.3271233544922 : JumpStart); (12.0833333333333 : 18.3271233544922 : JumpEnd); (12.375 : 18.3271233544922)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BudgetOnlineDBDataContext/User/User_Transaction1" />
+      <nodes>
+        <classShapeMoniker Id="cb28a34e-4b8a-4392-b9dc-9d93c136c874" />
+        <classShapeMoniker Id="4c2fdc05-d288-40b0-a386-d6819bf80418" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

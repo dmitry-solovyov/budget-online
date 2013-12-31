@@ -1,0 +1,625 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{77AA2437-4859-4D2D-A860-42B072966906}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BudgetOnline.Web</RootNamespace>
+    <AssemblyName>BudgetOnline.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DeployIisAppPath>Default Web Site/budget4</DeployIisAppPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DeployIisAppPath>Default Web Site/budget4</DeployIisAppPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=3.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Autofac.3.1.1\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc">
+      <HintPath>..\packages\Autofac.Mvc3.2.6.3.862\lib\NET40\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi">
+      <HintPath>..\packages\Autofac.WebApi.3.1.0\lib\net40\Autofac.Integration.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.3.0.0\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.3.0.0\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNet.Highcharts">
+      <HintPath>..\packages\DotNet.Highcharts.2.0\lib\DotNet.Highcharts.dll</HintPath>
+    </Reference>
+    <Reference Include="Fasterflect">
+      <HintPath>..\packages\fasterflect.2.1.3\lib\net40\Fasterflect.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="MiniProfiler, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MiniProfiler.2.1.0\lib\net40\MiniProfiler.dll</HintPath>
+    </Reference>
+    <Reference Include="MiniProfiler.EntityFramework, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MiniProfiler.EF.2.1.0\lib\net40\MiniProfiler.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Mvc.Html.Bootstrap">
+      <HintPath>..\packages\Mvc.Html.Bootstrap.0.1.4666.41540\lib\net40\Mvc.Html.Bootstrap.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebActivator, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebActivator.1.5.3\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\MiniProfiler.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CurrencyRatesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PeriodTypesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TagsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CurrenciesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Admin\Models\AccountListViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\AccountEditViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\CategoryEditViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\CategoryListViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\CurrencyRateEditViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\CurrencyRateListViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\PeriodTypeListViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\PeriodTypeEditViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\TagEditViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\TagListSearchViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\TagListViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\CurrencyEditViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\CurrencyListViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\EnableDisableUserViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\UserListSearchViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\UserListItemsViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\UserListViewModel.cs" />
+    <Compile Include="Controllers\Api\TransactionsController.cs" />
+    <Compile Include="Controllers\BudgetingController.cs" />
+    <Compile Include="Controllers\CurrentUserController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\LogInController.cs" />
+    <Compile Include="Controllers\LogOutController.cs" />
+    <Compile Include="Controllers\PlanningController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="Controllers\Statistics\TransactionChartsController.cs" />
+    <Compile Include="Controllers\Statistics\TransactionStatisticsController.cs" />
+    <Compile Include="Controllers\TransactionsController.cs" />
+    <Compile Include="Controllers\WelcomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\AppSettings.cs" />
+    <Compile Include="Infrastructure\Attributes\DateRangeAttribute.cs" />
+    <Compile Include="Infrastructure\Attributes\GlobalExecuteActionFilterAttribute.cs" />
+    <Compile Include="Infrastructure\Attributes\HandleViewErrorsAttribute.cs" />
+    <Compile Include="Infrastructure\Attributes\IconAttribute.cs" />
+    <Compile Include="Infrastructure\Attributes\LocalizationActionFilterAttribute.cs" />
+    <Compile Include="Infrastructure\Attributes\RowIdAttribute.cs" />
+    <Compile Include="Infrastructure\Binders\CustomViewModelBinder.cs" />
+    <Compile Include="Infrastructure\Core\CacheWrapper.cs" />
+    <Compile Include="Infrastructure\Core\ChachedDictionaries.cs" />
+    <Compile Include="Infrastructure\Core\IChachedDictionaries.cs" />
+    <Compile Include="Infrastructure\Core\ObservableDictionary.cs" />
+    <Compile Include="Infrastructure\Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Infrastructure\Extensions\DictionaryStringObjectExtensions.cs" />
+    <Compile Include="Infrastructure\Extensions\EnumExtensions.cs" />
+    <Compile Include="Infrastructure\Extensions\HttpContextBaseExtension.cs" />
+    <Compile Include="Infrastructure\Extensions\HttpRequestExtensions.cs" />
+    <Compile Include="Infrastructure\Extensions\MvcHtmlStringExtensions.cs" />
+    <Compile Include="Infrastructure\Extensions\UrlHelperExtensions.cs" />
+    <Compile Include="Infrastructure\Helpers\CacheObjectWrapper.cs" />
+    <Compile Include="Infrastructure\Helpers\Compressor.cs" />
+    <Compile Include="Infrastructure\Helpers\TransactionCacheHelper.cs" />
+    <Compile Include="Infrastructure\Helpers\ChartSeriesHelper.cs" />
+    <Compile Include="Infrastructure\Helpers\DictionaryHelper.cs" />
+    <Compile Include="Infrastructure\Helpers\ITransactionCacheHelper.cs" />
+    <Compile Include="Infrastructure\Helpers\ITransactionDataHelper.cs" />
+    <Compile Include="Infrastructure\Helpers\LanguageHelper.cs" />
+    <Compile Include="Infrastructure\Helpers\TransactionDataHelper.cs" />
+    <Compile Include="Infrastructure\IoC\AutofacInitializer.cs" />
+    <Compile Include="Infrastructure\Constants.cs" />
+    <Compile Include="Infrastructure\Core\SessionWrapper.cs" />
+    <Compile Include="Infrastructure\Modules\CookieLocalizationModule.cs" />
+    <Compile Include="Infrastructure\Navigation\NavigationHelper.cs" />
+    <Compile Include="Infrastructure\Security\CurrentUserProvider.cs" />
+    <Compile Include="Infrastructure\Security\CustomeMembershipProvider.cs" />
+    <Compile Include="Infrastructure\Security\CustomRoleProvider.cs" />
+    <Compile Include="Infrastructure\Security\IAuthProvider.cs" />
+    <Compile Include="Infrastructure\Security\FormsAuthProvider.cs" />
+    <Compile Include="Infrastructure\Security\IMembershipHelper.cs" />
+    <Compile Include="Infrastructure\Security\MembershipHelper.cs" />
+    <Compile Include="Infrastructure\Security\RestrictRoleAttribute.cs" />
+    <Compile Include="Models\ListWithMultiSelects.cs" />
+    <Compile Include="Models\CurrencyRateModel.cs" />
+    <Compile Include="Models\CurrencyWithFormula.cs" />
+    <Compile Include="Models\StatisticsReports\OutputModel.cs" />
+    <Compile Include="Models\StatisticsReports\ReportByCategories.cs" />
+    <Compile Include="Models\StatisticsReports\ReportByAccounts.cs" />
+    <Compile Include="Models\StatisticsReports\IStatisticsReport.cs" />
+    <Compile Include="Models\StatisticsReports\ReportByTags.cs" />
+    <Compile Include="Models\TransactionSearchCriteria.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="ViewModels\Budgeting\BudgetState.cs" />
+    <Compile Include="ViewModels\BuildTotalsViewModel.cs" />
+    <Compile Include="ViewModels\Charts\ChartViewModel.cs" />
+    <Compile Include="ViewModels\Charts\TagsByDatesViewModel.cs" />
+    <Compile Include="ViewModels\Charts\ChartWithCategoriesViewModel.cs" />
+    <Compile Include="ViewModels\GeneratedPlannedTransactionGroupContentViewModel.cs" />
+    <Compile Include="ViewModels\GeneratedPlannedTransactionListGroupedViewModel.cs" />
+    <Compile Include="ViewModels\PlannedTransactionEditViewModel.cs" />
+    <Compile Include="ViewModels\PlannedTransactionsListItemViewModel.cs" />
+    <Compile Include="ViewModels\PlannedTransactionsListViewModel.cs" />
+    <Compile Include="ViewModels\PlannedTransactionsSearchViewModel.cs" />
+    <Compile Include="ViewModels\Statistics\ChooseReportViewModel.cs" />
+    <Compile Include="ViewModels\Statistics\ChartViewModel.cs" />
+    <Compile Include="ViewModels\TransactionListSearchViewModel.cs" />
+    <Compile Include="ViewModels\TransactionListViewModel.cs" />
+    <Compile Include="ViewModels\TransactionOutcomeViewModel.cs" />
+    <Compile Include="ViewModels\TransactionListGroupedViewModel.cs" />
+    <Compile Include="ViewModels\CurrentUserViewModel.cs" />
+    <Compile Include="ViewModels\DashboardViewModel.cs" />
+    <Compile Include="Models\SearchCriteria.cs" />
+    <Compile Include="ViewModels\StatisticBlockViewModel.cs" />
+    <Compile Include="ViewModels\TransactionListItemViewModel.cs" />
+    <Compile Include="ViewModels\TransactionEditViewModel.cs" />
+    <Compile Include="ViewModels\EditableViewModel.cs" />
+    <Compile Include="ViewModels\ProfileViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\UserEditViewModel.cs" />
+    <Compile Include="ViewModels\Security\LogInViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\TransactionStatisticViewModel.cs" />
+    <Compile Include="ViewModels\TwoColumnsViewModel.cs" />
+    <Compile Include="Views\CurrentUser\LoggedOnName.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoggedOnName.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dashboard\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_Layout.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Layout.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_LayoutMain.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_LayoutMain.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\_AnonimousPage.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_AnonimousPage.cshtml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-responsive.css" />
+    <Content Include="Content\bootstrap-responsive.min.css" />
+    <Content Include="Content\bootstrap-select.css" />
+    <Content Include="Content\bootstrap-select.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\cus-icons.css" />
+    <Content Include="Content\images\ajax-loader.gif" />
+    <Content Include="Content\images\back1.jpg" />
+    <Content Include="Content\images\back2.jpg" />
+    <Content Include="Content\images\calendar_icon.gif" />
+    <Content Include="Content\images\calendar_icon.jpg" />
+    <Content Include="Content\images\famfamfam-icons.png" />
+    <Content Include="Content\images\glyphicons-halflings-white.png" />
+    <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="Content\themes\base\images\animated-overlay.gif" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.menu.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.spinner.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\jquery.ui.tooltip.css" />
+    <Content Include="Content\themes\base\minified\images\animated-overlay.gif" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.menu.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.spinner.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="Content\themes\flick\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\flick\images\ui-bg_flat_0_eeeeee_40x100.png" />
+    <Content Include="Content\themes\flick\images\ui-bg_flat_55_ffffff_40x100.png" />
+    <Content Include="Content\themes\flick\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\flick\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\flick\images\ui-bg_highlight-soft_100_f6f6f6_1x100.png" />
+    <Content Include="Content\themes\flick\images\ui-bg_highlight-soft_25_0073ea_1x100.png" />
+    <Content Include="Content\themes\flick\images\ui-bg_highlight-soft_50_dddddd_1x100.png" />
+    <Content Include="Content\themes\flick\images\ui-icons_0073ea_256x240.png" />
+    <Content Include="Content\themes\flick\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\flick\images\ui-icons_666666_256x240.png" />
+    <Content Include="Content\themes\flick\images\ui-icons_ff0084_256x240.png" />
+    <Content Include="Content\themes\flick\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\flick\jquery-ui.css" />
+    <Content Include="Content\themes\flick\jquery.ui.theme.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\site.css" />
+    <Content Include="README.jQuery.vsdoc.txt" />
+    <Content Include="Scripts\bootstrap-select.js" />
+    <Content Include="Scripts\bootstrap-select.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\common.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\adapters\mootools-adapter.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\adapters\mootools-adapter.src.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\adapters\prototype-adapter.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\adapters\prototype-adapter.src.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\highcharts-more.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\highcharts.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\highcharts.src.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\canvas-tools.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\canvas-tools.src.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\data.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\data.src.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\exporting.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\exporting.src.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\funnel.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\funnel.src.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\themes\dark-blue.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\themes\dark-green.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\themes\gray.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\themes\grid.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\themes\skies.js" />
+    <Content Include="Scripts\Highcharts\highcharts.js" />
+    <Content Include="Scripts\Highcharts\highcharts.src.js" />
+    <Content Include="Scripts\Highcharts\themes\dark-blue.js" />
+    <Content Include="Scripts\Highcharts\themes\dark-green.js" />
+    <Content Include="Scripts\Highcharts\themes\gray.js" />
+    <Content Include="Scripts\Highcharts\themes\grid.js" />
+    <Content Include="Scripts\jquery-2.0.3-vsdoc.js" />
+    <Content Include="Scripts\jquery-2.0.3.js" />
+    <Content Include="Scripts\jquery-2.0.3.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3.min.js" />
+    <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Scripts\jquery.postdatas-min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jsrender.js" />
+    <Content Include="Scripts\jsrender.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Transactions\editor.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml">
+      <Generator>RazorGenerator</Generator>
+    </Content>
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Layout.generated.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\CurrentUser\LoggedOnName.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>LoggedOnName.generated.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BudgetOnline.BusinessLayer\BudgetOnline.BusinessLayer.csproj">
+      <Project>{1C1AF1BD-E35B-4643-86D6-45B221CD5A12}</Project>
+      <Name>BudgetOnline.BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BudgetOnline.Common.Logger\BudgetOnline.Common.Logger.csproj">
+      <Project>{704F3252-A124-4B63-B593-5C55EC542597}</Project>
+      <Name>BudgetOnline.Common.Logger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BudgetOnline.Common\BudgetOnline.Common.csproj">
+      <Project>{24D83CBA-7F7F-4559-9CC7-839423401CE1}</Project>
+      <Name>BudgetOnline.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BudgetOnline.Data.Manage\BudgetOnline.Data.Manage.csproj">
+      <Project>{F192A0A1-3F2F-41FB-9E91-257D35D8C027}</Project>
+      <Name>BudgetOnline.Data.Manage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BudgetOnline.UI\BudgetOnline.UI.csproj">
+      <Project>{555CFDA0-1BE1-4577-A36F-AC8C796E7EB1}</Project>
+      <Name>BudgetOnline.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BudgetOnline.Web.UI.Controls\BudgetOnline.Web.UI.Controls.csproj">
+      <Project>{BE6BAB16-D0C2-4562-8B3C-817BA60AC086}</Project>
+      <Name>BudgetOnline.Web.UI.Controls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\_AnonimousPage.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_AnonimousPage.generated.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\LogIn\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Profile\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Welcome\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_MINIPROFILER UPDATED Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Dashboard\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\TopNavligationMenu.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\EditorTemplates\EditableViewModel.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\EditorTemplates\Object.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\EditorTemplates\Password.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\EditorTemplates\Boolean.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminLayoutPage.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Disable.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Enable.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Currencies\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Currencies\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Currencies\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Accounts\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Accounts\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Tags\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Tags\Edit.cshtml" />
+    <Content Include="NLog.config" />
+    <Content Include="Areas\Admin\Views\Accounts\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\PeriodTypes\List.cshtml" />
+    <Content Include="Areas\Admin\Views\CurrencyRates\List.cshtml" />
+    <Content Include="Areas\Admin\Views\CurrencyRates\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CurrencyRates\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\List.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\EmailAddress.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Int32.cshtml" />
+    <Content Include="Views\Transactions\Edit.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CurrencyWithFormula.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Multiline.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\SelectList.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Currency.cshtml" />
+    <Content Include="Views\Shared\Error404.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ErrorLabel.cshtml" />
+    <Content Include="Views\Transactions\Create.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\IdWithSelectList.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CurrencyBundle.cshtml" />
+    <Content Include="Views\Shared\StatisticBlock.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Autocomplete.cshtml" />
+    <Content Include="Views\Planning\List.cshtml" />
+    <Content Include="Views\Planning\Create.cshtml" />
+    <Content Include="Views\Planning\Edit.cshtml" />
+    <Content Include="Views\Planning\BuildTotals.cshtml" />
+    <Content Include="Views\Shared\_LayoutMain.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_LayoutMain.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\EditorTemplates\Decimal.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\MultiSelect.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ListWithMultiSelects.cshtml" />
+    <Content Include="Views\Reports\Index.cshtml" />
+    <Content Include="Views\Reports\_ReportByTags_Filter.cshtml" />
+    <Content Include="Views\Reports\_ReportByTags_Output.cshtml" />
+    <Content Include="Views\Reports\_ReportByAccounts_Filter.cshtml" />
+    <Content Include="Views\Reports\_ReportByAccounts_Output.cshtml" />
+    <Content Include="Views\Reports\_ReportByCategories_Filter.cshtml" />
+    <Content Include="Views\Reports\_ReportByCategories_Output.cshtml" />
+    <Content Include="Views\Transactions\_List.cshtml" />
+    <Content Include="Views\Planning\ViewGenerated.cshtml" />
+    <Content Include="Views\Statistics\Transactions\TotalsByMonth.cshtml" />
+    <Content Include="Views\Budgeting\StateByCurrentMonth.cshtml" />
+    <Content Include="Views\TransactionCharts\CategoriesByPeriodPercents.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Views\Shared\EditorTemplates\" />
+    <Folder Include="Infrastructure\Enums\" />
+    <Folder Include="ViewModels\Api\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\jquery-2.0.3.min.map" />
+    <Content Include="Views\TransactionCharts\CategoriesByPeriod.cshtml" />
+    <Content Include="Views\TransactionCharts\CategoriesByDays.cshtml" />
+    <Content Include="Views\Transactions\List.cshtml" />
+    <Content Include="Views\TransactionCharts\TagsByMonths.cshtml" />
+    <Content Include="Views\Shared\_LanguageSwitch.cshtml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>11188</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/BudgetOnline.Web</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost/budget4</IISAppRootUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

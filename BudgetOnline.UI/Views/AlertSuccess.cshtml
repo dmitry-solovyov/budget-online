@@ -1,0 +1,27 @@
+﻿@using BudgetOnline.UI.Models.Alerts
+@* Generator: MvcHelper *@
+@functions {
+}
+@helper Render(AlertSuccessModel model)
+    {
+    var id = string.IsNullOrWhiteSpace(model.Name) ? Html.GetUniqId(10) : model.Name;
+    
+    <div class="alert alert-success" id="@id">
+        @if (!model.IsForbidClose)
+        {
+            <button data-dismiss="alert" class="close" type="button">
+                ×</button>	
+        }
+        @if (!string.IsNullOrWhiteSpace(model.MessageSuffix))
+        {
+            <strong>@(model.MessageSuffix)</strong> 
+        }
+        @(model.Message)
+    </div>
+    
+    <script type="text/javascript" language="javascript"><!--
+        //		$(function () {
+        //		});
+		//-->
+    </script>
+}

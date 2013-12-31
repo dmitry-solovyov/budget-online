@@ -1,0 +1,27 @@
+﻿@using BudgetOnline.UI.Models
+@* Generator: MvcHelper *@
+@functions {
+}
+@helper Render(PaginationModel model)
+{
+        var id = string.IsNullOrWhiteSpace(model.Name) ? Html.GetUniqId(10) : model.Name;
+        var pages = model.GetPages();
+    
+    <div class="pagination pagination-small pagination-centered">
+        <ul>
+            <li><a href="@Html.GetUrlQithNewQueryParameter("page", "1")">«</a></li>
+            @foreach (var page in pages)
+            {
+                if (model.Page == page)
+                {
+                <li class="active"><a href="#">@page</a></li>
+                }
+                else
+                {
+                <li><a href="@Html.GetUrlQithNewQueryParameter("page", @page.ToString())">@page</a></li>
+                }
+            }
+            <li><a href="@Html.GetUrlQithNewQueryParameter("page", model.PagesCount.ToString())">»</a></li>
+        </ul>
+    </div>
+}

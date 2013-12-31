@@ -1,0 +1,86 @@
+﻿@using StackExchange.Profiling
+@*@using StackExchange.Profiling;*@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Бюджет On-Line :: @ViewBag.Title</title>
+    <meta charset="utf-8" lang="en" name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/bootstrap-responsive.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/site.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/cus-icons.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/themes/flick/jquery-ui.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/themes/flick/jquery.ui.theme.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/bootstrap-select.min.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-2.0.3.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.cookie.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/underscore.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/backbone.js")" type="text/javascript"></script>
+    
+</head>
+<body>
+    
+    @Html.BudgetOnlineWeb().ProgressIndicator().BackgroundUrl(@Url.Content("~/Content/images/back1.jpg")).IndicatorUrl(@Url.Content("~/Content/images/ajax-loader.gif")).Class("progress-indicator").Build()
+
+    <div class="container" id="container">
+        <div class="row-fluid">
+            <div class="span8">
+                <!--
+					<h4 class="muted">
+						Budget online</h4> //-->
+            </div>
+            <div class="span2">
+                @{ Html.RenderPartial("_LanguageSwitch"); }
+            </div>
+            <div class="span2" style="text-align: right;">
+                @{ Html.RenderAction("LoggedOnName", "CurrentUser", new { Area = "" }); }
+            </div>
+        </div>
+        <div class="row-fluid">
+            @{Html.RenderPartial("~/Views/Shared/TopNavligationMenu.cshtml");}
+        </div>
+        <div class="row-fluid">
+            <div class="span12">
+                @RenderBody()
+            </div>
+        </div>
+        <div class="row-fluid footer">
+            <div class="span12 muted">
+                <p class="text-center">
+                    &copy; Company @DateTime.Now.Year</p>
+            </div>
+        </div>
+    </div>
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.10.3.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/modernizr-2.6.2.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")" type="text/javascript"></script>
+    @*<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>*@
+    <script src="@Url.Content("~/Scripts/jquery.validate.js")" type="text/javascript"></script>
+    @*<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>*@
+    @*        <link type="text/css" rel="stylesheet" href="@Url.Content("~/Content/jquery.dropdown.css")" />
+    <script src="@Url.Content("~/Scripts/jquery.dropdown.js")" type="text/javascript"></script>
+*@
+    @*<script src="@Url.Content("~/Scripts/MicrosoftMvcAjax.js")" type="text/javascript"></script>*@
+    @*<script src="@Url.Content("~/Scripts/MicrosoftMvcValidation.js")" type="text/javascript"></script>*@
+    @*<script src="@Url.Content("~/Scripts/jquery.postdatas-min.js")" type="text/javascript"></script>*@
+    <script src="@Url.Content("~/Scripts/jsrender.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap-select.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/common.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.postdatas-min.js")" type="text/javascript"></script>
+    
+    @MiniProfiler.RenderIncludes(showTrivial: true, showTimeWithChildren: true, position: RenderPosition.Left)
+    
+    @RenderSection("Header", false)
+
+    <script type="text/javascript"><!--
+        $(function () {
+            $('#language-switch ul.dropdown-menu li a').click(function(e) {
+                e.preventDefault();
+                var lang = $(this).attr('data-lang');
+                changeLang(lang);
+            });
+        });
+	//-->
+    </script>
+</body>
+</html>

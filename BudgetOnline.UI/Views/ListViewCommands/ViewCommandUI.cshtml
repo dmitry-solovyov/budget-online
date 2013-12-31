@@ -1,0 +1,50 @@
+﻿@* Generator: MvcHelper *@
+@using BudgetOnline.UI.Models.ViewCommands
+@using BudgetOnline.UI.Views.ListViewCommands
+@functions {
+}
+@helper Render(ViewCommandUIModel command, bool isRoot)
+    {
+        if (command.IsVisible)
+        {
+            if (command.IsDividerBefore)
+            {
+    <li class="divider"></li>
+            }
+
+            if (command.ChildCommands != null && command.ChildCommands.Any())
+            {
+    <li class="dropdown@(!isRoot ? "-submenu" : "")"><a data-toggle="dropdown" class="dropdown-toggle"
+        href="#">@command.Text
+        @if (isRoot)
+        {
+            <b class="caret"></b>
+        }
+    </a>
+        <ul class="dropdown-menu">
+            @foreach (var childItem in command.ChildCommands)
+            {
+                @(ViewCommandUI.Render(childItem, false))
+            }
+        </ul>
+    </li>
+            }
+            else if (command.Command.CommandType == CommandType.Post)
+            {
+    <li class="t3">@PostViewCommand.Render(command)</li>
+            }
+            else if (command.Command.CommandType == CommandType.Redirect)
+            {
+    <li class="t4">@RedirectViewCommand.Render(command)</li>
+            }
+            else if (command.Command.CommandType == CommandType.Js)
+            {
+    <li class="t4">@JsViewCommand.Render(command)</li>
+            }
+
+            if (command.IsDividerAfter)
+            {
+    <li class="divider"></li>
+            }
+        }
+}

@@ -1,0 +1,42 @@
+﻿@{
+    Layout = "../../../../Views/Shared/_LayoutMain.cshtml";
+}
+<div class="row-fluid">
+    <div class="span3">
+        @using BudgetOnline.Web.UI.Controls
+        @(Html.BudgetOnlineWeb().Menu(MenuTypes.EmptyContainer)
+            .MenuCss("nav nav-tabs nav-stacked")
+            .ShowActiveLevel(ShowActiveLevels.ControllerLevel)
+            .MenuItems(new[]
+                        {
+                            new MenuItemBuilder().Caption("Пользователи").Action("list").Controller("users")
+                                .Area("admin").IconCss("icon-home"),
+							
+                            new MenuItemBuilder().Caption("Счета").Action("list").Controller("accounts")
+                                .Area("admin").IconCss("icon-list"),
+							
+                            new MenuItemBuilder().Caption("Категории").Action("list").Controller("categories")
+                                .Area("admin").IconCss("icon-list"),
+							
+                                new MenuItemBuilder().Caption("Валюты").Action("list").Controller("currencies")
+                                .Area("admin").IconCss("icon-home"),
+							
+                            new MenuItemBuilder().Caption("Курсы валют").Action("list").Controller("currencyRates")
+                                .Area("admin").IconCss("icon-home"),
+							
+                            new MenuItemBuilder().Caption("Метки").Action("list").Controller("tags")
+                                .Area("admin").IconCss("icon-book"),
+							
+                            new MenuItemBuilder().Caption("Периоды").Action("list").Controller("periodTypes")
+                                .Area("admin"),
+							
+                            new MenuItemBuilder().Caption("Сообщения").Action("list").Controller("messages")
+                                .Area("admin"),
+                        })
+            .ActiveLinkCss("active")
+            .Build())
+    </div>
+    <div class="span9">
+        @RenderBody()
+    </div>
+</div>

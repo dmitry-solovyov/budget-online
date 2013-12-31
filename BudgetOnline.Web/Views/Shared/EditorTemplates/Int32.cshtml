@@ -1,0 +1,25 @@
+﻿@using System.Globalization
+@model int?
+@{
+	var placeholder = "";
+	if (ViewData.ModelMetadata.AdditionalValues.ContainsKey("placeholder"))
+	{
+		placeholder = ViewData.ModelMetadata.AdditionalValues["placeholder"].ToString();
+	}
+	
+    var value = (Model.HasValue ? Model.Value : 0).ToString(CultureInfo.CurrentUICulture);
+
+    dynamic attributes;
+
+    ModelState state = ViewData.ModelState[ViewData.ModelMetadata.PropertyName];
+    if (state != null && state.Errors.Count > 0)
+    {
+        attributes = new { @class = "input-block-level input-validation-error", placeholder, rel = "popover", data_original_title = "Choose new password" };
+    }
+    else
+    {
+        attributes = new { @class = "input-block-level", placeholder };
+    }
+}
+
+@Html.TextBox("", value, (object)attributes)

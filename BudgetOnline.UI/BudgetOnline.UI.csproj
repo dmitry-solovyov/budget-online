@@ -1,0 +1,418 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{555CFDA0-1BE1-4577-A36F-AC8C796E7EB1}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BudgetOnline.UI</RootNamespace>
+    <AssemblyName>BudgetOnline.UI</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorGenerator.Mvc">
+      <HintPath>..\packages\RazorGenerator.Mvc.2.0.1\lib\net40\RazorGenerator.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\packages\WebActivatorEx.2.0.1\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\AutocompleteOptionAttribute.cs" />
+    <Compile Include="Attributes\ControlRowClassAttribute.cs" />
+    <Compile Include="Attributes\ControlRowHeaderAttribute.cs" />
+    <Compile Include="Attributes\ControlRowIdAttribute.cs" />
+    <Compile Include="Attributes\GridLayout.cs" />
+    <Compile Include="Attributes\HiddenLabelAttribute.cs" />
+    <Compile Include="Attributes\PlaceholderAttribute.cs" />
+    <Compile Include="Attributes\QuickInfoAttribute.cs" />
+    <Compile Include="Controls\AutoCompleteTextBoxBuilder.cs" />
+    <Compile Include="Controls\Buttons\ButtonBuilder.cs" />
+    <Compile Include="Controls\Buttons\SubmitButtonBuilder.cs" />
+    <Compile Include="Controls\CommandsListBuilder.cs" />
+    <Compile Include="Controls\ContainerBuilder.cs" />
+    <Compile Include="Controls\ContainersListBuilder.cs" />
+    <Compile Include="Controls\ProgressIndicatorBuilder.cs" />
+    <Compile Include="Controls\FormBuilder.cs" />
+    <Compile Include="Controls\IBuilder.cs" />
+    <Compile Include="Controls\ImageBuilder.cs" />
+    <Compile Include="Controls\IMultiBuilder.cs" />
+    <Compile Include="Controls\ListBuilder.cs" />
+    <Compile Include="Controls\PanelBuilder.cs" />
+    <Compile Include="Controls\Tables\TableBaseColumn.cs" />
+    <Compile Include="Controls\Tables\TableBoundColumn.cs" />
+    <Compile Include="Controls\Tables\TableBuilder.cs" />
+    <Compile Include="Controls\Tables\TableColumnCollection.cs" />
+    <Compile Include="Controls\Tables\TableColumnOptions.cs" />
+    <Compile Include="Controls\Tables\TableColumnRenderParts.cs" />
+    <Compile Include="Controls\Tables\TableCommandsColumnBuilder.cs" />
+    <Compile Include="Controls\Tables\TableCustomColumn.cs" />
+    <Compile Include="Controls\Tables\TableIconColumn.cs" />
+    <Compile Include="Controls\UIBuilder.cs" />
+    <Compile Include="Controls\Xml\XmlDocumentBuilder.cs" />
+    <Compile Include="Controls\Xml\XmlNodeBuilder.cs" />
+    <Compile Include="Controls\Xml\XmlNodeBuilderSettings.cs" />
+    <Compile Include="Extensions\HtmlHelperExtensions.cs" />
+    <Compile Include="Extensions\HtmlLabelForExtensions.cs" />
+    <Compile Include="Extensions\HtmlOutputFormatterExtensions.cs" />
+    <Compile Include="Extensions\ModelMetadataExtensions.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\UIHelper.cs" />
+    <Compile Include="Models\Alerts\AlertModel.cs" />
+    <Compile Include="Models\Alerts\AlertSuccessModel.cs" />
+    <Compile Include="Models\AutoCompleteTextBox.cs" />
+    <Compile Include="Models\DateEditModel.cs" />
+    <Compile Include="Models\DynamicContainerModel.cs" />
+    <Compile Include="Models\Editors\CurrencyBundle.cs" />
+    <Compile Include="Models\IdWithSelectList.cs" />
+    <Compile Include="Models\PaginationModel.cs" />
+    <Compile Include="Models\ProgressIndicatorModel.cs" />
+    <Compile Include="Models\SelectItems\SelectItemModel.cs" />
+    <Compile Include="Models\SelectItems\SelectItemsModel.cs" />
+    <Compile Include="Models\UIControlModel.cs" />
+    <Compile Include="Models\ViewCommands\AjaxViewCommandModel.cs" />
+    <Compile Include="Models\ViewCommands\JsViewCommandModel.cs" />
+    <Compile Include="Models\ViewCommands\RedirectViewCommandModel.cs" />
+    <Compile Include="Models\ViewCommands\ViewCommandUIModel.cs" />
+    <Compile Include="Models\ViewCommands\PostViewCommandModel.cs" />
+    <Compile Include="Models\ViewCommands\ViewCommandModel.cs" />
+    <Compile Include="Models\ViewCommands\ViewCommandUIModelHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\AutoCompleteTextBox.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoCompleteTextBox.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AlertSuccess.generated.cs">
+      <DependentUpon>AlertSuccess.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\DateEditBox.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DateEditBox.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DynamicContainer.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DynamicContainer.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Editors\MultiColumnSelectList.generated.cs">
+      <DependentUpon>MultiColumnSelectList.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Editors\CurrencyBundle.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CurrencyBundle.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Editors\SelectList.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SelectList.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListViewCommands\JsViewCommand.generated.cs">
+      <DependentUpon>JsViewCommand.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\ListViewCommands\ViewCommandUI.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ViewCommandUI.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListViewCommands\MenuHorizontal.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MenuHorizontal.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListViewCommands\ViewCommandUIDefault.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ViewCommandUIDefault.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListViewCommands\ListOfViewCommandUI.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListOfViewCommandUI.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListViewCommands\PostViewCommand.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PostViewCommand.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListViewCommands\RedirectViewCommand.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RedirectViewCommand.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuItemWithActions.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MenuItemWithActions.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Paginator1.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Paginator.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProgressIndicator.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProgressIndicator.cshtml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Global.asax" />
+    <None Include="Scripts\jquery-2.0.3.min.map" />
+    <Content Include="Views\Editors\MultiColumnSelectList.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>MultiColumnSelectList.generated.cs</LastGenOutput>
+    </Content>
+    <None Include="Web.config" />
+    <Content Include="Content\themes\base\images\animated-overlay.gif" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.menu.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.spinner.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\jquery.ui.tooltip.css" />
+    <Content Include="Content\themes\base\minified\images\animated-overlay.gif" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.menu.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.spinner.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="README.jQuery.vsdoc.txt" />
+    <Content Include="Scripts\jquery-2.0.3-vsdoc.js" />
+    <Content Include="Scripts\jquery-2.0.3.js" />
+    <Content Include="Scripts\jquery-2.0.3.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <None Include="Views\Web.config" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="Controls\Extensions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\ListViewCommands\RedirectViewCommand.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>RedirectViewCommand.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\ListViewCommands\ViewCommandUIDefault.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ViewCommandUIDefault.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\AutoCompleteTextBox.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>AutoCompleteTextBox.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\AlertSuccess.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>AlertSuccess.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Paginator.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Paginator1.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\MenuItemWithActions.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>MenuItemWithActions.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\ListViewCommands\MenuHorizontal.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>MenuHorizontal.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\DateEditBox.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>DateEditBox.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\ListViewCommands\JsViewCommand.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>JsViewCommand.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\DynamicContainer.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>DynamicContainer.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Editors\CurrencyBundle.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>CurrencyBundle.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Editors\SelectList.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SelectList.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\ListViewCommands\PostViewCommand.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>PostViewCommand.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\ListViewCommands\ViewCommandUI.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ViewCommandUI.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\ListViewCommands\ListOfViewCommandUI.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ListOfViewCommandUI.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\ProgressIndicator.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ProgressIndicator.generated.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BudgetOnline.Common\BudgetOnline.Common.csproj">
+      <Project>{24D83CBA-7F7F-4559-9CC7-839423401CE1}</Project>
+      <Name>BudgetOnline.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>39791</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

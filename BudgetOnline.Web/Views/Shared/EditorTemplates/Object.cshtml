@@ -1,0 +1,69 @@
+﻿@using BudgetOnline.Web.Infrastructure.Extensions
+@if (ViewData.TemplateInfo.TemplateDepth > 1)
+{
+    @ViewData.ModelMetadata.SimpleDisplayText
+}
+else
+{
+    if (!ViewData.ModelState.IsValid)
+    {
+@*		<text>
+			<div class="alert alert-error">
+				Произошла ошибка!
+			</div>
+		</text>*@
+    }
+
+    var props = ViewData.ModelMetadata.Properties.Where(pm => pm.ShowForEdit && !ViewData.TemplateInfo.Visited(pm));
+    foreach (var prop in props)
+    {
+        ModelState state = ViewData.ModelState[prop.PropertyName];
+        //var rowHeader = prop.AdditionalValues.GetEntry("ControlHeader");
+        var rowId = prop.AdditionalValues.GetEntry("ControlRowId");
+        var rowClass = prop.AdditionalValues.GetEntry("ControlRowClass");
+
+@*        if (!string.IsNullOrWhiteSpace(rowHeader))
+        {
+    <div class="control-group">
+        <div class="controls">
+            <span class="">
+                <h4>@rowHeader</h4>
+            </span>
+        </div>
+    </div>
+        }
+*@
+        if (prop.HideSurroundingHtml)
+        {
+    @Html.Editor(prop.PropertyName)
+        }
+        else
+            if (prop.IsReadOnly)
+            {
+    <div class="control-group @(state != null && state.Errors.Count > 0 ? "error" : "")">
+        @if (!prop.AdditionalValues.ContainsKey("HiddenLabel"))
+        {
+            <label class="control-label" for="@prop.PropertyName">@Html.Label(prop.PropertyName)</label>
+        }
+        <div class="controls">
+            <span class="input-medium uneditable-input">@Html.DisplayText(prop.PropertyName)</span>
+        </div>
+    </div>
+	
+            }
+            else
+            {
+    <div class="control-group @rowClass @(state != null && state.Errors.Count > 0 ? "error" : "")" id="@rowId">
+        @if (!prop.AdditionalValues.ContainsKey("HiddenLabel"))
+        {
+            <label class="control-label" for="@prop.PropertyName">@Html.Label(prop.PropertyName)</label>
+        }
+        <div class="controls">
+            @Html.Editor(prop.PropertyName)
+            @(Html.EditorFor(o => prop, "ErrorLabel"))
+            @*@Html.ValidationMessage(prop.PropertyName)*@
+        </div>
+    </div>
+            }
+    }
+}

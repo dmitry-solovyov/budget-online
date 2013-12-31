@@ -1,0 +1,23 @@
+﻿@using BudgetOnline.Web.Areas.Admin.Models
+@model IEnumerable<AccountListViewModel>
+@{
+    ViewBag.Title = "Счета";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayoutPage.cshtml";
+}
+<div class="btn-toolbar">
+    <div class="btn-group">
+        <a class="btn" href="@Url.Action("create")"><i class="icon-plus"></i>Новая запись</a>
+    </div>
+</div>
+@(Html.BudgetOnlineWeb()
+    .Table<AccountListViewModel>()
+    .Css("table table-striped")
+    .Rows(Model)
+    .Columns(columns =>
+                {
+                    columns.Icon().IconCss(m => m.IsDisabled ? "icon-lock" : (m.IsDefault ? "icon-star" : "")).Span(1);
+                    columns.Bound(m => m.Name).Span(7);
+                    columns.Commands().Cell(m => m.Commands).Span(2);
+                })
+    .Build()
+    )

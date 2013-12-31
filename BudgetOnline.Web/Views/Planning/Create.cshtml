@@ -1,0 +1,45 @@
+﻿@using BudgetOnline.UI.Models.Alerts
+@using BudgetOnline.Web.UI.Controls
+@model BudgetOnline.Web.ViewModels.PlannedTransactionEditViewModel
+@{
+    ViewBag.Title = "Новая запись";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var editorId = Html.GetUniqId(10);
+}
+@section Header
+{
+    <style type="text/css">
+        .ui-autocomplete-loading {
+        background: white url('@Url.Content("~/content/images/ajax-loader.gif")') right center no-repeat;
+        }
+    </style>
+}
+
+@Html.AlertGenerator()
+
+<div class="row-fluid body-container" id="@editorId">
+    @(Html.BudgetOnlineWeb().Form(BudgetOnlineWebControls.FormTypes.Horizontal).ActionUrl(Url.Action("create"))
+        .Content(@<text>
+    @Html.ValidationSummary()
+    @Html.EditorForModel("~/Views/Shared/EditorTemplates/Object.cshtml")
+    <div class="form-actions controls-row">
+        <div class="span4">
+            <p>
+                @Html.BudgetOnlineWeb().SubmitNormalButton(BudgetOnlineWebControls.ButtonCaptionTypes.Save).Build()
+                @Html.BudgetOnlineWeb().ButtonNormal(BudgetOnlineWebControls.ButtonCaptionTypes.Cancel).RedirectTo(Url.Action("list")).Build()
+            </p>
+        </div>
+		<div class="span7">
+			@Html.EditorFor(o => o.IsCreateNewAfterSave)
+		</div>
+        <div class="span1">
+        </div>
+    </div>
+    </text>)
+        .Build()
+        )
+    <script type="text/javascript">
+        $(document).ready(function () {
+        });
+    </script>
+</div>

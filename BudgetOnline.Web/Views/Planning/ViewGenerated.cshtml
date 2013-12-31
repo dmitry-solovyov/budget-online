@@ -1,0 +1,15 @@
+﻿@model List<BudgetOnline.Data.Manage.Types.Simple.TransactionTotal>
+@{
+    Layout = null;
+}
+<div class="row-fluid underline">
+	<div class="span6"></div>
+    <div class="span6"></div>
+</div>
+@foreach (var item in Model)
+{
+    <div class="row-fluid underline">
+        <div class="span6">@item.Date.Value.ToString("MMM yyyy")</div>
+        <div class="span6 @(item.Sum >= 0 ? "sum-in" : "sum-out")">@item.Sum @item.CurrencyName</div>
+    </div>
+}

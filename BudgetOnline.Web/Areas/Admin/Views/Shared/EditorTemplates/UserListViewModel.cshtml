@@ -1,0 +1,98 @@
+﻿@using BudgetOnline.UI.Models.ViewCommands
+@model IEnumerable<BudgetOnline.Web.Areas.Admin.Models.UserListViewModel>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th class="span1">
+			</th>
+			<th class="span4">
+				Name
+			</th>
+			<th class="span2">
+				Email
+			</th>
+			<th class="span3">
+				Последний визит
+			</th>
+			<th class="span2">
+				Команды
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+  {
+			<tr>
+				<td class="span1">
+					@if (item.IsBocked)
+	 {
+						<i class="icon-ban-circle" title="Заблокирован"></i>
+	 }
+	 else if (item.IsReadOnly)
+	 {
+						<i class="icon-eye-open"></i>
+	 }
+	 else if (item.IsAdmin)
+	 {
+						<i class="icon-wrench"></i>
+	 }
+	 else
+	 {
+@*<i class="icon-user"></i>*@
+	 }
+				</td>
+				<td class="span4">
+					@item.Name
+				</td>
+				<td class="span2">
+					@item.Email
+				</td>
+				<td class="span3">
+					@(item.WhenLastConnected.ToLocalString())
+				</td>
+				<td class="span2">
+					@if (item.Commands == null || !item.Commands.Any())
+	 {
+	 }
+	 else
+	 {
+						<div class="btn-group">
+							@{
+		 var defaultCommand = item.Commands.FirstOrDefault(o => o.IsDefault);
+		 if (defaultCommand != null)
+		 {
+			 var cssClass = defaultCommand.IconCssClass;
+			 if (string.IsNullOrWhiteSpace(cssClass))
+			 {
+				 cssClass = "i";
+			 }
+			 var href = "#";
+			 if ((defaultCommand.Command as PostViewCommandModel) != null)
+			 {
+				 href = (defaultCommand.Command as PostViewCommandModel).Path;
+			 }
+								<a class="btn btn-small" href="@href"><i class="@cssClass"></i><span style="padding-left: 1em">
+									@defaultCommand.Text</span></a>
+		 }
+		 else
+		 {
+								<a class="btn btn-small" href="#"><i class="icon-list"></i><span style="padding-left: 1em">
+									Команды</span></a>
+		 }
+							}
+							<a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret">
+							</span></a>
+							<ul class="dropdown-menu">
+								@foreach (var command in item.Commands)
+		{
+									
+		}
+							</ul>
+						</div>
+	 }
+				</td>
+			</tr>
+  }
+	</tbody>
+</table>

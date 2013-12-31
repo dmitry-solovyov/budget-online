@@ -1,0 +1,24 @@
+﻿@using BudgetOnline.UI.Extensions
+@model BudgetOnline.Web.ViewModels.StatisticBlockViewModel
+@{
+    Layout = null;
+}
+@foreach (var group in Model.Groups)
+{
+    if (Model.NumberOfGroups > 1)
+    {
+    <div class="row-fluid compact" title="@group.Title" id="@group.Id">
+        <div class="span12 text-center">
+            <strong>@group.Title</strong></div>
+    </div>
+    }
+
+    foreach (var item in group.Items)
+    {
+    <div class="row-fluid compact underline">
+        <div class="span6 sum-@(item.Sum < 0 ? "out" : "in")" title="@item.Tooltip">@item.Label</div>
+        <div class="span6 text-right sum-@(item.Sum < 0 ? "out" : "in")">
+            <span class="currency-smb">@item.CurrencySymbol</span> @item.Sum.ToHtmlString(HtmlOutputFormatterExtensions.OutputLengthType.Short)</div>
+    </div>
+    }
+}

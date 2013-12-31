@@ -1,0 +1,26 @@
+﻿@using BudgetOnline.Web.UI.Controls
+@model BudgetOnline.Web.Areas.Admin.Models.TagEditViewModel
+@{
+    ViewBag.Title = "Редактирование метки";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayoutPage.cshtml";
+}
+<h4>
+    Редактирование</h4>
+<div class="container-fluid">
+    @(Html.BudgetOnlineWeb()
+    .Form(BudgetOnlineWebControls.FormTypes.Horizontal).ActionUrl(Url.Action("edit"))
+    .Content(@<text>
+    @Html.ValidationSummary()
+    @Html.EditorForModel("~/Views/Shared/EditorTemplates/Object.cshtml")
+    
+    <hr/>
+
+	<div class="form-actions">
+        <p>
+            @Html.BudgetOnlineWeb().SubmitNormalButton(BudgetOnlineWebControls.ButtonCaptionTypes.Save).Build()
+            @Html.BudgetOnlineWeb().ButtonNormal(BudgetOnlineWebControls.ButtonCaptionTypes.Cancel).RedirectTo(Url.Action("list")).Build()
+        </p>
+    </div>
+    </text>)
+    .Build())
+</div>

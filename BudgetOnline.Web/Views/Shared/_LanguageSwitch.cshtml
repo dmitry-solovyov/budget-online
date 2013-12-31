@@ -1,0 +1,16 @@
+﻿@{
+    var lang = "RU";
+    var httpCookie = HttpContext.Current.Request.Cookies["lang"];
+    if (httpCookie != null)
+    {
+        lang = httpCookie.Value.Substring(3);
+    }
+}
+<div class="dropdown pull-right" id="language-switch">
+    <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#"
+        href="#">@lang<b class="caret"></b></a>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        <li><a href="#" data-lang="ru-RU">RU</a></li>
+        <li><a href="#" data-lang="en-US">EN</a></li>
+    </ul>
+</div>

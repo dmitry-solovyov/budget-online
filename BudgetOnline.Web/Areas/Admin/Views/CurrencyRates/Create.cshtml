@@ -1,0 +1,23 @@
+﻿@using BudgetOnline.Web.UI.Controls
+@model BudgetOnline.Web.Areas.Admin.Models.CurrencyRateEditViewModel
+
+@{
+	ViewBag.Title = "Добавление курса";
+	Layout = "~/Areas/Admin/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<div class="container-fluid">
+	@(Html.BudgetOnlineWeb()
+ .Form(BudgetOnlineWebControls.FormTypes.Horizontal).ActionUrl(Url.Action("create"))
+	.Content(@<text>
+	@Html.ValidationSummary()
+	@Html.EditorForModel("~/Views/Shared/EditorTemplates/Object.cshtml")
+	<div class="form-actions">
+		<p>
+			@Html.BudgetOnlineWeb().SubmitNormalButton().Caption("Сохранить").Build()
+			@Html.BudgetOnlineWeb().ButtonNormal().Caption("Отмена").RedirectTo(Url.Action("list")).Build()
+		</p>
+	</div>
+	</text>)
+	.Build())
+</div>

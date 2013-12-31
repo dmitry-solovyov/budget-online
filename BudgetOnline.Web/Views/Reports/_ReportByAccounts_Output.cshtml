@@ -1,0 +1,50 @@
+﻿@using BudgetOnline.Data.Manage.Types.Simple
+@using BudgetOnline.UI.Controls
+@model IEnumerable<TransactionTotal>
+@{
+    Layout = null;
+    var totals = Model.GroupBy(o => new { o.AccountId, o.AccountName })
+        .Select(o => new TransactionTotal { AccountId = o.Key.AccountId, AccountName = o.Key.AccountName, Sum = o.Sum(gr => gr.Sum) })
+        .ToList();
+
+	string tag = ViewBag.Tag;
+}
+<div class="row-fluid">
+    <div class="span6">@(Html.BudgetOnlineWeb().Table<TransactionTotal>()
+        .Rows(Model)
+        .RowStyleRetriever(r => "row-fluid")
+        .OutputType(TableBuilderOutputTypes.Div)
+        .Columns(cols =>
+                    {
+                        cols.Custom().Cell(o =>
+                            string.Format("<a href='{0}?FromDate={1}&ToDate={2}&Search={3}' target='blank' title='Открыть детально'>{4}</a>",
+                            Url.Action("list", "transactions", new { area = "" }),
+                            new DateTime(o.Date.Value.Year, o.Date.Value.Month, 1),
+                            new DateTime(o.Date.Value.Year, o.Date.Value.Month, 1).AddMonths(1).AddDays(-1),
+                            tag,
+                            o.Date.Value.ToLocalTime().ToString(o.Date.Value.Year != DateTime.UtcNow.Year ? "MMMM, yyyy" : "MMMM"))
+                        ).Span(6);
+                        cols.Custom().Cell(row => string.Format("{0:### ### ##0.00} {1}", row.Sum, row.CurrencySymbol))
+                            .CellCss(row => "text-right " + (row.Sum > 0 ? "sum-in" : "sum-out")).Span(6);
+                    }).Build())
+    </div>
+    <div class="span6">
+    </div>
+</div>
+<h4 class="well-small">
+    Итоги:</h4>
+<div class="row-fluid">
+    <div class="span6">@(Html.BudgetOnlineWeb().Table<TransactionTotal>()
+        .Rows(totals)
+    .RowStyleRetriever(r => "row-fluid")
+    .OutputType(TableBuilderOutputTypes.Div)
+    .Columns(cols =>
+                    {
+                        cols.Bound(o => o.CurrencyName).Span(6);
+                        cols.Custom().Cell(row => string.Format("{0:### ### ##0.00} {1}", row.Sum, row.CurrencySymbol))
+                            .CellCss(row => "text-right " + (row.Sum > 0 ? "sum-in" : "sum-out")).Span(6);
+                    }).Build())
+    </div>
+    <div class="span6">
+    </div>
+</div>

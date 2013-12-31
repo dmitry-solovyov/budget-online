@@ -1,0 +1,18 @@
+﻿@model BudgetOnline.Web.ViewModels.Security.LogInViewModel
+@{
+	ViewBag.Title = "Log In";
+	Layout = "~/Views/_AnonimousPage.cshtml";
+}
+<div class="container">
+	@(Html.BudgetOnlineWeb().Form()
+       	.Css("form-signin")
+       	.Header("Введите логин")
+       	.HeaderCss("form-signin-heading")
+       	.Content(
+			@<text>
+			 	@Html.AntiForgeryToken()
+			 	@Html.EditorForModel()
+			 	@Html.BudgetOnlineWeb().SubmitNormalButton().Caption("Войти").Build()
+			 </text>
+       	).Build())
+</div>

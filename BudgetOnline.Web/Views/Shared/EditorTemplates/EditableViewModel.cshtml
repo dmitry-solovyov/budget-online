@@ -1,0 +1,38 @@
+﻿@{
+	var route = ViewContext.RequestContext.RouteData;
+}
+@if (ViewData.TemplateInfo.TemplateDepth > 1)
+{
+	@ViewData.ModelMetadata.SimpleDisplayText
+}
+else
+{
+	<form class="form-horizontal"  method="post" action="@Url.Action(route.GetRequiredString("action"), route.GetRequiredString("controller"))">
+	@{
+	Html.EnableUnobtrusiveJavaScript(true);
+	}
+	@foreach (var prop in ViewData.ModelMetadata.Properties.Where(pm => pm.ShowForEdit && !ViewData.TemplateInfo.Visited(pm)))
+ {
+	 if (prop.HideSurroundingHtml)
+	 {
+		@Html.Editor(prop.PropertyName)
+	 }
+	 else
+	 {
+		<div class="control-group">
+			<label class="control-label" for="inputEmail">@Html.Label(prop.PropertyName)</label>
+			<div class="controls">
+				@Html.Editor(prop.PropertyName)
+				@Html.ValidationMessage(prop.PropertyName, "*")
+			</div>
+		</div>
+	 }
+ }
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary">
+			Сохранить</button>
+		<button type="button" class="btn">
+			Отмена</button>
+	</div>
+	</form>
+}

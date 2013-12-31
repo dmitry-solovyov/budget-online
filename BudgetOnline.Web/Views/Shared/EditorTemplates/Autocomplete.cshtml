@@ -1,0 +1,8 @@
+﻿@model string
+@{
+	var action = ViewData.ModelMetadata.AdditionalValues["AutocompleteAction"] as string;
+    var controller = ViewData.ModelMetadata.AdditionalValues["AutocompleteController"] as string;
+    var area = ViewData.ModelMetadata.AdditionalValues["AutocompleteArea"] as string;
+}
+
+@(Html.BudgetOnlineWeb().AutoComplete().RequestPath(Url.Action(action, controller)).Name(ViewData.ModelMetadata.PropertyName).Value(Model).Build())

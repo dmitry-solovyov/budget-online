@@ -1,0 +1,18 @@
+﻿@model string
+@{
+	var placeholder = "";
+	if (ViewData.ModelMetadata.AdditionalValues.ContainsKey("placeholder"))
+	{
+		placeholder = ViewData.ModelMetadata.AdditionalValues["placeholder"].ToString();
+	}
+	ModelState state = ViewData.ModelState[ViewData.ModelMetadata.PropertyName];
+	var value = Model ?? string.Empty;
+
+	var cssClass = "input-block-level";
+	if (state != null && state.Errors.Count > 0)
+	{
+		cssClass += " input-validation-error";
+	}
+}
+
+@Html.TextArea("", value, new { @class = @cssClass, placeholder })

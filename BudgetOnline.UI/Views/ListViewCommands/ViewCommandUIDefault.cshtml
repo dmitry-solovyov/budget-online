@@ -1,0 +1,24 @@
+﻿@* Generator: MvcHelper *@
+@using BudgetOnline.UI.Models.ViewCommands
+@functions {
+}
+@helper Render(ViewCommandUIModel command)
+    {
+        if (command.IsVisible)
+        {
+            var iconForDefaultCommand = command.IconCssClass;
+            if (string.IsNullOrWhiteSpace(iconForDefaultCommand))
+            {
+                iconForDefaultCommand = "icon-list";
+            }
+
+            
+            if (command.Command.CommandType == CommandType.Post)
+            {
+            }
+            else if (command.Command.CommandType == CommandType.Redirect)
+            {
+<a class="btn btn-mini" href="@((command.Command as RedirectViewCommandModel).Path)"><i class="@iconForDefaultCommand"></i><span style="padding-left: 1em">@command.Text</span></a>
+            }
+        }
+}

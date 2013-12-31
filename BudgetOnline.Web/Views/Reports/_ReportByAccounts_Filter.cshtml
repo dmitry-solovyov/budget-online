@@ -1,0 +1,7 @@
+﻿@using System.Globalization
+@model BudgetOnline.Web.Models.StatisticsReports.ReportByAccounts
+@{
+    Layout = null;
+}
+@Html.Hidden("ReportCode", Model.Code)
+@Html.DropDownList("Account", Model.GetAccounts().Select(o => new SelectListItem { Text = o.Name, Value = o.Id.ToString(CultureInfo.CurrentUICulture) }))

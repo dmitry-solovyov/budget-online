@@ -1,0 +1,41 @@
+﻿@using BudgetOnline.Common
+@using BudgetOnline.UI.Models.ViewCommands
+@using BudgetOnline.UI.Views.ListViewCommands
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="container">
+            <ul class="nav">
+                @MenuHorizontal.Render(new[] {
+                        new ViewCommandUIModelHelper().Caption("Начало").Action("index").Controller("welcome"),
+                        new ViewCommandUIModelHelper().Caption("Факт").Action("list").Controller("transactions")
+                            .Child(new[] {
+                                            new ViewCommandUIModelHelper().Caption("Список").Action("list").Controller("transactions"),
+                                            new ViewCommandUIModelHelper().Caption("Новая запись").Action("create").Controller("transactions"),
+                                        }
+                            ),
+                        new ViewCommandUIModelHelper().Caption("Планирование").Action("list").Controller("planning")
+                            .Child(new[] {
+                                            new ViewCommandUIModelHelper().Caption("Список").Action("list").Controller("planning"),
+                                            new ViewCommandUIModelHelper().Caption("Новая запись").Action("create").Controller("planning"),
+                                            new ViewCommandUIModelHelper().Caption("Расчет баланса").Action("buildtotals").Controller("planning").DividerBefore(true),
+                                            }
+                            ),
+                        new ViewCommandUIModelHelper().Caption("Статистика").Action("index").Controller("reports")
+                            .Child(new[] {
+                                            new ViewCommandUIModelHelper().Caption("Запустить отчет").Action("index").Controller("reports"),
+                                            new ViewCommandUIModelHelper().Caption("Графики расходов").Action("CategoriesByPeriodPercents").Controller("TransactionCharts").DividerBefore(true)
+                                            .Child(new[]
+                                                   	{
+                                                   		new ViewCommandUIModelHelper().Caption("Категории %").Action("CategoriesByPeriodPercents").Controller("TransactionCharts"),
+                                                   		new ViewCommandUIModelHelper().Caption("Категории").Action("CategoriesByPeriod").Controller("TransactionCharts"),
+                                                        new ViewCommandUIModelHelper().Caption("Дни").Action("CategoriesByDays").Controller("TransactionCharts"),
+                                                        new ViewCommandUIModelHelper().Caption("Тэги").Action("TagsByMonths").Controller("TransactionCharts"),
+                                                   	}),
+                                            }
+                            ),
+                        new ViewCommandUIModelHelper().Caption("Управление").Action("list").Controller("users").Area("admin").ShowActiveLevel(NavigationHelper.ShowActiveLevels.AreaLevel),
+                        })
+            </ul>
+        </div>
+    </div>
+</div>

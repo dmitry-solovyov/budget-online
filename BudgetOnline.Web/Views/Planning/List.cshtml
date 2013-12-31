@@ -1,0 +1,126 @@
+﻿@using BudgetOnline.UI.Models
+@model BudgetOnline.Web.ViewModels.PlannedTransactionsListViewModel
+@{
+    ViewBag.Title = "Планирование";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row-fluid">
+    <div class="span4">
+        @Html.BudgetOnlineWeb().SubmitNormalButton().Caption("Новая запись").RedirectTo(Url.Action("create")).Build()
+    </div>
+    <div class="span4">
+    </div>
+    <div class="span4">
+        <form class="navbar-form pull-right">
+        @Html.TextBox("search", HttpUtility.UrlDecode(HttpContext.Current.Request.QueryString["search"]), new { @class = "span8" })
+        @Html.BudgetOnlineWeb().SubmitNormalButton().Caption("Поиск").Css("btn").Build()
+        </form>
+    </div>
+</div>
+<div class="list-group row-fluid">
+    <div class="span2">
+        Период
+    </div>
+    <div class="span4">
+        Описание
+    </div>
+    <div class="span3">
+        <div class="pull-right" style="text-align: right">
+            Сумма
+        </div>
+        <div class="pull-left" style="text-align: left">
+            <small>Счет </small>
+        </div>
+    </div>
+    <div class="span3">
+        <div class="pull-right">
+            Команды
+        </div>
+    </div>
+</div>
+@foreach (var item in Model.Items)
+{
+    <div class="list-group row-fluid @(item.ToDate.HasValue && item.ToDate.Value.Date < DateTime.Today ? "obsolete-raw" : "")">
+        <div class="span2">
+            c @(item.FromDate.ToShortDateString())
+            @(item.ToDate.HasValue ? Html.Raw("<br/>по " + item.ToDate.Value.ToShortDateString()) : MvcHtmlString.Empty)
+        </div>
+        <div class="span4">
+            <div>@Html.Raw(item.IsDisabled ? "<i class=\"icon-lock\"></i>" : "")@item.Description</div>
+            <div>
+                <span style="font-size: .8em">@item.Tags</span></div>
+        </div>
+        <div class="span3">
+            <div class="pull-right" style="text-align: right">
+                <span class="sum-@(item.Sum > 0 ? "in" : "out")">@item.Sum.ToString("### ### ##0.00")<span
+                    class="currency-smb">@item.Currency</span></span>
+                <br />
+                <small>@item.PeriodType</small>
+            </div>
+            <div class="pull-left" style="text-align: left">
+                <small>
+                    @item.Account
+                </small>
+            </div>
+        </div>
+        <div class="span3">
+            <div class="pull-right">
+                @Html.BudgetOnlineWeb().CommandsList().Commands(() => item.Commands).Build()
+            </div>
+        </div>
+    </div>
+}
+<div class="row-fluid">
+    @(new BudgetOnline.UI.Views.Paginator().Render(new PaginationModel { Page = !string.IsNullOrWhiteSpace(Request.QueryString["page"]) ? int.Parse(Request.QueryString["page"]) : 1, PagesCount = 30 }))
+</div>
+<script type="text/javascript">
+    var initialized = false;
+    function showPlanByRecord(data) {
+        $('#viewGenerated').modal({
+            keyboard: true
+        });
+
+        $('#viewGenerated .modal-body').load('@Url.Action("ViewGenerated")/' + data);
+
+        $('#viewGenerated').modal('show');
+    }
+
+    function clearGenerated() {
+        $('#viewGenerated .modal-body').empty();
+    }
+
+    function deleteRecord(id) {
+        var response = confirm("Удалить запись?");
+        if (response) {
+            $.postdatas({
+                url: '@Url.Action("Delete")',
+                datas: [{ name: "id", value: ""+id}]
+            });
+        }
+    }
+
+    $(document).ready(function () {
+        $('#viewGenerated').on('hidden', function () {
+            clearGenerated();
+        });
+        $('#viewGenerated #close').click(function () {
+            clearGenerated();
+            $('#viewGenerated').modal('hide');
+        });
+    });
+</script>
+<div class="modal hide" id="viewGenerated">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            &times;</button>
+        <h3>
+            Сгенерированные записи</h3>
+    </div>
+    <div class="modal-body">
+        <p>
+            One fine body…</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn" id="close">Закрыть</a>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+﻿@model IEnumerable<BudgetOnline.Web.ViewModels.TwoColumnsViewModel>
+@{
+    Layout = null;
+}
+@foreach (var item in Model)
+{
+    <div class="row-fluid underline compact">
+        <div class="span6 @item.FirstColumnCss"><span class="pull-left">@item.FirstColumn</span></div>
+        <div class="span6 @item.SecondColumnCss"><span class="pull-right ">@item.SecondColumn</span></div>
+    </div>
+}

@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1738B35C-8B8D-47AD-ACC9-CF0E8480B639}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BudgetOnline.Highchart</RootNamespace>
+    <AssemblyName>BudgetOnline.Highchart</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Nonshipping>true</Nonshipping>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json.Net20">
+      <HintPath>bin\Newtonsoft.Json.Net20.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\Align.cs" />
+    <Compile Include="Core\Appearance\ColorSet.cs" />
+    <Compile Include="Core\Appearance\CSSObject.cs" />
+    <Compile Include="Core\Appearance\LegendStyle.cs" />
+    <Compile Include="Core\Appearance\ThemeName.cs" />
+    <Compile Include="Core\Appearance\ThemeManager.cs" />
+    <Compile Include="Core\Axis.cs" />
+    <Compile Include="Core\AxisType.cs" />
+    <Compile Include="Core\Background.cs" />
+    <Compile Include="Core\Appearance\ItemStyle.cs" />
+    <Compile Include="Core\Layout.cs" />
+    <Compile Include="Core\Legend.cs" />
+    <Compile Include="Core\PlotOptions\PlotOptionsAreaSpline.cs" />
+    <Compile Include="Core\PlotOptions\PlotOptionsBar.cs" />
+    <Compile Include="Core\PlotOptions\PlotOptionsLine.cs" />
+    <Compile Include="Core\PlotOptions\PlotOptionsPie.cs" />
+    <Compile Include="Core\PlotOptions\PlotOptionsScatter.cs" />
+    <Compile Include="Core\PlotOptions\PlotOptionsSeries.cs" />
+    <Compile Include="Core\PlotOptions\PlotOptionsArea.cs" />
+    <Compile Include="Core\PlotOptions\PlotOptionsColumn.cs" />
+    <Compile Include="Core\PlotOptions\PlotOptionsSpline.cs" />
+    <Compile Include="Core\Stackting.cs" />
+    <Compile Include="Core\RenderType.cs" />
+    <Compile Include="Core\SubTitle.cs" />
+    <Compile Include="Core\Appearance\Appearance.cs" />
+    <Compile Include="Core\Title.cs" />
+    <Compile Include="Core\TitleType.cs" />
+    <Compile Include="Core\ToolTip.cs" />
+    <Compile Include="Core\VerticalAlign.cs" />
+    <Compile Include="Core\XAxis.cs" />
+    <Compile Include="Core\YAxis.cs" />
+    <Compile Include="Model\Point.cs" />
+    <Compile Include="Model\Serie.cs" />
+    <Compile Include="Model\SerieCollection.cs" />
+    <Compile Include="UI\AreaChart.cs" />
+    <Compile Include="UI\AreaSplineChart.cs" />
+    <Compile Include="UI\BarChart.cs" />
+    <Compile Include="UI\Chart.cs" />
+    <Compile Include="Core\Serie.cs" />
+    <Compile Include="Core\SerieCollection.cs" />
+    <Compile Include="Core\IChart.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\ColumnChart.cs" />
+    <Compile Include="UI\GenericChart.cs" />
+    <Compile Include="UI\LineChart.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Newtonsoft.Json.Net20.dll" />
+    <Content Include="bin\Newtonsoft.Json.Net20.pdb" />
+    <EmbeddedResource Include="HighchartAPI\exporting.js" />
+    <EmbeddedResource Include="HighchartAPI\highcharts.js" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

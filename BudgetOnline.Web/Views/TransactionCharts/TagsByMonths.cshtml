@@ -1,0 +1,41 @@
+﻿@using BudgetOnline.UI.Models.SelectItems
+@model BudgetOnline.Web.ViewModels.Charts.TagsByDatesViewModel
+@{
+}
+@section Header
+{
+    <script src="@Url.Content("~/Scripts/Highcharts-3.0.1/js/highcharts.js")" type="text/javascript"></script>
+}
+<form method="POST" action="TagsByMonths">
+    <div class="row-fluid compact">
+        <div class="span3">
+            <strong>Период</strong>
+        </div>
+        <div class="span9">
+            <div class="row-fluid">
+                <div class="span3">@Html.EditorFor(model => model.FromDate)</div>
+                <div class="span3">@Html.EditorFor(model => model.ToDate)</div>
+                <div class="span6">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row-fluid compact">
+        <div class="span3">
+            <strong>Тэги</strong>
+        </div>
+        <div class="span9">
+            @Html.EditorFor(model => model.Tags)
+        </div>
+    </div>
+    <div class="row-fluid compact">
+        <div class="span12 form-actions">
+            @Html.BudgetOnlineWeb().ButtonNormal().Caption("Выбрать").Build()
+        </div>
+    </div>
+</form>
+<div class="row-fluid">
+    <div class="span12">
+        @(Model.Chart)
+    </div>
+</div>

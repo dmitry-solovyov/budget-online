@@ -1,0 +1,57 @@
+﻿@using BudgetOnline.Web.Areas.Admin.Models
+@using BudgetOnline.Web.UI.Controls
+@model UserListViewModel
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayoutPage.cshtml";
+
+    var searchBy = string.Empty;
+    if (!string.IsNullOrWhiteSpace(Model.Search.Text))
+    {
+        searchBy = Model.Search.Text;
+    }
+}
+<div class="row-fluid">
+    <div class="span6">
+        @Html.BudgetOnlineWeb().SubmitNormalButton().Caption("Новая запись").RedirectTo(Url.Action("create")).Build()
+    </div>
+    <div class="span6">
+        @(Html.BudgetOnlineWeb()
+        .Form(BudgetOnlineWebControls.FormTypes.Inline)
+        .Css("pull-right")
+        .Id("searchForm")
+        .SubmitClientAction(Url.Action("list"))
+        .Content(@<text>
+        <input name="searchBy" type="text" placeholder="Имя или Email" value="@searchBy" class="" />
+        <button class="btn" type="submit" name="search">
+            Поиск</button>
+        @*<button class="btn" type="submit" name="clear">
+		Очистить</button>*@
+        </text>).Build())
+    </div>
+</div>
+@(Html.BudgetOnlineWeb()
+    .Table<UserListItemsViewModel>()
+    .Css("table table-striped")
+    .Rows(Model.Items)
+    .Columns(columns =>
+                {
+                    columns.Icon().IconCss(m => m.IsBocked ?
+                        "icon-lock" :
+                        (m.IsReadOnly ? "icon-eye-open" : (m.IsAdmin ? "icon-wrench" : ""))
+                    ).Span(1);
+                    columns.Bound(m => m.Name).Span(4);
+                    columns.Bound(m => m.Email).Span(2);
+                    columns.Bound(m => m.WhenLastConnected).Span(4);
+                    columns.Commands().Cell(m => m.Commands).Span(2);
+                })
+    .Build()
+    )
+@*<small>Последнее обновление данных: @Model.WhenCreated.ToLocalTime()</small>*@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#searchForm button[name="clear"]').click(function () {
+            clearForm($('#searchForm').get());
+        });
+    });
+</script>

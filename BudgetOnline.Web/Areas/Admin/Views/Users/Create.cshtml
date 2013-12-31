@@ -1,0 +1,22 @@
+﻿@model BudgetOnline.Web.Areas.Admin.Models.UserEditViewModel
+@{
+	ViewBag.Title = "Создание пользователя";
+	Layout = "~/Areas/Admin/Views/Shared/_AdminLayoutPage.cshtml";
+}
+<h3>
+	Новый пользователь</h3>
+<div class="container-fluid">
+	@(Html.BudgetOnlineWeb().Form()
+       	.Content(@<text>
+				  	@Html.EditorForModel("~/Views/Shared/EditorTemplates/Object.cshtml")
+				  	<div class="form-actions">
+						<p>
+							@Html.BudgetOnlineWeb().SubmitNormalButton().Caption("Сохранить").Build()
+							@Html.BudgetOnlineWeb().ButtonNormal().Caption("Отмена").RedirectTo(Url.Action("list")).Build()
+						</p>
+					</div>
+				  </text>)
+.Build()
+)
+</div>
+

@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ED3804C4-BCB2-4639-9A00-91C3B9632D1B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BudgetOnline.UI.Controls</RootNamespace>
+    <AssemblyName>BudgetOnline.UI.Controls</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutoCompleteTextBoxBuilder.cs" />
+    <Compile Include="Buttons\ButtonBuilder.cs" />
+    <Compile Include="CommandsListBuilder.cs" />
+    <Compile Include="ListBuilder.cs" />
+    <Compile Include="TableCommandsColumnBuilder.cs" />
+    <Compile Include="TableIconColumn.cs" />
+    <Compile Include="TableCustomColumn.cs" />
+    <Compile Include="TableColumnRenderParts.cs" />
+    <Compile Include="ContainerBuilder.cs" />
+    <Compile Include="ContainersListBuilder.cs" />
+    <Compile Include="TableBaseColumn.cs" />
+    <Compile Include="IMultiBuilder.cs" />
+    <Compile Include="TableBuilder.cs" />
+    <Compile Include="FormBuilder.cs" />
+    <Compile Include="Buttons\SubmitButtonBuilder.cs" />
+    <Compile Include="ImageBuilder.cs" />
+    <Compile Include="PanelBuilder.cs" />
+    <Compile Include="TableBoundColumn.cs" />
+    <Compile Include="TableColumnCollection.cs" />
+    <Compile Include="TableColumnOptions.cs" />
+    <Compile Include="UIBuilder.cs" />
+    <Compile Include="IBuilder.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Xml\XmlDocumentBuilder.cs" />
+    <Compile Include="Xml\XmlNodeBuilder.cs" />
+    <Compile Include="Xml\XmlNodeBuilderSettings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BudgetOnline.Common\BudgetOnline.Common.csproj">
+      <Project>{24D83CBA-7F7F-4559-9CC7-839423401CE1}</Project>
+      <Name>BudgetOnline.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BudgetOnline.UI\BudgetOnline.UI.csproj">
+      <Project>{555CFDA0-1BE1-4577-A36F-AC8C796E7EB1}</Project>
+      <Name>BudgetOnline.UI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+    <Folder Include="Tables\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

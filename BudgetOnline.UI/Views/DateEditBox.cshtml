@@ -1,0 +1,15 @@
+﻿@using System.Globalization
+@using BudgetOnline.UI.Models
+@* Generator: MvcHelper *@
+@functions {
+}
+@helper Render(DateEditModel model) 
+{
+    var id = string.IsNullOrWhiteSpace(model.Name) ? Html.GetUniqId(10) : model.Name;
+    var value = model.Date.HasValue ? model.Date.Value.ToLocalTime().ToShortDateString() : string.Empty;
+    
+    <div class="input-append @(model.Span > 0 ? "span" + model.Span.ToString(CultureInfo.InvariantCulture) : string.Empty)"> 
+        <input type="text" name="@id" value="@value" class="date-picker input-block-level" autocomplete="off"/>
+        <span class="add-on"><i class="icon-calendar"></i></span>
+    </div>
+}

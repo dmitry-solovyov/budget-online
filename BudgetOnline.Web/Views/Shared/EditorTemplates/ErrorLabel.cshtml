@@ -1,0 +1,20 @@
+﻿@using BudgetOnline.Common
+@using BudgetOnline.Web.Infrastructure.Extensions
+@model ModelMetadata
+@{
+	var css = new List<string>();
+
+	//css.Add("alert alert-error");
+}
+
+@if (!ViewData.ModelState.IsValidField(Model.PropertyName))
+{
+	<div class="@(css.JoinedString(" "))">
+		<p>
+			@foreach (var error in ViewData.ModelState.Where(o => o.Key == Model.PropertyName).SelectMany(o => o.Value.Errors))
+   {
+				<span class="label label-important clearfix">@error.ErrorMessage</span>
+   }
+		</p>
+	</div>
+}

@@ -1,0 +1,32 @@
+﻿@model BudgetOnline.Web.Areas.Admin.Models.EnableDisableUserViewModel
+@{
+	ViewBag.Title = "Блокировать пользователя";
+	Layout = "~/Areas/Admin/Views/Shared/_AdminLayoutPage.cshtml";
+}
+<h3>
+	Блокировать пользователя</h3>
+@if (Model.IsDisabled)
+{
+	<p>
+		Пользователь уже заблокирован</p>
+	<p>
+		@Html.BudgetOnlineWeb().ButtonNormal().Caption("Отмена").RedirectTo(Url.Action("list")).Build()
+	</p>
+}
+else
+{
+	<p>
+		Вы действительно хотите заблокировать пользователя</p>
+	<br />
+	<p>@Model.Name (@Model.Email)</p>
+	<br />
+	<p>
+		@(Html.BudgetOnlineWeb().Form().ActionUrl(Url.Action("disable"))
+       	.Content(@<text>
+				  	@Html.HiddenFor(model => model.Id)
+				  	@Html.BudgetOnlineWeb().SubmitNormalButton().Caption("Продолжить").Build()
+				  	@Html.BudgetOnlineWeb().ButtonNormal().Caption("Отмена").RedirectTo(Url.Action("list")).Build()
+				  </text>)
+			.Build())
+	</p>
+}

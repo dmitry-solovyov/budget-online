@@ -1,0 +1,25 @@
+﻿@using BudgetOnline.UI.Models
+@functions {
+}
+@helper Render(DynamicContainerModel model)
+    {
+    
+    <div id="@(model.UniqeId)" class="dyn-box" 
+    data-name="@(model.Name)" data-dynamic-url='@(model.RequestUrl)' data-autoload='@(model.IsAutoload.ToString().ToLower())' 
+    data-autoload-delay='@(model.IsAutoload && model.AutoloadDelay > 0 ? model.AutoloadDelay.ToString(): "0")'>
+        <div class="header row-fluid compact">
+            <div class="span10">@(model.Caption)</div>
+            <div class="span2">
+                <a class="pull-right refresh btn btn-mini" href="#"><i class="icon-refresh"></i></a>
+            </div>
+        </div>
+        <div class="content clearfix">
+            @if (model.Content != null && !string.IsNullOrWhiteSpace(model.Content.ToHtmlString()))
+            {
+                @(new HtmlString(model.Content.ToHtmlString()))
+            }
+        </div>
+        <div class="footer clearfix compact">
+            <span class="pull-right">@(DateTime.Now)</span></div>
+    </div>
+}
