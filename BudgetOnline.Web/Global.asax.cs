@@ -2,11 +2,13 @@
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
+using System.Web.Optimization;
 using System.Web.Routing;
 using Autofac.Integration.Mvc;
 using BudgetOnline.Common.Contracts;
 using BudgetOnline.Web.Infrastructure.Attributes;
 using BudgetOnline.Web.Infrastructure.IoC;
+using BudgetOnline.Web.Infrastructure.Minifier;
 
 namespace BudgetOnline.Web
 {
@@ -64,6 +66,8 @@ namespace BudgetOnline.Web
             AreaRegistration.RegisterAllAreas();
 
             DependencyResolver.SetResolver(new AutofacDependencyResolver(AutofacInitializer.GetBuilder()));
+
+            BundleTable.Bundles.EnableBootstrapBundle();
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);

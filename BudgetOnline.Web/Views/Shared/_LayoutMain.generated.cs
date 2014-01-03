@@ -56,121 +56,39 @@ WriteLiteral("\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <title>Бюджет
             #line default
             #line hidden
 WriteLiteral("</title>\r\n    <meta charset=\"utf-8\" lang=\"en\" name=\"viewport\" content=\"width=devi" +
-"ce-width, initial-scale=1.0\" />\r\n    <link href=\"");
+"ce-width, initial-scale=1.0\" />\r\n");
 
 
-            
-            #line 8 "..\..\Views\Shared\_LayoutMain.cshtml"
-           Write(Url.Content("~/Content/bootstrap.min.css"));
 
-            
-            #line default
-            #line hidden
-WriteLiteral("\" rel=\"stylesheet\" type=\"text/css\" />\r\n    <link href=\"");
-
-
-            
-            #line 9 "..\..\Views\Shared\_LayoutMain.cshtml"
-           Write(Url.Content("~/Content/bootstrap-responsive.css"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\" rel=\"stylesheet\" type=\"text/css\" />\r\n    <link href=\"");
-
-
-            
-            #line 10 "..\..\Views\Shared\_LayoutMain.cshtml"
-           Write(Url.Content("~/Content/site.css"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\" rel=\"stylesheet\" type=\"text/css\" />\r\n    <link href=\"");
-
-
-            
-            #line 11 "..\..\Views\Shared\_LayoutMain.cshtml"
-           Write(Url.Content("~/Content/cus-icons.css"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\" rel=\"stylesheet\" type=\"text/css\" />\r\n    <link href=\"");
-
-
-            
-            #line 12 "..\..\Views\Shared\_LayoutMain.cshtml"
-           Write(Url.Content("~/Content/themes/flick/jquery-ui.css"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\" rel=\"stylesheet\" type=\"text/css\" />\r\n    <link href=\"");
-
-
-            
-            #line 13 "..\..\Views\Shared\_LayoutMain.cshtml"
-           Write(Url.Content("~/Content/themes/flick/jquery.ui.theme.css"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\" rel=\"stylesheet\" type=\"text/css\" />\r\n    <link href=\"");
-
-
-            
-            #line 14 "..\..\Views\Shared\_LayoutMain.cshtml"
-           Write(Url.Content("~/Content/bootstrap-select.min.css"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\" rel=\"stylesheet\" type=\"text/css\" />\r\n    <script src=\"");
-
-
-            
-            #line 15 "..\..\Views\Shared\_LayoutMain.cshtml"
-            Write(Url.Content("~/Scripts/jquery-2.0.3.min.js"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\" type=\"text/javascript\"></script>\r\n    <script src=\"");
+WriteLiteral("    \r\n    <link href=\"");
 
 
             
             #line 16 "..\..\Views\Shared\_LayoutMain.cshtml"
-            Write(Url.Content("~/Scripts/jquery.cookie.js"));
+           Write(System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/content/css"));
 
             
             #line default
             #line hidden
-WriteLiteral("\" type=\"text/javascript\"></script>\r\n    <script src=\"");
-
-
-            
-            #line 17 "..\..\Views\Shared\_LayoutMain.cshtml"
-            Write(Url.Content("~/Scripts/underscore.js"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\" type=\"text/javascript\"></script>\r\n    <script src=\"");
+WriteLiteral("\" rel=\"stylesheet\">\r\n\r\n    <script src=\"");
 
 
             
             #line 18 "..\..\Views\Shared\_LayoutMain.cshtml"
-            Write(Url.Content("~/Scripts/backbone.js"));
+            Write(System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/js"));
 
             
             #line default
             #line hidden
-WriteLiteral("\" type=\"text/javascript\"></script>\r\n    \r\n</head>\r\n<body>\r\n    \r\n    ");
+WriteLiteral("\" type=\"text/javascript\"></script>\r\n\r\n");
+
+
+
+WriteLiteral("    \r\n</head>\r\n<body>\r\n    \r\n    ");
 
 
             
-            #line 23 "..\..\Views\Shared\_LayoutMain.cshtml"
+            #line 26 "..\..\Views\Shared\_LayoutMain.cshtml"
 Write(Html.BudgetOnlineWeb().ProgressIndicator().BackgroundUrl(@Url.Content("~/Content/images/back1.jpg")).IndicatorUrl(@Url.Content("~/Content/images/ajax-loader.gif")).Class("progress-indicator").Build());
 
             
@@ -183,7 +101,7 @@ WriteLiteral("\r\n\r\n    <div class=\"container\" id=\"container\">\r\n        
 
 
             
-            #line 33 "..\..\Views\Shared\_LayoutMain.cshtml"
+            #line 36 "..\..\Views\Shared\_LayoutMain.cshtml"
                    Html.RenderPartial("_LanguageSwitch"); 
 
             
@@ -193,7 +111,7 @@ WriteLiteral("            </div>\r\n            <div class=\"span2\" style=\"tex
 
 
             
-            #line 36 "..\..\Views\Shared\_LayoutMain.cshtml"
+            #line 39 "..\..\Views\Shared\_LayoutMain.cshtml"
                    Html.RenderAction("LoggedOnName", "CurrentUser", new { Area = "" }); 
 
             
@@ -203,7 +121,7 @@ WriteLiteral("            </div>\r\n        </div>\r\n        <div class=\"row-f
 
 
             
-            #line 40 "..\..\Views\Shared\_LayoutMain.cshtml"
+            #line 43 "..\..\Views\Shared\_LayoutMain.cshtml"
               Html.RenderPartial("~/Views/Shared/TopNavligationMenu.cshtml");
 
             
@@ -214,7 +132,7 @@ WriteLiteral("        </div>\r\n        <div class=\"row-fluid\">\r\n           
 
 
             
-            #line 44 "..\..\Views\Shared\_LayoutMain.cshtml"
+            #line 47 "..\..\Views\Shared\_LayoutMain.cshtml"
            Write(RenderBody());
 
             
@@ -226,121 +144,36 @@ WriteLiteral("\r\n            </div>\r\n        </div>\r\n        <div class=\"r
 
 
             
-            #line 50 "..\..\Views\Shared\_LayoutMain.cshtml"
+            #line 53 "..\..\Views\Shared\_LayoutMain.cshtml"
                               Write(DateTime.Now.Year);
 
             
             #line default
             #line hidden
-WriteLiteral("</p>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <script src=\"");
+WriteLiteral("</p>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    \r\n    \r\n    <script src" +
+"=\"");
 
 
             
-            #line 54 "..\..\Views\Shared\_LayoutMain.cshtml"
-            Write(Url.Content("~/Scripts/jquery-ui-1.10.3.min.js"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\" type=\"text/javascript\"></script>\r\n    <script src=\"");
-
-
-            
-            #line 55 "..\..\Views\Shared\_LayoutMain.cshtml"
-            Write(Url.Content("~/Scripts/modernizr-2.6.2.js"));
+            #line 59 "..\..\Views\Shared\_LayoutMain.cshtml"
+            Write(System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/js2"));
 
             
             #line default
             #line hidden
-WriteLiteral("\" type=\"text/javascript\"></script>\r\n    <script src=\"");
+WriteLiteral("\" type=\"text/javascript\"></script>\r\n\r\n");
+
+
+
+WriteLiteral("\r\n\r\n");
+
+
+
+WriteLiteral("    \r\n    ");
 
 
             
-            #line 56 "..\..\Views\Shared\_LayoutMain.cshtml"
-            Write(Url.Content("~/Scripts/bootstrap.min.js"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\" type=\"text/javascript\"></script>\r\n    ");
-
-
-
-WriteLiteral("\r\n    <script src=\"");
-
-
-            
-            #line 58 "..\..\Views\Shared\_LayoutMain.cshtml"
-            Write(Url.Content("~/Scripts/jquery.validate.js"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\" type=\"text/javascript\"></script>\r\n    ");
-
-
-
-WriteLiteral("\r\n    ");
-
-
-
-WriteLiteral("\r\n    ");
-
-
-
-WriteLiteral("\r\n    ");
-
-
-
-WriteLiteral("\r\n    ");
-
-
-
-WriteLiteral("\r\n    <script src=\"");
-
-
-            
-            #line 66 "..\..\Views\Shared\_LayoutMain.cshtml"
-            Write(Url.Content("~/Scripts/jsrender.min.js"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\" type=\"text/javascript\"></script>\r\n    <script src=\"");
-
-
-            
-            #line 67 "..\..\Views\Shared\_LayoutMain.cshtml"
-            Write(Url.Content("~/Scripts/bootstrap-select.min.js"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\" type=\"text/javascript\"></script>\r\n    <script src=\"");
-
-
-            
-            #line 68 "..\..\Views\Shared\_LayoutMain.cshtml"
-            Write(Url.Content("~/Scripts/common.js"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\" type=\"text/javascript\"></script>\r\n    <script src=\"");
-
-
-            
-            #line 69 "..\..\Views\Shared\_LayoutMain.cshtml"
-            Write(Url.Content("~/Scripts/jquery.postdatas-min.js"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\" type=\"text/javascript\"></script>\r\n    \r\n    ");
-
-
-            
-            #line 71 "..\..\Views\Shared\_LayoutMain.cshtml"
+            #line 72 "..\..\Views\Shared\_LayoutMain.cshtml"
 Write(MiniProfiler.RenderIncludes(showTrivial: true, showTimeWithChildren: true, position: RenderPosition.Left));
 
             
@@ -350,7 +183,7 @@ WriteLiteral("\r\n    \r\n    ");
 
 
             
-            #line 73 "..\..\Views\Shared\_LayoutMain.cshtml"
+            #line 74 "..\..\Views\Shared\_LayoutMain.cshtml"
 Write(RenderSection("Header", false));
 
             
