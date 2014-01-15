@@ -1,9 +1,9 @@
 body
 {
-	font-size: .85em;
-	font-family: "Trebuchet MS" , Verdana, Helvetica, Sans-Serif;
-	background: url('images/back5.jpg') repeat;
-	background: #f9f9f9;
+    font-size: .85em;
+    font-family: "Trebuchet MS" , Verdana, Helvetica, Sans-Serif;
+    background: url('images/back5.jpg') repeat;
+    background: #f9f9f9;
 }
 
 header, footer, nav, section
@@ -12,60 +12,61 @@ header, footer, nav, section
 
 body > .footer
 {
-	margin-top: 30px;
+    margin-top: 30px;
 }
 
 #container
 {
-	background-color: #fefefe;
-	-moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);
-	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
-	box-shadow: 0 0 10px rgba(0,0,0,0.5);
-	border: 10px transparent solid;
+    background-color: #fefefe;
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    border: 10px transparent solid;
 }
 select.iconed option
 {
-	background-repeat: no-repeat;
-	background-position: bottom left;
-	padding-left: 50px;
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    padding-left: 50px;
 }
 
 /* Bootstrap overwriting
 -----------------------------------------------------------*/
 .form-horizontal .control-group
 {
-	margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .hidden
 {
-	display: none;
-	height: 1px;
+    display: none;
+    height: 1px;
 }
 
 .row-fluid.compact div[class*="span"]
 {
-	min-height: 0px !important;
+    min-height: 0px !important;
 }
 
 ul.nav-tabs li.active a
 {
-	background-color: #0088CC;
-	color: #F4F4F4;
+    background-color: #0088CC;
+    color: #F4F4F4;
 }
 ul.nav-tabs li.active a:hover
 {
-	background-color: #4A708B;
-	color: #F4F4F4;
+    background-color: #4A708B;
+    color: #F4F4F4;
 }
 
 ul.nav-tabs li a i
 {
-	padding-right: .5em;
+    padding-right: .5em;
 }
 
-select[multiple*="multiple"] {
-	height: 128px;
+select[multiple*="multiple"]
+{
+    height: 128px;
 }
 
 /* Other overwriting
@@ -73,53 +74,53 @@ select[multiple*="multiple"] {
 
 input[type='text'].date-picker
 {
-	width: 100px;
+    width: 100px;
 }
 
 /* Styles for validation helpers
 -----------------------------------------------------------*/
 .field-validation-error
 {
-	color: #ff0000;
+    color: #ff0000;
 }
 
 .field-validation-valid
 {
-	display: none;
+    display: none;
 }
 
 .input-validation-error
 {
-	border: 1px solid #ff0000;
-	background-color: #ffeeee;
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
 }
 
 .validation-summary-errors
 {
-	font-weight: bold;
-	color: #ff0000;
+    font-weight: bold;
+    color: #ff0000;
 }
 
 .validation-summary-valid
 {
-	display: none;
+    display: none;
 }
 
 /* Login
 -----------------------------------------------------------*/
 .form-signin
 {
-	max-width: 300px;
-	padding: 19px 29px 29px;
-	margin: 0 auto 20px;
-	background-color: #fff;
-	border: 1px solid #e5e5e5;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-	box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    max-width: 300px;
+    padding: 19px 29px 29px;
+    margin: 0 auto 20px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);
 }
 /*
 .form-signin .form-signin-heading, .form-signin .checkbox
@@ -139,18 +140,18 @@ input[type='text'].date-picker
 
 .table tbody tr.disabled > td
 {
-	/*background-color: #e5e5e5;*/
-	color: #A6A4A4;
+    /*background-color: #e5e5e5;*/
+    color: #A6A4A4;
 }
 
 .label-offsetv
 {
-	padding-top: 5px;
-	display: inline-block;
+    padding-top: 5px;
+    display: inline-block;
 }
 .body-container
 {
-	background-color: #fefefe;
+    background-color: #fefefe;
 }
 
 /* 
@@ -158,153 +159,153 @@ input[type='text'].date-picker
 
 .currency-smb
 {
-	font-size: .7em;
-	font-weight: bold;
-	padding-left: 3px;
+    font-size: .7em;
+    font-weight: bold;
+    padding-left: 3px;
 }
 .sum-in
 {
-	color: #006400;
+    color: #006400;
 }
 .sum-out
 {
-	color: #CC0000;
+    color: #CC0000;
 }
 .sum-trfs
 {
-	color: #191970;
+    color: #191970;
 }
 .sum-exch
 {
-	color: #BDB76B;
+    color: #BDB76B;
 }
 .underline
 {
-	background: url('images/h-separator-light.png') bottom left;
-	background-repeat: repeat-x;
+    background: url('images/h-separator-light.png') bottom left;
+    background-repeat: repeat-x;
 }
 
 /* 
 -----------------------------------------------------------*/
 .panel
 {
-	display: block;
-	margin: 0;
-	padding: 5px;
-	border: 1px solid #999;
-	border-collapse: collapse;
-	overflow: hidden;
+    display: block;
+    margin: 0;
+    padding: 5px;
+    border: 1px solid #999;
+    border-collapse: collapse;
+    overflow: hidden;
 }
 
 .panel.income
 {
-	width: 300px;
-	height: 300px;
-	background-color: #CCFFCC;
+    width: 300px;
+    height: 300px;
+    background-color: #CCFFCC;
 }
 
 .panel.outcome
 {
-	width: 300px;
-	height: 300px;
-	border: 1px solid #CC3300;
-	background-color: #FFCCCC;
+    width: 300px;
+    height: 300px;
+    border: 1px solid #CC3300;
+    background-color: #FFCCCC;
 }
 
 .panel input
 {
-	width: 200px;
+    width: 200px;
 }
 
 /*
 ---------------------------------------------- Panel with header and round borders */
 .bo-box, .dyn-box
 {
-	overflow: hidden;
-	padding: 0;
-	margin: 0;
-	width: 98%;
-	display: block;
-	margin-bottom: 1em;
-	border: 1px solid #dee2e4;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    width: 98%;
+    display: block;
+    margin-bottom: 1em;
+    border: 1px solid #dee2e4;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }
 
 .bo-box > .header, .dyn-box > .header
 {
-	padding: .3em 0;
-	cursor: default;
-	width: auto;
-	font-weight: bold;
-	font-size: .9em;
-	padding-left: .6em;
+    padding: .3em 0;
+    cursor: default;
+    width: auto;
+    font-weight: bold;
+    font-size: .9em;
+    padding-left: .6em;
 }
 .bo-box > .header > .caption, .dyn-box > .header > .caption
 {
-	float: left;
-	width: auto;
-	font-weight: bold;
-	font-size: .9em;
-	padding-left: .6em;
+    float: left;
+    width: auto;
+    font-weight: bold;
+    font-size: .9em;
+    padding-left: .6em;
 }
 .bo-box > .header > .icons
 {
-	width: auto;
-	padding-right: .6em;
+    width: auto;
+    padding-right: .6em;
 }
 .bo-box > .header > .icons .help
 {
-	cursor: pointer;
-	width: 18px;
-	height: 18px;
-	background-image: url('graphics/icon_sprite.png');
-	background-position: -47px -144px;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    background-image: url('graphics/icon_sprite.png');
+    background-position: -47px -144px;
 }
 .bo-box > .content, .dyn-box > .content
 {
-	cursor: default;
-	padding: .5em;
+    cursor: default;
+    padding: .5em;
 }
 .bo-box > .footer, .dyn-box > .footer
 {
-	padding: .3em 0;
-	cursor: default;
+    padding: .3em 0;
+    cursor: default;
 }
 .bo-box > .footer .caption *
 {
-	float: left;
-	width: auto;
-	font-weight: normal;
-	font-size: .8em;
-	padding-left: .6em;
-	color: #999;
+    float: left;
+    width: auto;
+    font-weight: normal;
+    font-size: .8em;
+    padding-left: .6em;
+    color: #999;
 }
 
 .bo-box > .header, .dyn-box > .header
 {
-	background-color: #dee2e4;
-	color: #777;
-	border-color: Transparent;
+    background-color: #dee2e4;
+    color: #777;
+    border-color: Transparent;
 }
 
 .bo-box > .content, .dyn-box > .content
 {
-	color: #333;
-	border-color: #dee2e4;
+    color: #333;
+    border-color: #dee2e4;
 }
 
 .bo-box > .footer, .dyn-box > .footer
 {
-	border-color: #dee2e4;
-	font-size: .8em;
-	padding: 0 0.5em;
-	color: #bbb;
+    border-color: #dee2e4;
+    font-size: .8em;
+    padding: 0 0.5em;
+    color: #bbb;
 }
 .bo-box > .footer:hover, .dyn-box > .footer:hover
 {
-	color: #333;
+    color: #333;
 }
 
 
@@ -312,81 +313,84 @@ input[type='text'].date-picker
 ---------------------------------------------------------*/
 .list-group
 {
-	/*margin-top: 1em;*/
-	border-bottom: 1px solid #C1CDCD;
+    /*margin-top: 1em;*/
+    border-bottom: 1px solid #C1CDCD;
 }
 .list-group-content .list-item
 {
-	text-align: left;
-	vertical-align: top;
+    text-align: left;
+    vertical-align: top;
 }
 .list-group-content .list .list-item.odd
 {
-	background-color: #F4F4F4; /*F4F4F4;*/
+    background-color: #F4F4F4; /*F4F4F4;*/
 }
 .list-group-content .list .list-item.even
 {
-	background-color: #FFFFFF;
+    background-color: #FFFFFF;
 }
 .list-group-content .list
 {
 }
 .list-group .list-group-header
 {
-	/*background-color: #EAEAEA;*/
-	color: #4A708B;
-	font-size: 1.1em;
-	font-weight: bold;
-	border-bottom: 2px #4A708B solid;
+    /*background-color: #EAEAEA;*/
+    color: #4A708B;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-bottom: 2px #4A708B solid;
 }
 .list-group .list-group-header span
 {
-	margin-top: 2px;
-	margin-left: 2px;
-	display: inline-block;
+    margin-top: 2px;
+    margin-left: 2px;
+    display: inline-block;
 }
 .list-group table
 {
-	margin-bottom: 1px !important;
+    margin-bottom: 1px !important;
 }
 
 .list-group table .sum-in, .list-group table .sum-out
 {
-	font-size: 1.2em;
-	font-weight: bold;
-	text-align: right;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: right;
 }
 
-.list-group.obsolete-raw {
+.list-group.obsolete-raw
+{
     color: #808080;
     background-color: #F2F2F2;
 }
 
-.list-group.obsolete-raw:hover {
+.list-group.obsolete-raw:hover
+{
     color: inherit;
     background-color: inherit;
 }
 
 .list-statistics
 {
-	margin-top: 2em;
-	font-size: 1.5em;
-	line-height: 2em;
-	border-top: 2px solid #999;
+    margin-top: 2em;
+    font-size: 1.5em;
+    line-height: 2em;
+    border-top: 2px solid #999;
 }
 .list-statistics .header
 {
-	color: #4A708B;
-	background-color: #F7F7F9;
-	height: 2em;
+    color: #4A708B;
+    background-color: #F7F7F9;
+    height: 2em;
 }
+
 /* 
 -----------------------------------------------------------*/
 
 .column-header
 {
-	font-weight: bold;
-	font-size: 1.0em;
+    font-weight: bold;
+    font-size: 1.0em;
 }
 
 /* 

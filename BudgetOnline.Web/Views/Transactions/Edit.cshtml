@@ -1,4 +1,5 @@
-﻿@using BudgetOnline.Web.UI.Controls
+﻿@using System.Globalization
+@using BudgetOnline.Web.UI.Controls
 @model BudgetOnline.Web.ViewModels.TransactionEditViewModel
 @{
     ViewBag.Title = "Редактирование";
@@ -19,24 +20,53 @@
         }
     }
 </div>
-<div class="row-fluid" id="@editorId">
-    @(Html.BudgetOnlineWeb().Form(BudgetOnlineWebControls.FormTypes.Horizontal)
- .ActionUrl(Url.Action("edit"))
-                        .Content(@<text>
-    @Html.ValidationSummary()
-    @Html.EditorForModel("~/Views/Shared/EditorTemplates/Object.cshtml")
-    <div class="form-actions">
-        <div class="control-group">
-            @Html.BudgetOnlineWeb().SubmitNormalButton().Caption("Сохранить").Build()
-            @Html.BudgetOnlineWeb().ButtonNormal().Caption("Отмена").RedirectTo(Url.Action("list")).Build()
+<!-- Modal -->
+<div id="separatePopup" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            ×</button>
+        <h3 id="myModalLabel">
+            Выделить сумму:</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row-fluid">
+            <div class="span4">
+                Сумма:</div>
+            <div class="span8">
+                <input type="number" id="separateSum" placeholder="@(Model.SumOut.Sum.ToString(CultureInfo.CurrentUICulture))" /></div>
         </div>
     </div>
-    </text>)
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">
+            Отмена</button>
+        <button class="btn btn-primary" data-target-url="@Url.Action("SeparateTransaction", new { id = Model.Id })">
+            Сохранить</button>
+    </div>
+</div>
+<div class="row-fluid" id="@editorId">
+    <div class="span1">
+        @(BudgetOnline.UI.Controls.Buttons.ButtonBuilder.Get().Icon("icon-share", "Отделить сумму").ClientClickAction("SeparateInstance").Build())
+    </div>
+    <div class="span11">
+        @(Html.BudgetOnlineWeb().Form(BudgetOnlineWebControls.FormTypes.Horizontal)
+ .ActionUrl(Url.Action("edit"))
+                        .Content(@<text>
+        @Html.ValidationSummary()
+        @Html.EditorForModel("~/Views/Shared/EditorTemplates/Object.cshtml")
+        <div class="form-actions">
+            <div class="control-group">
+                @Html.BudgetOnlineWeb().SubmitNormalButton().Caption("Сохранить").Build()
+                @Html.BudgetOnlineWeb().ButtonNormal().Caption("Отмена").RedirectTo(Url.Action("list")).Build()
+            </div>
+        </div>
+        </text>)
         .Build())
-    <script type="text/javascript" src="@Url.Content("~/Scripts/Transactions/editor.js")"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            initialiseEditor($('#@(editorId)'));
-        });
-    </script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/Transactions/editor.js")"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                initialiseEditor($('#@(editorId)'));
+            });
+        </script>
+    </div>
 </div>

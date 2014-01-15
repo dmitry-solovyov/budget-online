@@ -37,12 +37,12 @@ namespace BudgetOnline.Web.Views
         public override void Execute()
         {
 WriteLiteral("<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <meta charset=\"utf-8\" lang=\"en\"></meta>\r\n   " +
-" <title>");
+" <title>Бюджет On-Line :: ");
 
 
             
             #line 5 "..\..\Views\_AnonimousPage.cshtml"
-      Write(ViewBag.Title);
+                        Write(ViewBag.Title);
 
             
             #line default

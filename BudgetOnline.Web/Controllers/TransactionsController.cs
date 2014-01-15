@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Web.Mvc;
 using BudgetOnline.BusinessLayer.Contracts;
 using BudgetOnline.Common.Contracts;
@@ -144,9 +145,9 @@ namespace BudgetOnline.Web.Controllers
             if (linked == null || linked.First == null)
                 return new HttpNotFoundResult();
 
-            if (!MembershipHelper.UsersInOneSection(MembershipHelper.GetUser().Id, linked.First.CreatedBy))
+            if (!MembershipHelper.UsersInOneSection(MembershipHelper.CurrentUser.Id, linked.First.CreatedBy))
                 return new HttpNotFoundResult();
-            if (linked.Second != null && !MembershipHelper.UsersInOneSection(MembershipHelper.GetUser().Id, linked.Second.CreatedBy))
+            if (linked.Second != null && !MembershipHelper.UsersInOneSection(MembershipHelper.CurrentUser.Id, linked.Second.CreatedBy))
                 return new HttpNotFoundResult();
 
 
@@ -191,6 +192,54 @@ namespace BudgetOnline.Web.Controllers
             PopulateListVariablesInEditViewModel(model);
 
             return View(model);
+        }
+
+        [HttpPost]
+        [RestrictRole(Roles.FactAdd)]
+        public ActionResult SeparateTransaction(int id, string Sum)
+        {
+            var linked = TransactionRepository.GetLinked(id);
+            if (linked == null || linked.First == null)
+                return new HttpNotFoundResult();
+
+            if (!MembershipHelper.UsersInOneSection(MembershipHelper.CurrentUser.Id, linked.First.CreatedBy))
+                return new HttpNotFoundResult();
+            if (linked.Second != null && !MembershipHelper.UsersInOneSection(MembershipHelper.CurrentUser.Id, linked.Second.CreatedBy))
+                return new HttpNotFoundResult();
+
+            var newId = id;
+
+            var errors = new StringBuilder();
+            if (linked.First.TransactionTypeId != (int)TransactionTypes.Outcome)
+            {
+                errors.AppendLine("Операция возможна только для расходов!");
+                LogWriter.WarnFormat("Available obly for outcome. Id={0}, CurrentType={1}", id, (TransactionTypes)linked.First.TransactionTypeId);
+            }
+
+            //var sum = Request.Form["Sum"];
+            decimal sumParsed = 0;
+            if (string.IsNullOrWhiteSpace(Sum) || decimal.TryParse(Sum, out sumParsed))
+            {
+                errors.AppendLine("Ошибка обработки запроса!");
+                LogWriter.WarnFormat("Form data passed with errors. Id={0}, Form.Keys={1}", id, Request.Form.AllKeys);
+            }
+
+            if (sumParsed >= linked.First.Sum)
+            {
+                errors.AppendLine(string.Format("Новая сумма должны быть меньше исходной ({0})!", Math.Abs(linked.First.Sum).ToString(CultureInfo.CurrentUICulture)));
+                LogWriter.InfoFormat("Sum grater then original. Id={0}, OldSum={1}, NewSum={2}", id, linked.First.Sum, sumParsed);
+            }
+
+            return new JsonResult
+            {
+                JsonRequestBehavior = JsonRequestBehavior.DenyGet,
+                Data = new
+                           {
+                               ErrorMessage = errors.ToString(),
+                               Success = errors.Length == 0,
+                               RedirectUrl = Url.Action("Edit", new { id = newId })
+                           }
+            };
         }
 
         [HttpPost]

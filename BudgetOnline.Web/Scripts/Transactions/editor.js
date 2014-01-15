@@ -67,3 +67,48 @@ var accountChange = function (container) {
     var val = container.find('#out_sum_group #SumOut_Account').val();
     container.find('#in_sum_group #SumIn_Account').val(val);
 };
+
+var separatePopupInitialized = false;
+function SeparateInstance() {
+    if (!separatePopupInitialized) {
+        $('#separatePopup').on('shown', function() {
+            $('#separatePopup #separateSum').focus();
+        });
+
+        $('#separatePopup .modal-footer button.btn-primary').on('click', function () {
+            var sum = $('#separatePopup #separateSum').val();
+            var url = $('#separatePopup button.btn-primary').attr('data-target-url');
+            postSeparateData({Url: url, Sum: sum});
+        });
+        
+        separatePopupInitialized = true;
+    }
+
+    $('#separatePopup').modal('show');
+}
+
+function postSeparateData(params) {
+    $.ajax({
+        url: params.Url,
+        type: "POST",
+        data: {
+            Sum: params.sum
+        },
+        cache: false,
+        contentType: 'application/json; charset=utf-8',
+        dataType: "json"
+    })
+    .done(function (response) {
+        if (!response.Success) {
+            alert(response.ErrorMessage);
+        } else {
+            $('#separatePopup').modal('hide');
+        }
+    })
+    .fail(function () {
+
+    })
+    .always(function () {
+
+    });
+}

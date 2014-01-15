@@ -18,6 +18,7 @@ namespace BudgetOnline.Web.Infrastructure.Minifier
 
             BundleTable.Bundles.Add(commonStylesBundle);
 
+
             var mainScriptsBundle = new Bundle("~/js", new JsMinify());
             mainScriptsBundle.Include("~/Scripts/jquery-2.0.3.min.js");
 
