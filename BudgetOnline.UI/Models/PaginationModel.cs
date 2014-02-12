@@ -9,6 +9,8 @@ namespace BudgetOnline.UI.Models
 		public PaginationControlSizes ControlSize { get; set; }
 		public int Page { get; set; }
 		public int PagesCount { get; set; }
+        public int PageSize { get; set; }
+        public int[] PageSizes { get; set; }
 
 		public int[] GetPages()
 		{

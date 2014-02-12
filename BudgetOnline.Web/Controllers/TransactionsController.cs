@@ -59,6 +59,15 @@ namespace BudgetOnline.Web.Controllers
                 if (page > 0)
                     search.CurrentPage = page;
             }
+            if (!string.IsNullOrWhiteSpace(Request.Params["pageSize"]))
+            {
+                var pageSize = int.Parse(Request.Params["pageSize"]);
+                if (pageSize > 0)
+                {
+                    search.PageSize = pageSize;
+                    SettingsHelper.SetWebSetting(CurrentUser.SectionId, CurrentUser.Id, "PageSize", pageSize);
+                }
+            }
 
             SearchLastUsed = search;
 
@@ -358,17 +367,17 @@ namespace BudgetOnline.Web.Controllers
                 if (int.TryParse(form["page"], NumberStyles.Integer, CultureInfo.CurrentUICulture, out n))
                     result.CurrentPage = n;
             }
-            if (!string.IsNullOrWhiteSpace(form["pageSize"]))
-            {
-                int n;
-                if (int.TryParse(form["pageSize"], NumberStyles.Integer, CultureInfo.CurrentUICulture, out n))
-                {
-                    result.PageSize = n;
-                    var old = SettingsHelper.GetWebSetting(CurrentUser.SectionId, CurrentUser.Id, "PageSize", 0);
-                    if (old == 0 || old != n)
-                        SettingsHelper.SetWebSetting(CurrentUser.SectionId, CurrentUser.Id, "PageSize", n);
-                }
-            }
+            //if (!string.IsNullOrWhiteSpace(form["pageSize"]))
+            //{
+            //    int n;
+            //    if (int.TryParse(form["pageSize"], NumberStyles.Integer, CultureInfo.CurrentUICulture, out n))
+            //    {
+            //        result.PageSize = n;
+            //        var old = SettingsHelper.GetWebSetting(CurrentUser.SectionId, CurrentUser.Id, "PageSize", 0);
+            //        if (old == 0 || old != n)
+            //            SettingsHelper.SetWebSetting(CurrentUser.SectionId, CurrentUser.Id, "PageSize", n);
+            //    }
+            //}
             if (!result.PageSize.HasValue || result.PageSize.Value == 0)
                 result.PageSize = SettingsHelper.GetWebSetting(CurrentUser.SectionId, CurrentUser.Id, "PageSize", 30);
 

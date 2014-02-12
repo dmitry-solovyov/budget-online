@@ -8,6 +8,15 @@
     Layout = null;
 }
 <input type="hidden" value="@Model.Search.CurrentPage"/>
+
+@(new BudgetOnline.UI.Views.Paginator().Render(new PaginationModel
+                                                        {
+                                                            Page = !string.IsNullOrWhiteSpace(Request.QueryString["page"]) ? int.Parse(Request.QueryString["page"]) : 1, 
+                                                            PagesCount = Model.Search.PagesCount.Value,
+                                                            PageSize = Model.Search.PageSize.Value,
+                                                            PageSizes = new[]{10, 25, 50, 100}
+                                                        }))
+
 @foreach (var group in Model.Groups)
 {
     <div class="list-group row-fluid">
@@ -89,7 +98,13 @@
         </div>
     </div>
 }
-@(new BudgetOnline.UI.Views.Paginator().Render(new PaginationModel { Page = !string.IsNullOrWhiteSpace(Request.QueryString["page"]) ? int.Parse(Request.QueryString["page"]) : 1, PagesCount = Model.Search.PagesCount.Value }))
+@(new BudgetOnline.UI.Views.Paginator().Render(new PaginationModel
+                                                        {
+                                                            Page = !string.IsNullOrWhiteSpace(Request.QueryString["page"]) ? int.Parse(Request.QueryString["page"]) : 1, 
+                                                            PagesCount = Model.Search.PagesCount.Value,
+                                                            PageSize = Model.Search.PageSize.Value,
+                                                            PageSizes = new[]{10, 25, 50, 100}
+                                                        }))
 @{
     var statisticsItems = Model.Totals;
 }

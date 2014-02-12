@@ -45,27 +45,33 @@ namespace BudgetOnline.UI.Views
         #line hidden
 
 public System.Web.WebPages.HelperResult Render(PaginationModel model)
-{
+    {
 return new System.Web.WebPages.HelperResult(__razor_helper_writer => {
 
 
 
 #line 6 "..\..\Views\Paginator.cshtml"
- 
+     
         var id = string.IsNullOrWhiteSpace(model.Name) ? Html.GetUniqId(10) : model.Name;
         var pages = model.GetPages();
-    
+        var nextPageSize = model.PageSizes.FirstOrDefault(p => p > model.PageSize);
+        if (nextPageSize == 0)
+        {
+            nextPageSize = model.PageSizes[0];
+        }
+
 
 #line default
 #line hidden
 
-WriteLiteralTo(@__razor_helper_writer, "    <div class=\"pagination pagination-small pagination-centered\">\r\n        <ul>\r\n" +
-"            <li><a href=\"");
+WriteLiteralTo(@__razor_helper_writer, "    <div class=\"row-fluid\">\r\n        <div class=\"span7\">\r\n            <div class=" +
+"\"pagination pagination-small pagination-right\">\r\n                <ul>\r\n         " +
+"           <li><a href=\"");
 
 
 
-#line 12 "..\..\Views\Paginator.cshtml"
-WriteTo(@__razor_helper_writer, Html.GetUrlQithNewQueryParameter("page", "1"));
+#line 19 "..\..\Views\Paginator.cshtml"
+  WriteTo(@__razor_helper_writer, Html.GetUrlQithNewQueryParameter("page", "1"));
 
 #line default
 #line hidden
@@ -74,21 +80,21 @@ WriteLiteralTo(@__razor_helper_writer, "\">«</a></li>\r\n");
 
 
 
-#line 13 "..\..\Views\Paginator.cshtml"
-             foreach (var page in pages)
-            {
-                if (model.Page == page)
-                {
+#line 20 "..\..\Views\Paginator.cshtml"
+                     foreach (var page in pages)
+                    {
+                        if (model.Page == page)
+                        {
 
 #line default
 #line hidden
 
-WriteLiteralTo(@__razor_helper_writer, "                <li class=\"active\"><a href=\"#\">");
+WriteLiteralTo(@__razor_helper_writer, "                        <li class=\"active\"><a href=\"#\">");
 
 
 
-#line 17 "..\..\Views\Paginator.cshtml"
-                WriteTo(@__razor_helper_writer, page);
+#line 24 "..\..\Views\Paginator.cshtml"
+                        WriteTo(@__razor_helper_writer, page);
 
 #line default
 #line hidden
@@ -97,20 +103,20 @@ WriteLiteralTo(@__razor_helper_writer, "</a></li>\r\n");
 
 
 
-#line 18 "..\..\Views\Paginator.cshtml"
-                }
-                else
-                {
+#line 25 "..\..\Views\Paginator.cshtml"
+                        }
+                        else
+                        {
 
 #line default
 #line hidden
 
-WriteLiteralTo(@__razor_helper_writer, "                <li><a href=\"");
+WriteLiteralTo(@__razor_helper_writer, "                        <li><a href=\"");
 
 
 
-#line 21 "..\..\Views\Paginator.cshtml"
-WriteTo(@__razor_helper_writer, Html.GetUrlQithNewQueryParameter("page", @page.ToString()));
+#line 28 "..\..\Views\Paginator.cshtml"
+      WriteTo(@__razor_helper_writer, Html.GetUrlQithNewQueryParameter("page", @page.ToString()));
 
 #line default
 #line hidden
@@ -119,8 +125,8 @@ WriteLiteralTo(@__razor_helper_writer, "\">");
 
 
 
-#line 21 "..\..\Views\Paginator.cshtml"
-                                                           WriteTo(@__razor_helper_writer, page);
+#line 28 "..\..\Views\Paginator.cshtml"
+                                                                   WriteTo(@__razor_helper_writer, page);
 
 #line default
 #line hidden
@@ -129,28 +135,104 @@ WriteLiteralTo(@__razor_helper_writer, "</a></li>\r\n");
 
 
 
-#line 22 "..\..\Views\Paginator.cshtml"
-                }
-            }
+#line 29 "..\..\Views\Paginator.cshtml"
+                        }
+                    }
 
 #line default
 #line hidden
 
-WriteLiteralTo(@__razor_helper_writer, "            <li><a href=\"");
+WriteLiteralTo(@__razor_helper_writer, "                    <li><a href=\"");
 
 
 
-#line 24 "..\..\Views\Paginator.cshtml"
-WriteTo(@__razor_helper_writer, Html.GetUrlQithNewQueryParameter("page", model.PagesCount.ToString()));
+#line 31 "..\..\Views\Paginator.cshtml"
+  WriteTo(@__razor_helper_writer, Html.GetUrlQithNewQueryParameter("page", model.PagesCount.ToString()));
 
 #line default
 #line hidden
 
-WriteLiteralTo(@__razor_helper_writer, "\">»</a></li>\r\n        </ul>\r\n    </div>\r\n");
+WriteLiteralTo(@__razor_helper_writer, @""">
+                        »</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class=""span5"">
+            <div class=""row-fluid"" style=""margin-top: 5px"">
+                <div class=""span9"">
+                    <span class=""pull-right"">Страница:
+                    </span>
+                </div>
+                <div class=""span3"">
+                    <div class=""btn-group pull-right"">
+                        <a class=""btn dropdown-toggle btn-small"" data-toggle=""dropdown"" href=""");
 
 
 
-#line 27 "..\..\Views\Paginator.cshtml"
+#line 44 "..\..\Views\Paginator.cshtml"
+                                                               WriteTo(@__razor_helper_writer, Html.GetUrlQithNewQueryParameter("pageSize", nextPageSize.ToString()));
+
+#line default
+#line hidden
+
+WriteLiteralTo(@__razor_helper_writer, "\">\r\n                            ");
+
+
+
+#line 45 "..\..\Views\Paginator.cshtml"
+WriteTo(@__razor_helper_writer, model.PageSize);
+
+#line default
+#line hidden
+
+WriteLiteralTo(@__razor_helper_writer, "&nbsp;&nbsp;&nbsp; <span class=\"caret\"></span></a>\r\n                        <ul c" +
+"lass=\"dropdown-menu\" id=\"setPageSize\">\r\n");
+
+
+
+#line 47 "..\..\Views\Paginator.cshtml"
+                             foreach (var pageSize in model.PageSizes)
+                            {
+
+#line default
+#line hidden
+
+WriteLiteralTo(@__razor_helper_writer, "                                <li><a href=\"");
+
+
+
+#line 49 "..\..\Views\Paginator.cshtml"
+              WriteTo(@__razor_helper_writer, Html.GetUrlQithNewQueryParameter("pageSize", pageSize.ToString()));
+
+#line default
+#line hidden
+
+WriteLiteralTo(@__razor_helper_writer, "\">");
+
+
+
+#line 49 "..\..\Views\Paginator.cshtml"
+                                                                                  WriteTo(@__razor_helper_writer, pageSize);
+
+#line default
+#line hidden
+
+WriteLiteralTo(@__razor_helper_writer, "</a></li>\r\n");
+
+
+
+#line 50 "..\..\Views\Paginator.cshtml"
+                            }
+
+#line default
+#line hidden
+
+WriteLiteralTo(@__razor_helper_writer, "                        </ul>\r\n                    </div>\r\n                </div>" +
+"\r\n            </div>\r\n        </div>\r\n    </div>\r\n");
+
+
+
+#line 57 "..\..\Views\Paginator.cshtml"
 
 #line default
 #line hidden

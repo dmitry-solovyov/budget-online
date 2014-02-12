@@ -3,25 +3,55 @@
 @functions {
 }
 @helper Render(PaginationModel model)
-{
+    {
         var id = string.IsNullOrWhiteSpace(model.Name) ? Html.GetUniqId(10) : model.Name;
         var pages = model.GetPages();
-    
-    <div class="pagination pagination-small pagination-centered">
-        <ul>
-            <li><a href="@Html.GetUrlQithNewQueryParameter("page", "1")">«</a></li>
-            @foreach (var page in pages)
-            {
-                if (model.Page == page)
-                {
-                <li class="active"><a href="#">@page</a></li>
-                }
-                else
-                {
-                <li><a href="@Html.GetUrlQithNewQueryParameter("page", @page.ToString())">@page</a></li>
-                }
-            }
-            <li><a href="@Html.GetUrlQithNewQueryParameter("page", model.PagesCount.ToString())">»</a></li>
-        </ul>
+        var nextPageSize = model.PageSizes.FirstOrDefault(p => p > model.PageSize);
+        if (nextPageSize == 0)
+        {
+            nextPageSize = model.PageSizes[0];
+        }
+
+    <div class="row-fluid">
+        <div class="span7">
+            <div class="pagination pagination-small pagination-right">
+                <ul>
+                    <li><a href="@Html.GetUrlQithNewQueryParameter("page", "1")">«</a></li>
+                    @foreach (var page in pages)
+                    {
+                        if (model.Page == page)
+                        {
+                        <li class="active"><a href="#">@page</a></li>
+                        }
+                        else
+                        {
+                        <li><a href="@Html.GetUrlQithNewQueryParameter("page", @page.ToString())">@page</a></li>
+                        }
+                    }
+                    <li><a href="@Html.GetUrlQithNewQueryParameter("page", model.PagesCount.ToString())">
+                        »</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="span5">
+            <div class="row-fluid" style="margin-top: 5px">
+                <div class="span9">
+                    <span class="pull-right">Страница:
+                    </span>
+                </div>
+                <div class="span3">
+                    <div class="btn-group pull-right">
+                        <a class="btn dropdown-toggle btn-small" data-toggle="dropdown" href="@Html.GetUrlQithNewQueryParameter("pageSize", nextPageSize.ToString())">
+                            @(model.PageSize)&nbsp;&nbsp;&nbsp; <span class="caret"></span></a>
+                        <ul class="dropdown-menu" id="setPageSize">
+                            @foreach (var pageSize in model.PageSizes)
+                            {
+                                <li><a href="@Html.GetUrlQithNewQueryParameter("pageSize", pageSize.ToString())">@pageSize</a></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 }
