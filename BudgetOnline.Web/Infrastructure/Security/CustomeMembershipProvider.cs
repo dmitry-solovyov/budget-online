@@ -25,8 +25,8 @@ namespace BudgetOnline.Web.Infrastructure.Security
 
 		public override bool ValidateUser(string username, string password)
 		{
-			var result = AuthenticationHelper.CheckLoginInDatabase(username, password);
-			if (result == CheckLoginInDatabaseStatus.Ok)
+			var result = AuthenticationHelper.ValidateLogin(username, password);
+			if (result.Status == AccountCheckStatus.Ok)
 			{
 				Logger.InfoFormat("ValidateUser check has passed. User={0}", username);
 				return true;

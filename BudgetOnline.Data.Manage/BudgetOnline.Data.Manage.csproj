@@ -124,9 +124,11 @@
     <Compile Include="Repositories\SettingRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="TransactionSearchOptions.cs" />
+    <Compile Include="Types\Complex\AccountCheckResult.cs" />
     <Compile Include="Types\Complex\TransactionJoined.cs" />
     <Compile Include="Types\Complex\LinkedTransactions.cs" />
     <Compile Include="Types\Complex\UserConnectInfo.cs" />
+    <Compile Include="Types\Complex\UserPasswordInfo.cs" />
     <Compile Include="Types\Simple\Category.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -159,7 +161,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Types\Simple\UserConnectStatuses.cs" />
-    <Compile Include="Types\Simple\UserPassword.cs">
+    <Compile Include="Types\Complex\UserPassword.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

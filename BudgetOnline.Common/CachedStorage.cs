@@ -68,7 +68,7 @@ namespace BudgetOnline.Common
         public void PutToCache<T>(T obj, string key)
             where T : class
         {
-            PutToCache(obj, key, TimeSpan.MinValue);
+            PutToCache(obj, key, TimeSpan.Zero);
         }
 
         public void PutToCache<T>(T obj, string key, TimeSpan expireAfter)
@@ -110,7 +110,7 @@ namespace BudgetOnline.Common
         public T GetCahedObject<T>(string key)
             where T : class
         {
-            return GetCahedObject<T>(key, TimeSpan.MinValue, null);
+            return GetCahedObject<T>(key, TimeSpan.Zero, null);
         }
 
         public T GetCahedObject<T>(string key, TimeSpan expireAfter, Func<T> objectInitiator)

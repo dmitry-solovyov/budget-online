@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using BudgetOnline.Data.Manage.Contracts;
+using BudgetOnline.Data.Manage.Types.Complex;
 using BudgetOnline.Data.Manage.Types.Simple;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;

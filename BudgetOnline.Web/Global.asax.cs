@@ -68,7 +68,7 @@ namespace BudgetOnline.Web
             DependencyResolver.SetResolver(new AutofacDependencyResolver(AutofacInitializer.GetBuilder()));
 
             BundleTable.Bundles.EnableBootstrapBundle();
-
+            
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
         }

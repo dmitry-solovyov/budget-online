@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BudgetOnline.Data.Manage.Types.Simple
+namespace BudgetOnline.Data.Manage.Types.Complex
 {
 	public class UserPassword
 	{

@@ -6,19 +6,19 @@ using BudgetOnline.Data.Manage.Contracts;
 
 namespace BudgetOnline.Data.Manage.Repositories
 {
-	public class UserPasswordRepository : InternalRepository<UserPassword, Types.Simple.UserPassword>, IUserPasswordRepository
+	public class UserPasswordRepository : InternalRepository<UserPassword, Types.Complex.UserPassword>, IUserPasswordRepository
 	{
 		public override Table<UserPassword> Source
 		{
 			get { return DatabaseContext.Get().UserPasswords; }
 		}
 
-		public Types.Simple.UserPassword GetPassword(int id)
+		public Types.Complex.UserPassword Get(int id)
 		{
 			return GetSingle(o => o.Id == id);
 		}
 
-		public IEnumerable<Types.Simple.UserPassword> GetPasswords(int userId)
+		public IEnumerable<Types.Complex.UserPassword> GetPasswords(int userId)
 		{
 			return GetListInternal().Where(o => o.UserId == userId && o.IsDisabled == false)
 				.OrderBy(o => o.CreatedWhen)

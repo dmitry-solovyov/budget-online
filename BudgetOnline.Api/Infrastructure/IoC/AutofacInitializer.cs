@@ -1,48 +1,75 @@
 ﻿using System.Reflection;
+using System.Web.Http;
 using Autofac;
-using Autofac.Integration.Mvc;
+using Autofac.Integration.WebApi;
+using BudgetOnline.Api.Controllers;
+using BudgetOnline.Api.Infrastructure.Filters;
 using BudgetOnline.BusinessLayer.Helpers;
 using BudgetOnline.Common;
 using BudgetOnline.Common.Logger;
+using BudgetOnline.Data.Manage.Contracts;
 using BudgetOnline.Data.Manage.Repositories;
 
 namespace BudgetOnline.Api.Infrastructure.IoC
 {
-	public class AutofacInitializer
-	{
-		public static IContainer GetBuilder()
-		{
-			var builder = new ContainerBuilder();
-			builder.RegisterControllers(Assembly.GetExecutingAssembly()).PropertiesAutowired();
+    public class AutofacInitializer
+    {
+        public static IContainer GetBuilder()
+        {
+            var builder = new ContainerBuilder();
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly()).PropertiesAutowired().InstancePerApiRequest();
 
-			RegisterCommonBindings(builder);
-			RegisterBusinessLayerBindings(builder);
-			RegisterDataLayerBindings(builder);
+            RegisterInfrustructure(builder);
+            RegisterCommonBindings(builder);
+            RegisterBusinessLayerBindings(builder);
+            RegisterDataLayerBindings(builder);
 
-			return builder.Build();
-		}
+            builder.RegisterWebApiFilterProvider(GlobalConfiguration.Configuration);
 
-		private static void RegisterCommonBindings(ContainerBuilder builder)
-		{
-			builder.RegisterType<LogWriter>().AsImplementedInterfaces().InstancePerDependency();
+            return builder.Build();
+        }
 
-			builder.RegisterAssemblyTypes(typeof(DateTimeProvider).Assembly)
-				.Where(t => !string.IsNullOrWhiteSpace(t.Namespace) && t.Namespace.StartsWith("BudgetOnline.Common"))
-				.AsImplementedInterfaces().InstancePerDependency();
-		}
+        private static void RegisterCommonBindings(ContainerBuilder builder)
+        {
+            builder.RegisterType<LogWriter>().AsImplementedInterfaces().InstancePerDependency();
 
-		private static void RegisterBusinessLayerBindings(ContainerBuilder builder)
-		{
-			builder.RegisterAssemblyTypes(typeof(SettingsHelper).Assembly)
+            builder.RegisterAssemblyTypes(typeof(DateTimeProvider).Assembly)
+                .Where(t => !string.IsNullOrWhiteSpace(t.Namespace) && t.Namespace.StartsWith("BudgetOnline.Common"))
+                .PropertiesAutowired()
+                .AsImplementedInterfaces()
+                .InstancePerApiRequest();
+        }
+
+        private static void RegisterInfrustructure(ContainerBuilder builder)
+        {
+            builder.RegisterAssemblyTypes(typeof(ForceHttpsAttribute).Assembly)
+                .Where(t => !string.IsNullOrWhiteSpace(t.Namespace) && t.Namespace.StartsWith("BudgetOnline.Api.Infrastructure.") && !t.Name.Contains("Attribute"))
+                .PropertiesAutowired()
+                .AsImplementedInterfaces()
+                .InstancePerApiRequest();
+
+            builder.Register(c => new RequestAuthorizeAttribute())
+                .AsWebApiAuthorizationFilterFor<HomeController>()
+                .PropertiesAutowired()
+                .InstancePerApiRequest();
+        }
+
+        private static void RegisterBusinessLayerBindings(ContainerBuilder builder)
+        {
+            builder.RegisterAssemblyTypes(typeof(SettingsHelper).Assembly)
                 .Where(t => !string.IsNullOrWhiteSpace(t.Namespace) && t.Namespace.StartsWith("BudgetOnline.BusinessLayer."))
-				.PropertiesAutowired().AsImplementedInterfaces().InstancePerDependency();
-		}
+                .PropertiesAutowired()
+                .AsImplementedInterfaces()
+                .InstancePerApiRequest();
+        }
 
-		private static void RegisterDataLayerBindings(ContainerBuilder builder)
-		{
-			builder.RegisterAssemblyTypes(typeof(SettingRepository).Assembly)
-				.Where(t => t.Name.EndsWith("Repository"))
-				.PropertiesAutowired().AsImplementedInterfaces().InstancePerDependency();
-		}
-	}
+        private static void RegisterDataLayerBindings(ContainerBuilder builder)
+        {
+            builder.RegisterAssemblyTypes(typeof(SettingRepository).Assembly)
+                .Where(t => t.Name.EndsWith("Repository"))
+                .PropertiesAutowired()
+                .AsImplementedInterfaces()
+                .InstancePerApiRequest();
+        }
+    }
 }

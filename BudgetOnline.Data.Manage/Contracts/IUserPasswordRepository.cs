@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using BudgetOnline.Data.Manage.Types.Simple;
+using BudgetOnline.Data.Manage.Types.Complex;
 
 namespace BudgetOnline.Data.Manage.Contracts
 {
 	public interface IUserPasswordRepository
 	{
-		UserPassword GetPassword(int id);
+		UserPassword Get(int id);
 		IEnumerable<UserPassword> GetPasswords(int userId);
 	}
 }

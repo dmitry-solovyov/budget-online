@@ -5,51 +5,60 @@ using BudgetOnline.Data.Manage.Contracts;
 
 namespace BudgetOnline.BusinessLayer.Helpers
 {
-	public class SettingsHelper : ISettingsHelper
-	{
-		public ISettingRepository SettingRepository { get; set; }
-		public ICacheWrapper CacheWrapper { get; set; }
+    public class SettingsHelper : ISettingsHelper
+    {
+        public ISettingRepository SettingRepository { get; set; }
+        public ICacheWrapper CacheWrapper { get; set; }
 
-		public int PasswordValidityPeriod(int sectionId)
-		{
-			var item = SettingRepository.FindByName(sectionId, null, "User.PasswordValidityPeriod");
-			if (item != null)
-				return item.Value.TryToInt();
+        public TimeSpan PasswordValidityPeriod(int sectionId)
+        {
+            var item = SettingRepository.FindByName(sectionId, null, "User.PasswordValidityPeriod");
+            if (item != null)
+                return item.Value.TryToTimeSpan(TimeSpan.Zero);
 
-			return 0;
-		}
+            return TimeSpan.Zero;
+        }
 
-		public T GetWebSetting<T>(int sectionId, int? userId, string settingName, T defaulValue)
-		{
-			return GetSetting(sectionId, userId, settingName, defaulValue);
-		}
+        public TimeSpan TokenValidityPeriod(int sectionId)
+        {
+            var item = SettingRepository.FindByName(sectionId, null, "User.TokenValidityPeriod");
+            if (item != null)
+                return item.Value.TryToTimeSpan(TimeSpan.Zero);
 
-		public void SetWebSetting<T>(int sectionId, int? userId, string settingName, T value)
-		{
-			var realKey = string.Format("Web_{0}", settingName);
-			SettingRepository.Set(sectionId, userId, realKey, value);
-			CacheWrapper.Put(realKey, value, CacheWrapper.GetDefaultSettingCacheTimeout);
-		}
+            return TimeSpan.Zero;
+        }
 
-		private T GetSetting<T>(int sectionId, int? userId, string settingName, T defaultValue)
-		{
-			var realKey = string.Format("Web_{0}", settingName);
+        public T GetWebSetting<T>(int sectionId, int? userId, string settingName, T defaulValue)
+        {
+            return GetSetting(sectionId, userId, settingName, defaulValue);
+        }
 
-			if (CacheWrapper.Exists(realKey))
-			{
-				return CacheWrapper.Get<T>(realKey);
-			}
+        public void SetWebSetting<T>(int sectionId, int? userId, string settingName, T value)
+        {
+            var realKey = string.Format("Web_{0}", settingName);
+            SettingRepository.Set(sectionId, userId, realKey, value);
+            CacheWrapper.Put(realKey, value, CacheWrapper.GetDefaultSettingCacheTimeout);
+        }
 
-			T result;
-			var setting = SettingRepository.FindByName(sectionId, userId, realKey);
-			if (setting == null)
-				result = defaultValue;
-			else
-				result = (T)Convert.ChangeType(setting.Value, typeof(T));
+        private T GetSetting<T>(int sectionId, int? userId, string settingName, T defaultValue)
+        {
+            var realKey = string.Format("Web_{0}", settingName);
 
-			CacheWrapper.Put(realKey, result, CacheWrapper.GetDefaultSettingCacheTimeout);
+            if (CacheWrapper.Exists(realKey))
+            {
+                return CacheWrapper.Get<T>(realKey);
+            }
 
-			return result;
-		}
-	}
+            T result;
+            var setting = SettingRepository.FindByName(sectionId, userId, realKey);
+            if (setting == null)
+                result = defaultValue;
+            else
+                result = (T)Convert.ChangeType(setting.Value, typeof(T));
+
+            CacheWrapper.Put(realKey, result, CacheWrapper.GetDefaultSettingCacheTimeout);
+
+            return result;
+        }
+    }
 }
