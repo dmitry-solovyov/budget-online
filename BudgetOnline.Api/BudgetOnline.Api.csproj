@@ -130,6 +130,7 @@
     <Compile Include="Controllers\BaseApiAuthController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SessionController.cs" />
+    <Compile Include="Controllers\TransactionsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -138,10 +139,6 @@
     <Compile Include="Infrastructure\Filters\RequestAuthorizeAttribute.cs" />
     <Compile Include="Infrastructure\Filters\UnhandledExceptionFilter.cs" />
     <Compile Include="Infrastructure\IoC\AutofacInitializer.cs" />
-    <Compile Include="Infrastructure\Security\AuthTokenHelper.cs" />
-    <Compile Include="Infrastructure\Security\ApiSessionProvider.cs" />
-    <Compile Include="Infrastructure\Security\IAuthTokenHelper.cs" />
-    <Compile Include="Infrastructure\Security\IApiSessionProvider.cs" />
     <Compile Include="Models\SessionLoginRequest.cs" />
     <Compile Include="Models\SessionLoginResponse.cs" />
     <Compile Include="Models\SessionValidation.cs" />
@@ -179,6 +176,10 @@
     <ProjectReference Include="..\BudgetOnline.Data.Manage\BudgetOnline.Data.Manage.csproj">
       <Project>{F192A0A1-3F2F-41FB-9E91-257D35D8C027}</Project>
       <Name>BudgetOnline.Data.Manage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BudgetOnline.Security\BudgetOnline.Security.csproj">
+      <Project>{B3C32641-9628-44D7-AE78-446638646786}</Project>
+      <Name>BudgetOnline.Security</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

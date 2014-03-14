@@ -1,4 +1,4 @@
-﻿namespace BudgetOnline.Api.Infrastructure.Security
+﻿namespace BudgetOnline.Security.Api
 {
     public interface IAuthTokenHelper
     {

@@ -32,7 +32,7 @@ namespace BudgetOnline.BusinessLayer.Helpers
             return userPasswordInfo;
         }
 
-        private AccountCheckResult CheckAccount(string userName)
+        public AccountCheckResult CheckAccount(string userName)
         {
             var dbUser = UserRepository.FindByEmail(userName);
 
@@ -45,7 +45,7 @@ namespace BudgetOnline.BusinessLayer.Helpers
             };
         }
 
-        private AccountCheckResult CheckAccount(int userId)
+        public AccountCheckResult CheckAccount(int userId)
         {
             var result = new AccountCheckResult();
 

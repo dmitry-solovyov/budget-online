@@ -1,8 +1,8 @@
 ﻿using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using BudgetOnline.Api.Infrastructure.Security;
 using BudgetOnline.Api.Models;
+using BudgetOnline.Security.Api;
 
 namespace BudgetOnline.Api.Controllers
 {

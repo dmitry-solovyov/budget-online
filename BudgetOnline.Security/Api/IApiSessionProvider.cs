@@ -1,6 +1,6 @@
 ﻿using BudgetOnline.Data.Manage.Types.Simple;
 
-namespace BudgetOnline.Api.Infrastructure.Security
+namespace BudgetOnline.Security.Api
 {
     public interface IApiSessionProvider
     {

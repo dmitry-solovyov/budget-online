@@ -16,7 +16,7 @@
         {
             <strong>@(model.MessageSuffix)</strong> 
         }
-        @(model.Message)
+        @(new HtmlString(model.Message))
     </div>
     
     <script type="text/javascript" language="javascript"><!--

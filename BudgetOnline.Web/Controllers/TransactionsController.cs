@@ -44,7 +44,7 @@ namespace BudgetOnline.Web.Controllers
         public ITransactionCacheHelper TransactionCacheHelper { get; set; }
 
         protected override string SearchCacheKey { get { return "transactions_search_cache_key"; } }
-        private readonly int[] _pageSizes = new[] { 10, 25, 50, 100 };
+        private readonly int[] _pageSizes = new[] { 10, 25, 50, 100, 200 };
 
 
 
@@ -64,7 +64,7 @@ namespace BudgetOnline.Web.Controllers
                 var pageSize = int.Parse(Request.Params["pageSize"]);
                 if (pageSize > 0)
                 {
-                    search.PageSize = pageSize;
+                    search.PageSize = MathHelpers.Nearest(pageSize, _pageSizes);
                     SettingsHelper.SetWebSetting(CurrentUser.SectionId, CurrentUser.Id, "PageSize", pageSize);
                 }
             }
@@ -132,7 +132,7 @@ namespace BudgetOnline.Web.Controllers
                         "create",
                         new
                         {
-                            infoMessage = "record-was-saved",
+                            infoMessage = "created",
                             savedid = links.First.Id,
                             date = model.Date.ToShortDateString(),
                             category = model.Category.Id,
@@ -291,16 +291,20 @@ namespace BudgetOnline.Web.Controllers
                                     Date1 = search.FromDate,
                                     Date2 = search.ToDate,
                                     SearchText = search.Text,
+                                    Accounts = search.AccountId.HasValue && search.AccountId.Value > 0 ? new[] { search.AccountId.Value } : new int[0],
+                                    Categories = search.CategoryId.HasValue && search.CategoryId.Value > 0 ? new[] { search.CategoryId.Value } : new int[0],
                                 };
 
             var totalsSearchOptions = AutoMapper.Mapper.DynamicMap<TransactionSearchOptions, TransactionStatisticsSearchOptions>(searchOptions);
 
-            var transactions = TransactionRepository.GetList(CurrentUser.SectionId, searchOptions);
+            var transactions = TransactionRepository.GetList(CurrentUser.SectionId, searchOptions).ToList();
             var transactionsTotal = TransactionStatisticsRepository.GetTotalsByCurrencies(CurrentUser.SectionId, totalsSearchOptions).ToList();
 
             var defaultCurrency = Dictionaries.Currencies().FirstOrDefault(o => o.IsDefault);
 
             var totalsByDates = TransactionCalculator.TotalsByDates(transactions.Where(o => o.TransactionTypeId == (int)TransactionTypes.Outcome), defaultCurrency.Id).ToList();
+
+            PopulateSearch(search);
 
             var model = new TransactionListViewModel
                             {
@@ -335,6 +339,31 @@ namespace BudgetOnline.Web.Controllers
             search.PagesCount = Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(totalRowsCount / search.PageSize.Value)));
 
             return model;
+        }
+
+        private void PopulateSearch(TransactionListSearchViewModel search)
+        {
+            if (search.Accounts == null)
+                search.Accounts = new SelectItemsModel(Dictionaries.Accounts()
+                                                           .Select(
+                                                               o =>
+                                                               new SelectItemModel
+                                                                   {
+                                                                       Text = o.Name,
+                                                                       Value = o.Id.ToString(CultureInfo.InvariantCulture),
+                                                                       Selected = false
+                                                                   }), true);
+
+            if (search.Categories == null)
+                search.Categories = new SelectItemsModel(Dictionaries.Categories()
+                                                             .Select(
+                                                                 o =>
+                                                                 new SelectItemModel
+                                                                     {
+                                                                         Text = o.Name,
+                                                                         Value = o.Id.ToString(CultureInfo.InvariantCulture),
+                                                                         Selected = false
+                                                                     }), true);
         }
 
         #endregion
@@ -381,13 +410,36 @@ namespace BudgetOnline.Web.Controllers
             if (!result.PageSize.HasValue || result.PageSize.Value == 0)
                 result.PageSize = SettingsHelper.GetWebSetting(CurrentUser.SectionId, CurrentUser.Id, "PageSize", 30);
 
+            if (!string.IsNullOrWhiteSpace(form["account"]))
+            {
+                int n;
+                if (int.TryParse(form["account"], NumberStyles.Integer, CultureInfo.CurrentUICulture, out n))
+                {
+                    if (result.Accounts.Items.Any(o => o.Value == n.ToString(CultureInfo.InvariantCulture)))
+                        result.Accounts.SetSelected(n.ToString(CultureInfo.InvariantCulture));
+
+                    result.AccountId = n;
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(form["category"]))
+            {
+                int n;
+                if (int.TryParse(form["category"], NumberStyles.Integer, CultureInfo.CurrentUICulture, out n))
+                {
+                    if (result.Categories.Items.Any(o => o.Value == n.ToString(CultureInfo.InvariantCulture)))
+                        result.Categories.SetSelected(n.ToString(CultureInfo.InvariantCulture));
+
+                    result.CategoryId = n;
+                }
+            }
             return result;
         }
 
         private TransactionListSearchViewModel GetDefaultSearchModel()
         {
             var pageSize = SettingsHelper.GetWebSetting(CurrentUser.SectionId, CurrentUser.Id, "PageSize", 0);
-            return new TransactionListSearchViewModel
+            var search = new TransactionListSearchViewModel
                     {
                         FromDate = DateTimeProvider.Now().Date.AddMonths(-2),
                         Pages = new SelectItemsModel
@@ -402,6 +454,10 @@ namespace BudgetOnline.Web.Controllers
                         PageSize = pageSize,
                         CurrentPage = 1
                     };
+
+            PopulateSearch(search);
+
+            return search;
         }
 
         private TransactionEditViewModel ConvertLinkedTransactionToModel(LinkedTransactions linked)

@@ -165,10 +165,11 @@
     </Compile>
     <Compile Include="Infrastructure\AppSettings.cs" />
     <Compile Include="Infrastructure\Attributes\DateRangeAttribute.cs" />
-    <Compile Include="Infrastructure\Attributes\GlobalExecuteActionFilterAttribute.cs" />
+    <Compile Include="Infrastructure\Filters\AuthFilter.cs" />
+    <Compile Include="Infrastructure\Filters\GlobalExecuteActionFilterAttribute.cs" />
     <Compile Include="Infrastructure\Attributes\HandleViewErrorsAttribute.cs" />
     <Compile Include="Infrastructure\Attributes\IconAttribute.cs" />
-    <Compile Include="Infrastructure\Attributes\LocalizationActionFilterAttribute.cs" />
+    <Compile Include="Infrastructure\Filters\LocalizationActionFilterAttribute.cs" />
     <Compile Include="Infrastructure\Attributes\RowIdAttribute.cs" />
     <Compile Include="Infrastructure\Binders\CustomViewModelBinder.cs" />
     <Compile Include="Infrastructure\Core\CacheWrapper.cs" />
@@ -184,6 +185,7 @@
     <Compile Include="Infrastructure\Extensions\UrlHelperExtensions.cs" />
     <Compile Include="Infrastructure\Helpers\CacheObjectWrapper.cs" />
     <Compile Include="Infrastructure\Helpers\Compressor.cs" />
+    <Compile Include="Infrastructure\Helpers\MathHelpers.cs" />
     <Compile Include="Infrastructure\Helpers\TransactionCacheHelper.cs" />
     <Compile Include="Infrastructure\Helpers\ChartSeriesHelper.cs" />
     <Compile Include="Infrastructure\Helpers\DictionaryHelper.cs" />
@@ -551,6 +553,10 @@
     <ProjectReference Include="..\BudgetOnline.Data.Manage\BudgetOnline.Data.Manage.csproj">
       <Project>{F192A0A1-3F2F-41FB-9E91-257D35D8C027}</Project>
       <Name>BudgetOnline.Data.Manage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BudgetOnline.Security\BudgetOnline.Security.csproj">
+      <Project>{B3C32641-9628-44D7-AE78-446638646786}</Project>
+      <Name>BudgetOnline.Security</Name>
     </ProjectReference>
     <ProjectReference Include="..\BudgetOnline.UI\BudgetOnline.UI.csproj">
       <Project>{555CFDA0-1BE1-4577-A36F-AC8C796E7EB1}</Project>

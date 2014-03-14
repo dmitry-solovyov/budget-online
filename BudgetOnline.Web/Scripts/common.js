@@ -5,7 +5,7 @@ $(document).ready(function () {
     try { turnOn_datetime(); } catch (z) { }
     try { turnOn_numeric(); } catch (z) { }
     //turnOn_calculator();
-    try { $('.selectpicker').selectpicker(); } catch (z) { }
+    try { $('.selectpicker').selectpicker(); } catch (z) { console.log(z); }
     try { turnOn_dynamicBox(); } catch (z) { }
 });
 
@@ -29,12 +29,66 @@ function turnOn_numeric() {
 		});
 }
 
+var lastDynamicdatepicker;
+
+function hideDynamicdatepicker() {
+    if (lastDynamicdatepicker) {
+        lastDynamicdatepicker.datepicker('hide').datepicker('destroy');
+        $(lastDynamicdatepicker).remove();
+        lastDynamicdatepicker = null;
+    }
+}
+
 function turnOn_datetime() {
     $('.date-picker').datepicker({
         dateFormat: "dd.mm.yy",
         changeMonth: true,
         changeYear: true,
         showButtonPanel: true
+
+    });
+    $('a[data-type="date-select"]').click(function (event) {
+        event.preventDefault();
+
+        if (lastDynamicdatepicker) {
+            hideDynamicdatepicker();
+        }
+
+        var self = this;
+
+        var input = $(self).parent().find('#' + $(self).attr('data-dtselect-target'));
+
+        var newEntry = $('<div id="datepicker" class="unhidden" style="position: absolute; border: 2px solid darkgray; z-index: 999;"></div>');
+        lastDynamicdatepicker = $(newEntry).appendTo($(self).parent());
+        lastDynamicdatepicker.datepicker({
+            inline: true,
+            dateFormat: 'dd.mm.yy',
+            onSelect: function (date) {
+                //alert(date);
+                input.val(date);
+                self.innerHTML = date;
+                hideDynamicdatepicker();
+            }
+        });
+
+        if (input.val() !== '') {
+            lastDynamicdatepicker.datepicker("setDate", input.val()).datepicker('show');
+        } else
+            lastDynamicdatepicker.datepicker('show');
+    });
+
+    $('a[data-type="date-deselect"]').click(function (event) {
+        event.preventDefault();
+
+        var self = this;
+
+        var input = $(self).parent().find('#' + $(self).attr('data-dtselect-target'));
+        if (input)
+            input.val('');
+
+        var label = $(self).parent().find('#' + $(self).attr('data-dtselect-displaytarget'));
+        if (label)
+            label.html($(self).attr('data-dtselect-default'));
     });
 }
 

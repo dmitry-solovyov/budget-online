@@ -70,7 +70,7 @@ namespace BudgetOnline.Web.Controllers
                         "create",
                         new
                         {
-                            infoMessage = "record-was-saved",
+                            infoMessage = "created",
                             savedid = transaction.Id,
                             account = model.Sum.Account.Id
                         });

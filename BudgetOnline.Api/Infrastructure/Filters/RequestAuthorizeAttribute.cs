@@ -4,7 +4,7 @@ using System.Security.Principal;
 using System.Threading;
 using System.Web.Http.Filters;
 using Autofac.Integration.WebApi;
-using BudgetOnline.Api.Infrastructure.Security;
+using BudgetOnline.Security.Api;
 
 namespace BudgetOnline.Api.Infrastructure.Filters
 {

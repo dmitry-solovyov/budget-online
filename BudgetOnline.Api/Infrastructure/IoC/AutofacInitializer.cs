@@ -9,6 +9,7 @@ using BudgetOnline.Common;
 using BudgetOnline.Common.Logger;
 using BudgetOnline.Data.Manage.Contracts;
 using BudgetOnline.Data.Manage.Repositories;
+using BudgetOnline.Security.Api;
 
 namespace BudgetOnline.Api.Infrastructure.IoC
 {
@@ -35,6 +36,12 @@ namespace BudgetOnline.Api.Infrastructure.IoC
 
             builder.RegisterAssemblyTypes(typeof(DateTimeProvider).Assembly)
                 .Where(t => !string.IsNullOrWhiteSpace(t.Namespace) && t.Namespace.StartsWith("BudgetOnline.Common"))
+                .PropertiesAutowired()
+                .AsImplementedInterfaces()
+                .InstancePerApiRequest();
+
+            builder.RegisterAssemblyTypes(typeof(ApiSessionProvider).Assembly)
+                .Where(t => !string.IsNullOrWhiteSpace(t.Namespace) && t.Namespace.StartsWith("BudgetOnline."))
                 .PropertiesAutowired()
                 .AsImplementedInterfaces()
                 .InstancePerApiRequest();

@@ -2,7 +2,7 @@
 using System.Text;
 using System.Web;
 
-namespace BudgetOnline.Api.Infrastructure.Security
+namespace BudgetOnline.Security.Api
 {
     public class AuthTokenHelper : IAuthTokenHelper
     {

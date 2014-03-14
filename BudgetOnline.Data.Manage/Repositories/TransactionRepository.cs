@@ -129,23 +129,24 @@ namespace BudgetOnline.Data.Manage.Repositories
                 query = query.Where(o => options.TransactionTypes.Contains(o.transaction.TransactionTypeId));
 
             if (options.Categories != null && options.Categories.Any())
-                query = query.Where(o => o.transaction.CategoryId.HasValue && options.Categories.Contains(o.transaction.CategoryId.Value));
+                query = query.Where(o => options.Categories.Contains(o.tCategory.Id));
 
             if (options.Currencues != null && options.Currencues.Any())
-                query = query.Where(o => options.Currencues.Contains(o.transaction.CurrencyId));
+                query = query.Where(o => options.Currencues.Contains(o.tCurrencyIn.Id) || options.Currencues.Contains(o.tCurrencyOut.Id));
 
-            if (options.Accounts != null && options.Accounts.Any())
-                query = query.Where(o => options.Accounts.Contains(o.transaction.AccountId));
-
+            if (options.Accounts != null && options.Accounts.Any(o => o > 0))
+                query = query.Where(o => options.Accounts.Contains(o.tAccountOut.Id) || options.Accounts.Contains(o.tAccountIn.Id));
 
             if (options.ExcludeTags != null && options.ExcludeTags.Any())
-                query = options.ExcludeTags.Aggregate(query, (current, tag) => current.Where(o => !o.transaction.Tags.Contains(tag)));
+                query = options.ExcludeTags.Aggregate(query, (current, tag) => current.Where(o => !o.transaction.Tags.Contains(tag) || o.tLinkedTransaction.Tags.Contains(tag)));
 
             if (!string.IsNullOrWhiteSpace(options.SearchText))
             {
                 query = query.Where(o => o.transaction.Tags.Contains(options.SearchText)
                     || o.transaction.Description.Contains(options.SearchText)
-                    || o.tCategory.Name.Contains(options.SearchText));
+                    || o.tCategory.Name.Contains(options.SearchText)
+                    || o.tLinkedTransaction.Tags.Contains(options.SearchText)
+                    || o.tLinkedTransaction.Description.Contains(options.SearchText));
             }
 
             if (!string.IsNullOrWhiteSpace(options.Tag))
@@ -315,7 +316,7 @@ namespace BudgetOnline.Data.Manage.Repositories
                     record.Formula = row.Formula;
                     record.AccountId = row.AccountId;
                     record.CurrencyId = row.CurrencyId;
-                    
+
                     record.CategoryId = row.CategoryId;
 
                     record.Tags = row.Tags;

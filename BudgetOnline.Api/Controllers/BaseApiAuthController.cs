@@ -1,4 +1,4 @@
-﻿using BudgetOnline.Api.Infrastructure.Security;
+﻿using BudgetOnline.Security.Api;
 
 namespace BudgetOnline.Api.Controllers
 {

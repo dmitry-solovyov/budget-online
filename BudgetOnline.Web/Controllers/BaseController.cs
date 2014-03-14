@@ -5,6 +5,7 @@ using BudgetOnline.Common.Contracts;
 using BudgetOnline.Contracts;
 using BudgetOnline.Web.Infrastructure;
 using BudgetOnline.Web.Infrastructure.Attributes;
+using BudgetOnline.Web.Infrastructure.Filters;
 using BudgetOnline.Web.Infrastructure.Security;
 using BudgetOnline.Web.Models;
 using StackExchange.Profiling;
@@ -57,6 +58,7 @@ namespace BudgetOnline.Web.Controllers
 	}
 
 	[Authorize]
+    [AuthFilter]
 	public class SecuredController : BaseController
 	{
 		public virtual bool IsSectionValid<T>(T model, Expression<Func<T, int>> sectionSelector)
@@ -69,14 +71,16 @@ namespace BudgetOnline.Web.Controllers
 	}
 
 	[Authorize]
-	public class ListController : SecuredController
+    [AuthFilter]
+    public class ListController : SecuredController
 	{
 
 	}
 
 
 	[Authorize]
-	public class ListWithSearchController<TSearch> : ListController
+    [AuthFilter]
+    public class ListWithSearchController<TSearch> : ListController
 		where TSearch : class
 	{
 		protected virtual string SearchCacheKey

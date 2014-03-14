@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using BudgetOnline.Common.Contracts;
 
-namespace BudgetOnline.Web.Infrastructure.Attributes
+namespace BudgetOnline.Web.Infrastructure.Filters
 {
 	public class GlobalExecuteActionFilterAttribute : ActionFilterAttribute
 	{
@@ -31,7 +31,7 @@ namespace BudgetOnline.Web.Infrastructure.Attributes
 		{
 			base.OnResultExecuting(context);
 
-			if (Constants.TraceRequests)
+            if (Constants.TraceRequests && LogWriter != null)
 				LogWriter.TraceFormat(
 					"Controller: {1}, Url: {0}",
 					context.RequestContext.HttpContext.Request.Url.PathAndQuery,

@@ -2,7 +2,7 @@
 using BudgetOnline.Data.Manage.Contracts;
 using BudgetOnline.Data.Manage.Types.Simple;
 
-namespace BudgetOnline.Api.Infrastructure.Security
+namespace BudgetOnline.Security.Api
 {
     public class ApiSessionProvider : IApiSessionProvider
     {

@@ -6,7 +6,8 @@ namespace BudgetOnline.Data.Manage.Contracts
     public interface IAuthenticationDataHelper
     {
         AccountCheckResult ValidateLogin(string userName, string password);
-        //AccountCheckResult ValidateToken(string token);
+        AccountCheckResult CheckAccount(string userName);
+        AccountCheckResult CheckAccount(int userId);
         UserConnect TrackUsersLogin(string userName);
         UserConnect TrackUsersLogin(int userId);
         UserConnect TrackUsersToken(int userId, string token, int passwordId);

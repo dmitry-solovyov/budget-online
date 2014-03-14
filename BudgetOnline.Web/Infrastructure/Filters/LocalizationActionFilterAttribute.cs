@@ -1,6 +1,6 @@
-﻿using System.Globalization;
-using System.Web.Mvc;
-namespace BudgetOnline.Web.Infrastructure.Attributes
+﻿using System.Web.Mvc;
+
+namespace BudgetOnline.Web.Infrastructure.Filters
 {
 	public class LocalizationActionFilterAttribute : IActionFilter
 	{

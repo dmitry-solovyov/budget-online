@@ -7,6 +7,7 @@ using System.Web.Routing;
 using Autofac.Integration.Mvc;
 using BudgetOnline.Common.Contracts;
 using BudgetOnline.Web.Infrastructure.Attributes;
+using BudgetOnline.Web.Infrastructure.Filters;
 using BudgetOnline.Web.Infrastructure.IoC;
 using BudgetOnline.Web.Infrastructure.Minifier;
 
@@ -103,6 +104,6 @@ namespace BudgetOnline.Web
 
 
         private ILogWriter _logWriter;
-        private ILogWriter LogWriter { get { return _logWriter = _logWriter ?? DependencyResolver.Current.GetService<ILogWriter>(); } }
+        //private ILogWriter LogWriter { get { return _logWriter = _logWriter ?? DependencyResolver.Current.GetService<ILogWriter>(); } }
     }
 }
