@@ -23,7 +23,7 @@ namespace BudgetOnline.UI.Attributes
 		public void OnMetadataCreated(ModelMetadata metadata)
 		{
 			if (_span > 0)
-				metadata.AdditionalValues["span"] = string.Format("span{0}", _span);
+				metadata.AdditionalValues["span"] = string.Format("col-md-{0}", _span);
 		}
 
 		#endregion

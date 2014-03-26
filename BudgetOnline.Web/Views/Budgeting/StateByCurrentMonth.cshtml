@@ -2,59 +2,59 @@
 @{
     Layout = null;
 }
-<div class="row-fluid compact">
-    <div class="span12">
+<div class="row compact">
+    <div class="col-md-12">
         <span>Процент выполнения бюджета за период</span></div>
 </div>
-<div class="row-fluid">
-    <div class="span2">
+<div class="row">
+    <div class="col-md-2">
         <span class="@(Model.PlanOutcomeCompletion > 100 ? "sum-out" : "sum-in")">@Model.PlanOutcomeCompletion
             %</span>
     </div>
-    <div class="span10">
-        <div class="progress progress-striped">
+    <div class="col-md-10">
+        <div class="progress">
             @if (Model.PlanOutcomeCompletion <= 75)
             {
-                <div class="bar bar-success" style="width: @(Math.Round(Model.PlanOutcomeCompletion))%;">
+                <div class="progress-bar progress-bar-success" style="width: @(Math.Round(Model.PlanOutcomeCompletion))%;">
                 </div>
             }
             else if (Model.PlanOutcomeCompletion <= 100)
             {
-                <div class="bar bar-warning" style="width: @(Math.Round(Model.PlanOutcomeCompletion))%;">
+                <div class="progress-bar progress-bar-warning" style="width: @(Math.Round(Model.PlanOutcomeCompletion))%;">
                 </div>
             }
             else
             {
-                <div class="bar bar-danger" style="width: 100%;">
+                <div class="progress-bar progress-bar-danger" style="width: 100%;">
                 </div>
             }
         </div>
     </div>
 </div>
-<div class="row-fluid compact">
-    <div class="span6 text-right">
+<div class="row compact">
+    <div class="col-md-6 text-right">
         <span class="">Средний расход в день (</span><span class="currency-smb">@Model.CurrencyName</span><span>)</span></div>
-    <div class="span3 text-right">
+    <div class="col-md-3 text-right">
         <span class="sum-trfs">по плану: @Model.PlanOutcomeDayAvg</span></div>
-    <div class="span3 text-right">
+    <div class="col-md-3 text-right">
         <span class="@(Math.Abs(Model.PlanOutcomeDayAvg) > Math.Abs(@Model.RealOutcomeDayAvg) ? "sum-in" : "sum-out")">
             по факту:
             @Model.RealOutcomeDayAvg</span></div>
 </div>
-<div class="row-fluid compact">
-    <div class="span6 text-right">
+<div class="row compact">
+    <div class="col-md-6 text-right">
         <span class="">Средний доход в день (</span><span class="currency-smb">@Model.CurrencyName</span><span>)</span></div>
-    <div class="span3 text-right">
+    <div class="col-md-3 text-right">
         <span class="sum-trfs">по плану: @Model.PlanIncomeDayAvg</span></div>
-    <div class="span3 text-right">
+    <div class="col-md-3 text-right">
         <span class="@(Model.PlanIncomeDayAvg > @Model.RealIncomeDayAvg ? "sum-out" : "sum-in")">
             по факту:
             @Model.RealIncomeDayAvg</span></div>
 </div>
-<div class="row-fluid compact">
-    <div class="span6">
+<div class="row compact">
+    <div class="col-md-6">
     </div>
-    <div class="span6">
+    <div class="col-md-6">
         <span class="pull-right"></span>
     </div>
 </div>

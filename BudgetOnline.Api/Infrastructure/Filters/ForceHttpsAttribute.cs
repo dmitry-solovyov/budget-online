@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Web.Http;
 using System.Web.Http.Filters;
 
 namespace BudgetOnline.Api.Infrastructure.Filters
@@ -19,7 +20,7 @@ namespace BudgetOnline.Api.Infrastructure.Filters
 
                 if (request.Method.Method == "GET")
                 {
-                    actionContext.Response = request.CreateResponse(HttpStatusCode.Found);
+                    actionContext.Response = request.CreateResponse(HttpStatusCode.Found, string.Empty);
                     actionContext.Response.Content = new StringContent(html, Encoding.UTF8, "text/html");
 
                     var httpsNewUri = new UriBuilder(request.RequestUri)
@@ -32,7 +33,7 @@ namespace BudgetOnline.Api.Infrastructure.Filters
                 }
                 else
                 {
-                    actionContext.Response = request.CreateResponse(HttpStatusCode.NotFound);
+                    actionContext.Response = request.CreateResponse(HttpStatusCode.NotFound, string.Empty);
                     actionContext.Response.Content = new StringContent(html, Encoding.UTF8, "text/html");
                 }
             }

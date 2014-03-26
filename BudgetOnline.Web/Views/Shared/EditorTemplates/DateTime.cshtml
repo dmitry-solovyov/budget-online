@@ -6,7 +6,7 @@
         placeholder = ViewData.ModelMetadata.AdditionalValues["placeholder"].ToString();
     }
 
-    string cssClass = ViewData.ModelMetadata.GetSpan("span8") + " date-picker input-block-level";
+    string cssClass = ViewData.ModelMetadata.GetSpan("col-md-8") + " date-picker form-control";
 
     var propertyName = ViewData.ModelMetadata != null ? ViewData.ModelMetadata.PropertyName : "";
     if (!string.IsNullOrWhiteSpace(propertyName))
@@ -19,7 +19,7 @@
     }
     var value = Model.HasValue ? string.Format("{0} {1}", Model.Value.ToLocalTime().ToShortDateString(), Model.Value.ToLocalTime().ToShortTimeString()) : string.Empty;
 }
-<div class="input-append">
+<div class="input-group">
     @Html.TextBox("", value, new { @class = @cssClass, placeholder, autocomplete = "off" })
-    <span class="add-on"><i class="icon-calendar"></i></span>
+    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 </div>

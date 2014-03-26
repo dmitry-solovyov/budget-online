@@ -7,7 +7,7 @@
 }
 <div class="btn-toolbar">
     <div class="btn-group">
-        <a class="btn" href="@Url.Action("create")"><i class="icon-plus"></i>Новая запись</a>
+        <a class="btn" href="@Url.Action("create")"><i class="glyphicon-plus"></i>Новая запись</a>
     </div>
 </div>
 @(Html.BudgetOnlineWeb()
@@ -18,7 +18,7 @@
     .Columns(columns =>
                 {
                     columns.Bound(m => m.Date).Span(3).Formatter<DateTime>(o => o.ToLocalTime().ToShortDateString());
-                    columns.Icon().IconCss(m => m.IsDisabled ? "icon-lock" : (m.IsDisabled ? "icon-lock" : "")).Span(1);
+                    columns.Icon().IconCss(m => m.IsDisabled ? "glyphicon-lock" : (m.IsDisabled ? "glyphicon-lock" : "")).Span(1);
                     columns.Bound(m => m.BaseCurrencyName).Span(3);
                     columns.Bound(m => m.TargetCurrencyName).Span(3);
                     columns.Bound(m => m.Rate).Span(3);

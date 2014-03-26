@@ -12,7 +12,11 @@
 			@<text>
 			 	@Html.AntiForgeryToken()
 			 	@Html.EditorForModel()
-			 	@Html.BudgetOnlineWeb().SubmitNormalButton().Caption("Войти").Build()
 			 </text>
-       	).Build())
+       	)
+        .ActionsContent(
+            @<text>
+			 	@Html.BudgetOnlineWeb().SubmitNormalButton().Caption("Войти").Build()
+			 </text>)
+        .Build())
 </div>

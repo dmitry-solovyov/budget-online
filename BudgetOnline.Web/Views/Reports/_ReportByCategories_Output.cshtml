@@ -12,10 +12,10 @@
 
     string tag = ViewBag.Tag;
 }
-<div class="row-fluid">
-	<div class="span6">@(Html.BudgetOnlineWeb().Table<TransactionTotal>()
+<div class="row">
+	<div class="col-md-6">@(Html.BudgetOnlineWeb().Table<TransactionTotal>()
        	.Rows(Model)
-       	.RowStyleRetriever(r => "row-fluid")
+       	.RowStyleRetriever(r => "row")
        	.OutputType(TableBuilderOutputTypes.Div)
        	.Columns(cols =>
        	         	{
@@ -31,28 +31,28 @@
 							.CellCss(row => "text-right " + (row.Sum > 0 ? "sum-in" : "sum-out")).Span(6);
 					}).Build())
 	</div>
-	<div class="span6">
+	<div class="col-md-6">
 	</div>
 </div>
 <div class=" well">
-<div class="row-fluid">
-    <div class="span6">
-        <div class="row-fluid">
-            <div class="span6">
+<div class="row">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-6">
                 <strong>Сумма</strong>
             </div>
-            <div class="span6 text-right @(total > 0 ? "sum-in" : "sum-out")">@total.ToString("### ### ##0.00")
+            <div class="col-md-6 text-right @(total > 0 ? "sum-in" : "sum-out")">@total.ToString("### ### ##0.00")
             </div>
         </div>
-        <div class="row-fluid">
-            <div class="span6">
+        <div class="row">
+            <div class="col-md-6">
                 <strong>Среднее</strong>
             </div>
-            <div class="span6 text-right @(avg > 0 ? "sum-in" : "sum-out")">@avg.ToString("### ### ##0.00")
+            <div class="col-md-6 text-right @(avg > 0 ? "sum-in" : "sum-out")">@avg.ToString("### ### ##0.00")
             </div>
         </div>
     </div>
-    <div class="span6">
+    <div class="col-md-6">
     </div>
 </div>
 </div>

@@ -9,7 +9,7 @@
             var iconForDefaultCommand = command.IconCssClass;
             if (string.IsNullOrWhiteSpace(iconForDefaultCommand))
             {
-                iconForDefaultCommand = "icon-list";
+                iconForDefaultCommand = "glyphicon-list";
             }
 
             
@@ -18,7 +18,7 @@
             }
             else if (command.Command.CommandType == CommandType.Redirect)
             {
-<a class="btn btn-mini" href="@((command.Command as RedirectViewCommandModel).Path)"><i class="@iconForDefaultCommand"></i><span style="padding-left: 1em">@command.Text</span></a>
+<a class="btn btn-default btn-xs" href="@((command.Command as RedirectViewCommandModel).Path)"><i class="glyphicon @iconForDefaultCommand"></i><span style="padding-left: 1em">@command.Text</span></a>
             }
         }
 }

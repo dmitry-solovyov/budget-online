@@ -3,7 +3,7 @@
 @{
 	ModelState state = ViewData.ModelState[ViewData.ModelMetadata.PropertyName];
 
-	var css = new List<string> {"input-block-level"};
+	var css = new List<string> {"form-control"};
 
 	if (state != null && state.Errors.Count > 0)
 	{

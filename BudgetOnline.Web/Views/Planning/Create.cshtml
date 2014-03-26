@@ -17,22 +17,22 @@
 
 @Html.AlertGenerator()
 
-<div class="row-fluid body-container" id="@editorId">
+<div class="row body-container" id="@editorId">
     @(Html.BudgetOnlineWeb().Form(BudgetOnlineWebControls.FormTypes.Horizontal).ActionUrl(Url.Action("create"))
         .Content(@<text>
     @Html.ValidationSummary()
     @Html.EditorForModel("~/Views/Shared/EditorTemplates/Object.cshtml")
     <div class="form-actions controls-row">
-        <div class="span4">
+        <div class="col-md-4">
             <p>
                 @Html.BudgetOnlineWeb().SubmitNormalButton(BudgetOnlineWebControls.ButtonCaptionTypes.Save).Build()
                 @Html.BudgetOnlineWeb().ButtonNormal(BudgetOnlineWebControls.ButtonCaptionTypes.Cancel).RedirectTo(Url.Action("list")).Build()
             </p>
         </div>
-		<div class="span7">
+		<div class="col-md-7">
 			@Html.EditorFor(o => o.IsCreateNewAfterSave)
 		</div>
-        <div class="span1">
+        <div class="col-md-1">
         </div>
     </div>
     </text>)

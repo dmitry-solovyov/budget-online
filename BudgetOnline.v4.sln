@@ -16,11 +16,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetOnline.UI.Controls.Tests", "BudgetOnline.UI.Controls.Tests\BudgetOnline.UI.Controls.Tests.csproj", "{5B1C174F-D328-4F20-ACF4-8EFBFFC372E4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{87730695-C67E-4A31-A857-4F212D8E034D}"
-	ProjectSection(SolutionItems) = preProject
-		BudgetOnline.v4.vsmdi = BudgetOnline.v4.vsmdi
-		Local.testsettings = Local.testsettings
-		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetOnline.Web.UI.Controls", "BudgetOnline.Web.UI.Controls\BudgetOnline.Web.UI.Controls.csproj", "{BE6BAB16-D0C2-4562-8B3C-817BA60AC086}"
 EndProject

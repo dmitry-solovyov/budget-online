@@ -1,0 +1,153 @@
+﻿@using System.Globalization
+@using BudgetOnline.UI.Extensions
+@using BudgetOnline.UI.Models
+@using BudgetOnline.Web.ViewModels
+@model TransactionListViewModel
+@{
+    ViewBag.Title = "Transactions";
+    Layout = null;
+}
+<input type="hidden" value="@Model.Search.CurrentPage"/>
+
+@(new BudgetOnline.UI.Views.Paginator().Render(new PaginationModel
+                                                        {
+                                                            Page = !string.IsNullOrWhiteSpace(Request.QueryString["page"]) ? int.Parse(Request.QueryString["page"]) : 1, 
+                                                            PagesCount = Model.Search.PagesCount.Value,
+                                                            PageSize = Model.Search.PageSize.Value,
+                                                            PageSizes = new[]{10, 25, 50, 100, 200}
+                                                        }))
+
+@foreach (var group in Model.Groups)
+{
+    <div class="list-group row">
+        <div class="list-group-header row compact">
+            <div class="col-md-12">
+                <img src="@Url.Content("~/content/images/calendar_icon.gif")" /><span>@group.Title</span></div>
+        </div>
+        <div class="row">
+            <table class="table table-condensed">
+                <tbody>
+                    @(Html.BudgetOnlineWeb()
+        .List<TransactionListItemViewModel>()
+        .Rows(group.Items)
+        .SupressHeader(true)
+        .RowTemplate(
+            @<text>
+                    <tr id="t@(item.Id)">
+                        <td class="col-md-6">
+                            <div>@Html.Raw(item.IsDisabled ? "<i class=\"glyphicon glyphicon-lock\"></i>" : "")@item.Description</div>
+                            <div>
+                                <span style="font-size: .8em">@item.Tags</span></div>
+                        </td>
+                        <td class="col-md-4">
+                            <div class="pull-right" style="text-align: right">
+                                <span class="sum-@(item.SumSource > 0 ? "in" : "out")"><span class="currency-smb">@item.CurrencySource</span>
+									@item.SumSource.ToHtmlString(HtmlOutputFormatterExtensions.OutputLengthType.Normal)
+								</span>
+                                @if (item.SumTarget.HasValue)
+                                {
+                                    <br />
+                                    <span class="sum-@(item.SumTarget.Value > 0 ? "in" : "out")">
+                                        @if (!item.CurrencySource.Equals(item.CurrencyTarget))
+                                        {
+                                            <span class="currency-smb">@item.CurrencyTarget</span>
+                                        }
+                                        @item.SumTarget.Value.ToString("0.00", CultureInfo.CurrentUICulture)
+                                    </span>
+                                }
+                            </div>
+                            <div class="pull-left" style="text-align: left">
+                                <small>
+                                    @item.AccountSource
+                                    @Html.Raw((!string.IsNullOrWhiteSpace(item.AccountTarget) ? "<br/>" + Html.Encode(item.AccountTarget) : string.Empty))
+                                </small>
+                            </div>
+                        </td>
+                        <td class="col-md-2">
+                            <div class="pull-right">
+                                @Html.BudgetOnlineWeb().CommandsList().Commands(() => item.Commands).Build()
+                            </div>
+                        </td>
+                    </tr>
+                    </text>)
+                                                .HeaderTemplate(
+                                                    @<text>
+                    <tr>
+                        <th class="col-md-6">
+                            <div>
+                                <strong>Описание</strong></div>
+                            <div style="font-size: .9em;">
+                                <strong>Метки</strong></div>
+                        </th>
+                        <th class="col-md-4">
+                            <div>
+                                <strong>Сумма</strong></div>
+                            <div style="font-size: .9em;">
+                                <strong>Счет</strong></div>
+                        </th>
+                        <th class="col-md-2">
+                            <strong>Команды</strong>
+                        </th>
+                    </tr>
+                    </text>)
+                                                .Build()
+                                                            )
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+@(new BudgetOnline.UI.Views.Paginator().Render(new PaginationModel
+                                                        {
+                                                            Page = !string.IsNullOrWhiteSpace(Request.QueryString["page"]) ? int.Parse(Request.QueryString["page"]) : 1, 
+                                                            PagesCount = Model.Search.PagesCount.Value,
+                                                            PageSize = Model.Search.PageSize.Value,
+                                                            PageSizes = new[]{10, 25, 50, 100}
+                                                        }))
+@{
+    var statisticsItems = Model.Totals;
+}
+<div class="row list-statistics">
+    @(Html.BudgetOnlineWeb()
+        .List<TransactionStatisticViewModel>()
+        .Rows(statisticsItems)
+        .RowTemplate(
+            @<text>
+    <div class="row">
+        @*style="background-color: @(counter % 2 == 0 ? "#efefef" : "transparent")"*@
+        <div class="col-md-7">
+        </div>
+        <div class="col-md-2">
+            <div class="pull-right">
+                @item.CurrencyName
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="pull-right">
+                <span class="sum-@(item.Balance > 0 ? "in" : "out")">
+                    @item.Balance.ToHtmlString(HtmlOutputFormatterExtensions.OutputLengthType.Normal) @item.CurrencySymbol</span>
+            </div>
+        </div>
+    </div>
+    </text>)
+        .HeaderTemplate(
+            @<text>
+    <div class="row header">
+        <div class="col-md-7">
+            <div class="pull-left">
+                <strong>Итоги по выбранным данным:</strong>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="pull-right">
+                <strong>Валюта</strong></div>
+        </div>
+        <div class="col-md-3">
+            <div class="pull-right">
+                <strong>Сумма</strong></div>
+        </div>
+    </div>
+    </text>)
+        .Build()
+        )
+</div>

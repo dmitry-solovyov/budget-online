@@ -18,7 +18,7 @@
     {
         //<option data-icon="@item.Icon" value="@item.Value" @(new HtmlString(item.Selected ? "selected='selected'" : string.Empty))>@item.Text</option>
     <div class="">
-        <label class="checkbox inline">
+        <label class="checkbox form-inline">
             <input type="checkbox" id="@item.Value" value="@item.Value" @(new HtmlString(item.Selected ? "checked='checked'" : string.Empty))/>
             @item.Text
         </label>
@@ -30,7 +30,7 @@
         }
         else
         {
-    <select class="@cssClass" id="@id" name="@propertyName" @(new HtmlString(multiSelect ? "multiple='multiple'" : string.Empty))>
+    <select class="form-control @cssClass" id="@id" name="@propertyName" @(new HtmlString(multiSelect ? "multiple='multiple'" : string.Empty))>
         @foreach (var item in model.Items)
         {
             <option data-icon="@item.Icon" value="@item.Value" @(new HtmlString(item.Selected ? "selected='selected'" : string.Empty))>@item.Text</option>

@@ -6,7 +6,7 @@
 }
 <div class="btn-toolbar">
     <div class="btn-group">
-        <a class="btn" href="@Url.Action("create")"><i class="icon-plus"></i>Новая запись</a>
+        <a class="btn" href="@Url.Action("create")"><i class="glyphicon-plus"></i>Новая запись</a>
     </div>
 </div>
 @(Html.BudgetOnlineWeb()
@@ -15,7 +15,7 @@
     .Rows(Model)
     .Columns(columns =>
                 {
-                    columns.Icon().IconCss(m => m.IsDisabled ? "icon-lock" : (m.IsDefault ? "icon-star" : "")).Span(1);
+                    columns.Icon().IconCss(m => m.IsDisabled ? "glyphicon-lock" : (m.IsDefault ? "glyphicon-star" : "")).Span(1);
                     columns.Bound(m => m.Symbol).Span(2);
                     columns.Bound(m => m.Name).Span(7);
                     columns.Commands().Cell(m => m.Commands).Span(2);

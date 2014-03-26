@@ -12,7 +12,7 @@
 
         var uid = Guid.NewGuid().ToString().Replace("-", "");
         
-    <a id="post@(uid)" href="#" title="@command.Title">@command.Text</a>
+    <a id="post@(uid)" role="menuitem" tabindex="-1" href="#" title="@command.Title">@command.Text</a>
     <script type="text/javascript">
         $().ready(function() {
 			$('a#post@(uid)').click(

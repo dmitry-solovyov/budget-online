@@ -8,22 +8,22 @@
         }
         else
         {
-    <div class="btn-group">
+    <div class="btn-group"> 
         @{
 			var defaultCommand = commands.FirstOrDefault(o => o.IsDefault && o.Command.CommandType == CommandType.Redirect);
             if (defaultCommand != null)
             {
                 @ViewCommandUIDefault.Render(defaultCommand)
                 
-				@*<a class="btn btn-small" href="@((defaultCommand.Command as RedirectViewCommandModel).Path)"><i class="@iconForDefaultCommand"></i><span style="padding-left: 1em">@defaultCommand.Text</span></a>*@
+				@*<a class="btn btn-sm" href="@((defaultCommand.Command as RedirectViewCommandModel).Path)"><i class="@iconForDefaultCommand"></i><span style="padding-left: 1em">@defaultCommand.Text</span></a>*@
             }
             else
             {
-                <a class="btn btn-mini" href=""><i class="icon-list"></i><span style="padding-left: 1em">Команды</span></a>
+                <button class="btn btn-default"><i class="glyphicon glyphicon-list"></i><span style="padding-left: 1em">Команды</span></button>
             }
         }
-        <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-        <ul class="dropdown-menu">
+        <a class="btn btn-default dropdown-toggle btn-xs" data-toggle="dropdown"><span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
             @foreach (var command in commands)
             {
                 @ViewCommandUI.Render(command, false)

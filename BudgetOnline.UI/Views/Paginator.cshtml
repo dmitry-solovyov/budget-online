@@ -12,37 +12,37 @@
             nextPageSize = model.PageSizes[0];
         }
 
-    <div class="row-fluid">
-        <div class="span7">
-            <div class="pagination pagination-small pagination-right">
-                <ul>
-                    <li><a href="@Html.GetUrlQithNewQueryParameter("page", "1")">«</a></li>
-                    @foreach (var page in pages)
-                    {
-                        if (model.Page == page)
-                        {
-                        <li class="active"><a href="#">@page</a></li>
-                        }
-                        else
-                        {
-                        <li><a href="@Html.GetUrlQithNewQueryParameter("page", @page.ToString())">@page</a></li>
-                        }
-                    }
-                    <li><a href="@Html.GetUrlQithNewQueryParameter("page", model.PagesCount.ToString())">
-                        »</a></li>
-                </ul>
-            </div>
+    <div class="row">
+        <div class="col-md-4">
         </div>
-        <div class="span5">
-            <div class="row-fluid" style="margin-top: 5px">
-                <div class="span9">
-                    <span class="pull-right">Страница:
-                    </span>
+        <div class="col-md-5">
+            <ul class="pagination pagination-sm">
+                <li><a href="@Html.GetUrlQithNewQueryParameter("page", "1")">«</a></li>
+                @foreach (var page in pages)
+                {
+                    if (model.Page == page)
+                    {
+                    <li class="active"><a href="#">@page</a></li>
+                    }
+                    else
+                    {
+                    <li><a href="@Html.GetUrlQithNewQueryParameter("page", @page.ToString())">@page</a></li>
+                    }
+                }
+                <li><a href="@Html.GetUrlQithNewQueryParameter("page", model.PagesCount.ToString())">
+                    »</a></li>
+            </ul>
+        </div>
+        @*<div class="col-md-3">
+            <div class="row" style="margin-top: 5px">
+                <div class="col-md-9">
+                    <span class="pull-right">Страница: </span>
                 </div>
-                <div class="span3">
+                <div class="col-md-3">
                     <div class="btn-group pull-right">
-                        <a class="btn dropdown-toggle btn-small" data-toggle="dropdown" href="@Html.GetUrlQithNewQueryParameter("pageSize", nextPageSize.ToString())">
-                            @(model.PageSize)&nbsp;&nbsp;&nbsp; <span class="caret"></span></a>
+                        <button class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" href="@Html.GetUrlQithNewQueryParameter("pageSize", nextPageSize.ToString())">
+                            @(model.PageSize)&nbsp;&nbsp;&nbsp; <span class="caret"></span>
+                        </button>
                         <ul class="dropdown-menu" id="setPageSize">
                             @foreach (var pageSize in model.PageSizes)
                             {
@@ -50,6 +50,24 @@
                             }
                         </ul>
                     </div>
+                </div>
+            </div>
+        </div>*@
+        <div class="col-md-3">
+            <div class="row" style="padding-top: 5px">
+                <label class="">
+                    Страница:
+                </label>
+                <div class="btn-group">
+                    <button class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" href="@Html.GetUrlQithNewQueryParameter("pageSize", nextPageSize.ToString())">
+                        @(model.PageSize)&nbsp;&nbsp;&nbsp; <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" id="setPageSize">
+                        @foreach (var pageSize in model.PageSizes)
+                        {
+                            <li><a href="@Html.GetUrlQithNewQueryParameter("pageSize", pageSize.ToString())">@pageSize</a></li>
+                        }
+                    </ul>
                 </div>
             </div>
         </div>

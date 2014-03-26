@@ -142,11 +142,11 @@ namespace BudgetOnline.Web.UI.Controls
 			if (!string.IsNullOrWhiteSpace(_iconCss))
 				if (IsPathActive())
 				{
-					innerPart = string.Format(@"<i class=""icon-white {0}""></i>{1}", _iconCss, _caption);
+                    innerPart = string.Format(@"<i class=""glyphicon glyphicon-white {0}""></i>{1}", _iconCss, _caption);
 				}
 				else
 				{
-					innerPart = string.Format(@"<i class=""{0}""></i>{1}", _iconCss, _caption);
+                    innerPart = string.Format(@"<i class=""glyphicon {0}""></i>{1}", _iconCss, _caption);
 				}
 
 			a.Attributes.Add("href", new UrlHelper(HttpContext.Current.Request.RequestContext).Action(_action, _controller, _routeDictionary));

@@ -18,7 +18,7 @@
             if (index < model.Items.Count())
             {
                 var item = model.Items.ElementAt(index);
-            <div class="span@(Convert.ToInt32(Math.Ceiling(12m / columns)))">
+            <div class="col-md-@(Convert.ToInt32(Math.Ceiling(12m / columns)))">
                 <label class="checkbox inline">
                     <input type="checkbox" id="@item.Value" name="@(propertyName)[@(item.Value)]" value="@item.Text" @(new HtmlString(item.Selected ? "checked='checked'" : string.Empty))/>
                     @item.Text

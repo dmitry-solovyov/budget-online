@@ -6,7 +6,7 @@
 @helper Render(AutoCompleteTextBoxModel model){
 	var id = string.IsNullOrWhiteSpace(model.Name) ? Html.GetUniqId(10) : model.Name;
     
-	<input id="@id" class="input-block-level" value="@(model.Value)" name="@id" />
+	<input id="@id" class="form-control" value="@(model.Value)" name="@id" />
 	<script type="text/javascript" language="javascript"><!--
 		$(function () {
 			function split(val) {

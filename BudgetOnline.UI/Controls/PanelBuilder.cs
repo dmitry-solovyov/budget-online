@@ -20,7 +20,7 @@ namespace BudgetOnline.UI.Controls
             return new PanelBuilder();
         }
 
-        protected ContainerBuilder HeaderBuilder = new ContainerBuilder().CollapseEmptyTags(true);
+        protected ContainerBuilder HeaderBuilder = new ContainerBuilder().CollapseEmptyTags(true).HideIfEmpty(true);
         protected ContainerBuilder ContentBuilder = new ContainerBuilder().CollapseEmptyTags(true);
         protected ContainerBuilder FooterBuilder = new ContainerBuilder().CollapseEmptyTags(true);
 
@@ -166,7 +166,7 @@ namespace BudgetOnline.UI.Controls
                 {
                     RequestUrl = _contentRefreshUrl,
                     CallbackClientFunction = _contentRefreshCallbackFunction,
-                    Caption = HeaderBuilder.Build(),
+                    Caption = HeaderBuilder.IsEmpty() && _suppressHeaderIfEmpty ? new HtmlString("") : HeaderBuilder.Build(),
                     Content = ContentBuilder.IsEmpty() ? null : ContentBuilder.Build(),
                 };
 

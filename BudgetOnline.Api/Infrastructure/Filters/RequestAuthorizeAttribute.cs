@@ -33,10 +33,10 @@ namespace BudgetOnline.Api.Infrastructure.Filters
 
         private void HandleUnauthorizedRequest(System.Web.Http.Controllers.HttpActionContext actionContext)
         {
-            actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized);
+            actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized, string.Empty);
 
             actionContext.Response.Headers.Add("WWW-Authenticate",
-            "Basic Scheme='eBudget' location='http://budget/session/login'");
+                string.Format("Token Scheme=\"budget\" location=\"{0}\"", actionContext.Request.RequestUri.DnsSafeHost));
         }
 
         private void RefreshTicketUsage()

@@ -10,14 +10,14 @@
 	ModelState state = ViewData.ModelState[ViewData.ModelMetadata.PropertyName];
 	var value = Model.ToString(CultureInfo.CurrentUICulture);
 
-	var cssClass = "span8 data-type-numeric input-block-level";
+	var cssClass = "col-md-8 data-type-numeric form-control";
 	if (state != null && state.Errors.Count > 0)
 	{
 		cssClass += " input-validation-error";
 	}
 }
 
-<div class="input-append">
+<div class="input-group">
 	@Html.TextBox("", value, new { @class = @cssClass, placeholder, autocomplete = "off" })
-	<span class="add-on"><i class="icon-th"></i></span>
+	<span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
 </div>

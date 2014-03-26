@@ -13,7 +13,7 @@
     .Rows(Model)
     .Columns(columns =>
                 {
-                    columns.Icon().IconCss(m => m.IsDisabled ? "icon-lock" : "").Span(1);
+                    columns.Icon().IconCss(m => m.IsDisabled ? "glyphicon-lock" : "").Span(1);
                     columns.Bound(m => m.Name).Span(9);
                     columns.Commands().Cell(m => m.Commands).Span(2);
                 })

@@ -24,7 +24,7 @@ else
 
 @*        if (!string.IsNullOrWhiteSpace(rowHeader))
         {
-    <div class="control-group">
+    <div class="form-group">
         <div class="controls">
             <span class="">
                 <h4>@rowHeader</h4>
@@ -40,25 +40,25 @@ else
         else
             if (prop.IsReadOnly)
             {
-    <div class="control-group @(state != null && state.Errors.Count > 0 ? "error" : "")">
+    <div class="form-group @(state != null && state.Errors.Count > 0 ? "error" : "")">
         @if (!prop.AdditionalValues.ContainsKey("HiddenLabel"))
         {
             <label class="control-label" for="@prop.PropertyName">@Html.Label(prop.PropertyName)</label>
         }
-        <div class="controls">
-            <span class="input-medium uneditable-input">@Html.DisplayText(prop.PropertyName)</span>
+        <div class="col-md-10">
+            <span class="input-sm">@Html.DisplayText(prop.PropertyName)</span>
         </div>
     </div>
 	
             }
             else
             {
-    <div class="control-group @rowClass @(state != null && state.Errors.Count > 0 ? "error" : "")" id="@rowId">
+    <div class="form-group @rowClass @(state != null && state.Errors.Count > 0 ? "error" : "")" id="@rowId">
         @if (!prop.AdditionalValues.ContainsKey("HiddenLabel"))
         {
-            <label class="control-label" for="@prop.PropertyName">@Html.Label(prop.PropertyName)</label>
+            <label class="control-label col-md-2" for="@prop.PropertyName">@Html.Label(prop.PropertyName)</label>
         }
-        <div class="controls">
+        <div class="col-md-9 @(prop.AdditionalValues.ContainsKey("HiddenLabel") ? " col-md-offset-2" : "")">
             @Html.Editor(prop.PropertyName)
             @(Html.EditorFor(o => prop, "ErrorLabel"))
             @*@Html.ValidationMessage(prop.PropertyName)*@

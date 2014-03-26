@@ -18,11 +18,11 @@ namespace BudgetOnline.Api.Infrastructure.Filters
             else if (exType == typeof(ArgumentException))
                 status = HttpStatusCode.NotFound;
 
-            var apiError = new ApiMessageError() { Message = context.Exception.Message };
+            var apiError = new ApiMessageError { Message = context.Exception.Message };
 
             // create a new response and attach our ApiError object
             // which now gets returned on ANY exception result
-            var errorResponse = context.Request.CreateResponse<ApiMessageError>(status, apiError);
+            var errorResponse = context.Request.CreateResponse(status, apiError);
             context.Response = errorResponse;
 
             base.OnException(context);

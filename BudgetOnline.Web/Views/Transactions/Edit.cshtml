@@ -7,7 +7,7 @@
     var editorId = Html.GetUniqId(10);
 }
 @Html.AlertGenerator()
-<div class="row-fluid">
+<div class="row">
     @if (Model.Errors().Any())
     {
         foreach (var error in Model.Errors())
@@ -21,41 +21,43 @@
     }
 </div>
 <!-- Modal -->
-<div id="separatePopup" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+<div id="separatePopup" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-            ×</button>
-        <h3 id="myModalLabel">
-            Выделить сумму:</h3>
-    </div>
-    <div class="modal-body">
-        <div class="row-fluid">
-            <div class="span4">
-                Сумма:</div>
-            <div class="span8">
-                <input type="number" id="separateSum" placeholder="@(Model.SumOut.Sum.ToString(CultureInfo.CurrentUICulture))" /></div>
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                ×</button>
+            <h3 id="myModalLabel">
+                Выделить сумму:</h3>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-4">
+                    Сумма:</div>
+                <div class="col-md-8">
+                    <input type="number" id="separateSum" placeholder="@(Model.SumOut.Sum.ToString(CultureInfo.CurrentUICulture))" /></div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">
+                Отмена</button>
+            <button class="btn btn-primary" data-target-url="@Url.Action("SeparateTransaction", new { id = Model.Id })">
+                Сохранить</button>
         </div>
     </div>
-    <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">
-            Отмена</button>
-        <button class="btn btn-primary" data-target-url="@Url.Action("SeparateTransaction", new { id = Model.Id })">
-            Сохранить</button>
-    </div>
 </div>
-<div class="row-fluid" id="@editorId">
-    <div class="span1">
-        @(BudgetOnline.UI.Controls.Buttons.ButtonBuilder.Get().Icon("icon-share", "Отделить сумму").ClientClickAction("SeparateInstance").Build())
+<div class="row" id="@editorId">
+    <div class="col-md-1">
+        @(BudgetOnline.UI.Controls.Buttons.ButtonBuilder.Get().Icon("glyphicon-share", "Отделить сумму").ClientClickAction("SeparateInstance").Build())
     </div>
-    <div class="span11">
+    <div class="col-md-11">
         @(Html.BudgetOnlineWeb().Form(BudgetOnlineWebControls.FormTypes.Horizontal)
  .ActionUrl(Url.Action("edit"))
                         .Content(@<text>
         @Html.ValidationSummary()
         @Html.EditorForModel("~/Views/Shared/EditorTemplates/Object.cshtml")
         <div class="form-actions">
-            <div class="control-group">
+            <div class="form-group">
                 @Html.BudgetOnlineWeb().SubmitNormalButton().Caption("Сохранить").Build()
                 @Html.BudgetOnlineWeb().ButtonNormal().Caption("Отмена").RedirectTo(Url.Action("list")).Build()
             </div>

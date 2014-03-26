@@ -6,7 +6,7 @@
 	Layout = "~/Areas/Admin/Views/Shared/_AdminLayoutPage.cshtml";
 }
 
-<div class="container-fluid">
+<div class="container">
 	@(Html.BudgetOnlineWeb()
  .Form(BudgetOnlineWebControls.FormTypes.Horizontal).ActionUrl(Url.Action("create"))
 	.Content(@<text>

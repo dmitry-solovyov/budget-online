@@ -1,45 +1,45 @@
-﻿@using BudgetOnline.UI.Models
-@using BudgetOnline.UI.Models.SelectItems
-@using BudgetOnline.Web.ViewModels
+﻿@using BudgetOnline.Web.ViewModels
 @model TransactionListViewModel
 @{
     ViewBag.Title = "Transactions";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="row-fluid" style="margin-bottom: .5em">
-    <div class="span4">
+<div class="row" style="margin-bottom: .5em">
+    <div class="col-md-4">
         @Html.BudgetOnlineWeb().SubmitNormalButton().Caption("Новая запись").Css("btn btn-primary").RedirectTo(Url.Action("create")).Build()
     </div>
-    <div class="span4">
+    <div class="col-md-4">
     </div>
-    <div class="span4">
+    <div class="col-md-4">
     </div>
 </div>
-<div class="row-fluid">
-    <div class=" well">
+<div class="row">
+    <div class="border-tpbt darkback">
         <form class="navbar-form" action="list" id="searchFilterForm" method="POST">
-        <div class="row-fluid compact">
-            <div class="span8">
+        <div class="row compact">
+            <div class="col-md-8">
                 <div class="control-list">
                     <span>Даты c:</span> <a href="#" id="fromDateSelector" data-type="date-select" data-dtselect-target="fromDate"
                         style="padding: 0 .5em;">@(Model.Search.FromDate.HasValue ? Model.Search.FromDate.Value.ToLocalTime().ToShortDateString() : "(не указано)")</a>
                     <a href="#" data-type="date-deselect" data-dtselect-target="fromDate" data-dtselect-displaytarget="fromDateSelector"
-                        data-dtselect-default="(не указано)"><i class="icon-remove-sign"></i></a>
+                        data-dtselect-default="(не указано)"><i class="glyphicon glyphicon-remove-sign">
+                        </i></a>
                     <input type="hidden" id="fromDate" name="fromDate" value="@(Model.Search.FromDate.HasValue ? Model.Search.FromDate.Value.ToLocalTime().ToShortDateString() : "")"/>
                     <span style="padding-left: 1em;">по:</span> <a href="#" id="toDateSelector" data-type="date-select"
                         data-dtselect-target="toDate" style="padding: 0 .5em;">@(Model.Search.ToDate.HasValue ? Model.Search.ToDate.Value.ToLocalTime().ToShortDateString() : "(не указано)")</a>
                     <a href="#" data-type="date-deselect" data-dtselect-target="toDate" data-dtselect-displaytarget="toDateSelector"
-                        data-dtselect-default="(не указано)"><i class="icon-remove-sign"></i></a>
+                        data-dtselect-default="(не указано)"><i class="glyphicon glyphicon-remove-sign">
+                        </i></a>
                     <input type="hidden" id="toDate" name="toDate" value="@(Model.Search.ToDate.HasValue ? Model.Search.ToDate.Value.ToLocalTime().ToShortDateString() : "")"/>
                     @*                    <span style="padding-left: 1em">Текст:</span>
                     @Html.TextBox("search", Model.Search.Text ?? string.Empty, new { @class = "" })*@
                 </div>
             </div>
-            <div class="span4" style="">
+            <div class="col-md-4" style="">
             </div>
         </div>
-        <div class="row-fluid compact">
-            @*<div class="span4">
+        <div class="row compact">
+            @*<div class="col-md-4">
                 <div class="control-label">
                     Даты</div>
                 <div class="controls">
@@ -47,39 +47,35 @@
                     @(new BudgetOnline.UI.Views.DateEditBox().Render(new DateEditModel { Date = Model.Search.ToDate, Name = "toDate", Span = 6 }))
                 </div>
             </div>*@
-            <div class="span4">
+            <div class="col-md-4">
                 <div class="control-label">
                     Текст</div>
-                <div class="controls">
-                    @Html.TextBox("search", Model.Search.Text ?? string.Empty, new { @class = "" })
+                <div class="form-group">
+                    @Html.TextBox("search", Model.Search.Text ?? string.Empty, new { @class = "form-control input-sm" })
                 </div>
             </div>
-            <div class="span4">
+            <div class="col-md-4">
                 <div class="control-label">
                     Категория</div>
-                <div class="controls">
-                    @(new BudgetOnline.UI.Views.Editors.SelectList().Render(Model.Search.Categories, "Category", "", false))
+                <div class="form-group">
+                    @(new BudgetOnline.UI.Views.Editors.SelectList().Render(Model.Search.Categories, "Category", "input-sm", false))
                 </div>
             </div>
-            <div class="span4">
+            <div class="col-md-4">
                 <div class="control-label">
                     Счет</div>
-                <div class="controls">
-                    @(new BudgetOnline.UI.Views.Editors.SelectList().Render(Model.Search.Accounts, "Account", "span6", false))
+                <div class="form-group">
+                    @(new BudgetOnline.UI.Views.Editors.SelectList().Render(Model.Search.Accounts, "Account", "col-md-6 input-sm", false))
                 </div>
             </div>
         </div>
         <div style="margin-top: .5em">
-            @Html.BudgetOnlineWeb().SubmitNormalButton().Caption("Поиск").Css("btn").Build()
+            @Html.BudgetOnlineWeb().SubmitNormalButton().Caption("Поиск").Build()
         </div>
         </form>
     </div>
 </div>
-<div class="row-fluid">
-    <div id="listOutput">
-        @Html.Partial("~/Views/Transactions/_List.cshtml", Model)
-    </div>
-</div>
+@Html.Partial("~/Views/Transactions/_List.cshtml", Model)
 <script type="text/javascript">
     $(document).ready(function () {
         //$('#searchFilterForm').bind('submit', searchFormSubmit);

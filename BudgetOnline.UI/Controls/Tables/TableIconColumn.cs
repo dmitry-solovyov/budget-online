@@ -49,7 +49,7 @@ namespace BudgetOnline.UI.Controls
 			if (_iconCssGetter != null)
 				value = _iconCssGetter.Invoke(context);
 
-            return new HtmlString(string.Format("<{2}{1}><i class=\"{0}\"></i></{2}>", value, GetCellClass(tableDefinition, context), tableDefinition.BodyCellTag));
+            return new HtmlString(string.Format("<{2}{1}><i class=\"glyphicon {0}\"></i></{2}>", value, GetCellClass(tableDefinition, context), tableDefinition.BodyCellTag));
 		}
 	}
 }

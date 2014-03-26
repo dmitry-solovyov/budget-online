@@ -86,7 +86,7 @@ namespace BudgetOnline.UI.Controls
 			if (!string.IsNullOrWhiteSpace(_headerCss))
 				classes.AddRange(_headerCss.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
 			if (_span > 0)
-				classes.Add(string.Format("span{0}", _span));
+				classes.Add(string.Format("col-md-{0}", _span));
 			if (!string.IsNullOrWhiteSpace(tableDefinitions.HeaderRowClass))
 				classes.AddRange(tableDefinitions.HeaderRowClass.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
 
@@ -104,7 +104,7 @@ namespace BudgetOnline.UI.Controls
 				classes.AddRange(_cellCss(context).Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
 
 			if (_span > 0)
-				classes.Add(string.Format("span{0}", _span));
+				classes.Add(string.Format("col-md-{0}", _span));
 
 			if (classes.Count > 0)
 				return " class=\"" + string.Join(" ", classes) + "\"";

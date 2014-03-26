@@ -1,13 +1,14 @@
 body
 {
-    font-size: .85em;
-    font-family: "Trebuchet MS" , Verdana, Helvetica, Sans-Serif;
+    /*font-size: 13px;
+    font-family: "Trebuchet MS" , Verdana, Helvetica, Sans-Serif;*/
     background: url('images/back5.jpg') repeat;
     background: #f9f9f9;
 }
 
 header, footer, nav, section
 {
+    background-color: @gray;
 }
 
 body > .footer
@@ -21,8 +22,11 @@ body > .footer
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    border: 10px transparent solid;
+    /*border: 10px transparent solid;*/
 }
+#container .nav-offset {
+}
+
 select.iconed option
 {
     background-repeat: no-repeat;
@@ -32,9 +36,13 @@ select.iconed option
 
 /* Bootstrap overwriting
 -----------------------------------------------------------*/
-.form-horizontal .control-group
+.form-horizontal .form-group
 {
     margin-bottom: 10px;
+}
+
+#navbar-main {
+    margin-bottom: 0px !important;
 }
 
 .hidden
@@ -43,7 +51,7 @@ select.iconed option
     height: 1px;
 }
 
-.row-fluid.compact div[class*="span"]
+.row.compact div[class*="span"]
 {
     min-height: 0px !important;
 }
@@ -69,12 +77,21 @@ select[multiple*="multiple"]
     height: 128px;
 }
 
+.navbar.navbar-blue, .navbar.navbar-blue ul.nav > li > a, .navbar.navbar-blue ul.nav > li > a:visited  {
+    background-color: #63ADD0;
+    color: #FFFFFF;
+}
+.navbar.navbar-blue ul.nav > li > a:hover, .navbar.navbar-blue ul.nav > li > a.active {
+    background-color: #034769;
+    color: #FFFFFF;
+}
+
 /* Other overwriting
 -----------------------------------------------------------*/
 
 input[type='text'].date-picker
 {
-    width: 100px;
+    /*width: 100px;*/
 }
 
 /* Styles for validation helpers
@@ -184,10 +201,14 @@ input[type='text'].date-picker
     background: url('images/h-separator-light.png') bottom left;
     background-repeat: repeat-x;
 }
+.poor-text {
+    color: #777;
+}
+
 
 /* 
 -----------------------------------------------------------*/
-.panel
+.panel0
 {
     display: block;
     margin: 0;
@@ -212,7 +233,7 @@ input[type='text'].date-picker
     background-color: #FFCCCC;
 }
 
-.panel input
+.panel0 input
 {
     width: 200px;
 }
@@ -311,60 +332,52 @@ input[type='text'].date-picker
 
 /* List
 ---------------------------------------------------------*/
-.list-group
+.grouped-list
 {
     /*margin-top: 1em;*/
     border-bottom: 1px solid #C1CDCD;
 }
-.list-group-content .list-item
+.grouped-list .content .list-item
 {
     text-align: left;
     vertical-align: top;
 }
-.list-group-content .list .list-item.odd
+.grouped-list .content .list .list-item.odd
 {
     background-color: #F4F4F4; /*F4F4F4;*/
 }
-.list-group-content .list .list-item.even
+.grouped-list .content .list .list-item.even
 {
     background-color: #FFFFFF;
 }
-.list-group-content .list
-{
-}
-.list-group .list-group-header
+.grouped-list > .header
 {
     /*background-color: #EAEAEA;*/
     color: #4A708B;
     font-size: 1.1em;
     font-weight: bold;
     border-bottom: 2px #4A708B solid;
-}
-.list-group .list-group-header span
-{
-    margin-top: 2px;
-    margin-left: 2px;
-    display: inline-block;
+    padding-left: .5em;
 }
 .list-group table
 {
     margin-bottom: 1px !important;
 }
 
-.list-group table .sum-in, .list-group table .sum-out
+.grouped-list table .sum-in, .grouped-list table .sum-out
 {
     font-size: 1.2em;
     font-weight: bold;
     text-align: right;
 }
 
-.list-group.obsolete-raw
+.grouped-list.obsolete-raw
 {
     color: #808080;
     background-color: #F2F2F2;
 }
 
-.list-group.obsolete-raw:hover
+.grouped-list.obsolete-raw:hover
 {
     color: inherit;
     background-color: inherit;
@@ -391,6 +404,36 @@ input[type='text'].date-picker
 {
     font-weight: bold;
     font-size: 1.0em;
+}
+
+.border-tpbt {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+.border-tp {
+    border-top: 1px solid #ddd;
+}
+.border-tp2 {
+    border-top: 2px solid #ddd;
+}
+.border-bt {
+    border-bottom: 1px solid #ddd;
+}
+
+.border-ltrt {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+.border-rt {
+    border-right: 1px solid #ddd;
+}
+.border-lt {
+    border-left: 1px solid #ddd;
+}
+
+
+.darkback {
+    background-color: #f5f5f5;
 }
 
 /* 

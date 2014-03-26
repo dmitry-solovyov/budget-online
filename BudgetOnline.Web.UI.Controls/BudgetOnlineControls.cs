@@ -1,8 +1,5 @@
-﻿using System.Web;
-using System.Web.Mvc;
-using BudgetOnline.UI.Controls;
+﻿using BudgetOnline.UI.Controls;
 using BudgetOnline.UI.Controls.Buttons;
-using BudgetOnline.UI.Models;
 
 namespace BudgetOnline.Web.UI.Controls
 {
@@ -10,7 +7,7 @@ namespace BudgetOnline.Web.UI.Controls
 	{
 		public ButtonBuilder ButtonLarge()
 		{
-			return new ButtonBuilder().Css("btn btn-large");
+			return new ButtonBuilder().Css("btn btn-lg");
 		}
 
 		public ButtonBuilder ButtonNormal()
@@ -20,7 +17,7 @@ namespace BudgetOnline.Web.UI.Controls
 
 		public ButtonBuilder ButtonNormal(ButtonCaptionTypes captionType)
 		{
-			var builder = new SubmitButtonBuilder().Css("btn");
+			var builder = new SubmitButtonBuilder().Css("btn btn-default");
 			SetButtonCaption(captionType, builder);
 
 			return builder;
@@ -28,17 +25,17 @@ namespace BudgetOnline.Web.UI.Controls
 
 		public ButtonBuilder ButtonSmall()
 		{
-			return new ButtonBuilder().Css("btn btn-small");
+			return new ButtonBuilder().Css("btn btn-sm");
 		}
 
 		public ButtonBuilder ButtonMini()
 		{
-			return new ButtonBuilder().Css("btn btn-mini");
+			return new ButtonBuilder().Css("btn btn-xs");
 		}
 
 		public ButtonBuilder SubmitLargeButton()
 		{
-			return new SubmitButtonBuilder().Css("btn btn-large btn-primary");
+			return new SubmitButtonBuilder().Css("btn btn-lg btn-primary");
 		}
 
 		public ButtonBuilder SubmitNormalButton()

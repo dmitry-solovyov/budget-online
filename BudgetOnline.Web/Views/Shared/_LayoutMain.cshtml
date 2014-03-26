@@ -12,29 +12,30 @@
 <body>
     @Html.BudgetOnlineWeb().ProgressIndicator().BackgroundUrl(@Url.Content("~/Content/images/back1.jpg")).IndicatorUrl(@Url.Content("~/Content/images/ajax-loader.gif")).Class("progress-indicator").Build()
     <div class="container" id="container">
-        <div class="row-fluid">
-            <div class="span8">
-                <!--
-					<h4 class="muted">
-						Budget online</h4> //-->
+        @*<div class="row">
+            <div class="col-md-7">
             </div>
-            <div class="span2">
-                @{ Html.RenderPartial("_LanguageSwitch"); }
+            <div class="col-md-2">
+                <div class="pull-right">
+                    @{ Html.RenderPartial("_LanguageSwitch"); }
+                </div>
             </div>
-            <div class="span2" style="text-align: right;">
-                @{ Html.RenderAction("LoggedOnName", "CurrentUser", new { Area = "" }); }
+            <div class="col-md-3">
+                <div class="pull-right">
+                    @{ Html.RenderAction("LoggedOnName", "CurrentUser", new { Area = "" }); }
+                </div>
             </div>
-        </div>
-        <div class="row-fluid">
+        </div>*@
+        <div class="row nav-offset">
             @{Html.RenderPartial("~/Views/Shared/TopNavligationMenu.cshtml");}
         </div>
-        <div class="row-fluid">
-            <div class="span12">
+        <div class="row">
+            <div class="col-md-12">
                 @RenderBody()
             </div>
         </div>
-        <div class="row-fluid footer">
-            <div class="span12 muted">
+        <div class="row footer">
+            <div class="col-md-12 text-muted">
                 <p class="text-center">
                     &copy; Company @DateTime.Now.Year</p>
             </div>
@@ -43,15 +44,6 @@
     @Scripts.Render("~/js2")
     @MiniProfiler.RenderIncludes(showTrivial: true, showTimeWithChildren: true, position: RenderPosition.Left)
     @RenderSection("Header", false)
-    <script type="text/javascript"><!--
-        $(function () {
-            $('#language-switch ul.dropdown-menu li a').click(function (e) {
-                e.preventDefault();
-                var lang = $(this).attr('data-lang');
-                changeLang(lang);
-            });
-        });
-	//-->
-    </script>
+    <script type="text/javascript"><!-- $(function () { $('#language-switch ul.dropdown-menuli a').click(function (e) { e.preventDefault(); var lang = $(this).attr('data-lang');changeLang(lang); }); }); //--> </script>
 </body>
 </html>

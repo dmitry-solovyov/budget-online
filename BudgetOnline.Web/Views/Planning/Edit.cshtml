@@ -17,13 +17,13 @@
 
 @Html.AlertGenerator()
 
-<div class="row-fluid body-container" id="@editorId">
+<div class="row body-container" id="@editorId">
     @(Html.BudgetOnlineWeb().Form(BudgetOnlineWebControls.FormTypes.Horizontal).ActionUrl(Url.Action("edit"))
         .Content(@<text>
     @Html.ValidationSummary()
     @Html.EditorForModel("~/Views/Shared/EditorTemplates/Object.cshtml")
     <div class="form-actions controls-row">
-        <div class="span12">
+        <div class="col-md-12">
             <p>
                 @Html.BudgetOnlineWeb().SubmitNormalButton(BudgetOnlineWebControls.ButtonCaptionTypes.Save).Build()
                 @Html.BudgetOnlineWeb().ButtonNormal(BudgetOnlineWebControls.ButtonCaptionTypes.Cancel).RedirectTo(Url.Action("list")).Build()

@@ -1,31 +1,31 @@
 ﻿@{
     Layout = "../../../../Views/Shared/_LayoutMain.cshtml";
 }
-<div class="row-fluid">
-    <div class="span3">
+<div class="row">
+    <div class="col-md-3">
         @using BudgetOnline.Web.UI.Controls
         @(Html.BudgetOnlineWeb().Menu(MenuTypes.EmptyContainer)
-            .MenuCss("nav nav-tabs nav-stacked")
+            .MenuCss("navbar-nav nav-tabs nav-stacked")
             .ShowActiveLevel(ShowActiveLevels.ControllerLevel)
             .MenuItems(new[]
                         {
                             new MenuItemBuilder().Caption("Пользователи").Action("list").Controller("users")
-                                .Area("admin").IconCss("icon-home"),
+                                .Area("admin").IconCss("glyphicon-home"),
 							
                             new MenuItemBuilder().Caption("Счета").Action("list").Controller("accounts")
-                                .Area("admin").IconCss("icon-list"),
+                                .Area("admin").IconCss("glyphicon-list"),
 							
                             new MenuItemBuilder().Caption("Категории").Action("list").Controller("categories")
-                                .Area("admin").IconCss("icon-list"),
+                                .Area("admin").IconCss("glyphicon-list"),
 							
                                 new MenuItemBuilder().Caption("Валюты").Action("list").Controller("currencies")
-                                .Area("admin").IconCss("icon-home"),
+                                .Area("admin").IconCss("glyphicon-home"),
 							
                             new MenuItemBuilder().Caption("Курсы валют").Action("list").Controller("currencyRates")
-                                .Area("admin").IconCss("icon-home"),
+                                .Area("admin").IconCss("glyphicon-home"),
 							
                             new MenuItemBuilder().Caption("Метки").Action("list").Controller("tags")
-                                .Area("admin").IconCss("icon-book"),
+                                .Area("admin").IconCss("glyphicon-book"),
 							
                             new MenuItemBuilder().Caption("Периоды").Action("list").Controller("periodTypes")
                                 .Area("admin"),
@@ -36,7 +36,7 @@
             .ActiveLinkCss("active")
             .Build())
     </div>
-    <div class="span9">
+    <div class="col-md-9">
         @RenderBody()
     </div>
 </div>

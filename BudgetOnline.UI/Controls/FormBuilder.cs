@@ -7,6 +7,7 @@ namespace BudgetOnline.UI.Controls
 	public class FormBuilder : IBuilder
 	{
 		private Func<HtmlString> _bodyBuilder;
+        private Func<HtmlString> _actionsContentBuilder;
 
 		private readonly ContainerBuilder _builder = new ContainerBuilder();
 
@@ -51,6 +52,12 @@ namespace BudgetOnline.UI.Controls
 			return this;
 		}
 
+        public FormBuilder ActionsContent(Func<object, HelperResult> content)
+        {
+            _actionsContentBuilder = () => new HtmlString(content.Invoke(null).ToHtmlString());
+            return this;
+        }
+
 		protected string _actionUrl;
 		public FormBuilder ActionUrl(string actionUrl)
 		{
@@ -92,6 +99,16 @@ namespace BudgetOnline.UI.Controls
 				: null;
 		}
 
+        protected virtual string GetActionsContent()
+        {
+            if(_actionsContentBuilder != null)
+            {
+                return string.Format("<div class=\"form-group clearfix\"><div class=\"col-md-9 col-md-offset-2\">{0}</div></div>", _actionsContentBuilder().ToHtmlString());
+            }
+
+            return null;
+        }
+
 		public virtual HtmlString Build()
 		{
 			if (!string.IsNullOrWhiteSpace(_actionUrl))
@@ -106,16 +123,19 @@ namespace BudgetOnline.UI.Controls
 
 			var headerContent = GetHeaderContent();
 			var bodyContent = GetBodyContent();
+		    var actionsContent = GetActionsContent();
+
 			var headerBodySeparator = !string.IsNullOrWhiteSpace(headerContent) && !string.IsNullOrWhiteSpace(bodyContent)
 										? Environment.NewLine
 										: string.Empty;
 
 			_builder.Content(() => new HtmlString(
 				string.Format(
-					"{0}{1}{2}",
+					"{0}{1}{2}{3}",
 					headerContent,
 					headerBodySeparator,
-					bodyContent
+					bodyContent,
+                    actionsContent
 				)
 			));
 

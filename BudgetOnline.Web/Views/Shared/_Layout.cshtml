@@ -2,24 +2,31 @@
 @{
     Layout = "_LayoutMain.cshtml";
 }
-<div class="row-fluid">
-    <div class="span9">
+<div class="row">
+    <div class="col-md-9" style="border-right: 1px solid #ddd;">
         @RenderBody()
     </div>
-    <div class="span3">
-        <div class="row-fluid">
-            @(Html.BudgetOnlineWeb().Panel()
-                            .Header("Текущий баланс")
-                            .Content(Html.Action("CurrentBalanceByCurrencies", "TransactionStatistics"))
-                            .ContentRefreshUrl(Url.Action("CurrentBalanceByCurrencies", "TransactionStatistics")).Build())
-
-            @(Html.BudgetOnlineWeb().Panel()
-                            .Header("Текущий баланс по счетам")
-                            .Content(Html.Action("LightTotalByAccounts", "TransactionStatistics"))
-                            .ContentRefreshUrl(Url.Action("LightTotalByAccounts", "TransactionStatistics")).Build())
+    <div class="col-md-3">
+        <div class="row border-bt">
+            <div class="col-md-12">
+                @(Html.BudgetOnlineWeb().Panel()
+           .Header("Текущий баланс")
+           .Content(Html.Action("CurrentBalanceByCurrencies", "TransactionStatistics"))
+           .ContentRefreshUrl(Url.Action("CurrentBalanceByCurrencies", "TransactionStatistics")).Build())
+            </div>
         </div>
-        <div class="row-fluid">
-            @RenderSection("RightBar", false)
+        <div class="row border-bt">
+            <div class="col-md-12">
+                @(Html.BudgetOnlineWeb().Panel()
+           .Header("Текущий баланс по счетам")
+           .Content(Html.Action("LightTotalByAccounts", "TransactionStatistics"))
+           .ContentRefreshUrl(Url.Action("LightTotalByAccounts", "TransactionStatistics")).Build())
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @RenderSection("RightBar", false)
+            </div>
         </div>
     </div>
 </div>

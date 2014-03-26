@@ -16,7 +16,7 @@
     var iconClass = command.IconCssClass;
     if (string.IsNullOrWhiteSpace(iconClass))
     {
-        iconClass = "i";
+        iconClass = "";
     }
 
     var href = "#";
@@ -25,5 +25,5 @@
         href = redirectCommand.Path;
     }
     
-	<a href="@href"><i class="@iconClass"></i>@command.Text</a>
+	<a href="@href"><i class="glyphicon @iconClass"></i>@command.Text</a>
 }
