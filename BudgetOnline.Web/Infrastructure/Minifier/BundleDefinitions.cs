@@ -11,7 +11,7 @@ namespace BudgetOnline.Web.Infrastructure.Minifier
             commonStylesBundle.Include("~/Content/bootstrap-responsive.css");
             commonStylesBundle.Include("~/Content/site.css");
             commonStylesBundle.Include("~/Content/cus-icons.css");
-            commonStylesBundle.Include("~/Content/bootstrap-select/bootstrap-select.min.css");
+            commonStylesBundle.Include("~/Content/bootstrap-select/bootstrap-select.css");
             commonStylesBundle.Include("~/Content/themes/flick/jquery-ui.css", new CssRewriteUrlTransform());
             commonStylesBundle.Include("~/Content/themes/flick/jquery.ui.theme.css", new CssRewriteUrlTransform());
 
@@ -28,12 +28,10 @@ namespace BudgetOnline.Web.Infrastructure.Minifier
             otherScriptsBundle.Include("~/Scripts/jquery-ui-1.10.4.min.js");
             otherScriptsBundle.Include("~/Scripts/modernizr-2.7.2.js");
             otherScriptsBundle.Include("~/Scripts/bootstrap.min.js");
-            otherScriptsBundle.Include("~/Scripts/bootstrap-select/bootstrap-select.min.js");
-            otherScriptsBundle.Include("~/Scripts/bootstrap-select/bootstrap-select.jquery.json");
+            otherScriptsBundle.Include("~/Scripts/bootstrap-select/bootstrap-select.js");
             otherScriptsBundle.Include("~/Scripts/jquery.validate.js");
             otherScriptsBundle.Include("~/Scripts/jquery.postdatas-min.js");
             otherScriptsBundle.Include("~/Scripts/jsrender.min.js");
-            otherScriptsBundle.Include("~/Scripts/jsrender.min.map");
             otherScriptsBundle.Include("~/Scripts/common.js");
 
             BundleTable.Bundles.Add(otherScriptsBundle);

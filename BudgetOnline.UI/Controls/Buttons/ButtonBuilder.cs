@@ -63,6 +63,13 @@ namespace BudgetOnline.UI.Controls.Buttons
 
             return this;
         }
+        public virtual ButtonBuilder Icon(string css)
+        {
+            _iconCss = css;
+            _tooltip = string.Empty;
+
+            return this;
+        }
 
         protected ButtonBuilder ButtonType(ButtonTypes buttonType)
         {

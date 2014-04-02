@@ -63,14 +63,13 @@ return new System.Web.WebPages.HelperResult(__razor_helper_writer => {
 #line default
 #line hidden
 
-WriteLiteralTo(@__razor_helper_writer, "    <div class=\"visible-xs clearfix darkback\" style=\"height: 10px\">\r\n    </div>\r\n" +
-"");
+WriteLiteralTo(@__razor_helper_writer, "    <div class=\"visible-xs clearfix\" style=\"height: 10px\">\r\n    </div>\r\n");
 
 
 
-WriteLiteralTo(@__razor_helper_writer, "    <div class=\"row-fluid darkback\">\r\n        <div class=\"col-md-5 col-md-offset-" +
-"4 col-sm-4 col-sm-offset-2\">\r\n            <ul class=\"pagination pagination-sm pu" +
-"ll-left\">\r\n                <li><a href=\"");
+WriteLiteralTo(@__razor_helper_writer, "    <div class=\"row-fluid\">\r\n        <div class=\"col-md-5 col-md-offset-4 col-sm-" +
+"4 col-sm-offset-2\">\r\n            <ul class=\"pagination pagination-sm pull-left\">" +
+"\r\n                <li><a href=\"");
 
 
 
@@ -233,11 +232,11 @@ WriteLiteralTo(@__razor_helper_writer, "                    </ul>\r\n           
 
 
 
-WriteLiteralTo(@__razor_helper_writer, "    <div class=\"clearfix darkback\">\r\n    </div>\r\n");
+WriteLiteralTo(@__razor_helper_writer, "    <div class=\"clearfix\">\r\n    </div>\r\n");
 
 
 
-WriteLiteralTo(@__razor_helper_writer, "    <div class=\"darkback\" style=\"height: 10px\">\r\n    </div>\r\n");
+WriteLiteralTo(@__razor_helper_writer, "    <div class=\"\" style=\"height: 10px\">\r\n    </div>\r\n");
 
 
 

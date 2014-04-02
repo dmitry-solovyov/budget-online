@@ -5,15 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="row" style="margin-bottom: .5em">
-    <div class="col-md-4">
-        @Html.BudgetOnlineWeb().PrimaryButton().Caption("Новая запись").Css("btn btn-default").RedirectTo(Url.Action("create")).Build()
-    </div>
-    <div class="col-md-4">
-    </div>
-    <div class="col-md-4">
+    <div class="col-md-12">
+        @Html.BudgetOnlineWeb().ButtonNormal().Caption("Новая запись").Css("btn btn-default").RedirectTo(Url.Action("create")).Icon("glyphicon glyphicon-plus").Build()
     </div>
 </div>
-<div class="darkback">
+<div class="row darkback border-tp">
     <form class="form-search" role="form" action="list" id="searchFilterForm" method="POST">
     <div class="row-fluid">
         <div class="col-md-12">
@@ -64,7 +60,7 @@
     </div>
     <div class="row-fluid">
         <div class="col-md-12">
-            @Html.BudgetOnlineWeb().PrimaryButton().Caption("Поиск").Build()
+            <p>@Html.BudgetOnlineWeb().PrimaryButton().Caption("Поиск").Build()</p>
         </div>
     </div>
     </form>

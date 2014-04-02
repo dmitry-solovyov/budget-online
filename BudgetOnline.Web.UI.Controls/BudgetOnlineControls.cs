@@ -12,7 +12,7 @@ namespace BudgetOnline.Web.UI.Controls
 
 		public ButtonBuilder ButtonNormal()
 		{
-			return new ButtonBuilder().Css("btn");
+            return new ButtonBuilder().Css("btn btn-default");
 		}
 
 		public ButtonBuilder ButtonNormal(ButtonCaptionTypes captionType)
@@ -43,7 +43,7 @@ namespace BudgetOnline.Web.UI.Controls
 			return new SubmitButtonBuilder().Css("btn btn-primary");
 		}
 
-		public ButtonBuilder SubmitNormalButton(ButtonCaptionTypes captionType)
+        public ButtonBuilder SubmitNormalButton(ButtonCaptionTypes captionType)
 		{
 			var builder = new SubmitButtonBuilder().Css("btn btn-primary");
 			SetButtonCaption(captionType, builder);
