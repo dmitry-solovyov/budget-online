@@ -56,22 +56,22 @@ return new System.Web.WebPages.HelperResult(__razor_helper_writer => {
 #line default
 #line hidden
 
-WriteLiteralTo(@__razor_helper_writer, "    <div class=\"\">\r\n        <div id=\"");
+WriteLiteralTo(@__razor_helper_writer, "    <div id=\"");
 
 
 
-#line 7 "..\..\Views\DynamicContainer.cshtml"
+#line 6 "..\..\Views\DynamicContainer.cshtml"
 WriteTo(@__razor_helper_writer, model.UniqeId);
 
 #line default
 #line hidden
 
-WriteLiteralTo(@__razor_helper_writer, "\" class=\"\" data-name=\"");
+WriteLiteralTo(@__razor_helper_writer, "\" class=\"dyn-box\" data-name=\"");
 
 
 
-#line 7 "..\..\Views\DynamicContainer.cshtml"
-                         WriteTo(@__razor_helper_writer, model.Name);
+#line 6 "..\..\Views\DynamicContainer.cshtml"
+                            WriteTo(@__razor_helper_writer, model.Name);
 
 #line default
 #line hidden
@@ -80,8 +80,8 @@ WriteLiteralTo(@__razor_helper_writer, "\" data-dynamic-url=\'");
 
 
 
-#line 7 "..\..\Views\DynamicContainer.cshtml"
-                                                          WriteTo(@__razor_helper_writer, model.RequestUrl);
+#line 6 "..\..\Views\DynamicContainer.cshtml"
+                                                             WriteTo(@__razor_helper_writer, model.RequestUrl);
 
 #line default
 #line hidden
@@ -90,8 +90,8 @@ WriteLiteralTo(@__razor_helper_writer, "\' data-autoload=\'");
 
 
 
-#line 7 "..\..\Views\DynamicContainer.cshtml"
-                                                                                              WriteTo(@__razor_helper_writer, model.IsAutoload.ToString().ToLower());
+#line 6 "..\..\Views\DynamicContainer.cshtml"
+                                                                                                 WriteTo(@__razor_helper_writer, model.IsAutoload.ToString().ToLower());
 
 #line default
 #line hidden
@@ -100,30 +100,31 @@ WriteLiteralTo(@__razor_helper_writer, "\' \r\n             data-autoload-delay=
 
 
 
-#line 8 "..\..\Views\DynamicContainer.cshtml"
+#line 7 "..\..\Views\DynamicContainer.cshtml"
     WriteTo(@__razor_helper_writer, model.IsAutoload && model.AutoloadDelay > 0 ? model.AutoloadDelay.ToString() : "0");
 
 #line default
 #line hidden
 
-WriteLiteralTo(@__razor_helper_writer, "\'>\r\n            \r\n");
+WriteLiteralTo(@__razor_helper_writer, "\'>\r\n");
 
 
 
-#line 10 "..\..\Views\DynamicContainer.cshtml"
-             if (!string.IsNullOrWhiteSpace(model.Caption.ToHtmlString()))
-            {
+#line 8 "..\..\Views\DynamicContainer.cshtml"
+         if (!string.IsNullOrWhiteSpace(model.Caption.ToHtmlString()))
+        {
 
 #line default
 #line hidden
 
-WriteLiteralTo(@__razor_helper_writer, "                <div class=\"row darkback border-bt\">\r\n                    <div cl" +
-"ass=\"col-md-10\">\r\n                        <strong>");
+WriteLiteralTo(@__razor_helper_writer, "            <div class=\"darkback compact header\">\r\n                <div class=\"ro" +
+"w\">\r\n                    <div class=\"col-md-10\">\r\n                        <stron" +
+"g class=\"\">");
 
 
 
-#line 14 "..\..\Views\DynamicContainer.cshtml"
-  WriteTo(@__razor_helper_writer, model.Caption);
+#line 13 "..\..\Views\DynamicContainer.cshtml"
+           WriteTo(@__razor_helper_writer, model.Caption);
 
 #line default
 #line hidden
@@ -131,28 +132,29 @@ WriteLiteralTo(@__razor_helper_writer, "                <div class=\"row darkbac
 WriteLiteralTo(@__razor_helper_writer, @"</strong>
                     </div>
                     <div class=""col-md-2"">
-                        <a class=""pull-right btn btn-xs"" href=""#""><i class=""glyphicon glyphicon-refresh""></i>
-                        </a>
+                        <a class=""pull-right btn btn-xs refresh"" href=""#""><i class=""glyphicon glyphicon-refresh"">
+                        </i></a>
                     </div>
                 </div>
+            </div>
 ");
 
 
 
 #line 21 "..\..\Views\DynamicContainer.cshtml"
-            }
+        }
 
 #line default
 #line hidden
 
-WriteLiteralTo(@__razor_helper_writer, "            <div class=\"row\" style=\"padding: 3px\">\r\n");
+WriteLiteralTo(@__razor_helper_writer, "        <div class=\"content row\">\r\n");
 
 
 
 #line 23 "..\..\Views\DynamicContainer.cshtml"
-                 if (model.Content != null && !string.IsNullOrWhiteSpace(model.Content.ToHtmlString()))
-                {
-                    
+             if (model.Content != null && !string.IsNullOrWhiteSpace(model.Content.ToHtmlString()))
+            {
+                
 #line default
 #line hidden
 
@@ -165,14 +167,14 @@ WriteTo(@__razor_helper_writer, new HtmlString(model.Content.ToHtmlString()));
 
 
 #line 25 "..\..\Views\DynamicContainer.cshtml"
-                                                                   
-                }
+                                                               
+            }
 
 #line default
 #line hidden
 
-WriteLiteralTo(@__razor_helper_writer, "            </div>\r\n            <div class=\"row darkback poor-text\">\r\n           " +
-"     <span class=\"pull-right small\">\r\n                    ");
+WriteLiteralTo(@__razor_helper_writer, "        </div>\r\n        <div class=\"darkback poor-text compact footer\">\r\n        " +
+"    <span class=\"small pull-right\">\r\n                ");
 
 
 
@@ -182,11 +184,11 @@ WriteTo(@__razor_helper_writer, DateTime.Now);
 #line default
 #line hidden
 
-WriteLiteralTo(@__razor_helper_writer, "\r\n                </span>\r\n            </div>\r\n        </div>\r\n    </div>\r\n");
+WriteLiteralTo(@__razor_helper_writer, "\r\n            </span>\r\n        </div>\r\n    </div>\r\n");
 
 
 
-#line 35 "..\..\Views\DynamicContainer.cshtml"
+#line 34 "..\..\Views\DynamicContainer.cshtml"
 
 #line default
 #line hidden

@@ -98,7 +98,7 @@ function turnOn_dynamicBox() {
     $('div.dyn-box .refresh').click(
 		function (event) {
 		    event.preventDefault();
-		    var container = $(this).parent().parent().parent();
+		    var container = $(this).closest("div.dyn-box");
 
 		    var url = container.attr('data-dynamic-url');
 
@@ -119,7 +119,7 @@ function turnOn_dynamicBox() {
 				    //alert("Error");
 				})
 				.always(function () {
-				    hideIndicatorFor($(this).parent().parent().parent().find('.content'), 'progress');
+				    hideIndicatorFor($(this).closest(".content"), 'progress');
 				});
 		    }
 
@@ -127,7 +127,7 @@ function turnOn_dynamicBox() {
 		});
 
     $('div.dyn-box .refresh').each(function () {
-        var container = $(this).parent().parent().parent();
+        var container = $(this).closest("div.dyn-box");
         var autoload = container.attr('data-autoload');
         var autoloaddelay = container.attr('data-autoload-delay');
         if (autoload === 'true') {

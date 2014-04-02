@@ -41,8 +41,8 @@ select.iconed option
     margin-bottom: 10px;
 }
 
-#navbar-main {
-    margin-bottom: 0px !important;
+.navbar {
+    margin-bottom: 10px;
 }
 
 .hidden
@@ -51,9 +51,17 @@ select.iconed option
     height: 1px;
 }
 
-.row.compact div[class*="span"]
+.row.compact {
+}
+.row.compact div[class*="col-"]
 {
-    min-height: 0px !important;
+}
+tr.compact td[class*="col-"]
+{
+    /*padding: 1px 5px;*/
+}
+ul.pagination {
+    margin: 5px 0;
 }
 
 ul.nav-tabs li.active a
@@ -78,12 +86,8 @@ select[multiple*="multiple"]
 }
 
 .navbar.navbar-blue, .navbar.navbar-blue ul.nav > li > a, .navbar.navbar-blue ul.nav > li > a:visited  {
-    background-color: #63ADD0;
-    color: #FFFFFF;
 }
 .navbar.navbar-blue ul.nav > li > a:hover, .navbar.navbar-blue ul.nav > li > a.active {
-    background-color: #034769;
-    color: #FFFFFF;
 }
 
 /* Other overwriting
@@ -243,6 +247,7 @@ input[type='text'].date-picker
 .bo-box, .dyn-box
 {
     overflow: hidden;
+    background-color: #f9f9f9;
     padding: 0;
     margin: 0;
     width: 98%;
@@ -254,7 +259,7 @@ input[type='text'].date-picker
     border-radius: 5px;
 }
 
-.bo-box > .header, .dyn-box > .header
+.bo-box > div > .header, .dyn-box .header
 {
     padding: .3em 0;
     cursor: default;
@@ -263,7 +268,7 @@ input[type='text'].date-picker
     font-size: .9em;
     padding-left: .6em;
 }
-.bo-box > .header > .caption, .dyn-box > .header > .caption
+.bo-box .header .caption, .dyn-box .header .caption
 {
     float: left;
     width: auto;
@@ -271,12 +276,12 @@ input[type='text'].date-picker
     font-size: .9em;
     padding-left: .6em;
 }
-.bo-box > .header > .icons
+.bo-box .header .icons, .dyn-box .header .icons
 {
     width: auto;
     padding-right: .6em;
 }
-.bo-box > .header > .icons .help
+.bo-box .header .icons .help
 {
     cursor: pointer;
     width: 18px;
@@ -284,12 +289,12 @@ input[type='text'].date-picker
     background-image: url('graphics/icon_sprite.png');
     background-position: -47px -144px;
 }
-.bo-box > .content, .dyn-box > .content
+.bo-box > .content, .dyn-box .content
 {
     cursor: default;
     padding: .5em;
 }
-.bo-box > .footer, .dyn-box > .footer
+.bo-box > .footer, .dyn-box .footer
 {
     padding: .3em 0;
     cursor: default;
@@ -304,27 +309,28 @@ input[type='text'].date-picker
     color: #999;
 }
 
-.bo-box > .header, .dyn-box > .header
+.bo-box > .header, .dyn-box .header
 {
     background-color: #dee2e4;
     color: #777;
     border-color: Transparent;
 }
 
-.bo-box > .content, .dyn-box > .content
+.bo-box > .content, .dyn-box .content
 {
     color: #333;
     border-color: #dee2e4;
+    font-size: .9em;
 }
 
-.bo-box > .footer, .dyn-box > .footer
+.bo-box > .footer, .dyn-box .footer
 {
     border-color: #dee2e4;
     font-size: .8em;
     padding: 0 0.5em;
     color: #bbb;
 }
-.bo-box > .footer:hover, .dyn-box > .footer:hover
+.bo-box > .footer:hover, .dyn-box .footer:hover
 {
     color: #333;
 }

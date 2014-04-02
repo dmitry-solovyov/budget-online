@@ -7,19 +7,17 @@
 {
     if (Model.NumberOfGroups > 1)
     {
-    <div class="compact" title="@group.Title" id="@group.Id">
-        <h6 class="text-center">@group.Title</h6>
+    <div class="text-center" title="@group.Title" id="@group.Id">
+        <strong class="">@group.Title</strong>
     </div>
     }
 
     foreach (var item in group.Items)
     {
-    <div class="col-md-12 compact underline">
-        <div class="row">
+        <div class="row underline compact">
             <div class="col-md-6 sum-@(item.Sum < 0 ? "out" : "in")" title="@item.Tooltip">@item.Label</div>
             <div class="col-md-6 text-right sum-@(item.Sum < 0 ? "out" : "in")">
                 <span class="currency-smb">@item.CurrencySymbol</span> @item.Sum.ToHtmlString(HtmlOutputFormatterExtensions.OutputLengthType.Short)</div>
         </div>
-    </div>
     }
 }

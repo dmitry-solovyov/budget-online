@@ -37,7 +37,7 @@
         <div class="col-md-offset-2 col-md-9">
             @Html.BudgetOnlineWeb().SubmitNormalButton(BudgetOnlineWebControls.ButtonCaptionTypes.Save).Build()
             @Html.BudgetOnlineWeb().ButtonNormal(BudgetOnlineWebControls.ButtonCaptionTypes.Cancel).RedirectTo(Url.Action("list")).Build()
-            @Html.EditorFor(o => o.IsCreateNewAfterSave)
+            <span style="padding-left: 3em">@Html.EditorFor(o => o.IsCreateNewAfterSave)</span>
         </div>
     </div>
     </text>)

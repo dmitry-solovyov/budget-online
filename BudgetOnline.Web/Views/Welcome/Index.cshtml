@@ -3,13 +3,13 @@
     ViewBag.Title = "Начало";
 }
 <div class="row compact">
-    <div class="col-md-4 border-ltrt">
+    <div class="col-md-4">
         @(Html.BudgetOnlineWeb().Panel().Header("Статистика за текущий месяц")
            .Content(Html.Action("TotalsByCurrentMonth", "TransactionStatistics", new { id = 1 }))
            .ContentRefreshUrl(Url.Action("TotalsByCurrentMonth", "TransactionStatistics", new { id = 1 }))
            .ContentRefreshCallbackFunction("getCallbackResult").Build())
     </div>
-    <div class="col-md-4 border-rt">
+    <div class="col-md-4">
         @(Html.BudgetOnlineWeb().Panel().Header("Статистика за прошлый месяц")
                 .Content(Html.Action("TotalsByPrevMonth", "TransactionStatistics", new { id = 1 }))
                 .ContentRefreshUrl(Url.Action("TotalsByPrevMonth", "TransactionStatistics", new { id = 1 }))
@@ -19,7 +19,7 @@
     </div>
 </div>
 <div class="row compact">
-    <div class="col-md-8 border-ltrt border-tp2 border-bt">
+    <div class="col-md-8">
         @(Html.BudgetOnlineWeb().Panel().Header("Выполнение бюджета за текущий месяц")
                 .Content(Html.Action("StateByCurrentMonth", "budgeting"))
                 .ContentRefreshUrl(Url.Action("StateByCurrentMonth", "budgeting"))
@@ -28,8 +28,3 @@
     <div class="col-md-4">
     </div>
 </div>
-<script type="text/javascript">
-    function getCallbackResult(data) {
-        //alert('getCallbackResult called with=' + data);
-    }
-</script>

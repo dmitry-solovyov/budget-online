@@ -56,9 +56,7 @@ WriteLiteral(" class=\"row\"");
 
 WriteLiteral(">\r\n    <div");
 
-WriteLiteral(" class=\"col-md-9\"");
-
-WriteLiteral(" style=\"border-right: 1px solid #ddd;\"");
+WriteLiteral(" class=\"col-md-9 central-column\"");
 
 WriteLiteral(">\r\n");
 
@@ -73,11 +71,11 @@ WriteLiteral("        ");
             #line hidden
 WriteLiteral("\r\n    </div>\r\n    <div");
 
-WriteLiteral(" class=\"col-md-3\"");
+WriteLiteral(" class=\"col-md-3 right-column\"");
 
 WriteLiteral(">\r\n        <div");
 
-WriteLiteral(" class=\"row border-bt\"");
+WriteLiteral(" class=\"row\"");
 
 WriteLiteral(">\r\n            <div");
 
@@ -99,7 +97,7 @@ WriteLiteral("                ");
             #line hidden
 WriteLiteral("\r\n            </div>\r\n        </div>\r\n        <div");
 
-WriteLiteral(" class=\"row border-bt\"");
+WriteLiteral(" class=\"row\"");
 
 WriteLiteral(">\r\n            <div");
 

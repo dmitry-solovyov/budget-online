@@ -398,11 +398,17 @@
     <Content Include="Content\themes\flick\images\ui-icons_ffffff_256x240.png" />
     <Content Include="Content\themes\flick\jquery-ui.css" />
     <Content Include="Content\themes\flick\jquery.ui.theme.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\site.css" />
     <Content Include="README.jQuery.vsdoc.txt" />
     <Content Include="Scripts\bootstrap-select.js" />
     <Content Include="Scripts\bootstrap-select.min.js" />
+    <Content Include="Scripts\bootstrap-select\bootstrap-select.css" />
+    <Content Include="Scripts\bootstrap-select\bootstrap-select.js" />
+    <Content Include="Scripts\bootstrap-select\bootstrap-select.min.css" />
+    <Content Include="Scripts\bootstrap-select\bootstrap-select.min.js" />
+    <Content Include="Scripts\bootstrap-select\test.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\common.js" />
@@ -724,6 +730,15 @@
     <Content Include="Views\Shared\_LanguageSwitch.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Scripts\bootstrap-select\bootstrap-select.jquery.json" />
+    <None Include="Scripts\bootstrap-select\bower.json" />
+    <None Include="Scripts\bootstrap-select\composer.json" />
+    <None Include="Scripts\bootstrap-select\CONTRIBUTING.md" />
+    <None Include="Scripts\bootstrap-select\package.json" />
+    <None Include="Scripts\bootstrap-select\README.md" />
     <None Include="Scripts\jquery-2.1.0.min.map" />
     <Content Include="Views\Transactions\Copy of _List.cshtml" />
   </ItemGroup>

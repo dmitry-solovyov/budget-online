@@ -158,7 +158,7 @@ WriteLiteralTo(@__razor_helper_writer, "\">\r\n                    »</a></li>\r
 
 WriteLiteralTo(@__razor_helper_writer, @"
         <div class=""col-md-3"">
-            <div class=""row"" style=""padding-top: 5px"">
+            <div style=""margin-top: 10px"">
                 <label class="""">
                     Страница:
                 </label>

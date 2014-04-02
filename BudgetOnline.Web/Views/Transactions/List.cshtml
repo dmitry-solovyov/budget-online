@@ -15,7 +15,7 @@
 </div>
 <div class="row">
     <div class="border-tpbt darkback">
-        <form class="navbar-form" action="list" id="searchFilterForm" method="POST">
+        <form class="form-inline" role="form" action="list" id="searchFilterForm" method="POST">
         <div class="row compact">
             <div class="col-md-8">
                 <div class="control-list">
@@ -48,9 +48,8 @@
                 </div>
             </div>*@
             <div class="col-md-4">
-                <div class="control-label">
-                    Текст</div>
                 <div class="form-group">
+                    <label class="control-label">Текст</label>
                     @Html.TextBox("search", Model.Search.Text ?? string.Empty, new { @class = "form-control input-sm" })
                 </div>
             </div>

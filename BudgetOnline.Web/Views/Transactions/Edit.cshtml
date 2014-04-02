@@ -56,8 +56,8 @@
                         .Content(@<text>
         @Html.ValidationSummary()
         @Html.EditorForModel("~/Views/Shared/EditorTemplates/Object.cshtml")
-        <div class="form-actions">
-            <div class="form-group">
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-9">
                 @Html.BudgetOnlineWeb().SubmitNormalButton().Caption("Сохранить").Build()
                 @Html.BudgetOnlineWeb().ButtonNormal().Caption("Отмена").RedirectTo(Url.Action("list")).Build()
             </div>

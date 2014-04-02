@@ -3,11 +3,11 @@
     Layout = "_LayoutMain.cshtml";
 }
 <div class="row">
-    <div class="col-md-9" style="border-right: 1px solid #ddd;">
+    <div class="col-md-9 central-column">
         @RenderBody()
     </div>
-    <div class="col-md-3">
-        <div class="row border-bt">
+    <div class="col-md-3 right-column">
+        <div class="row">
             <div class="col-md-12">
                 @(Html.BudgetOnlineWeb().Panel()
            .Header("Текущий баланс")
@@ -15,7 +15,7 @@
            .ContentRefreshUrl(Url.Action("CurrentBalanceByCurrencies", "TransactionStatistics")).Build())
             </div>
         </div>
-        <div class="row border-bt">
+        <div class="row">
             <div class="col-md-12">
                 @(Html.BudgetOnlineWeb().Panel()
            .Header("Текущий баланс по счетам")

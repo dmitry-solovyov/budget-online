@@ -15,14 +15,14 @@ else
 
 	if (state != null && state.Errors.Count > 0)
 	{ 
-	<label class="checkbox input-validation-error inline">
+	<label class="checkbox-inline input-validation-error">
 		@Html.CheckBox("", value)
 		@ViewData.ModelMetadata.GetDisplayName()
 	</label> 
 	}
 	else
 	{ 
-	<label class="checkbox inline">
+	<label class="checkbox-inline">
 		@Html.CheckBox("", value)
 		@ViewData.ModelMetadata.GetDisplayName()
 	</label> 	}

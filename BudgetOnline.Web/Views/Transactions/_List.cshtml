@@ -21,7 +21,8 @@
 {
     <div class="row compact grouped-list">
         <div class="header">
-            <img src="@Url.Content("~/content/images/calendar_icon.gif")" /><span>@group.Title</span>
+            <img src="@Url.Content("~/content/images/calendar_icon.gif")" />
+            <span style="padding-left: .5em">@group.Title</span>
         </div>
     </div>
     <div class="row">
@@ -33,7 +34,7 @@
     .SupressHeader(true)
     .RowTemplate(
         @<text>
-                <tr id="t@(item.Id)">
+                <tr id="t@(item.Id)" class="compact">
                     <td class="col-md-6">
                         <div>@Html.Raw(item.IsDisabled ? "<i class=\"glyphicon glyphicon-lock\"></i>" : "")@item.Description</div>
                         <div>

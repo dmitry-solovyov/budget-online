@@ -29,6 +29,7 @@ namespace BudgetOnline.Web.Infrastructure.Minifier
             otherScriptsBundle.Include("~/Scripts/modernizr-2.7.2.js");
             otherScriptsBundle.Include("~/Scripts/bootstrap.min.js");
             otherScriptsBundle.Include("~/Scripts/bootstrap-select/bootstrap-select.min.js");
+            otherScriptsBundle.Include("~/Scripts/bootstrap-select/bootstrap-select.jquery.json");
             otherScriptsBundle.Include("~/Scripts/jquery.validate.js");
             otherScriptsBundle.Include("~/Scripts/jquery.postdatas-min.js");
             otherScriptsBundle.Include("~/Scripts/jsrender.min.js");
