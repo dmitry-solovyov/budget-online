@@ -60,17 +60,21 @@ return new System.Web.WebPages.HelperResult(__razor_helper_writer => {
             nextPageSize = model.PageSizes[0];
         }
 
-
 #line default
 #line hidden
 
-WriteLiteralTo(@__razor_helper_writer, "    <div class=\"row\">\r\n        <div class=\"col-md-4\">\r\n        </div>\r\n        <d" +
-"iv class=\"col-md-5\">\r\n            <ul class=\"pagination pagination-sm\">\r\n       " +
-"         <li><a href=\"");
+WriteLiteralTo(@__razor_helper_writer, "    <div class=\"visible-xs clearfix darkback\" style=\"height: 10px\">\r\n    </div>\r\n" +
+"");
 
 
 
-#line 20 "..\..\Views\Paginator.cshtml"
+WriteLiteralTo(@__razor_helper_writer, "    <div class=\"row-fluid darkback\">\r\n        <div class=\"col-md-5 col-md-offset-" +
+"4 col-sm-4 col-sm-offset-2\">\r\n            <ul class=\"pagination pagination-sm pu" +
+"ll-left\">\r\n                <li><a href=\"");
+
+
+
+#line 19 "..\..\Views\Paginator.cshtml"
 WriteTo(@__razor_helper_writer, Html.GetUrlQithNewQueryParameter("page", "1"));
 
 #line default
@@ -80,7 +84,7 @@ WriteLiteralTo(@__razor_helper_writer, "\">«</a></li>\r\n");
 
 
 
-#line 21 "..\..\Views\Paginator.cshtml"
+#line 20 "..\..\Views\Paginator.cshtml"
                  foreach (var page in pages)
                 {
                     if (model.Page == page)
@@ -93,7 +97,7 @@ WriteLiteralTo(@__razor_helper_writer, "                    <li class=\"active\"
 
 
 
-#line 25 "..\..\Views\Paginator.cshtml"
+#line 24 "..\..\Views\Paginator.cshtml"
                     WriteTo(@__razor_helper_writer, page);
 
 #line default
@@ -103,7 +107,7 @@ WriteLiteralTo(@__razor_helper_writer, "</a></li>\r\n");
 
 
 
-#line 26 "..\..\Views\Paginator.cshtml"
+#line 25 "..\..\Views\Paginator.cshtml"
                     }
                     else
                     {
@@ -115,7 +119,7 @@ WriteLiteralTo(@__razor_helper_writer, "                    <li><a href=\"");
 
 
 
-#line 29 "..\..\Views\Paginator.cshtml"
+#line 28 "..\..\Views\Paginator.cshtml"
   WriteTo(@__razor_helper_writer, Html.GetUrlQithNewQueryParameter("page", @page.ToString()));
 
 #line default
@@ -125,7 +129,7 @@ WriteLiteralTo(@__razor_helper_writer, "\">");
 
 
 
-#line 29 "..\..\Views\Paginator.cshtml"
+#line 28 "..\..\Views\Paginator.cshtml"
                                                                WriteTo(@__razor_helper_writer, page);
 
 #line default
@@ -135,7 +139,7 @@ WriteLiteralTo(@__razor_helper_writer, "</a></li>\r\n");
 
 
 
-#line 30 "..\..\Views\Paginator.cshtml"
+#line 29 "..\..\Views\Paginator.cshtml"
                     }
                 }
 
@@ -146,19 +150,18 @@ WriteLiteralTo(@__razor_helper_writer, "                <li><a href=\"");
 
 
 
-#line 32 "..\..\Views\Paginator.cshtml"
+#line 31 "..\..\Views\Paginator.cshtml"
 WriteTo(@__razor_helper_writer, Html.GetUrlQithNewQueryParameter("page", model.PagesCount.ToString()));
 
 #line default
 #line hidden
 
-WriteLiteralTo(@__razor_helper_writer, "\">\r\n                    »</a></li>\r\n            </ul>\r\n        </div>\r\n        ");
-
-
-
-WriteLiteralTo(@__razor_helper_writer, @"
-        <div class=""col-md-3"">
-            <div style=""margin-top: 10px"">
+WriteLiteralTo(@__razor_helper_writer, @""">
+                    »</a></li>
+            </ul>
+        </div>
+        <div class=""col-md-3 col-sm-6"">
+            <div style=""margin-top: 10px"" class=""pull-right"">
                 <label class="""">
                     Страница:
                 </label>
@@ -167,7 +170,7 @@ WriteLiteralTo(@__razor_helper_writer, @"
 
 
 
-#line 62 "..\..\Views\Paginator.cshtml"
+#line 41 "..\..\Views\Paginator.cshtml"
                                                                          WriteTo(@__razor_helper_writer, Html.GetUrlQithNewQueryParameter("pageSize", nextPageSize.ToString()));
 
 #line default
@@ -177,7 +180,7 @@ WriteLiteralTo(@__razor_helper_writer, "\">\r\n                        ");
 
 
 
-#line 63 "..\..\Views\Paginator.cshtml"
+#line 42 "..\..\Views\Paginator.cshtml"
 WriteTo(@__razor_helper_writer, model.PageSize);
 
 #line default
@@ -188,7 +191,7 @@ WriteLiteralTo(@__razor_helper_writer, "&nbsp;&nbsp;&nbsp; <span class=\"caret\"
 
 
 
-#line 66 "..\..\Views\Paginator.cshtml"
+#line 45 "..\..\Views\Paginator.cshtml"
                          foreach (var pageSize in model.PageSizes)
                         {
 
@@ -199,7 +202,7 @@ WriteLiteralTo(@__razor_helper_writer, "                            <li><a href=
 
 
 
-#line 68 "..\..\Views\Paginator.cshtml"
+#line 47 "..\..\Views\Paginator.cshtml"
           WriteTo(@__razor_helper_writer, Html.GetUrlQithNewQueryParameter("pageSize", pageSize.ToString()));
 
 #line default
@@ -209,7 +212,7 @@ WriteLiteralTo(@__razor_helper_writer, "\">");
 
 
 
-#line 68 "..\..\Views\Paginator.cshtml"
+#line 47 "..\..\Views\Paginator.cshtml"
                                                                               WriteTo(@__razor_helper_writer, pageSize);
 
 #line default
@@ -219,7 +222,7 @@ WriteLiteralTo(@__razor_helper_writer, "</a></li>\r\n");
 
 
 
-#line 69 "..\..\Views\Paginator.cshtml"
+#line 48 "..\..\Views\Paginator.cshtml"
                         }
 
 #line default
@@ -230,7 +233,15 @@ WriteLiteralTo(@__razor_helper_writer, "                    </ul>\r\n           
 
 
 
-#line 75 "..\..\Views\Paginator.cshtml"
+WriteLiteralTo(@__razor_helper_writer, "    <div class=\"clearfix darkback\">\r\n    </div>\r\n");
+
+
+
+WriteLiteralTo(@__razor_helper_writer, "    <div class=\"darkback\" style=\"height: 10px\">\r\n    </div>\r\n");
+
+
+
+#line 58 "..\..\Views\Paginator.cshtml"
 
 #line default
 #line hidden

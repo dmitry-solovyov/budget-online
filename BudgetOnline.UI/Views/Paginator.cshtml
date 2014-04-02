@@ -11,12 +11,11 @@
         {
             nextPageSize = model.PageSizes[0];
         }
-
-    <div class="row">
-        <div class="col-md-4">
-        </div>
-        <div class="col-md-5">
-            <ul class="pagination pagination-sm">
+    <div class="visible-xs clearfix darkback" style="height: 10px">
+    </div>
+    <div class="row-fluid darkback">
+        <div class="col-md-5 col-md-offset-4 col-sm-4 col-sm-offset-2">
+            <ul class="pagination pagination-sm pull-left">
                 <li><a href="@Html.GetUrlQithNewQueryParameter("page", "1")">«</a></li>
                 @foreach (var page in pages)
                 {
@@ -33,28 +32,8 @@
                     »</a></li>
             </ul>
         </div>
-        @*<div class="col-md-3">
-            <div class="row" style="margin-top: 5px">
-                <div class="col-md-9">
-                    <span class="pull-right">Страница: </span>
-                </div>
-                <div class="col-md-3">
-                    <div class="btn-group pull-right">
-                        <button class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" href="@Html.GetUrlQithNewQueryParameter("pageSize", nextPageSize.ToString())">
-                            @(model.PageSize)&nbsp;&nbsp;&nbsp; <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" id="setPageSize">
-                            @foreach (var pageSize in model.PageSizes)
-                            {
-                                <li><a href="@Html.GetUrlQithNewQueryParameter("pageSize", pageSize.ToString())">@pageSize</a></li>
-                            }
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>*@
-        <div class="col-md-3">
-            <div style="margin-top: 10px">
+        <div class="col-md-3 col-sm-6">
+            <div style="margin-top: 10px" class="pull-right">
                 <label class="">
                     Страница:
                 </label>
@@ -71,5 +50,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="clearfix darkback">
+    </div>
+    <div class="darkback" style="height: 10px">
     </div>
 }

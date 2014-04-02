@@ -8,15 +8,13 @@
     Layout = null;
 }
 <input type="hidden" value="@Model.Search.CurrentPage"/>
-<div class="row border-bt darkback">
-    @(new BudgetOnline.UI.Views.Paginator().Render(new PaginationModel
+@(new BudgetOnline.UI.Views.Paginator().Render(new PaginationModel
                                                         {
                                                             Page = !string.IsNullOrWhiteSpace(Request.QueryString["page"]) ? int.Parse(Request.QueryString["page"]) : 1,
                                                             PagesCount = Model.Search.PagesCount.Value,
                                                             PageSize = Model.Search.PageSize.Value,
                                                             PageSizes = new[] { 10, 25, 50, 100, 200 }
                                                         }))
-</div>
 @foreach (var group in Model.Groups)
 {
     <div class="row compact grouped-list">
@@ -98,7 +96,7 @@
     </div>
 }
 <div class="darkback row border-tpbt">
-@(new BudgetOnline.UI.Views.Paginator().Render(new PaginationModel
+    @(new BudgetOnline.UI.Views.Paginator().Render(new PaginationModel
 {
     Page = !string.IsNullOrWhiteSpace(Request.QueryString["page"]) ? int.Parse(Request.QueryString["page"]) : 1,
     PagesCount = Model.Search.PagesCount.Value,
