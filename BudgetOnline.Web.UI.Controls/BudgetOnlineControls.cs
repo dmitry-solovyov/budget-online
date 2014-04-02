@@ -38,7 +38,7 @@ namespace BudgetOnline.Web.UI.Controls
 			return new SubmitButtonBuilder().Css("btn btn-lg btn-primary");
 		}
 
-		public ButtonBuilder SubmitNormalButton()
+        public ButtonBuilder PrimaryButton()
 		{
 			return new SubmitButtonBuilder().Css("btn btn-primary");
 		}

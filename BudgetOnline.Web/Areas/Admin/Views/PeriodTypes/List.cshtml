@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayoutPage.cshtml";
 }
 
-@Html.BudgetOnlineWeb().SubmitNormalButton().Caption("Новая запись").RedirectTo(Url.Action("create")).Build()
+@Html.BudgetOnlineWeb().PrimaryButton().Caption("Новая запись").RedirectTo(Url.Action("create")).Build()
 
 @(Html.BudgetOnlineWeb()
     .Table<PeriodTypeListViewModel>()

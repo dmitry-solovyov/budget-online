@@ -11,7 +11,7 @@
 				  	@Html.EditorForModel("~/Views/Shared/EditorTemplates/Object.cshtml")
 				  	<div class="form-actions">
 						<p>
-							@Html.BudgetOnlineWeb().SubmitNormalButton().Caption("Сохранить").Build()
+							@Html.BudgetOnlineWeb().PrimaryButton().Caption("Сохранить").Build()
 							@Html.BudgetOnlineWeb().ButtonNormal().Caption("Отмена").RedirectTo(Url.Action("list")).Build()
 						</p>
 					</div>

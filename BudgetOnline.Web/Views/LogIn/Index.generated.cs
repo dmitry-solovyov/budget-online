@@ -121,7 +121,7 @@ WriteTo(__razor_template_writer,
             #line hidden
             
             #line 19 "..\..\Views\LogIn\Index.cshtml"
-      Html.BudgetOnlineWeb().SubmitNormalButton().Caption("Войти").Build());
+      Html.BudgetOnlineWeb().PrimaryButton().Caption("Войти").Build());
 
             
             #line default
