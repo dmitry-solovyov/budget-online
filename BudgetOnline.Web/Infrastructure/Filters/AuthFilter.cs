@@ -43,7 +43,7 @@ namespace BudgetOnline.Web.Infrastructure.Filters
                 else
                 {
                     var checkResult = AuthenticationDataHelper.UserFromToken(token);
-                    if (checkResult.Status != AccountCheckStatus.Ok)
+                    if (checkResult == null || checkResult.Status != AccountCheckStatus.Ok)
                         return;
                 }
 

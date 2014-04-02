@@ -67,7 +67,7 @@ namespace BudgetOnline.Web.UI.Controls
 			var sb = new StringBuilder(_items.Count());
 			foreach (var item in _items)
 			{
-				var itemsRender = item.Build().ToHtmlString();
+				var itemsRender = item.MenuType(_menuType).Build().ToHtmlString();
 				sb.AppendLine(itemsRender);
 			}
 
@@ -100,6 +100,10 @@ namespace BudgetOnline.Web.UI.Controls
 				case MenuTypes.NavPills:
 					return
 @"<ul class=""nav nav-pills {1}"">{0}</ul>";
+
+                case MenuTypes.ListGroup:
+                    return
+@"<ul class=""list-group {1}"">{0}</ul>";
 
 				case MenuTypes.TabsTop:
 					return
@@ -136,5 +140,6 @@ namespace BudgetOnline.Web.UI.Controls
 		Menu,
 		NavPills,
 		TabsTop,
+        ListGroup
 	}
 }

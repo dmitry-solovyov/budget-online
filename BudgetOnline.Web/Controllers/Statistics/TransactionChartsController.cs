@@ -180,7 +180,7 @@ namespace BudgetOnline.Web.Controllers.Statistics
             var dates = DateTimeHelpers.SequenceOfDates(options.Date1.Value, options.Date2.Value, options.GroupBy ?? TimePeriodTypes.Monthly).ToList();
 
             SelectItemsModel listOfLegends;
-            var series = GetSeriesHelper(options, 0, postModel.Categories, false, ExtractByCategories, () => TitleTotal, out listOfLegends);
+            var series = GetSeriesHelper(options, 0, postModel != null ? postModel.Categories : null, false, ExtractByCategories, () => TitleTotal, out listOfLegends);
 
             Highcharts chart = new Highcharts("chart")
                 .InitChart(new Chart { DefaultSeriesType = ChartTypes.Area })
@@ -239,11 +239,11 @@ namespace BudgetOnline.Web.Controllers.Statistics
 
             SelectItemsModel listOfLegends;
             var series = GetSeriesHelper(
-                options, 
-                (postModel == null ? 5 : 0), 
-                postModel.Categories, 
-                postModel == null || postModel.IsOnlyTotals, ExtractByCategories, 
-                () => TitleTotal, 
+                options,
+                (postModel == null ? 5 : 0),
+                postModel.Categories,
+                postModel == null || postModel.IsOnlyTotals, ExtractByCategories,
+                () => TitleTotal,
                 out listOfLegends);
 
 

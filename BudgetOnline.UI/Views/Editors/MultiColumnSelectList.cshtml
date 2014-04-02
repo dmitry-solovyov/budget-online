@@ -10,7 +10,8 @@
     int rows = GetRowsCount(model.Items.Count(), columns);
     for (int r = 0; r < rows; r++)
     {
-    <div class="row-fluid">
+        <div class="row visible-sm visible-xs" style="height: 10px"></div>
+    <div class="row">
         @{
         for (int c = 0; c < columns; c++)
         {
@@ -18,8 +19,8 @@
             if (index < model.Items.Count())
             {
                 var item = model.Items.ElementAt(index);
-            <div class="col-md-@(Convert.ToInt32(Math.Ceiling(12m / columns)))">
-                <label class="checkbox inline">
+            <div class="col-sm-6 col-xs-8 col-md-@(Convert.ToInt32(Math.Ceiling(12m / columns)))">
+                <label class="checkbox-inline">
                     <input type="checkbox" id="@item.Value" name="@(propertyName)[@(item.Value)]" value="@item.Text" @(new HtmlString(item.Selected ? "checked='checked'" : string.Empty))/>
                     @item.Text
                 </label>

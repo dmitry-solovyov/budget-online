@@ -4,8 +4,7 @@
 <div class="row">
     <div class="col-md-3">
         @using BudgetOnline.Web.UI.Controls
-        @(Html.BudgetOnlineWeb().Menu(MenuTypes.EmptyContainer)
-            .MenuCss("navbar-nav nav-tabs nav-stacked")
+        @(Html.BudgetOnlineWeb().Menu(MenuTypes.ListGroup)
             .ShowActiveLevel(ShowActiveLevels.ControllerLevel)
             .MenuItems(new[]
                         {

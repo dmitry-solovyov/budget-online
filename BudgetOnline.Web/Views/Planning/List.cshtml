@@ -71,7 +71,12 @@
     </div>
 }
 <div class="row">
-    @(new BudgetOnline.UI.Views.Paginator().Render(new PaginationModel { Page = !string.IsNullOrWhiteSpace(Request.QueryString["page"]) ? int.Parse(Request.QueryString["page"]) : 1, PagesCount = 30 }))
+    @(new BudgetOnline.UI.Views.Paginator().Render(new PaginationModel
+                                                        {
+                                                            Page = !string.IsNullOrWhiteSpace(Request.QueryString["page"]) ? int.Parse(Request.QueryString["page"]) : 1, 
+                                                            PagesCount = 30,
+                                                            PageSizes = new[] { 10, 25, 50, 100, 200 }
+                                                        }))
 </div>
 <script type="text/javascript">
     var initialized = false;

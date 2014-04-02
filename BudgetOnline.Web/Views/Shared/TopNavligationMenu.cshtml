@@ -24,14 +24,10 @@
                                        new ViewCommandUIModelHelper().Caption("Статистика").Action("index").Controller("reports")
                                            .Child(new[] {
                                                             new ViewCommandUIModelHelper().Caption("Запустить отчет").Action("index").Controller("reports"),
-                                                            new ViewCommandUIModelHelper().Caption("Графики расходов").Action("CategoriesByPeriodPercents").Controller("TransactionCharts").DividerBefore(true)
-                                                                .Child(new[]
-                                                                           {
-                                                                               new ViewCommandUIModelHelper().Caption("Категории %").Action("CategoriesByPeriodPercents").Controller("TransactionCharts"),
-                                                                               new ViewCommandUIModelHelper().Caption("Категории").Action("CategoriesByPeriod").Controller("TransactionCharts"),
-                                                                               new ViewCommandUIModelHelper().Caption("Дни").Action("CategoriesByDays").Controller("TransactionCharts"),
-                                                                               new ViewCommandUIModelHelper().Caption("Тэги").Action("TagsByMonths").Controller("TransactionCharts"),
-                                                                           }),
+                                                            new ViewCommandUIModelHelper().Caption("Категории %").Action("CategoriesByPeriodPercents").Controller("TransactionCharts").DividerBefore(true),
+                                                            new ViewCommandUIModelHelper().Caption("Категории").Action("CategoriesByPeriod").Controller("TransactionCharts"),
+                                                            new ViewCommandUIModelHelper().Caption("Дни").Action("CategoriesByDays").Controller("TransactionCharts"),
+                                                            new ViewCommandUIModelHelper().Caption("Тэги").Action("TagsByMonths").Controller("TransactionCharts"),
                                                         }
                                            ),
                                        new ViewCommandUIModelHelper().Caption("Управление").Action("list").Controller("users").Area("admin").ShowActiveLevel(NavigationHelper.ShowActiveLevels.AreaLevel),

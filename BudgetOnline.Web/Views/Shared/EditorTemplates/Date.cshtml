@@ -19,7 +19,7 @@
     }
     var value = Model.HasValue ? Model.Value.ToLocalTime().ToShortDateString() : string.Empty;
 }
-<div class="input-group @ViewData.ModelMetadata.GetSpan("col-md-3")">
+<div class="input-group"> @*@ViewData.ModelMetadata.GetSpan("col-md-3")*@
     @Html.TextBox("", value, new { @class = @cssClass, placeholder, autocomplete = "off" })
 	<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 </div>
