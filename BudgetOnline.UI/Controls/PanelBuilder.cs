@@ -21,7 +21,7 @@ namespace BudgetOnline.UI.Controls
         }
 
         protected ContainerBuilder HeaderBuilder = new ContainerBuilder().CollapseEmptyTags(true).HideIfEmpty(true);
-        protected ContainerBuilder ContentBuilder = new ContainerBuilder().CollapseEmptyTags(true).Css("col-md-12");
+        protected ContainerBuilder ContentBuilder = new ContainerBuilder().CollapseEmptyTags(true);
         protected ContainerBuilder FooterBuilder = new ContainerBuilder().CollapseEmptyTags(true);
 
         private bool _suppressHeaderIfEmpty;
