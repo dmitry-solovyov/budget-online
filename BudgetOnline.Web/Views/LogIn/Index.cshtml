@@ -1,22 +1,44 @@
 ﻿@model BudgetOnline.Web.ViewModels.Security.LogInViewModel
 @{
-	ViewBag.Title = "Log In";
-	Layout = "~/Views/_AnonimousPage.cshtml";
+    ViewBag.Title = "Log In";
+    Layout = "~/Views/_AnonimousPage.cshtml";
 }
 <div class="container">
-	@(Html.BudgetOnlineWeb().Form()
-       	.Css("form-signin")
-       	.Header("Введите логин")
-       	.HeaderCss("form-signin-heading")
-       	.Content(
-			@<text>
-			 	@Html.AntiForgeryToken()
-			 	@Html.EditorForModel()
-			 </text>
-       	)
+    @(Html.BudgetOnlineWeb().Form()
+        .Css("form-signin")
+        .Header("Введите логин")
+        .HeaderCss("form-signin-heading")
+        .NoRowHeader()
+        .Content(
+            @<text>
+    @Html.AntiForgeryToken()
+    <div class="form-group" id="">
+        <div class="col-md-12">
+            <input class="form-control" data-val="true" data-val-required="The UserName field is required."
+                id="UserName" name="UserName" placeholder="Email" type="text" value="" />
+        </div>
+    </div>
+    <div class="form-group" id="">
+        <div class="col-md-12">
+            <input class="form-control" data-val="true" data-val-required="The Password field is required."
+                id="Password" name="Password" placeholder="Пароль" type="password" value="" />
+        </div>
+    </div>
+    <div class="form-group" id="">
+        <div class="col-md-12">
+            <label class="checkbox-inline">
+                <input data-val="true" data-val-required="The Запомнить меня field is required."
+                    id="RememberMe" name="RememberMe" type="checkbox" value="true" />
+                <input name="RememberMe" type="hidden" value="false" />
+                Запомнить меня
+            </label>
+        </div>
+    </div>
+    </text>
+        )
         .ActionsContent(
             @<text>
-			 	@Html.BudgetOnlineWeb().PrimaryButton().Caption("Войти").Build()
-			 </text>)
+    @Html.BudgetOnlineWeb().PrimaryButton().Caption("Войти").Build()
+    </text>)
         .Build())
 </div>

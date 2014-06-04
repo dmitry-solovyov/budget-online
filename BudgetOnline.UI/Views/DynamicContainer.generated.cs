@@ -147,7 +147,7 @@ WriteLiteralTo(@__razor_helper_writer, @"</strong>
 #line default
 #line hidden
 
-WriteLiteralTo(@__razor_helper_writer, "        <div class=\"content row\">\r\n");
+WriteLiteralTo(@__razor_helper_writer, "        <div class=\"content\">\r\n");
 
 
 

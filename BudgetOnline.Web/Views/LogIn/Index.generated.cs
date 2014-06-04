@@ -39,8 +39,8 @@ namespace BudgetOnline.Web.Views.LogIn
             
             #line 2 "..\..\Views\LogIn\Index.cshtml"
   
-	ViewBag.Title = "Log In";
-	Layout = "~/Views/_AnonimousPage.cshtml";
+    ViewBag.Title = "Log In";
+    Layout = "~/Views/_AnonimousPage.cshtml";
 
             
             #line default
@@ -51,32 +51,17 @@ WriteLiteral(" class=\"container\"");
 
 WriteLiteral(">\r\n");
 
-WriteLiteral("\t");
+WriteLiteral("    ");
 
             
             #line 7 "..\..\Views\LogIn\Index.cshtml"
 Write(Html.BudgetOnlineWeb().Form()
-       	.Css("form-signin")
-       	.Header("Введите логин")
-       	.HeaderCss("form-signin-heading")
-       	.Content(
-			item => new System.Web.WebPages.HelperResult(__razor_template_writer => {
-
-            
-            #line default
-            #line hidden
-WriteLiteralTo(__razor_template_writer, "\r\n");
-
-WriteTo(__razor_template_writer, 
-            
-            #line 13 "..\..\Views\LogIn\Index.cshtml"
-			 	
-            
-            #line default
-            #line hidden
-            
-            #line 13 "..\..\Views\LogIn\Index.cshtml"
-      Html.AntiForgeryToken());
+        .Css("form-signin")
+        .Header("Введите логин")
+        .HeaderCss("form-signin-heading")
+        .NoRowHeader()
+        .Content(
+            item => new System.Web.WebPages.HelperResult(__razor_template_writer => {
 
             
             #line default
@@ -86,24 +71,117 @@ WriteLiteralTo(__razor_template_writer, "\r\n");
 WriteTo(__razor_template_writer, 
             
             #line 14 "..\..\Views\LogIn\Index.cshtml"
-			 	
+    
             
             #line default
             #line hidden
             
             #line 14 "..\..\Views\LogIn\Index.cshtml"
-      Html.EditorForModel());
+     Html.AntiForgeryToken());
 
             
             #line default
             #line hidden
-WriteLiteralTo(__razor_template_writer, "\r\n\t\t\t ");
+WriteLiteralTo(__razor_template_writer, "\r\n    <div");
+
+WriteLiteralTo(__razor_template_writer, " class=\"form-group\"");
+
+WriteLiteralTo(__razor_template_writer, " id=\"\"");
+
+WriteLiteralTo(__razor_template_writer, ">\r\n        <div");
+
+WriteLiteralTo(__razor_template_writer, " class=\"col-md-12\"");
+
+WriteLiteralTo(__razor_template_writer, ">\r\n            <input");
+
+WriteLiteralTo(__razor_template_writer, " class=\"form-control\"");
+
+WriteLiteralTo(__razor_template_writer, " data-val=\"true\"");
+
+WriteLiteralTo(__razor_template_writer, " data-val-required=\"The UserName field is required.\"");
+
+WriteLiteralTo(__razor_template_writer, "\r\n                id=\"UserName\"");
+
+WriteLiteralTo(__razor_template_writer, " name=\"UserName\"");
+
+WriteLiteralTo(__razor_template_writer, " placeholder=\"Email\"");
+
+WriteLiteralTo(__razor_template_writer, " type=\"text\"");
+
+WriteLiteralTo(__razor_template_writer, " value=\"\"");
+
+WriteLiteralTo(__razor_template_writer, " />\r\n        </div>\r\n    </div>\r\n    <div");
+
+WriteLiteralTo(__razor_template_writer, " class=\"form-group\"");
+
+WriteLiteralTo(__razor_template_writer, " id=\"\"");
+
+WriteLiteralTo(__razor_template_writer, ">\r\n        <div");
+
+WriteLiteralTo(__razor_template_writer, " class=\"col-md-12\"");
+
+WriteLiteralTo(__razor_template_writer, ">\r\n            <input");
+
+WriteLiteralTo(__razor_template_writer, " class=\"form-control\"");
+
+WriteLiteralTo(__razor_template_writer, " data-val=\"true\"");
+
+WriteLiteralTo(__razor_template_writer, " data-val-required=\"The Password field is required.\"");
+
+WriteLiteralTo(__razor_template_writer, "\r\n                id=\"Password\"");
+
+WriteLiteralTo(__razor_template_writer, " name=\"Password\"");
+
+WriteLiteralTo(__razor_template_writer, " placeholder=\"Пароль\"");
+
+WriteLiteralTo(__razor_template_writer, " type=\"password\"");
+
+WriteLiteralTo(__razor_template_writer, " value=\"\"");
+
+WriteLiteralTo(__razor_template_writer, " />\r\n        </div>\r\n    </div>\r\n    <div");
+
+WriteLiteralTo(__razor_template_writer, " class=\"form-group\"");
+
+WriteLiteralTo(__razor_template_writer, " id=\"\"");
+
+WriteLiteralTo(__razor_template_writer, ">\r\n        <div");
+
+WriteLiteralTo(__razor_template_writer, " class=\"col-md-12\"");
+
+WriteLiteralTo(__razor_template_writer, ">\r\n            <label");
+
+WriteLiteralTo(__razor_template_writer, " class=\"checkbox-inline\"");
+
+WriteLiteralTo(__razor_template_writer, ">\r\n                <input");
+
+WriteLiteralTo(__razor_template_writer, " data-val=\"true\"");
+
+WriteLiteralTo(__razor_template_writer, " data-val-required=\"The Запомнить меня field is required.\"");
+
+WriteLiteralTo(__razor_template_writer, "\r\n                    id=\"RememberMe\"");
+
+WriteLiteralTo(__razor_template_writer, " name=\"RememberMe\"");
+
+WriteLiteralTo(__razor_template_writer, " type=\"checkbox\"");
+
+WriteLiteralTo(__razor_template_writer, " value=\"true\"");
+
+WriteLiteralTo(__razor_template_writer, " />\r\n                <input");
+
+WriteLiteralTo(__razor_template_writer, " name=\"RememberMe\"");
+
+WriteLiteralTo(__razor_template_writer, " type=\"hidden\"");
+
+WriteLiteralTo(__razor_template_writer, " value=\"false\"");
+
+WriteLiteralTo(__razor_template_writer, " />\r\n                Запомнить меня\r\n            </label>\r\n        </div>\r\n    </" +
+"div>\r\n    ");
 
 WriteLiteralTo(__razor_template_writer, "\r\n");
 
             
-            #line 16 "..\..\Views\LogIn\Index.cshtml"
-})       	)
+            #line 38 "..\..\Views\LogIn\Index.cshtml"
+})        )
         .ActionsContent(
             item => new System.Web.WebPages.HelperResult(__razor_template_writer => {
 
@@ -114,29 +192,29 @@ WriteLiteralTo(__razor_template_writer, "\r\n");
 
 WriteTo(__razor_template_writer, 
             
-            #line 19 "..\..\Views\LogIn\Index.cshtml"
-			 	
+            #line 41 "..\..\Views\LogIn\Index.cshtml"
+    
             
             #line default
             #line hidden
             
-            #line 19 "..\..\Views\LogIn\Index.cshtml"
-      Html.BudgetOnlineWeb().PrimaryButton().Caption("Войти").Build());
+            #line 41 "..\..\Views\LogIn\Index.cshtml"
+     Html.BudgetOnlineWeb().PrimaryButton().Caption("Войти").Build());
 
             
             #line default
             #line hidden
-WriteLiteralTo(__razor_template_writer, "\r\n\t\t\t ");
+WriteLiteralTo(__razor_template_writer, "\r\n    ");
 
             
-            #line 20 "..\..\Views\LogIn\Index.cshtml"
+            #line 42 "..\..\Views\LogIn\Index.cshtml"
          }))
         .Build());
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n</div>");
+WriteLiteral("\r\n</div>\r\n");
 
         }
     }

@@ -1,4 +1,15 @@
-﻿
+﻿'use strict';
+
+var budgetGlobals = {
+    settings: {
+        dateFormat: 'DD.MM.YYYY',
+        dateFormatUtc: 'DD.MM.YYYY UTC',
+        timeFormat: 'HH:MM'
+    }
+};
+
+//$.datepicker.setDefaults($.datepicker.regional['en']); 
+
 // ************ ON READY
 
 $(document).ready(function () {
@@ -40,13 +51,42 @@ function hideDynamicdatepicker() {
 }
 
 function turnOn_datetime() {
-    $('.date-picker').datepicker({
-        dateFormat: "dd.mm.yy",
-        changeMonth: true,
-        changeYear: true,
-        showButtonPanel: true
 
+    $('.date-picker').each(function () {
+        var control = $(this);
+        control.datepicker({
+            dateFormat: "dd.mm.yy",
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true
+        });
+        control.datepicker("option", $.datepicker.regional['ru']);
+
+        var conrtainer = control.parent().parent();
+        conrtainer.find('*[data-direction="left"]').click(function (event) {
+            event.preventDefault();
+
+            var dt = moment(control.val(), budgetGlobals.settings.dateFormat).subtract('d', 1);
+
+            control.val(dt.format(budgetGlobals.settings.dateFormat));
+            control.datepicker("setDate", dt.toDate());
+        });
+        conrtainer.find('*[data-direction="right"]').click(function (event) {
+            event.preventDefault();
+
+            var dt = moment(control.val(), budgetGlobals.settings.dateFormat).add('d', 1);
+
+            control.val(dt.format(budgetGlobals.settings.dateFormat));
+            control.datepicker("setDate", dt.toDate());
+        });
+        conrtainer.find('span[data-select]').click(function (event) {
+            event.preventDefault();
+            
+            control.datepicker('show');
+        });
     });
+
+
     $('a[data-type="date-select"]').click(function (event) {
         event.preventDefault();
 

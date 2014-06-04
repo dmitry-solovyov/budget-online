@@ -276,7 +276,7 @@ namespace BudgetOnline.Web.Controllers
             return new JsonResult
                     {
                         JsonRequestBehavior = JsonRequestBehavior.AllowGet,
-                        Data = tags.Concat(transactionCombined)
+                        Data = tags.Concat(transactionCombined).Distinct()
                     };
         }
 
