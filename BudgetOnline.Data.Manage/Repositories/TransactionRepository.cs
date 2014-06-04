@@ -294,11 +294,12 @@ namespace BudgetOnline.Data.Manage.Repositories
 
         public IEnumerable<string> GetTagsByNamePart(int sectionId, string tagPart)
         {
-            return GetListInternal().Select(o => new { o.Tags, o.Date, o.SectionId }).Distinct()
+            return GetListInternal()
                 .Where(o => o.Tags.Contains(tagPart) && o.SectionId == sectionId)
                 .OrderByDescending(o => o.Date)
-                .Take(3)
-                .Select(o => o.Tags).ToList();
+                .Select(o => o.Tags)
+                .Distinct()
+                .Take(3);
         }
 
         public void Update(Types.Simple.Transaction row)

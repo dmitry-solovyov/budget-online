@@ -35,15 +35,12 @@ namespace BudgetOnline.Data.Manage.Repositories
 		public IEnumerable<string> GetByNamePart(int sectionId, string namePart)
 		{
 			return 
-				(GetListInternal()
-					.Where(o => o.SectionId == sectionId && o.Tag.Contains(namePart))
-					.OrderByDescending(o => o.CreatedWhen)
-					.Select(o => new {o.Tag, o.CreatedWhen})
-					.ToArray()
-				)
-				.Select(o => o.Tag)
-				.Distinct()
-				.Take(5);
+				GetListInternal()
+				    .Where(o => o.SectionId == sectionId && o.Tag.Contains(namePart))
+				    .OrderByDescending(o => o.CreatedWhen)
+				    .Select(o => o.Tag)
+                    .Distinct()
+                    .Take(5);
 		}
 
 		public void Update(Types.Simple.TransactionTag row)
