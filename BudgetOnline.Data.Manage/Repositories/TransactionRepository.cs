@@ -298,6 +298,7 @@ namespace BudgetOnline.Data.Manage.Repositories
                 .Where(o => o.Tags.Contains(tagPart) && o.SectionId == sectionId)
                 .OrderByDescending(o => o.Date)
                 .Select(o => o.Tags)
+                .ToList()
                 .Distinct()
                 .Take(3);
         }
