@@ -47,14 +47,14 @@
             <div class="form-group">
                 <label class="control-label">
                     Категория</label>
-                @(new BudgetOnline.UI.Views.Editors.SelectList().Render(Model.Search.Categories, "Category", "input-sm", false))
+                @(new BudgetOnline.UI.Views.Editors.SelectList().Render(Model.Search.Categories, "Category", "input-sm", false, new Dictionary<string, object>()))
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label class="control-label">
                     Счет</label>
-                @(new BudgetOnline.UI.Views.Editors.SelectList().Render(Model.Search.Accounts, "Account", "col-md-6 input-sm", false))
+                @(new BudgetOnline.UI.Views.Editors.SelectList().Render(Model.Search.Accounts, "Account", "col-md-6 input-sm", false, new Dictionary<string, object>()))
             </div>
         </div>
     </div>

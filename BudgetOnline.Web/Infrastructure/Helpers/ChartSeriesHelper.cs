@@ -8,7 +8,9 @@ namespace BudgetOnline.Web.Infrastructure.Helpers
 		private readonly Dictionary<string, List<decimal>> _data = new Dictionary<string, List<decimal>>();
 
 		public void Add(string name, decimal value)
-		{
+        {
+            if (string.IsNullOrWhiteSpace(name)) return;
+
 			if (!_data.ContainsKey(name))
 			{
 				_data.Add(name, new List<decimal>());

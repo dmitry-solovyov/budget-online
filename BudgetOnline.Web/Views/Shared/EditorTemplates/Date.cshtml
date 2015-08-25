@@ -19,17 +19,34 @@
     }
     var value = Model.HasValue ? Model.Value.ToLocalTime().ToShortDateString() : string.Empty;
 }
-<div class="input-group" style="width: 200px; float: left">
+<div class="input-group" style="width: 140px; float: left">
     @Html.TextBox("", value, new { @class = @cssClass, placeholder, autocomplete = "off" })
-    <span class="input-group-addon" data-select=""><i class="glyphicon glyphicon-calendar"></i></span>
+    <span class="input-group-addon" data-select=""><i class="glyphicon glyphicon-calendar">
+    </i></span>
 </div>
-<div style="float: left; margin-left: 1em">
+<div style="float: left; margin-left: .5em">
     <div class="btn-group">
-        <button class="btn-group" style="height: 34px" data-direction="left">
-            <i class="glyphicon glyphicon-arrow-left"></i>
-        </button>
-        <button class="btn-group" style="height: 34px" data-direction="right">
-            <i class="glyphicon glyphicon-arrow-right"></i>
-        </button>
+        <div class="btn-group">
+            <button type="button" class="btn btn-default" data-direction="left">
+                <i class="glyphicon glyphicon-arrow-left"></i>
+            </button>
+            <button type="button" class="btn btn-default" data-direction="right">
+                <i class="glyphicon glyphicon-arrow-right"></i>
+            </button>
+            <div class="btn-group navigation-helper">
+                <button type="button" class="btn btn-link" data-dt-autofill="today">
+                    Сегодня
+                </button>
+                <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span><span class="sr-only">Все опции</span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#" data-dt-autofill="yesterday">Вчера</a></li>
+                    <li><a href="#" data-dt-autofill="week-begin">Начало недели</a></li>
+                    <li><a href="#" data-dt-autofill="month-begin">Начало месяца</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
+@*<div style="float: left; margin-left: 1em;"><label class="control-label" style="font-weight: normal" data-info=""></label></div>*@

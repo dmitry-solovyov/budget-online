@@ -36,7 +36,7 @@ select.iconed option
 
 /* Bootstrap overwriting
 -----------------------------------------------------------*/
-.form-horizontal .form-group
+.form-horizontal .form-group0 > div
 {
     margin-bottom: 10px;
 }
@@ -126,6 +126,7 @@ input[type='text'].date-picker
 {
     display: none;
 }
+
 
 /* Login
 -----------------------------------------------------------*/

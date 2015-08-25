@@ -4,33 +4,40 @@
 }
 @section Header
 {
-    <script src="@Url.Content("~/Scripts/Highcharts-3.0.1/js/highcharts.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/Highcharts-4.0.1/js/highcharts.js")" type="text/javascript"></script>
 }
 <div class="darkback border-bt" style="padding-bottom: 1em">
 <form method="POST">
     <div class="row" style="padding-top: 1em">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <strong>Период</strong>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-10">
             <div class="row">
-                <div class="col-md-4">@Html.EditorFor(model => model.FromDate)</div>
-                <div class="col-md-4">@Html.EditorFor(model => model.ToDate)</div>
-                <div class="col-md-4">
+                <div class="col-md-1">
+                    <label class="control-label">
+                        С</label></div>
+                <div class="col-md-11">@Html.EditorFor(model => model.FromDate)
                 </div>
+            </div>
+            <div class="row" style="padding-top: .5em">
+                <div class="col-md-1">
+                    <label class="control-label">
+                        По</label></div>
+                <div class="col-md-11">@Html.EditorFor(model => model.ToDate)</div>
             </div>
         </div>
     </div>
     <div class="row" style="padding-top: 1em">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <strong>Категории</strong>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-10">
             @(new BudgetOnline.UI.Views.Editors.MultiColumnSelectList().Render(Model.Categories, "Categories", "", true, 3))
         </div>
     </div>
     <div class="row" style="padding-top: 1em">
-        <div class="col-md-9 col-md-offset-3">
+        <div class="col-md-10 col-md-offset-2">
             @Html.BudgetOnlineWeb().ButtonNormal().Caption("Выбрать").Build()
             <span style="padding-left: 3em">
                 @Html.EditorFor(model => model.IsOnlyTotals)
@@ -39,8 +46,5 @@
     </div>
 </form>
 </div>
-<div class="row">
-    <div class="col-md-12">
-        @(Model.Chart)
-    </div>
-</div>
+<div class="clearfix"></div>
+@(Model.Chart)

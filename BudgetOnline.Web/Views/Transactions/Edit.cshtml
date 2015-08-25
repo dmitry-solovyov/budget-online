@@ -60,6 +60,7 @@
             <div class="col-md-offset-2 col-md-9">
                 @Html.BudgetOnlineWeb().PrimaryButton().Caption("Сохранить").Build()
                 @Html.BudgetOnlineWeb().ButtonNormal().Caption("Отмена").RedirectTo(Url.Action("list")).Build()
+                <input type="hidden" id="entityRef" value="@Model.Id"/>
             </div>
         </div>
         </text>)

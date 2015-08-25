@@ -17,8 +17,10 @@ namespace BudgetOnline.UI.Models.Editors
 		public decimal Sum { get; set; }
 
 		[GridLayout(6)]
+        [Required]
 		public IdWithSelectList Currency { get; set; }
 		[GridLayout(6)]
+        [Required]
 		public IdWithSelectList Account { get; set; }
 	}
 }

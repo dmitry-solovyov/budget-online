@@ -16,5 +16,7 @@ namespace BudgetOnline.Data.Manage.Contracts
 		Transaction Insert(Transaction transaction);
 		void Update(Transaction transaction);
 		void Delete(int id);
+
+        IEnumerable<Transaction> FindSimilar(int sectionId, Transaction transaction);
 	}
 }

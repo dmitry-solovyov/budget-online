@@ -1,5 +1,6 @@
 ﻿@using System.Web.Mvc
 @using System.Globalization
+@using BudgetOnline.UI.Extensions
 @functions {
 }
 @helper Render(BudgetOnline.UI.Models.Editors.CurrencyBundle model, string propertyName, ModelState state, IDictionary<string, object> additionalValues)
@@ -31,11 +32,10 @@
         {
             cssAccountListClass += " input-validation-error";
         }
-
     <div id="@id">
         <div class="row">
             <div class="col-md-4">
-                @(new BudgetOnline.UI.Views.Editors.SelectList().Render(model.Account.Items, propertyName + ".Account", cssAccountListClass, false))
+                @(new BudgetOnline.UI.Views.Editors.SelectList().Render(model.Account.Items, propertyName + ".Account", cssAccountListClass, false, additionalValues))
             </div>
             <div class="col-md-1">
             </div>
@@ -53,7 +53,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                @(new BudgetOnline.UI.Views.Editors.SelectList().Render(model.Currency.Items, propertyName + ".Currency", cssCurrencyListClass, false))
+                @(new BudgetOnline.UI.Views.Editors.SelectList().Render(model.Currency.Items, propertyName + ".Currency", cssCurrencyListClass, false, additionalValues))
             </div>
         </div>
     </div>

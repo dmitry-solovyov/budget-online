@@ -16,9 +16,10 @@ using BudgetOnline.Web.Infrastructure.Binders;
 using BudgetOnline.Web.Infrastructure.Helpers;
 using BudgetOnline.Web.ViewModels.Charts;
 using DotNet.Highcharts;
+using DotNet.Highcharts.Options;
 using DotNet.Highcharts.Enums;
 using DotNet.Highcharts.Helpers;
-using DotNet.Highcharts.Options;
+
 
 namespace BudgetOnline.Web.Controllers.Statistics
 {

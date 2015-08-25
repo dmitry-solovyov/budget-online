@@ -11,7 +11,6 @@ using BudgetOnline.Data.Manage.Types.Simple;
 using BudgetOnline.Web.Controllers.Statistics;
 using BudgetOnline.Web.Infrastructure.Security;
 using BudgetOnline.Web.Models;
-using DotNet.Highcharts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
