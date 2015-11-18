@@ -124,7 +124,7 @@ namespace BudgetOnline.Data.Manage.Repositories
         {
             var items =
                 GetListTotals(sectionId, options)
-                    .Where(o => o.Sum != 0) // && (o.AccountIsExternal == null || o.AccountIsExternal == false))
+                    .Where(o => o.Sum != 0 && (o.AccountIsExternal == null || o.AccountIsExternal == false))
                     .GroupBy(o => new
                                     {
                                         o.CurrencyId,

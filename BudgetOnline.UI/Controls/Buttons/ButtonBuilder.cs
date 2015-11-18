@@ -98,7 +98,7 @@ namespace BudgetOnline.UI.Controls.Buttons
 
                 if (!string.IsNullOrWhiteSpace(_iconCss))
                 {
-                    _builder.Child(() => new UIBuilder().Tag("i").Css("glyphicon " + _iconCss).Attr("tooltip", _tooltip).CollapseEmptyTags(false));
+                    _builder.Child(() => new UIBuilder().Tag("i").Css(_iconCss).Attr("tooltip", _tooltip).CollapseEmptyTags(false));
                     //_builder.Child(() => new UIBuilder().Tag("span").Css("caption").Caption(_caption));
                 }
                 else
@@ -112,7 +112,7 @@ namespace BudgetOnline.UI.Controls.Buttons
                 }
                 else
                 {
-                    var innerContent = string.Format(@"<i class=""glyphicon {0}""></i>{1}", _iconCss, _caption);
+                    var innerContent = string.Format(@"<i class=""{0}""></i>{1}", _iconCss, _caption);
                     _builder.Tag("a").Css(_class).Attr("href", _redirectTo).Content(innerContent);
                 }
             }
@@ -126,7 +126,7 @@ namespace BudgetOnline.UI.Controls.Buttons
                 if (!string.IsNullOrWhiteSpace(_iconCss))
                 {
                     //_builder.Child(() => new ImageBuilder().Css("icon").Src(_iconCss, _tooltip));
-                    _builder.Child(() => new UIBuilder().Tag("i").Css("glyphicon " + _iconCss).Attr("tooltip", _tooltip));
+                    _builder.Child(() => new UIBuilder().Tag("i").Css(_iconCss).Attr("tooltip", _tooltip));
                     //_builder.Child(() => new UIBuilder().Tag("span").Css("caption").Caption(_caption));
                 }
                 else

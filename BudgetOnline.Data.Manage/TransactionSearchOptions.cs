@@ -1,37 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace BudgetOnline.Data.Manage
 {
-    public class TransactionSearchOptions
-    {
-        public DateTime? Date1 { get; set; }
-        public DateTime? Date2 { get; set; }
+	public class TransactionSearchOptions
+	{
+		public DateTime? Date1 { get; set; }
+		public DateTime? Date2 { get; set; }
 
-        public string SearchText { get; set; }
-        public string Tag { get; set; }
-        public IEnumerable<string> TagsParsed
-        {
-            get
-            {
-                if (string.IsNullOrWhiteSpace(Tag)) return Enumerable.Empty<string>();
+		public string SearchText { get; set; }
+		public string Tag { get; set; }
+		public string Description { get; set; }
 
-                return Tag.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(o => o.Trim()).ToList();
-            }
-        }
-        public string Description { get; set; }
+		public IEnumerable<int> TransactionTypes { get; set; }
+		public IEnumerable<int> Currencues { get; set; }
+		public IEnumerable<int> Accounts { get; set; }
+		public IEnumerable<int> Categories { get; set; }
 
-        public IEnumerable<int> TransactionTypes { get; set; }
-        public IEnumerable<int> Currencues { get; set; }
-        public IEnumerable<int> Accounts { get; set; }
-        public IEnumerable<int> Categories { get; set; }
+		public IEnumerable<string> ExcludeTags { get; set; }
 
-        public IEnumerable<string> ExcludeTags { get; set; }
+		public int? PageSize { get; set; }
+		public int? PageNumber { get; set; }
 
-        public int? PageSize { get; set; }
-        public int? PageNumber { get; set; }
-
-        public int SumSign { get; set; }
-    }
+		public int SumSign { get; set; }
+	}
 }

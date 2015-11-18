@@ -9,7 +9,6 @@ using BudgetOnline.Common.Enums;
 using BudgetOnline.UI.Attributes;
 using BudgetOnline.UI.Models;
 using BudgetOnline.UI.Models.Editors;
-using BudgetOnline.Web.Infrastructure.Attributes;
 using BudgetOnline.Web.Models;
 using BudgetOnline.Web.UI.Controls.Attributes;
 using BudgetOnline.Web.UI.Validators;
@@ -20,7 +19,6 @@ namespace BudgetOnline.Web.ViewModels
     {
         public TransactionEditViewModel()
         {
-            IsCreateNewAfterSave = true;
             Amount = 1m;
             SumIn = new CurrencyBundle();
             SumOut = new CurrencyBundle();
@@ -41,17 +39,14 @@ namespace BudgetOnline.Web.ViewModels
         [DisplayName("Дата")]
         [Display(Order = 1)]
         [YearRange(FromYear = 2011, ErrorMessage = "Must be after 01.01.2011")]
-        [Required]
         public DateTime Date { get; set; }
 
         [DisplayName("Тип")]
         [Display(Order = 2)]
-        [Required]
         public IdWithSelectList TransactionType { get; set; }
 
         [DisplayName("Категория")]
         [Display(Order = 3)]
-        [Required]
         public IdWithSelectList Category { get; set; }
 
 

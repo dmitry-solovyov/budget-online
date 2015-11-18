@@ -16,15 +16,8 @@ $(document).ready(function () {
     try { turnOn_datetime(); } catch (z) { }
     try { turnOn_numeric(); } catch (z) { }
     //turnOn_calculator();
-    try { $('.selectpicker').selectpicker(); } catch (z) { console.log('selectpicker', z); }
-    try { turnOn_dynamicBox(); } catch (z) { console.log('turnOn_dynamicBox', z); }
-    try { $(function () {
-         $('#language-switch ul.dropdown-menuli a').click(function (e) {
-             e.preventDefault(); 
-             var lang = $(this).attr('data-lang'); 
-             changeLang(lang);
-         });
-    }); } catch (z) { console.log('turnOn_dynamicBox', z); }
+    try { $('.selectpicker').selectpicker(); } catch (z) { console.log(z); }
+    try { turnOn_dynamicBox(); } catch (z) { }
 });
 
 // ************ FUNCTIONS
@@ -69,66 +62,27 @@ function turnOn_datetime() {
         });
         control.datepicker("option", $.datepicker.regional['ru']);
 
-        var conrtainer = control.parent().next('div');
-
+        var conrtainer = control.parent().parent();
         conrtainer.find('*[data-direction="left"]').click(function (event) {
             event.preventDefault();
 
-            var controlVal = control.val();
-            if (!controlVal)
-                controlVal = moment().format(budgetGlobals.settings.dateFormat);
-
-            var dt = moment(controlVal, budgetGlobals.settings.dateFormat).subtract(1, 'd');
+            var dt = moment(control.val(), budgetGlobals.settings.dateFormat).subtract('d', 1);
 
             control.val(dt.format(budgetGlobals.settings.dateFormat));
             control.datepicker("setDate", dt.toDate());
         });
-
         conrtainer.find('*[data-direction="right"]').click(function (event) {
             event.preventDefault();
 
-            var controlVal = control.val();
-            if (!controlVal)
-                controlVal = moment().format(budgetGlobals.settings.dateFormat);
-
-            var dt = moment(controlVal, budgetGlobals.settings.dateFormat).add(1, 'd');
+            var dt = moment(control.val(), budgetGlobals.settings.dateFormat).add('d', 1);
 
             control.val(dt.format(budgetGlobals.settings.dateFormat));
             control.datepicker("setDate", dt.toDate());
         });
-
         conrtainer.find('span[data-select]').click(function (event) {
             event.preventDefault();
+            
             control.datepicker('show');
-        });
-
-        var setDate = function (type) {
-            var dt = moment();
-            switch (type) {
-                case 'week-begin':
-                    if (dt.isoWeekday() > 1) {
-                        dt.subtract('days', dt.isoWeekday() - 1);
-                    }
-                    break;
-                case 'month-begin':
-                    if (dt.date() > 1) {
-                        dt.subtract('days', dt.date() - 1);
-                    }
-                    break;
-                case 'yesterday':
-                    dt.subtract('days', 1);
-                    break;
-
-                case 'today':
-                default:
-            }
-
-            control.val(dt.format(budgetGlobals.settings.dateFormat));
-        };
-
-        conrtainer.find('div.navigation-helper button[data-dt-autofill], div.navigation-helper a[data-dt-autofill]').click(function (event) {
-            event.preventDefault();
-            setDate(event.target.getAttribute('data-dt-autofill'));
         });
     });
 
@@ -136,37 +90,26 @@ function turnOn_datetime() {
     $('a[data-type="date-select"]').click(function (event) {
         event.preventDefault();
 
-        var self = this;
-        var targetId = $(self).attr('data-dtselect-target');
-
         if (lastDynamicdatepicker) {
-            var isSame = lastDynamicdatepicker.attr('data-dtselect-target') == targetId;
             hideDynamicdatepicker();
-            if (isSame)
-                return;
         }
 
-        var input = $(self).parent().find('#' + targetId);
+        var self = this;
+
+        var input = $(self).parent().find('#' + $(self).attr('data-dtselect-target'));
 
         var newEntry = $('<div id="datepicker" class="unhidden" style="position: absolute; border: 2px solid darkgray; z-index: 999;"></div>');
-        newEntry.attr('data-dtselect-target', targetId);
-        newEntry.css('left', $(self).position().left);
-
-        lastDynamicdatepicker = $(newEntry).insertAfter($(self));
+        lastDynamicdatepicker = $(newEntry).appendTo($(self).parent());
         lastDynamicdatepicker.datepicker({
             inline: true,
             dateFormat: 'dd.mm.yy',
             onSelect: function (date) {
+                //alert(date);
                 input.val(date);
                 self.innerHTML = date;
                 hideDynamicdatepicker();
-            },
-            changeMonth: true,
-            changeYear: true,
-            showButtonPanel: true
+            }
         });
-        lastDynamicdatepicker.datepicker("option", $.datepicker.regional['ru']);
-
 
         if (input.val() !== '') {
             lastDynamicdatepicker.datepicker("setDate", input.val()).datepicker('show');
@@ -344,4 +287,3 @@ function loadDataWithUI(url, template) {
 
     });
 }
-

@@ -10,7 +10,6 @@ namespace BudgetOnline.UI.Models.SelectItems
         public string Name { get; set; }
         public string CssClass { get; set; }
         public bool IsMultiselect { get; set; }
-        public bool Required { get; set; }
 
         public SelectItemsModel()
         {

@@ -205,49 +205,6 @@ namespace BudgetOnline.Web.Controllers
 
         [HttpPost]
         [RestrictRole(Roles.FactAdd)]
-        public ActionResult FindSimilar([ModelBinder(typeof(CustomViewModelBinder))] TransactionEditViewModel model)
-        {
-            var links = ConvertModelToLinkedTransactions(model);
-
-            var similarTransactions = TransactionRepository.FindSimilar(
-                CurrentUser.SectionId,
-                new Transaction
-                {
-                    Date = links.First.Date,
-                    Sum = links.First.Sum,
-                    CategoryId = links.First.CategoryId,
-                    CurrencyId = links.First.CurrencyId,
-                    AccountId = links.First.AccountId,
-                });
-
-            if (links.Second != null && (similarTransactions == null || !similarTransactions.Any()))
-                similarTransactions = TransactionRepository.FindSimilar(
-                    CurrentUser.SectionId,
-                    new Transaction
-                    {
-                        Date = links.First.Date,
-                        Sum = links.First.Sum,
-                        CategoryId = links.First.CategoryId,
-                        CurrencyId = links.First.CurrencyId,
-                        AccountId = links.First.AccountId,
-                    });
-
-
-            var jsonResult = new JsonResult
-            {
-                Data = new
-                {
-                    Content = similarTransactions.ToList(),
-                    UpdateTime = DateTimeProvider.Now().ToShortDateString() + " " + DateTimeProvider.Now().ToLongTimeString()
-                }
-            };
-
-            return Json(jsonResult, JsonRequestBehavior.AllowGet);
-        }
-
-
-        [HttpPost]
-        [RestrictRole(Roles.FactAdd)]
         public ActionResult SeparateTransaction(int id, string Sum)
         {
             var linked = TransactionRepository.GetLinked(id);
@@ -766,32 +723,22 @@ namespace BudgetOnline.Web.Controllers
                 }
         }
 
-        private SelectItemsModel GetAccountsList(int defaultId = 0, bool showEmpty = true)
+        private SelectItemsModel GetAccountsList(int defaultId = 0)
         {
             var items = Dictionaries.Accounts()
                 .Where(o => !o.IsDisabled)
                 .Select(o => new SelectItemModel { Selected = o.Id.Equals(defaultId) || (defaultId == 0 && o.IsDefault), Text = o.Name, Value = o.Id.ToString() })
                 .ToList();
 
-            if (showEmpty)
-            {
-                items.Insert(0, new SelectItemModel { Selected = false, Text = "-", Value = "0", Tooltip = "Выберите счет" });
-            }
-
             return new SelectItemsModel(items);
         }
 
-        private SelectItemsModel GetCategoriesList(int defaultId = 0, bool showEmpty = true)
+        private SelectItemsModel GetCategoriesList(int defaultId = 0)
         {
             var items = Dictionaries.Categories()
                 .Where(o => !o.IsDisabled)
                 .Select(o => new SelectItemModel { Selected = o.Id.Equals(defaultId) || (defaultId == 0 && o.IsDefault), Text = o.Name, Value = o.Id.ToString() })
                 .ToList();
-
-            if (showEmpty)
-            {
-                items.Insert(0, new SelectItemModel { Selected = false, Text = "-", Value = "0", Tooltip = "Выберите категорию" });
-            }
 
             return new SelectItemsModel(items);
         }
@@ -834,17 +781,12 @@ namespace BudgetOnline.Web.Controllers
             }
         }
 
-        private SelectItemsModel GetCurrenciesList(int defaultId = 0, bool showEmpty = true)
+        private SelectItemsModel GetCurrenciesList(int defaultId = 0)
         {
             var items = Dictionaries.Currencies()
                 .Where(o => !o.IsDisabled)
                 .Select(o => new SelectItemModel { Selected = o.Id.Equals(defaultId) || (defaultId == 0 && o.IsDefault), Text = o.Name, Value = o.Id.ToString() })
                 .ToList();
-
-            if (showEmpty)
-            {
-                items.Insert(0, new SelectItemModel { Selected = false, Text = "-", Value = "0", Tooltip = "Выберите валюту" });
-            }
 
             return new SelectItemsModel(items);
         }
@@ -864,37 +806,19 @@ namespace BudgetOnline.Web.Controllers
         private void PopulateListVariablesInEditViewModel(TransactionEditViewModel model)
         {
             model.Category = new IdWithSelectList { Id = model.Category.Id, Items = GetCategoriesList(model.Category.Id) };
-            model.Category.Items.Required = true;
-            if (model.Id > 0)
-                model.Category.Id = GetIdForSelectList(model.Category);
-            else
-                model.Category.Items.SetSelected("0");
+            model.Category.Id = GetIdForSelectList(model.Category);
 
             model.TransactionType = new IdWithSelectList { Id = model.TransactionType.Id, Items = GetTransactionTypes(model.TransactionType.Id) };
 
             model.SumIn.Account = new IdWithSelectList { Id = model.SumIn.Account.Id, Items = GetAccountsList(model.SumIn.Account.Id) };
-            if (model.Id > 0)
-                model.SumIn.Account.Id = GetIdForSelectList(model.SumIn.Account);
-            else
-                model.SumIn.Account.Items.SetSelected("0");
-
-            model.SumIn.Currency = new IdWithSelectList { Id = model.SumIn.Currency.Id, Items = GetCurrenciesList(model.SumIn.Currency.Id, false) };
-            if (model.Id > 0)
-                model.SumIn.Currency.Id = GetIdForSelectList(model.SumIn.Currency);
-            else
-                model.SumIn.Currency.Items.SetSelected("0");
+            model.SumIn.Account.Id = GetIdForSelectList(model.SumIn.Account);
+            model.SumIn.Currency = new IdWithSelectList { Id = model.SumIn.Currency.Id, Items = GetCurrenciesList(model.SumIn.Currency.Id) };
+            model.SumIn.Currency.Id = GetIdForSelectList(model.SumIn.Currency);
 
             model.SumOut.Account = new IdWithSelectList { Id = model.SumOut.Account.Id, Items = GetAccountsList(model.SumOut.Account.Id) };
-            if (model.Id > 0)
-                model.SumOut.Account.Id = GetIdForSelectList(model.SumOut.Account);
-            else
-                model.SumOut.Account.Items.SetSelected("0");
-
-            model.SumOut.Currency = new IdWithSelectList { Id = model.SumOut.Currency.Id, Items = GetCurrenciesList(model.SumOut.Currency.Id, false) };
-            if (model.Id > 0)
-                model.SumOut.Currency.Id = GetIdForSelectList(model.SumOut.Currency);
-            else
-                model.SumOut.Currency.Items.SetSelected("0");
+            model.SumOut.Account.Id = GetIdForSelectList(model.SumOut.Account);
+            model.SumOut.Currency = new IdWithSelectList { Id = model.SumOut.Currency.Id, Items = GetCurrenciesList(model.SumOut.Currency.Id) };
+            model.SumOut.Currency.Id = GetIdForSelectList(model.SumOut.Currency);
         }
 
         private void PopulateEditViewModelVariablesFromRequest(TransactionEditViewModel model)

@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Linq;
 using System.Web;
+using DotNet.Highcharts.Options;
 
 namespace BudgetOnline.Web.ViewModels.Statistics
 {
@@ -9,7 +10,7 @@ namespace BudgetOnline.Web.ViewModels.Statistics
 	{
 		public TransactionStatisticsViewModel()
 		{
-			//Series = new Series();
+			Series = new Series();
 		}
 
 		public string Title { get; set; }
@@ -18,7 +19,7 @@ namespace BudgetOnline.Web.ViewModels.Statistics
 		public string[] xAxis { get; set; }
 		public string[] yAxis { get; set; }
 
-		//public Series Series { get; private set; }
+		public Series Series { get; private set; }
 
 		#region Formatters
 

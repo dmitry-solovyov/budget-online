@@ -12,7 +12,7 @@
         cssClass += " selectpicker";
     }
 }
-@(new BudgetOnline.UI.Views.Editors.SelectList().Render(Model.Items, ViewData.ModelMetadata.PropertyName, cssClass, false, ViewData.ModelMetadata.AdditionalValues))
+@(new BudgetOnline.UI.Views.Editors.SelectList().Render(Model.Items, ViewData.ModelMetadata.PropertyName, cssClass, false))
 @*@{
     ModelState state = ViewData.ModelState[ViewData.ModelMetadata.PropertyName];
 

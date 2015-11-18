@@ -73,9 +73,7 @@ WriteLiteral("\r\n    </div>\r\n    <div");
 
 WriteLiteral(" class=\"col-md-3 right-column\"");
 
-WriteLiteral(">\r\n        ");
-
-WriteLiteral("\r\n        <div");
+WriteLiteral(">\r\n        <div");
 
 WriteLiteral(" class=\"row\"");
 
@@ -88,7 +86,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                ");
 
             
-            #line 13 "..\..\Views\Shared\_Layout.cshtml"
+            #line 12 "..\..\Views\Shared\_Layout.cshtml"
             Write(Html.BudgetOnlineWeb().Panel()
            .Header("Текущий баланс")
            .Content(Html.Action("CurrentBalanceByCurrencies", "TransactionStatistics"))
@@ -110,7 +108,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                ");
 
             
-            #line 21 "..\..\Views\Shared\_Layout.cshtml"
+            #line 20 "..\..\Views\Shared\_Layout.cshtml"
             Write(Html.BudgetOnlineWeb().Panel()
            .Header("Текущий баланс по счетам")
            .Content(Html.Action("LightTotalByAccounts", "TransactionStatistics"))
@@ -132,7 +130,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                ");
 
             
-            #line 29 "..\..\Views\Shared\_Layout.cshtml"
+            #line 28 "..\..\Views\Shared\_Layout.cshtml"
            Write(RenderSection("RightBar", false));
 
             
@@ -147,7 +145,7 @@ WriteLiteral("\r\n");
 WriteLiteral("    ");
 
             
-            #line 35 "..\..\Views\Shared\_Layout.cshtml"
+            #line 34 "..\..\Views\Shared\_Layout.cshtml"
 Write(RenderSection("Header", false));
 
             

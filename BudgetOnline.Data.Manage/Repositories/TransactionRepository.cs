@@ -151,11 +151,7 @@ namespace BudgetOnline.Data.Manage.Repositories
 
             if (!string.IsNullOrWhiteSpace(options.Tag))
             {
-                foreach (var tag in options.TagsParsed)
-                {
-                    var tagLocal = tag;
-                    query = query.Where(o => o.transaction.Tags.Contains(tagLocal));
-                }
+                query = query.Where(o => o.transaction.Tags.Contains(options.Tag));
             }
 
             if (isGrouped)
@@ -357,117 +353,6 @@ namespace BudgetOnline.Data.Manage.Repositories
             else
             {
                 Delete(o => o.Id == id);
-            }
-        }
-
-        public IEnumerable<Types.Simple.Transaction> FindSimilar(int sectionId, Types.Simple.Transaction sourceTransaction)
-        {
-            var db = Context;
-
-            #region Query
-
-            var query =
-                from transaction in db.Transactions
-
-                join tLinks in db.TransactionLinks on transaction.Id equals tLinks.ParentId into transactionTLinks
-                from tJoined in transactionTLinks.DefaultIfEmpty()
-
-                join tCat in db.Categories on transaction.CategoryId equals tCat.Id into category
-                from tCategory in category.DefaultIfEmpty()
-
-                join tCurOut in db.Currencies on transaction.CurrencyId equals tCurOut.Id into currencyOut
-                from tCurrencyOut in currencyOut.DefaultIfEmpty()
-
-                join tAccOut in db.Accounts on transaction.AccountId equals tAccOut.Id into accountOut
-                from tAccountOut in accountOut.DefaultIfEmpty()
-
-                join linkedTransaction in db.Transactions on tJoined.ChildId equals linkedTransaction.Id into linkedTransactionDb
-                from tLinkedTransaction in linkedTransactionDb.DefaultIfEmpty()
-
-                join tAccIn in db.Accounts on tLinkedTransaction.AccountId equals tAccIn.Id into accountIn
-                from tAccountIn in accountIn.DefaultIfEmpty()
-
-                join tCurIn in db.Currencies on tLinkedTransaction.CurrencyId equals tCurIn.Id into currencyIn
-                from tCurrencyIn in currencyIn.DefaultIfEmpty()
-
-                where transaction.SectionId == sectionId && transaction.IsDisabled.Equals(false)
-                select new TransactionWithJoins
-                {
-                    SumNegative = transaction.Sum < 0,
-                    transaction = transaction,
-                    tLinkedTransaction = tLinkedTransaction,
-                    SumLinkedNegative = tLinkedTransaction.Sum < 0,
-                    tCategory = tCategory,
-                    tCurrencyOut = tCurrencyOut,
-                    tCurrencyIn = tCurrencyIn,
-                    tAccountIn = tAccountIn,
-                    tAccountOut = tAccountOut
-                };
-
-
-            query = query.Where(o => o.transaction.Date == sourceTransaction.Date);
-            query = query.Where(o => o.transaction.Sum >= sourceTransaction.Sum - 1 || o.transaction.Sum <= sourceTransaction.Sum + 1);
-
-            query = query.OrderByDescending(o => o.transaction.Date);
-
-
-            #endregion
-
-            var localItems = query.Select(o => new TransactionJoined
-            {
-                Id = o.transaction.Id,
-
-                AccountOutId = o.transaction.AccountId,
-                AccountOutName = o.tAccountOut.Name,
-                AccountOutIsExternal = o.tAccountOut.IsExternal,
-                CurrencyOutId = o.transaction.CurrencyId,
-                CurrencyOutName = o.tCurrencyOut.Name,
-                CurrencyOutSymbol = o.tCurrencyOut.Symbol,
-                SumOut = o.transaction.Sum,
-                SumOutNegative = o.transaction.Sum < 0,
-
-                AccountInId = o.tLinkedTransaction.AccountId,
-                AccountInName = o.tAccountIn.Name,
-                AccountInIsExternal = o.tAccountIn.IsExternal,
-                CurrencyInId = o.tLinkedTransaction.CurrencyId,
-                CurrencyInName = o.tCurrencyIn.Name,
-                CurrencyInSymbol = o.tCurrencyIn.Symbol,
-                SumIn = o.tLinkedTransaction.Sum,
-                SumInNegative = o.tLinkedTransaction.Sum < 0,
-
-                Date = o.transaction.Date,
-                Amount = o.transaction.Amount,
-                Tags = o.transaction.Tags,
-                Description = o.transaction.Description,
-                IsDisabled = o.transaction.IsDisabled,
-                CategoryId = o.transaction.CategoryId,
-                CategoryName = o.tCategory.Name,
-                CreatedBy = o.transaction.CreatedBy,
-                CreatedWhen = o.transaction.CreatedWhen,
-                UpdatedBy = o.transaction.UpdatedBy,
-                UpdatedWhen = o.transaction.UpdatedWhen,
-                TransactionTypeId = o.transaction.TransactionTypeId
-            });
-
-            foreach (var item in localItems)
-            {
-                var t = Mapper.DynamicMap<TransactionJoined, Types.Simple.Transaction>(item);
-
-                t.AccountNameSource = item.AccountOutName;
-                t.AccountNameTarget = item.AccountInName;
-                t.Sum = item.SumOut;
-                t.SumSource = item.SumOut;
-                t.SumTarget = item.SumIn;
-                t.CurrencyId = item.CurrencyOutId;
-                t.CurrencyNameSource = item.CurrencyOutName;
-                t.CurrencyNameTarget = item.CurrencyInName;
-                t.CurrencySymbolSource = item.CurrencyOutSymbol;
-                t.CurrencySymbolTarget = item.CurrencyInSymbol;
-                t.CategoryId = item.CategoryId;
-                t.CategoryName = item.CategoryName;
-                t.TransactionTypeId = item.TransactionTypeId;
-
-                yield return t;
             }
         }
 
