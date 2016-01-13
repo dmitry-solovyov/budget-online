@@ -1,4 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Budget" EntityNamespace="BudgetOnline.Data.MSSQL" ContextNamespace="BudgetOnline.Data.MSSQL" Class="BudgetOnlineDBDataContext" Serialization="Unidirectional" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="Budget" EntityNamespace="BudgetOnline.Data.MSSQL" ContextNamespace="BudgetOnline.Data.MSSQL" Class="BudgetOnlineDBDataContext" Serialization="Unidirectional" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Table Name="dbo.Accounts" Member="Accounts">
     <Type Name="Account">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -16,13 +17,13 @@
       <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="UpdatedWhen" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
       <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Account_CategoryTemplate" Member="CategoryTemplates" ThisKey="Id" OtherKey="FromAccountId" Type="CategoryTemplate" />
-      <Association Name="Account_CategoryTemplate1" Member="CategoryTemplates_Accounts_Tos" ThisKey="Id" OtherKey="ToAccountId" Type="CategoryTemplate" />
-      <Association Name="Account_PlannedTransaction" Member="PlannedTransactions" ThisKey="Id" OtherKey="AccountId" Type="PlannedTransaction" />
-      <Association Name="Account_TransactionGroup" Member="TransactionGroups" ThisKey="Id" OtherKey="FromAccountId" Type="TransactionGroup" />
-      <Association Name="Account_TransactionGroup1" Member="TransactionGroups_Accounts1s" ThisKey="Id" OtherKey="ToAccountId" Type="TransactionGroup" />
-      <Association Name="Account_Transaction" Member="Transactions" ThisKey="Id" OtherKey="AccountId" Type="Transaction" />
-      <Association Name="Section_Account" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
+      <Association Name="FK_Accounts_Sections" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
+      <Association Name="FK_CategoryTemplates_Accounts_From" Member="CategoryTemplates" ThisKey="Id" OtherKey="FromAccountId" Type="CategoryTemplate" DeleteRule="NO ACTION" />
+      <Association Name="FK_CategoryTemplates_Accounts_To" Member="CategoryTemplates_Accounts_Tos" ThisKey="Id" OtherKey="ToAccountId" Type="CategoryTemplate" DeleteRule="NO ACTION" />
+      <Association Name="FK_PlannedTransactions_Accounts" Member="PlannedTransactions" ThisKey="Id" OtherKey="AccountId" Type="PlannedTransaction" DeleteRule="NO ACTION" />
+      <Association Name="FK_TransactionGroups_Accounts" Member="TransactionGroups" ThisKey="Id" OtherKey="FromAccountId" Type="TransactionGroup" DeleteRule="NO ACTION" />
+      <Association Name="FK_TransactionGroups_Accounts1" Member="TransactionGroups_Accounts1s" ThisKey="Id" OtherKey="ToAccountId" Type="TransactionGroup" DeleteRule="NO ACTION" />
+      <Association Name="FK_Transactions_Accounts" Member="Transactions" ThisKey="Id" OtherKey="AccountId" Type="Transaction" DeleteRule="NO ACTION" />
     </Type>
   </Table>
   <Table Name="dbo.Categories" Member="Categories">
@@ -39,13 +40,13 @@
       <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="UpdatedWhen" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
       <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Category_Category" Member="Categories_Categories" ThisKey="Id" OtherKey="ParentId" Type="Category" />
-      <Association Name="Category_PlannedTransaction" Member="PlannedTransactions" ThisKey="Id" OtherKey="CategoryId" Type="PlannedTransaction" />
-      <Association Name="Category_TransactionGroup" Member="TransactionGroups" ThisKey="Id" OtherKey="CategoryId" Type="TransactionGroup" />
-      <Association Name="Category_Transaction" Member="Transactions" ThisKey="Id" OtherKey="CategoryId" Type="Transaction" />
-      <Association Name="Category_Category" Member="Parent" ThisKey="ParentId" OtherKey="Id" Type="Category" IsForeignKey="true" />
-      <Association Name="Section_Category" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
-      <Association Name="User_Category" Member="User" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_Categories_Categories" Member="Parent" ThisKey="ParentId" OtherKey="Id" Type="Category" IsForeignKey="true" />
+      <Association Name="FK_Categories_Categories" Member="Categories_Categories" ThisKey="Id" OtherKey="ParentId" Type="Category" DeleteRule="NO ACTION" />
+      <Association Name="FK_Categories_Sections" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
+      <Association Name="FK_Categories_Users" Member="User" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_PlannedTransactions_Categories" Member="PlannedTransactions" ThisKey="Id" OtherKey="CategoryId" Type="PlannedTransaction" DeleteRule="NO ACTION" />
+      <Association Name="FK_TransactionGroups_Categories" Member="TransactionGroups" ThisKey="Id" OtherKey="CategoryId" Type="TransactionGroup" DeleteRule="NO ACTION" />
+      <Association Name="FK_Transactions_Categories" Member="Transactions" ThisKey="Id" OtherKey="CategoryId" Type="Transaction" DeleteRule="NO ACTION" />
     </Type>
   </Table>
   <Table Name="dbo.CategoryTemplates" Member="CategoryTemplates">
@@ -61,8 +62,8 @@
       <Column Name="CreatedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="UpdatedWhen" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
       <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Account_CategoryTemplate" Member="Account" ThisKey="FromAccountId" OtherKey="Id" Type="Account" IsForeignKey="true" />
-      <Association Name="Account_CategoryTemplate1" Member="ToAccount" ThisKey="ToAccountId" OtherKey="Id" Type="Account" IsForeignKey="true" />
+      <Association Name="FK_CategoryTemplates_Accounts_From" Member="Account" ThisKey="FromAccountId" OtherKey="Id" Type="Account" IsForeignKey="true" />
+      <Association Name="FK_CategoryTemplates_Accounts_To" Member="ToAccount" ThisKey="ToAccountId" OtherKey="Id" Type="Account" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Currencies" Member="Currencies">
@@ -78,14 +79,14 @@
       <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="UpdatedWhen" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
       <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Currency_CurrencyRate" Member="CurrencyRates" ThisKey="Id" OtherKey="BaseCurrencyId" Type="CurrencyRate" />
-      <Association Name="Currency_CurrencyRate1" Member="CurrencyRates_Currencies1s" ThisKey="Id" OtherKey="TargetCurrencyId" Type="CurrencyRate" />
-      <Association Name="Currency_PlannedTransaction" Member="PlannedTransactions" ThisKey="Id" OtherKey="CurrencyId" Type="PlannedTransaction" />
-      <Association Name="Currency_StatisticsTotalOnDateDetail" Member="StatisticsTotalOnDateDetails" ThisKey="Id" OtherKey="CurrencyId" Type="StatisticsTotalOnDateDetail" />
-      <Association Name="Currency_TransactionGroup" Member="TransactionGroups" ThisKey="Id" OtherKey="ToCurrencyId" Type="TransactionGroup" />
-      <Association Name="Currency_TransactionGroup1" Member="TransactionGroups_Currencies1s" ThisKey="Id" OtherKey="FromCurrencyId" Type="TransactionGroup" />
-      <Association Name="Currency_Transaction" Member="Transactions" ThisKey="Id" OtherKey="CurrencyId" Type="Transaction" />
-      <Association Name="Section_Currency" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
+      <Association Name="FK_Currencies_Sections" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
+      <Association Name="FK_CurrencyRates_Currencies" Member="CurrencyRates" ThisKey="Id" OtherKey="BaseCurrencyId" Type="CurrencyRate" DeleteRule="NO ACTION" />
+      <Association Name="FK_CurrencyRates_Currencies1" Member="CurrencyRates_Currencies1s" ThisKey="Id" OtherKey="TargetCurrencyId" Type="CurrencyRate" DeleteRule="NO ACTION" />
+      <Association Name="FK_PlannedTransactions_Currencies" Member="PlannedTransactions" ThisKey="Id" OtherKey="CurrencyId" Type="PlannedTransaction" DeleteRule="NO ACTION" />
+      <Association Name="FK_StatisticsTotalOnDateDetails_Currencies" Member="StatisticsTotalOnDateDetails" ThisKey="Id" OtherKey="CurrencyId" Type="StatisticsTotalOnDateDetail" DeleteRule="NO ACTION" />
+      <Association Name="FK_TransactionGroups_Currencies" Member="TransactionGroups" ThisKey="Id" OtherKey="ToCurrencyId" Type="TransactionGroup" DeleteRule="NO ACTION" />
+      <Association Name="FK_TransactionGroups_Currencies1" Member="TransactionGroups_Currencies1s" ThisKey="Id" OtherKey="FromCurrencyId" Type="TransactionGroup" DeleteRule="NO ACTION" />
+      <Association Name="FK_Transactions_Currencies" Member="Transactions" ThisKey="Id" OtherKey="CurrencyId" Type="Transaction" DeleteRule="NO ACTION" />
     </Type>
   </Table>
   <Table Name="dbo.CurrencyRates" Member="CurrencyRates">
@@ -101,11 +102,11 @@
       <Column Name="CreatedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="UpdatedWhen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Currency_CurrencyRate" Member="Currency" ThisKey="BaseCurrencyId" OtherKey="Id" Type="Currency" IsForeignKey="true" />
-      <Association Name="Currency_CurrencyRate1" Member="TargetCurrency" ThisKey="TargetCurrencyId" OtherKey="Id" Type="Currency" IsForeignKey="true" />
-      <Association Name="Section_CurrencyRate" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
-      <Association Name="User_CurrencyRate" Member="User" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
-      <Association Name="User_CurrencyRate1" Member="UpdatedByUser" ThisKey="UpdatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_CurrencyRates_Currencies" Member="Currency" ThisKey="BaseCurrencyId" OtherKey="Id" Type="Currency" IsForeignKey="true" />
+      <Association Name="FK_CurrencyRates_Currencies1" Member="TargetCurrency" ThisKey="TargetCurrencyId" OtherKey="Id" Type="Currency" IsForeignKey="true" />
+      <Association Name="FK_CurrencyRates_Sections" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
+      <Association Name="FK_CurrencyRates_Users" Member="User" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_CurrencyRates_Users1" Member="UpdatedByUser" ThisKey="UpdatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.DateTitles" Member="DateTitles">
@@ -118,9 +119,9 @@
       <Column Name="CreatedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="UpdatedWhen" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
       <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Section_DateTitle" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
-      <Association Name="User_DateTitle" Member="User" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
-      <Association Name="User_DateTitle1" Member="UpdatedByUser" ThisKey="UpdatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_DateTitles_Sections" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
+      <Association Name="FK_DateTitles_Users_CreatedBy" Member="User" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_DateTitles_Users_UpdatedBy" Member="UpdatedByUser" ThisKey="UpdatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Directions" Member="Directions">
@@ -144,7 +145,7 @@
       <Column Name="Quarters" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
       <Column Name="Years" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
       <Column Name="IsDefault" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Association Name="PeriodType_PlannedTransaction" Member="PlannedTransactions" ThisKey="Id" OtherKey="PeriodTypeId" Type="PlannedTransaction" />
+      <Association Name="FK_PlannedTransactions_PeriodTypes" Member="PlannedTransactions" ThisKey="Id" OtherKey="PeriodTypeId" Type="PlannedTransaction" DeleteRule="NO ACTION" />
     </Type>
   </Table>
   <Table Name="dbo.Permissions" Member="Permissions">
@@ -152,7 +153,7 @@
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Description" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
-      <Association Name="Permission_UserPermission" Member="UserPermissions" ThisKey="Id" OtherKey="PermissionId" Type="UserPermission" />
+      <Association Name="FK_UserPermissions_Permissions" Member="UserPermissions" ThisKey="Id" OtherKey="PermissionId" Type="UserPermission" DeleteRule="NO ACTION" />
     </Type>
   </Table>
   <Table Name="dbo.PlannedTransactions" Member="PlannedTransactions">
@@ -175,14 +176,14 @@
       <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="UpdatedWhen" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
       <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Account_PlannedTransaction" Member="Account" ThisKey="AccountId" OtherKey="Id" Type="Account" IsForeignKey="true" />
-      <Association Name="Category_PlannedTransaction" Member="Category" ThisKey="CategoryId" OtherKey="Id" Type="Category" IsForeignKey="true" />
-      <Association Name="Currency_PlannedTransaction" Member="Currency" ThisKey="CurrencyId" OtherKey="Id" Type="Currency" IsForeignKey="true" />
-      <Association Name="PeriodType_PlannedTransaction" Member="PeriodType" ThisKey="PeriodTypeId" OtherKey="Id" Type="PeriodType" IsForeignKey="true" />
-      <Association Name="Section_PlannedTransaction" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
-      <Association Name="TransactionType_PlannedTransaction" Member="TransactionType" ThisKey="TransactionTypeId" OtherKey="Id" Type="TransactionType" IsForeignKey="true" />
-      <Association Name="User_PlannedTransaction" Member="User" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
-      <Association Name="User_PlannedTransaction1" Member="UpdatedByUser" ThisKey="UpdatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_PlannedTransactions_Accounts" Member="Account" ThisKey="AccountId" OtherKey="Id" Type="Account" IsForeignKey="true" />
+      <Association Name="FK_PlannedTransactions_Categories" Member="Category" ThisKey="CategoryId" OtherKey="Id" Type="Category" IsForeignKey="true" />
+      <Association Name="FK_PlannedTransactions_Currencies" Member="Currency" ThisKey="CurrencyId" OtherKey="Id" Type="Currency" IsForeignKey="true" />
+      <Association Name="FK_PlannedTransactions_PeriodTypes" Member="PeriodType" ThisKey="PeriodTypeId" OtherKey="Id" Type="PeriodType" IsForeignKey="true" />
+      <Association Name="FK_PlannedTransactions_Sections" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
+      <Association Name="FK_PlannedTransactions_TransactionTypes" Member="TransactionType" ThisKey="TransactionTypeId" OtherKey="Id" Type="TransactionType" IsForeignKey="true" />
+      <Association Name="FK_PlannedTransactions_Users" Member="User" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_PlannedTransactions_Users_Updated" Member="UpdatedByUser" ThisKey="UpdatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.SectionAdmins" Member="SectionAdmins">
@@ -194,8 +195,8 @@
       <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="BlockedWhen" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
       <Column Name="BlockedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Section_SectionAdmin" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
-      <Association Name="User_SectionAdmin" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_SectionAdmins_Sections" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
+      <Association Name="FK_SectionAdmins_Users" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Sections" Member="Sections">
@@ -208,19 +209,19 @@
       <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="UpdatedWhen" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
       <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Section_Account" Member="Accounts" ThisKey="Id" OtherKey="SectionId" Type="Account" />
-      <Association Name="Section_Category" Member="Categories" ThisKey="Id" OtherKey="SectionId" Type="Category" />
-      <Association Name="Section_Currency" Member="Currencies" ThisKey="Id" OtherKey="SectionId" Type="Currency" />
-      <Association Name="Section_CurrencyRate" Member="CurrencyRates" ThisKey="Id" OtherKey="SectionId" Type="CurrencyRate" />
-      <Association Name="Section_DateTitle" Member="DateTitles" ThisKey="Id" OtherKey="SectionId" Type="DateTitle" />
-      <Association Name="Section_PlannedTransaction" Member="PlannedTransactions" ThisKey="Id" OtherKey="SectionId" Type="PlannedTransaction" />
-      <Association Name="Section_SectionAdmin" Member="SectionAdmins" ThisKey="Id" OtherKey="SectionId" Type="SectionAdmin" />
-      <Association Name="Section_Setting" Member="Settings" ThisKey="Id" OtherKey="SectionId" Type="Setting" />
-      <Association Name="Section_StatisticsTotalOnDate" Member="StatisticsTotalOnDates" ThisKey="Id" OtherKey="SectionId" Type="StatisticsTotalOnDate" />
-      <Association Name="Section_Tag" Member="Tags" ThisKey="Id" OtherKey="SectionId" Type="Tag" />
-      <Association Name="Section_TransactionGroup" Member="TransactionGroups" ThisKey="Id" OtherKey="SectionId" Type="TransactionGroup" />
-      <Association Name="Section_Transaction" Member="Transactions" ThisKey="Id" OtherKey="SectionId" Type="Transaction" />
-      <Association Name="Section_TransactionTag" Member="TransactionTags" ThisKey="Id" OtherKey="SectionId" Type="TransactionTag" />
+      <Association Name="FK_Accounts_Sections" Member="Accounts" ThisKey="Id" OtherKey="SectionId" Type="Account" DeleteRule="NO ACTION" />
+      <Association Name="FK_Categories_Sections" Member="Categories" ThisKey="Id" OtherKey="SectionId" Type="Category" DeleteRule="NO ACTION" />
+      <Association Name="FK_Currencies_Sections" Member="Currencies" ThisKey="Id" OtherKey="SectionId" Type="Currency" DeleteRule="NO ACTION" />
+      <Association Name="FK_CurrencyRates_Sections" Member="CurrencyRates" ThisKey="Id" OtherKey="SectionId" Type="CurrencyRate" DeleteRule="NO ACTION" />
+      <Association Name="FK_DateTitles_Sections" Member="DateTitles" ThisKey="Id" OtherKey="SectionId" Type="DateTitle" DeleteRule="NO ACTION" />
+      <Association Name="FK_PlannedTransactions_Sections" Member="PlannedTransactions" ThisKey="Id" OtherKey="SectionId" Type="PlannedTransaction" DeleteRule="NO ACTION" />
+      <Association Name="FK_SectionAdmins_Sections" Member="SectionAdmins" ThisKey="Id" OtherKey="SectionId" Type="SectionAdmin" DeleteRule="NO ACTION" />
+      <Association Name="FK_Settings_Sections" Member="Settings" ThisKey="Id" OtherKey="SectionId" Type="Setting" DeleteRule="NO ACTION" />
+      <Association Name="FK_StatisticsTotalOnDates_Sections" Member="StatisticsTotalOnDates" ThisKey="Id" OtherKey="SectionId" Type="StatisticsTotalOnDate" DeleteRule="NO ACTION" />
+      <Association Name="FK_Tags_Sections" Member="Tags" ThisKey="Id" OtherKey="SectionId" Type="Tag" DeleteRule="NO ACTION" />
+      <Association Name="FK_TransactionGroups_Sections" Member="TransactionGroups" ThisKey="Id" OtherKey="SectionId" Type="TransactionGroup" DeleteRule="NO ACTION" />
+      <Association Name="FK_Transactions_Sections" Member="Transactions" ThisKey="Id" OtherKey="SectionId" Type="Transaction" DeleteRule="NO ACTION" />
+      <Association Name="FK_TransactionTags_Sections" Member="TransactionTags" ThisKey="Id" OtherKey="SectionId" Type="TransactionTag" DeleteRule="NO ACTION" />
     </Type>
   </Table>
   <Table Name="dbo.Settings" Member="Settings">
@@ -234,8 +235,8 @@
       <Column Name="IsDisabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreatedWhen" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
       <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Section_Setting" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
-      <Association Name="User_Setting" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_Settings_Sections" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
+      <Association Name="FK_Settings_Users" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.StatisticsTotalOnDateDetails" Member="StatisticsTotalOnDateDetails">
@@ -244,8 +245,8 @@
       <Column Name="TotalOnDateId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="CurrencyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Sum" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
-      <Association Name="Currency_StatisticsTotalOnDateDetail" Member="Currency" ThisKey="CurrencyId" OtherKey="Id" Type="Currency" IsForeignKey="true" />
-      <Association Name="StatisticsTotalOnDate_StatisticsTotalOnDateDetail" Member="StatisticsTotalOnDate" ThisKey="TotalOnDateId" OtherKey="Id" Type="StatisticsTotalOnDate" IsForeignKey="true" />
+      <Association Name="FK_StatisticsTotalOnDateDetails_Currencies" Member="Currency" ThisKey="CurrencyId" OtherKey="Id" Type="Currency" IsForeignKey="true" />
+      <Association Name="FK_StatisticsTotalOnDateDetails_StatisticsTotalOnDates" Member="StatisticsTotalOnDate" ThisKey="TotalOnDateId" OtherKey="Id" Type="StatisticsTotalOnDate" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.StatisticsTotalOnDates" Member="StatisticsTotalOnDates">
@@ -255,9 +256,9 @@
       <Column Name="TotalOnDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
       <Column Name="CreatedWhen" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="StatisticsTotalOnDate_StatisticsTotalOnDateDetail" Member="StatisticsTotalOnDateDetails" ThisKey="Id" OtherKey="TotalOnDateId" Type="StatisticsTotalOnDateDetail" />
-      <Association Name="Section_StatisticsTotalOnDate" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
-      <Association Name="User_StatisticsTotalOnDate" Member="User" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_StatisticsTotalOnDateDetails_StatisticsTotalOnDates" Member="StatisticsTotalOnDateDetails" ThisKey="Id" OtherKey="TotalOnDateId" Type="StatisticsTotalOnDateDetail" DeleteRule="NO ACTION" />
+      <Association Name="FK_StatisticsTotalOnDates_Sections" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
+      <Association Name="FK_StatisticsTotalOnDates_Users" Member="User" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Tags" Member="Tags">
@@ -271,10 +272,10 @@
       <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="UpdatedWhen" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
       <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Tag_TransactionTag" Member="TransactionTags" ThisKey="Id" OtherKey="TagId" Type="TransactionTag" />
-      <Association Name="Section_Tag" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
-      <Association Name="User_Tag" Member="User" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
-      <Association Name="User_Tag1" Member="UpdatedByUser" ThisKey="UpdatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_Tags_Sections" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
+      <Association Name="FK_Tags_Users_Created" Member="User" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_Tags_Users_Updated" Member="UpdatedByUser" ThisKey="UpdatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_TransactionTags_Tags" Member="TransactionTags" ThisKey="Id" OtherKey="TagId" Type="TransactionTag" DeleteRule="NO ACTION" />
     </Type>
   </Table>
   <Table Name="dbo.TransactionGroups" Member="TransactionGroups">
@@ -297,16 +298,16 @@
       <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="UpdatedWhen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="TransactionGroup_Transaction" Member="Transactions" ThisKey="Id" OtherKey="TransactionGroupId" Type="Transaction" />
-      <Association Name="Account_TransactionGroup" Member="Account" ThisKey="FromAccountId" OtherKey="Id" Type="Account" IsForeignKey="true" />
-      <Association Name="Account_TransactionGroup1" Member="ToAccount" ThisKey="ToAccountId" OtherKey="Id" Type="Account" IsForeignKey="true" />
-      <Association Name="Category_TransactionGroup" Member="Category" ThisKey="CategoryId" OtherKey="Id" Type="Category" IsForeignKey="true" />
-      <Association Name="Currency_TransactionGroup" Member="Currency" ThisKey="ToCurrencyId" OtherKey="Id" Type="Currency" IsForeignKey="true" />
-      <Association Name="Currency_TransactionGroup1" Member="FromCurrency" ThisKey="FromCurrencyId" OtherKey="Id" Type="Currency" IsForeignKey="true" />
-      <Association Name="Section_TransactionGroup" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
-      <Association Name="TransactionType_TransactionGroup" Member="TransactionType" ThisKey="TransactionTypeId" OtherKey="Id" Type="TransactionType" IsForeignKey="true" />
-      <Association Name="User_TransactionGroup" Member="User" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
-      <Association Name="User_TransactionGroup1" Member="UpdatedByUser" ThisKey="UpdatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_TransactionGroups_Accounts" Member="Account" ThisKey="FromAccountId" OtherKey="Id" Type="Account" IsForeignKey="true" />
+      <Association Name="FK_TransactionGroups_Accounts1" Member="ToAccount" ThisKey="ToAccountId" OtherKey="Id" Type="Account" IsForeignKey="true" />
+      <Association Name="FK_TransactionGroups_Categories" Member="Category" ThisKey="CategoryId" OtherKey="Id" Type="Category" IsForeignKey="true" />
+      <Association Name="FK_TransactionGroups_Currencies" Member="Currency" ThisKey="ToCurrencyId" OtherKey="Id" Type="Currency" IsForeignKey="true" />
+      <Association Name="FK_TransactionGroups_Currencies1" Member="FromCurrency" ThisKey="FromCurrencyId" OtherKey="Id" Type="Currency" IsForeignKey="true" />
+      <Association Name="FK_TransactionGroups_Sections" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
+      <Association Name="FK_TransactionGroups_TransactionTypes" Member="TransactionType" ThisKey="TransactionTypeId" OtherKey="Id" Type="TransactionType" IsForeignKey="true" />
+      <Association Name="FK_TransactionGroups_Users" Member="User" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_TransactionGroups_Users1" Member="UpdatedByUser" ThisKey="UpdatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_Transactions_TransactionGroups" Member="Transactions" ThisKey="Id" OtherKey="TransactionGroupId" Type="Transaction" DeleteRule="NO ACTION" />
     </Type>
   </Table>
   <Table Name="dbo.TransactionLinks" Member="TransactionLinks">
@@ -316,9 +317,9 @@
       <Column Name="ChildId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="CreatedWhen" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Transaction_TransactionLink" Member="Transaction" ThisKey="ChildId" OtherKey="Id" Type="Transaction" IsForeignKey="true" />
-      <Association Name="Transaction_TransactionLink1" Member="Parent" ThisKey="ParentId" OtherKey="Id" Type="Transaction" IsForeignKey="true" />
-      <Association Name="User_TransactionLink" Member="User" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_TransactionLinks_Transactions_Child" Member="Transaction" ThisKey="ChildId" OtherKey="Id" Type="Transaction" IsForeignKey="true" />
+      <Association Name="FK_TransactionLinks_Transactions_Parent" Member="Parent" ThisKey="ParentId" OtherKey="Id" Type="Transaction" IsForeignKey="true" />
+      <Association Name="FK_TransactionLinks_Users" Member="User" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Transactions" Member="Transactions">
@@ -344,19 +345,19 @@
       <Column Name="CreatedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="UpdatedWhen" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
       <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Transaction_TransactionLink" Member="TransactionLinks" ThisKey="Id" OtherKey="ChildId" Type="TransactionLink" />
-      <Association Name="Transaction_TransactionLink1" Member="TransactionLinks_Transactions_Parents" ThisKey="Id" OtherKey="ParentId" Type="TransactionLink" />
-      <Association Name="Transaction_Transaction" Member="Transactions_Transactions_LinkedIds" ThisKey="Id" OtherKey="LinkedId" Type="Transaction" />
-      <Association Name="Transaction_TransactionTag" Member="TransactionTags" ThisKey="Id" OtherKey="TransactionId" Type="TransactionTag" />
-      <Association Name="Account_Transaction" Member="Account" ThisKey="AccountId" OtherKey="Id" Type="Account" IsForeignKey="true" />
-      <Association Name="Category_Transaction" Member="Category" ThisKey="CategoryId" OtherKey="Id" Type="Category" IsForeignKey="true" />
-      <Association Name="Currency_Transaction" Member="Currency" ThisKey="CurrencyId" OtherKey="Id" Type="Currency" IsForeignKey="true" />
-      <Association Name="Section_Transaction" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
-      <Association Name="TransactionGroup_Transaction" Member="TransactionGroup" ThisKey="TransactionGroupId" OtherKey="Id" Type="TransactionGroup" IsForeignKey="true" />
-      <Association Name="Transaction_Transaction" Member="Linked" ThisKey="LinkedId" OtherKey="Id" Type="Transaction" IsForeignKey="true" />
-      <Association Name="TransactionType_Transaction" Member="TransactionType" ThisKey="TransactionTypeId" OtherKey="Id" Type="TransactionType" IsForeignKey="true" />
-      <Association Name="User_Transaction" Member="User" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
-      <Association Name="User_Transaction1" Member="UpdatedByUser" ThisKey="UpdatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_TransactionLinks_Transactions_Child" Member="TransactionLinks" ThisKey="Id" OtherKey="ChildId" Type="TransactionLink" DeleteRule="NO ACTION" />
+      <Association Name="FK_TransactionLinks_Transactions_Parent" Member="TransactionLinks_Transactions_Parents" ThisKey="Id" OtherKey="ParentId" Type="TransactionLink" DeleteRule="NO ACTION" />
+      <Association Name="FK_Transactions_Accounts" Member="Account" ThisKey="AccountId" OtherKey="Id" Type="Account" IsForeignKey="true" />
+      <Association Name="FK_Transactions_Categories" Member="Category" ThisKey="CategoryId" OtherKey="Id" Type="Category" IsForeignKey="true" />
+      <Association Name="FK_Transactions_Currencies" Member="Currency" ThisKey="CurrencyId" OtherKey="Id" Type="Currency" IsForeignKey="true" />
+      <Association Name="FK_Transactions_Sections" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
+      <Association Name="FK_Transactions_TransactionGroups" Member="TransactionGroup" ThisKey="TransactionGroupId" OtherKey="Id" Type="TransactionGroup" IsForeignKey="true" />
+      <Association Name="FK_Transactions_Transactions_LinkedId" Member="Linked" ThisKey="LinkedId" OtherKey="Id" Type="Transaction" IsForeignKey="true" />
+      <Association Name="FK_Transactions_Transactions_LinkedId" Member="Transactions_Transactions_LinkedIds" ThisKey="Id" OtherKey="LinkedId" Type="Transaction" DeleteRule="NO ACTION" />
+      <Association Name="FK_Transactions_TransactionTypes" Member="TransactionType" ThisKey="TransactionTypeId" OtherKey="Id" Type="TransactionType" IsForeignKey="true" />
+      <Association Name="FK_Transactions_Users_CreatedBy" Member="User" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_Transactions_Users_Updated" Member="UpdatedByUser" ThisKey="UpdatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_TransactionTags_Transactions" Member="TransactionTags" ThisKey="Id" OtherKey="TransactionId" Type="TransactionTag" DeleteRule="CASCADE" />
     </Type>
   </Table>
   <Table Name="dbo.TransactionTags" Member="TransactionTags">
@@ -371,11 +372,11 @@
       <Column Name="CreatedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="UpdatedWhen" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
       <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Section_TransactionTag" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
-      <Association Name="Tag_TransactionTag" Member="TransactionTags_Tag" ThisKey="TagId" OtherKey="Id" Type="Tag" IsForeignKey="true" />
-      <Association Name="Transaction_TransactionTag" Member="Transaction" ThisKey="TransactionId" OtherKey="Id" Type="Transaction" IsForeignKey="true" DeleteOnNull="true" />
-      <Association Name="User_TransactionTag" Member="User" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
-      <Association Name="User_TransactionTag1" Member="UpdatedByUser" ThisKey="UpdatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_TransactionTags_Sections" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
+      <Association Name="FK_TransactionTags_Tags" Member="TransactionTags_Tag" ThisKey="TagId" OtherKey="Id" Type="Tag" IsForeignKey="true" />
+      <Association Name="FK_TransactionTags_Transactions" Member="Transaction" ThisKey="TransactionId" OtherKey="Id" Type="Transaction" IsForeignKey="true" DeleteOnNull="true" />
+      <Association Name="FK_TransactionTags_Users_Created" Member="User" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_TransactionTags_Users_Updated" Member="UpdatedByUser" ThisKey="UpdatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.TransactionTypes" Member="TransactionTypes">
@@ -383,9 +384,9 @@
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Description" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
-      <Association Name="TransactionType_PlannedTransaction" Member="PlannedTransactions" ThisKey="Id" OtherKey="TransactionTypeId" Type="PlannedTransaction" />
-      <Association Name="TransactionType_TransactionGroup" Member="TransactionGroups" ThisKey="Id" OtherKey="TransactionTypeId" Type="TransactionGroup" />
-      <Association Name="TransactionType_Transaction" Member="Transactions" ThisKey="Id" OtherKey="TransactionTypeId" Type="Transaction" />
+      <Association Name="FK_PlannedTransactions_TransactionTypes" Member="PlannedTransactions" ThisKey="Id" OtherKey="TransactionTypeId" Type="PlannedTransaction" DeleteRule="NO ACTION" />
+      <Association Name="FK_TransactionGroups_TransactionTypes" Member="TransactionGroups" ThisKey="Id" OtherKey="TransactionTypeId" Type="TransactionGroup" DeleteRule="NO ACTION" />
+      <Association Name="FK_Transactions_TransactionTypes" Member="Transactions" ThisKey="Id" OtherKey="TransactionTypeId" Type="Transaction" DeleteRule="NO ACTION" />
     </Type>
   </Table>
   <Table Name="dbo.UserConnects" Member="UserConnects">
@@ -396,10 +397,10 @@
       <Column Name="UserPasswordId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Origin" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Token" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="LastUsed" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ExpiresWhen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreatedWhen" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
       <Column Name="CreatedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="UserPassword_UserConnect" Member="UserPassword" ThisKey="UserPasswordId" OtherKey="Id" Type="UserPassword" IsForeignKey="true" />
+      <Association Name="FK_UserConnects_UserPasswords" Member="UserPassword" ThisKey="UserPasswordId" OtherKey="Id" Type="UserPassword" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.UserConnectStatuses" Member="UserConnectStatuses">
@@ -417,8 +418,8 @@
       <Column Name="IsDisabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreatedWhen" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="UserPassword_UserConnect" Member="UserConnects" ThisKey="Id" OtherKey="UserPasswordId" Type="UserConnect" />
-      <Association Name="User_UserPassword" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_UserConnects_UserPasswords" Member="UserConnects" ThisKey="Id" OtherKey="UserPasswordId" Type="UserConnect" DeleteRule="NO ACTION" />
+      <Association Name="FK_UserPasswords_Users" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.UserPermissions" Member="UserPermissions">
@@ -428,9 +429,9 @@
       <Column Name="PermissionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="CreatedWhen" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
       <Column Name="CreatedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Permission_UserPermission" Member="Permission" ThisKey="PermissionId" OtherKey="Id" Type="Permission" IsForeignKey="true" />
-      <Association Name="User_UserPermission" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" />
-      <Association Name="User_UserPermission1" Member="CreatedByUser" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_UserPermissions_Permissions" Member="Permission" ThisKey="PermissionId" OtherKey="Id" Type="Permission" IsForeignKey="true" />
+      <Association Name="FK_UserPermissions_Users" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_UserPermissions_Users1" Member="CreatedByUser" ThisKey="CreatedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Users" Member="Users">
@@ -448,28 +449,28 @@
       <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="UpdatedWhen" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
       <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="User_Category" Member="Categories" ThisKey="Id" OtherKey="CreatedBy" Type="Category" />
-      <Association Name="User_CurrencyRate" Member="CurrencyRates" ThisKey="Id" OtherKey="CreatedBy" Type="CurrencyRate" />
-      <Association Name="User_CurrencyRate1" Member="CurrencyRates_Users1s" ThisKey="Id" OtherKey="UpdatedBy" Type="CurrencyRate" />
-      <Association Name="User_DateTitle" Member="DateTitles" ThisKey="Id" OtherKey="CreatedBy" Type="DateTitle" />
-      <Association Name="User_DateTitle1" Member="DateTitles_Users_UpdatedBies" ThisKey="Id" OtherKey="UpdatedBy" Type="DateTitle" />
-      <Association Name="User_PlannedTransaction" Member="PlannedTransactions" ThisKey="Id" OtherKey="CreatedBy" Type="PlannedTransaction" />
-      <Association Name="User_PlannedTransaction1" Member="PlannedTransactions_Users_Updateds" ThisKey="Id" OtherKey="UpdatedBy" Type="PlannedTransaction" />
-      <Association Name="User_SectionAdmin" Member="SectionAdmins" ThisKey="Id" OtherKey="UserId" Type="SectionAdmin" />
-      <Association Name="User_Setting" Member="Settings" ThisKey="Id" OtherKey="UserId" Type="Setting" />
-      <Association Name="User_StatisticsTotalOnDate" Member="StatisticsTotalOnDates" ThisKey="Id" OtherKey="CreatedBy" Type="StatisticsTotalOnDate" />
-      <Association Name="User_Tag" Member="Tags" ThisKey="Id" OtherKey="CreatedBy" Type="Tag" />
-      <Association Name="User_Tag1" Member="Tags_Users_Updateds" ThisKey="Id" OtherKey="UpdatedBy" Type="Tag" />
-      <Association Name="User_TransactionGroup" Member="TransactionGroups" ThisKey="Id" OtherKey="CreatedBy" Type="TransactionGroup" />
-      <Association Name="User_TransactionGroup1" Member="TransactionGroups_Users1s" ThisKey="Id" OtherKey="UpdatedBy" Type="TransactionGroup" />
-      <Association Name="User_TransactionLink" Member="TransactionLinks" ThisKey="Id" OtherKey="CreatedBy" Type="TransactionLink" />
-      <Association Name="User_Transaction" Member="Transactions" ThisKey="Id" OtherKey="CreatedBy" Type="Transaction" />
-      <Association Name="User_Transaction1" Member="Transactions_Users_Updateds" ThisKey="Id" OtherKey="UpdatedBy" Type="Transaction" />
-      <Association Name="User_TransactionTag" Member="TransactionTags" ThisKey="Id" OtherKey="CreatedBy" Type="TransactionTag" />
-      <Association Name="User_TransactionTag1" Member="TransactionTags_Users_Updateds" ThisKey="Id" OtherKey="UpdatedBy" Type="TransactionTag" />
-      <Association Name="User_UserPassword" Member="UserPasswords" ThisKey="Id" OtherKey="UserId" Type="UserPassword" />
-      <Association Name="User_UserPermission" Member="UserPermissions" ThisKey="Id" OtherKey="UserId" Type="UserPermission" />
-      <Association Name="User_UserPermission1" Member="UserPermissions_Users1s" ThisKey="Id" OtherKey="CreatedBy" Type="UserPermission" />
+      <Association Name="FK_Categories_Users" Member="Categories" ThisKey="Id" OtherKey="CreatedBy" Type="Category" DeleteRule="NO ACTION" />
+      <Association Name="FK_CurrencyRates_Users" Member="CurrencyRates" ThisKey="Id" OtherKey="CreatedBy" Type="CurrencyRate" DeleteRule="NO ACTION" />
+      <Association Name="FK_CurrencyRates_Users1" Member="CurrencyRates_Users1s" ThisKey="Id" OtherKey="UpdatedBy" Type="CurrencyRate" DeleteRule="NO ACTION" />
+      <Association Name="FK_DateTitles_Users_CreatedBy" Member="DateTitles" ThisKey="Id" OtherKey="CreatedBy" Type="DateTitle" DeleteRule="NO ACTION" />
+      <Association Name="FK_DateTitles_Users_UpdatedBy" Member="DateTitles_Users_UpdatedBies" ThisKey="Id" OtherKey="UpdatedBy" Type="DateTitle" DeleteRule="NO ACTION" />
+      <Association Name="FK_PlannedTransactions_Users" Member="PlannedTransactions" ThisKey="Id" OtherKey="CreatedBy" Type="PlannedTransaction" DeleteRule="NO ACTION" />
+      <Association Name="FK_PlannedTransactions_Users_Updated" Member="PlannedTransactions_Users_Updateds" ThisKey="Id" OtherKey="UpdatedBy" Type="PlannedTransaction" DeleteRule="NO ACTION" />
+      <Association Name="FK_SectionAdmins_Users" Member="SectionAdmins" ThisKey="Id" OtherKey="UserId" Type="SectionAdmin" DeleteRule="NO ACTION" />
+      <Association Name="FK_Settings_Users" Member="Settings" ThisKey="Id" OtherKey="UserId" Type="Setting" DeleteRule="NO ACTION" />
+      <Association Name="FK_StatisticsTotalOnDates_Users" Member="StatisticsTotalOnDates" ThisKey="Id" OtherKey="CreatedBy" Type="StatisticsTotalOnDate" DeleteRule="NO ACTION" />
+      <Association Name="FK_Tags_Users_Created" Member="Tags" ThisKey="Id" OtherKey="CreatedBy" Type="Tag" DeleteRule="NO ACTION" />
+      <Association Name="FK_Tags_Users_Updated" Member="Tags_Users_Updateds" ThisKey="Id" OtherKey="UpdatedBy" Type="Tag" DeleteRule="NO ACTION" />
+      <Association Name="FK_TransactionGroups_Users" Member="TransactionGroups" ThisKey="Id" OtherKey="CreatedBy" Type="TransactionGroup" DeleteRule="NO ACTION" />
+      <Association Name="FK_TransactionGroups_Users1" Member="TransactionGroups_Users1s" ThisKey="Id" OtherKey="UpdatedBy" Type="TransactionGroup" DeleteRule="NO ACTION" />
+      <Association Name="FK_TransactionLinks_Users" Member="TransactionLinks" ThisKey="Id" OtherKey="CreatedBy" Type="TransactionLink" DeleteRule="NO ACTION" />
+      <Association Name="FK_Transactions_Users_CreatedBy" Member="Transactions" ThisKey="Id" OtherKey="CreatedBy" Type="Transaction" DeleteRule="NO ACTION" />
+      <Association Name="FK_Transactions_Users_Updated" Member="Transactions_Users_Updateds" ThisKey="Id" OtherKey="UpdatedBy" Type="Transaction" DeleteRule="NO ACTION" />
+      <Association Name="FK_TransactionTags_Users_Created" Member="TransactionTags" ThisKey="Id" OtherKey="CreatedBy" Type="TransactionTag" DeleteRule="NO ACTION" />
+      <Association Name="FK_TransactionTags_Users_Updated" Member="TransactionTags_Users_Updateds" ThisKey="Id" OtherKey="UpdatedBy" Type="TransactionTag" DeleteRule="NO ACTION" />
+      <Association Name="FK_UserPasswords_Users" Member="UserPasswords" ThisKey="Id" OtherKey="UserId" Type="UserPassword" DeleteRule="NO ACTION" />
+      <Association Name="FK_UserPermissions_Users" Member="UserPermissions" ThisKey="Id" OtherKey="UserId" Type="UserPermission" DeleteRule="NO ACTION" />
+      <Association Name="FK_UserPermissions_Users1" Member="UserPermissions_Users1s" ThisKey="Id" OtherKey="CreatedBy" Type="UserPermission" DeleteRule="NO ACTION" />
     </Type>
   </Table>
   <Table Name="dbo.UserSettings" Member="UserSettings">

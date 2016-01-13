@@ -35,7 +35,7 @@
     <div id="@id">
         <div class="row">
             <div class="col-md-4">
-                @(new BudgetOnline.UI.Views.Editors.SelectList().Render(model.Account.Items, propertyName + ".Account", cssAccountListClass, false))
+                @(new _Views_Editors_SelectList_cshtml().Render(model.Account.Items, propertyName + ".Account", cssAccountListClass, false))
             </div>
             <div class="col-md-1">
             </div>
@@ -53,7 +53,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                @(new BudgetOnline.UI.Views.Editors.SelectList().Render(model.Currency.Items, propertyName + ".Currency", cssCurrencyListClass, false))
+                @(new _Views_Editors_SelectList_cshtml().Render(model.Currency.Items, propertyName + ".Currency", cssCurrencyListClass, false))
             </div>
         </div>
     </div>

@@ -1,0 +1,17 @@
+﻿@* Generator: MvcHelper *@
+@using BudgetOnline.UI.PreCompiled.Models.ViewCommands
+@functions {
+}
+@helper Render(IEnumerable<ViewCommandUiModelHelper> commands)
+    {
+        if (commands == null || !commands.Any())
+        {
+        }
+        else
+        { 
+            foreach (var command in commands)
+            {
+    @ViewCommandUI.Render(command.GetResult(), true)
+            }
+        }
+}

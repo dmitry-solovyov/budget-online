@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -15,6 +16,15 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,12 +49,22 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="RazorGenerator.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
-      <HintPath>..\packages\RazorGenerator.Mvc.2.2.2\lib\net40\RazorGenerator.Mvc.dll</HintPath>
+      <HintPath>..\packages\RazorGenerator.Mvc.2.3.12\lib\net40\RazorGenerator.Mvc.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Data.Entity" />
-    <Reference Include="System.Web.Mvc" />
-    <Reference Include="System.Web.WebPages" />
-    <Reference Include="System.Web.Helpers" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=3.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.3.0.50813.1\lib\net40\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -55,6 +75,18 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -65,7 +97,8 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
-      <HintPath>..\packages\WebActivatorEx.2.0.5\lib\net40\WebActivatorEx.dll</HintPath>
+      <HintPath>..\packages\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -108,9 +141,6 @@
     <Compile Include="Extensions\HtmlLabelForExtensions.cs" />
     <Compile Include="Extensions\HtmlOutputFormatterExtensions.cs" />
     <Compile Include="Extensions\ModelMetadataExtensions.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
     <Compile Include="Helpers\UIHelper.cs" />
     <Compile Include="Models\Alerts\AlertModel.cs" />
     <Compile Include="Models\Alerts\AlertSuccessModel.cs" />
@@ -132,15 +162,15 @@
     <Compile Include="Models\ViewCommands\ViewCommandModel.cs" />
     <Compile Include="Models\ViewCommands\ViewCommandUIModelHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\AutoCompleteTextBox.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AutoCompleteTextBox.cshtml</DependentUpon>
-    </Compile>
     <Compile Include="Views\AlertSuccess.generated.cs">
       <DependentUpon>AlertSuccess.cshtml</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\AutoCompleteTextBox.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoCompleteTextBox.cshtml</DependentUpon>
     </Compile>
     <Compile Include="Views\DateEditBox.generated.cs">
       <AutoGen>True</AutoGen>
@@ -172,6 +202,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Views\ListViewCommands\ListOfViewCommandUI.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListOfViewCommandUI.cshtml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ListViewCommands\ListOfViewCommandUI1.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -187,11 +222,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MenuHorizontal.cshtml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ListViewCommands\ViewCommandUIDefault.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ViewCommandUIDefault.cshtml</DependentUpon>
-    </Compile>
     <Compile Include="Views\ListViewCommands\PostViewCommand.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -201,6 +231,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RedirectViewCommand.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListViewCommands\ViewCommandUIDefault.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ViewCommandUIDefault.cshtml</DependentUpon>
     </Compile>
     <Compile Include="Views\MenuItemWithActions.generated.cs">
       <AutoGen>True</AutoGen>
@@ -217,9 +252,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ProgressIndicator.cshtml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Shared\Error.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Error.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_Layout.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Layout.cshtml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Global.asax" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -304,11 +348,16 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <None Include="Views\Web.config" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Error.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_Layout.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Layout.generated.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="Controls\Extensions\" />
   </ItemGroup>
   <ItemGroup>
@@ -362,6 +411,7 @@
     <None Include="Views\Editors\SelectList.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>SelectList.generated.cs</LastGenOutput>
+      <CustomToolNamespace>BudgetOnline.UI.Views.Editors</CustomToolNamespace>
     </None>
     <None Include="Views\ListViewCommands\PostViewCommand.cshtml">
       <Generator>RazorGenerator</Generator>
@@ -373,7 +423,7 @@
     </None>
     <None Include="Views\ListViewCommands\ListOfViewCommandUI.cshtml">
       <Generator>RazorGenerator</Generator>
-      <LastGenOutput>ListOfViewCommandUI1.generated.cs</LastGenOutput>
+      <LastGenOutput>ListOfViewCommandUI.generated.cs</LastGenOutput>
     </None>
     <None Include="Views\ProgressIndicator.cshtml">
       <Generator>RazorGenerator</Generator>
@@ -386,8 +436,13 @@
       <Name>BudgetOnline.Common</Name>
     </ProjectReference>
   </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

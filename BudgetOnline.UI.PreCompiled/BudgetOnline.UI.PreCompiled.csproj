@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CA5F3BF2-A23B-48DF-91D7-1809B51A6E92}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BudgetOnline.UI.PreCompiled</RootNamespace>
+    <AssemblyName>BudgetOnline.UI.PreCompiled</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>0f09094f</NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RazorGenerator.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorGenerator.Mvc.2.3.12\lib\net40\RazorGenerator.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=3.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.3.0.50813.1\lib\net40\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
+    <Compile Include="Attributes\AutocompleteOptionAttribute.cs" />
+    <Compile Include="Attributes\ControlRowClassAttribute.cs" />
+    <Compile Include="Attributes\ControlRowHeaderAttribute.cs" />
+    <Compile Include="Attributes\ControlRowIdAttribute.cs" />
+    <Compile Include="Attributes\GridLayout.cs" />
+    <Compile Include="Attributes\HiddenLabelAttribute.cs" />
+    <Compile Include="Attributes\PlaceholderAttribute.cs" />
+    <Compile Include="Attributes\QuickInfoAttribute.cs" />
+    <Compile Include="Controls\AutoCompleteTextBoxBuilder.cs" />
+    <Compile Include="Controls\Buttons\ButtonBuilder.cs" />
+    <Compile Include="Controls\Buttons\SubmitButtonBuilder.cs" />
+    <Compile Include="Controls\CommandsListBuilder.cs" />
+    <Compile Include="Controls\ContainerBuilder.cs" />
+    <Compile Include="Controls\ContainersListBuilder.cs" />
+    <Compile Include="Controls\FormBuilder.cs" />
+    <Compile Include="Controls\IBuilder.cs" />
+    <Compile Include="Controls\ImageBuilder.cs" />
+    <Compile Include="Controls\IMultiBuilder.cs" />
+    <Compile Include="Controls\ListBuilder.cs" />
+    <Compile Include="Controls\PanelBuilder.cs" />
+    <Compile Include="Controls\ProgressIndicatorBuilder.cs" />
+    <Compile Include="Controls\Tables\TableBaseColumn.cs" />
+    <Compile Include="Controls\Tables\TableBoundColumn.cs" />
+    <Compile Include="Controls\Tables\TableBuilder.cs" />
+    <Compile Include="Controls\Tables\TableColumnCollection.cs" />
+    <Compile Include="Controls\Tables\TableColumnOptions.cs" />
+    <Compile Include="Controls\Tables\TableColumnRenderParts.cs" />
+    <Compile Include="Controls\Tables\TableCommandsColumnBuilder.cs" />
+    <Compile Include="Controls\Tables\TableCustomColumn.cs" />
+    <Compile Include="Controls\Tables\TableIconColumn.cs" />
+    <Compile Include="Controls\UIBuilder.cs" />
+    <Compile Include="Controls\Xml\XmlDocumentBuilder.cs" />
+    <Compile Include="Controls\Xml\XmlNodeBuilder.cs" />
+    <Compile Include="Controls\Xml\XmlNodeBuilderSettings.cs" />
+    <Compile Include="Extensions\HtmlHelperExtensions.cs" />
+    <Compile Include="Extensions\HtmlLabelForExtensions.cs" />
+    <Compile Include="Extensions\HtmlOutputFormatterExtensions.cs" />
+    <Compile Include="Extensions\ModelMetadataExtensions.cs" />
+    <Compile Include="Helpers\UIHelper.cs" />
+    <Compile Include="Models\Alerts\AlertModel.cs" />
+    <Compile Include="Models\Alerts\AlertSuccessModel.cs" />
+    <Compile Include="Models\AutoCompleteTextBox.cs" />
+    <Compile Include="Models\DateEditModel.cs" />
+    <Compile Include="Models\DynamicContainerModel.cs" />
+    <Compile Include="Models\Editors\CurrencyBundle.cs" />
+    <Compile Include="Models\IdWithSelectList.cs" />
+    <Compile Include="Models\PaginationModel.cs" />
+    <Compile Include="Models\ProgressIndicatorModel.cs" />
+    <Compile Include="Models\SelectItems\SelectItemModel.cs" />
+    <Compile Include="Models\SelectItems\SelectItemsModel.cs" />
+    <Compile Include="Models\UIControlModel.cs" />
+    <Compile Include="Models\ViewCommands\AjaxViewCommandModel.cs" />
+    <Compile Include="Models\ViewCommands\JsViewCommandModel.cs" />
+    <Compile Include="Models\ViewCommands\PostViewCommandModel.cs" />
+    <Compile Include="Models\ViewCommands\RedirectViewCommandModel.cs" />
+    <Compile Include="Models\ViewCommands\ViewCommandModel.cs" />
+    <Compile Include="Models\ViewCommands\ViewCommandUIModel.cs" />
+    <Compile Include="Models\ViewCommands\ViewCommandUIModelHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Views\AlertSuccess.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>AlertSuccess.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\AutoCompleteTextBox.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>AutoCompleteTextBox.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\DateEditBox.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>DateEditBox.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\DynamicContainer.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>DynamicContainer.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Editors\CurrencyBundle.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>CurrencyBundle.generated.cs</LastGenOutput>
+    </None>
+    <Content Include="Views\Editors\MultiColumnSelectList.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>MultiColumnSelectList.generated.cs</LastGenOutput>
+    </Content>
+    <None Include="Views\Editors\SelectList.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SelectList.generated.cs</LastGenOutput>
+      <CustomToolNamespace>BudgetOnline.UI.Views.Editors</CustomToolNamespace>
+    </None>
+    <None Include="Views\ListViewCommands\JsViewCommand.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>JsViewCommand.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\ListViewCommands\ListOfViewCommandUI.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ListOfViewCommandUI.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\ListViewCommands\MenuHorizontal.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>MenuHorizontal.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\ListViewCommands\PostViewCommand.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>PostViewCommand.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\ListViewCommands\RedirectViewCommand.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>RedirectViewCommand.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\ListViewCommands\ViewCommandUI.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ViewCommandUI.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\ListViewCommands\ViewCommandUIDefault.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ViewCommandUIDefault.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\MenuItemWithActions.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>MenuItemWithActions.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Paginator.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Paginator1.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\ProgressIndicator.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ProgressIndicator.generated.cs</LastGenOutput>
+    </None>
+    <Content Include="Views\Shared\_Layout.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Layout.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Error.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Error.generated.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\Extensions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BudgetOnline.Common\BudgetOnline.Common.csproj">
+      <Project>{24D83CBA-7F7F-4559-9CC7-839423401CE1}</Project>
+      <Name>BudgetOnline.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\RazorGenerator.MsBuild.2.3.13\build\RazorGenerator.MsBuild.targets" Condition="Exists('..\packages\RazorGenerator.MsBuild.2.3.13\build\RazorGenerator.MsBuild.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\RazorGenerator.MsBuild.2.3.13\build\RazorGenerator.MsBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\RazorGenerator.MsBuild.2.3.13\build\RazorGenerator.MsBuild.targets'))" />
+    <Error Condition="!Exists('..\packages\RazorGenerator.MsBuild.CustomViewBase.0.0.4\build\RazorGenerator.MsBuild.CustomViewBase.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\RazorGenerator.MsBuild.CustomViewBase.0.0.4\build\RazorGenerator.MsBuild.CustomViewBase.targets'))" />
+  </Target>
+  <Import Project="..\packages\RazorGenerator.MsBuild.CustomViewBase.0.0.4\build\RazorGenerator.MsBuild.CustomViewBase.targets" Condition="Exists('..\packages\RazorGenerator.MsBuild.CustomViewBase.0.0.4\build\RazorGenerator.MsBuild.CustomViewBase.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,4 +1,6 @@
-﻿namespace BudgetOnline.Api.Models
+﻿using System;
+
+namespace BudgetOnline.Api.Models
 {
     public class SessionValidationRequest
     {
@@ -8,5 +10,7 @@
     public class SessionValidationResponse
     {
         public bool Valid { get; set; }
+
+        public DateTime ExpiredAfter { get; set; } 
     }
 }

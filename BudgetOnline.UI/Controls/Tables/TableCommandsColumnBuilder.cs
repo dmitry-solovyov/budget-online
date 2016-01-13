@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
+using ASP;
 using BudgetOnline.UI.Models.ViewCommands;
 
 namespace BudgetOnline.UI.Controls
@@ -34,7 +35,7 @@ namespace BudgetOnline.UI.Controls
 
         protected override HtmlString BuildCell(TableDefinitions tableDefinition, T context)
 		{
-			var value = Views.ListViewCommands.ListOfViewCommandUI.Render(CommandGetter.Invoke(context)).ToHtmlString();
+			var value = new _Views_ListViewCommands_ListOfViewCommandUI_cshtml().Render(CommandGetter.Invoke(context)).ToHtmlString();
 
 			//if (_cellGetter != null)
 			//	value = _cellGetter.Invoke(context);

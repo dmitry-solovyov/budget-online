@@ -7,13 +7,12 @@ using BudgetOnline.Api.Infrastructure.Filters;
 using BudgetOnline.BusinessLayer.Helpers;
 using BudgetOnline.Common;
 using BudgetOnline.Common.Logger;
-using BudgetOnline.Data.Manage.Contracts;
 using BudgetOnline.Data.Manage.Repositories;
 using BudgetOnline.Security.Api;
 
 namespace BudgetOnline.Api.Infrastructure.IoC
 {
-    public class AutofacInitializer
+    public static class AutofacInitializer
     {
         public static IContainer GetBuilder()
         {
@@ -38,13 +37,13 @@ namespace BudgetOnline.Api.Infrastructure.IoC
                 .Where(t => !string.IsNullOrWhiteSpace(t.Namespace) && t.Namespace.StartsWith("BudgetOnline.Common"))
                 .PropertiesAutowired()
                 .AsImplementedInterfaces()
-                .InstancePerApiRequest();
+                .InstancePerRequest();
 
             builder.RegisterAssemblyTypes(typeof(ApiSessionProvider).Assembly)
                 .Where(t => !string.IsNullOrWhiteSpace(t.Namespace) && t.Namespace.StartsWith("BudgetOnline."))
                 .PropertiesAutowired()
                 .AsImplementedInterfaces()
-                .InstancePerApiRequest();
+                .InstancePerRequest();
         }
 
         private static void RegisterInfrustructure(ContainerBuilder builder)
@@ -53,21 +52,25 @@ namespace BudgetOnline.Api.Infrastructure.IoC
                 .Where(t => !string.IsNullOrWhiteSpace(t.Namespace) && t.Namespace.StartsWith("BudgetOnline.Api.Infrastructure.") && !t.Name.Contains("Attribute"))
                 .PropertiesAutowired()
                 .AsImplementedInterfaces()
-                .InstancePerApiRequest();
+                .InstancePerRequest();
 
             builder.Register(c => new RequestAuthorizeAttribute())
                 .AsWebApiAuthorizationFilterFor<HomeController>()
                 .PropertiesAutowired()
-                .InstancePerApiRequest();
+                .InstancePerRequest();
         }
 
         private static void RegisterBusinessLayerBindings(ContainerBuilder builder)
         {
+            builder.RegisterType<Dictionaries>().AsImplementedInterfaces()
+                .PropertiesAutowired()
+                .InstancePerDependency();
+
             builder.RegisterAssemblyTypes(typeof(SettingsHelper).Assembly)
                 .Where(t => !string.IsNullOrWhiteSpace(t.Namespace) && t.Namespace.StartsWith("BudgetOnline.BusinessLayer."))
                 .PropertiesAutowired()
                 .AsImplementedInterfaces()
-                .InstancePerApiRequest();
+                .InstancePerRequest();
         }
 
         private static void RegisterDataLayerBindings(ContainerBuilder builder)
@@ -76,7 +79,7 @@ namespace BudgetOnline.Api.Infrastructure.IoC
                 .Where(t => t.Name.EndsWith("Repository"))
                 .PropertiesAutowired()
                 .AsImplementedInterfaces()
-                .InstancePerApiRequest();
+                .InstancePerRequest();
         }
     }
 }

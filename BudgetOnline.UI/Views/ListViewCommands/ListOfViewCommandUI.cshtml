@@ -1,34 +1,34 @@
-﻿@* Generator: MvcHelper *@
-@using BudgetOnline.UI.Views.ListViewCommands
-@using BudgetOnline.UI.Models.ViewCommands
-@helper Render(IEnumerable<ViewCommandUIModel> commands)
-{
-        if (commands == null || !commands.Any())
-        {
-        }
-        else
-        {
-    <div class="btn-group"> 
-        @{
-			var defaultCommand = commands.FirstOrDefault(o => o.IsDefault && o.Command.CommandType == CommandType.Redirect);
-            if (defaultCommand != null)
-            {
-                @ViewCommandUIDefault.Render(defaultCommand)
-                
+﻿@using BudgetOnline.UI.Models.ViewCommands
+@* Generator: MvcHelper *@
+@model IEnumerable<ViewCommandUIModel>
+
+@{
+    if (Model == null || !Model.Any())
+    {
+    }
+    else
+    {
+        <div class="btn-group"> 
+            @{
+        ViewCommandUIModel defaultCommand = Model.FirstOrDefault(o => o.IsDefault && o.Command.CommandType == CommandType.Redirect);
+                if (defaultCommand != null)
+                {
+                    @_Views_ListViewCommands_ViewCommandUIDefault_cshtml.Render(defaultCommand)
+
 				@*<a class="btn btn-sm" href="@((defaultCommand.Command as RedirectViewCommandModel).Path)"><i class="@iconForDefaultCommand"></i><span style="padding-left: 1em">@defaultCommand.Text</span></a>*@
+                }
+                else
+                {
+                    <button class="btn btn-default"><i class="glyphicon glyphicon-list"></i><span style="padding-left: 1em">Команды</span></button>
+                }
             }
-            else
-            {
-                <button class="btn btn-default"><i class="glyphicon glyphicon-list"></i><span style="padding-left: 1em">Команды</span></button>
-            }
-        }
-        <a class="btn btn-default dropdown-toggle btn-xs" data-toggle="dropdown"><span class="caret"></span></a>
-        <ul class="dropdown-menu" role="menu">
-            @foreach (var command in commands)
-            {
-                @ViewCommandUI.Render(command, false)
-            }
-        </ul>
-    </div>
-        }
+            <a class="btn btn-default dropdown-toggle btn-xs" data-toggle="dropdown"><span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                @foreach (ViewCommandUIModel command in Model)
+                {
+                    @_Views_ListViewCommands_ViewCommandUI_cshtml.Render(command, false)
+                }
+            </ul>
+        </div>
+    }
 }

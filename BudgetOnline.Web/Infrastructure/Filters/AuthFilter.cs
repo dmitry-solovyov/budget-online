@@ -34,7 +34,7 @@ namespace BudgetOnline.Web.Infrastructure.Filters
                         return;
 
                     var checkResult = AuthenticationDataHelper.CheckAccount(currentUser.Id);
-                    if (checkResult.Status != AccountCheckStatus.Ok)
+                    if (checkResult.Status != AccountCheckStatuses.Ok)
                         return;
 
                     token = ApiSessionProvider.StartSession(currentUser.Email, checkResult.UserPassword.Password);
@@ -43,7 +43,7 @@ namespace BudgetOnline.Web.Infrastructure.Filters
                 else
                 {
                     var checkResult = AuthenticationDataHelper.UserFromToken(token);
-                    if (checkResult == null || checkResult.Status != AccountCheckStatus.Ok)
+                    if (checkResult == null || checkResult.Status != AccountCheckStatuses.Ok)
                         return;
                 }
 

@@ -1,0 +1,36 @@
+﻿@using BudgetOnline.UI.PreCompiled.Models.ViewCommands
+@* Generator: MvcHelper GeneratePrettyNames : true *@
+
+@helper Render(IEnumerable<ViewCommandUIModel> commands)
+{
+    var viewCommandUiModels = commands as ViewCommandUIModel[] ?? commands.ToArray();
+    
+    if (commands == null || !viewCommandUiModels.Any())
+    {
+    }
+    else
+    {
+        <div class="btn-group">
+            @{
+        ViewCommandUIModel defaultCommand = viewCommandUiModels.FirstOrDefault(o => o.IsDefault && o.Command.CommandType == CommandType.Redirect);
+        if (defaultCommand != null)
+        {
+            @(new _Page_Views_ListViewCommands_ViewCommandUIDefault_cshtml().Render(defaultCommand))
+
+                @*<a class="btn btn-sm" href="@((defaultCommand.Command as RedirectViewCommandModel).Path)"><i class="@iconForDefaultCommand"></i><span style="padding-left: 1em">@defaultCommand.Text</span></a>*@
+        }
+        else
+        {
+            <button class="btn btn-default"><i class="glyphicon glyphicon-list"></i><span style="padding-left: 1em">Команды</span></button>
+        }
+            }
+            <a class="btn btn-default dropdown-toggle btn-xs" data-toggle="dropdown"><span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                @foreach (var command in viewCommandUiModels)
+                {
+                    @(new _Page_Views_ListViewCommands_ViewCommandUI_cshtml().Render(command, false))
+                }
+            </ul>
+        </div>
+    }
+}

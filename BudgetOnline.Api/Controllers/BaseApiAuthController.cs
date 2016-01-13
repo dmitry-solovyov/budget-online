@@ -6,11 +6,11 @@ namespace BudgetOnline.Api.Controllers
     public class BaseApiAuthController : BaseApiController
     {
         public IApiSessionProvider CurrentApiUserProvider { get; set; }
-        protected Data.Manage.Types.Simple.User CurrentUser
+        protected SessionInfo CurrentSession
         {
             get
             {
-                return CurrentApiUserProvider.CurrentUser;
+                return CurrentApiUserProvider.CurrentSession;
             }
         }
     }

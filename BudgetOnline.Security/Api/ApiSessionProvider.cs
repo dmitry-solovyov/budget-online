@@ -1,6 +1,6 @@
-﻿using BudgetOnline.Common.Enums;
+﻿using System;
+using BudgetOnline.Common.Enums;
 using BudgetOnline.Data.Manage.Contracts;
-using BudgetOnline.Data.Manage.Types.Simple;
 
 namespace BudgetOnline.Security.Api
 {
@@ -10,15 +10,28 @@ namespace BudgetOnline.Security.Api
         public IAuthTokenHelper AuthTokenHelper { get; set; }
         public IAuthenticationDataHelper AuthenticationDataHelper { get; set; }
 
-        public User CurrentUser
+        public SessionInfo CurrentSession
         {
             get
             {
                 var token = AuthTokenHelper.GetToken();
 
                 var userInfo = AuthenticationDataHelper.UserFromToken(token);
-                if (userInfo != null && userInfo.Status == AccountCheckStatus.Ok)
-                    return userInfo.User;
+                if (userInfo != null && userInfo.Status == AccountCheckStatuses.Ok)
+                {
+                    var connectInfo = AuthenticationDataHelper.GetUserConnect(token);
+                    if (connectInfo != null)
+                    {
+                        AuthenticationDataHelper.UpdateConnectUsage(connectInfo);
+
+                        return new SessionInfo
+                        {
+                            Id = connectInfo.Id,
+                            ExpiresWhen = connectInfo.ExpiresWhen.HasValue ? connectInfo.ExpiresWhen.Value : DateTime.MaxValue,
+                            User = userInfo.User
+                        };
+                    }
+                }
 
                 return null;
             }
@@ -27,7 +40,7 @@ namespace BudgetOnline.Security.Api
         public string StartSession(string userName, string password)
         {
             var checkResult = AuthenticationDataHelper.ValidateLogin(userName, password);
-            if (checkResult.Status == AccountCheckStatus.Ok)
+            if (checkResult.Status == AccountCheckStatuses.Ok)
             {
                 var token = AuthTokenHelper.GenerateToken(userName, password);
 
@@ -44,9 +57,16 @@ namespace BudgetOnline.Security.Api
             var token = AuthTokenHelper.GetToken();
 
             var userInfo = AuthenticationDataHelper.UserFromToken(token);
-            if (userInfo != null && userInfo.Status == AccountCheckStatus.Ok)
+            
+            if (userInfo != null && userInfo.Status == AccountCheckStatuses.Ok)
             {
-                UserConnectRepository.UpdateTokenUsage(userInfo.UserConnect.Id);
+                var dt = userInfo.UserConnect.ExpiresWhen;
+                if (dt.HasValue)
+                {
+                    dt = dt.Value.Add(AuthenticationDataHelper.GetTokenValidityPeriod(userInfo.User.SectionId));
+                }
+
+                UserConnectRepository.UpdateTokenUsage(userInfo.UserConnect.Id, dt ?? DateTime.Now);
             }
         }
     }

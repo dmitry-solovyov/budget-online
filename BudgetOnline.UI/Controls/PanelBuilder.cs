@@ -2,6 +2,7 @@
 using System.Security.Policy;
 using System.Web;
 using System.Web.WebPages;
+using ASP;
 using BudgetOnline.UI.Models;
 
 namespace BudgetOnline.UI.Controls
@@ -173,7 +174,7 @@ namespace BudgetOnline.UI.Controls
             if (model.Content != null)
                 model.IsAutoload = false;
 
-            var container = new Views.DynamicContainer();
+            var container = new _Views_DynamicContainer_cshtml();
             return new HtmlString(container.Render(model).ToHtmlString());
         }
     }

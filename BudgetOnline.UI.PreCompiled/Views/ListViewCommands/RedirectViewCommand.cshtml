@@ -1,0 +1,28 @@
+@* Generator: MvcHelper *@
+@using BudgetOnline.UI.PreCompiled.Models.ViewCommands
+
+@functions {
+}
+
+@helper Render(ViewCommandUIModel command)
+{
+    var redirectCommand = command.Command as RedirectViewCommandModel;
+    if(redirectCommand == null)
+	{
+		throw new HttpException(404, "ViewCommand has invalid argument!");
+	}
+    
+    var iconClass = command.IconCssClass;
+    if (string.IsNullOrWhiteSpace(iconClass))
+    {
+        iconClass = "";
+    }
+
+    var href = "#";
+    if (!string.IsNullOrWhiteSpace(redirectCommand.Path))
+    {
+        href = redirectCommand.Path;
+    }
+    
+	<a href="@href"><i class="glyphicon @iconClass"></i>@command.Text</a>
+}

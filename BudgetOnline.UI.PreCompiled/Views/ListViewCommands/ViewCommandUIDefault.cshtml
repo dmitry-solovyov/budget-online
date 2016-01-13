@@ -1,0 +1,27 @@
+﻿@* Generator: MvcHelper *@
+@using BudgetOnline.UI.PreCompiled.Models.ViewCommands
+
+@functions {
+}
+
+@helper Render(ViewCommandUIModel model)
+{
+    if (model.IsVisible)
+    {
+        var iconForDefaultCommand = model.IconCssClass;
+        if (string.IsNullOrWhiteSpace(iconForDefaultCommand))
+        {
+            iconForDefaultCommand = "glyphicon-list";
+        }
+
+
+        if (model.Command.CommandType == CommandType.Post)
+        {
+        }
+        else if (model.Command.CommandType == CommandType.Redirect && model.Command is RedirectViewCommandModel)
+        {
+            <a class="btn btn-default btn-xs" href="@(((RedirectViewCommandModel) model.Command).Path)"><i class="glyphicon @iconForDefaultCommand"></i>
+                <span style="padding-left: 1em">@(model.Text)</span></a>
+        }
+    }
+}

@@ -1,0 +1,35 @@
+﻿@* Generator: MvcHelper *@
+@using BudgetOnline.UI.PreCompiled.Models
+@functions {
+}
+@helper Render(DynamicContainerModel model)
+    {
+    <div id="@(model.UniqeId)" class="dyn-box" data-name="@(model.Name)" data-dynamic-url="@(model.RequestUrl)" 
+         data-autoload="@(model.IsAutoload.ToString().ToLower())" data-autoload-delay="@(model.IsAutoload && model.AutoloadDelay > 0 ? model.AutoloadDelay.ToString() : "0")">
+        @if (!string.IsNullOrWhiteSpace(model.Caption.ToHtmlString()))
+        {
+            <div class="darkback compact header">
+                <div class="row">
+                    <div class="col-md-10">
+                        <strong class="">@(model.Caption)</strong>
+                    </div>
+                    <div class="col-md-2">
+                        <a class="pull-right btn btn-xs refresh" href="#"><i class="glyphicon glyphicon-refresh">
+                        </i></a>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="content">
+            @if (model.Content != null && !string.IsNullOrWhiteSpace(model.Content.ToHtmlString()))
+            {
+                @(new HtmlString(model.Content.ToHtmlString()))
+            }
+        </div>
+        <div class="darkback poor-text compact footer">
+            <span class="small pull-right">
+                @(DateTime.Now)
+            </span>
+        </div>
+    </div>
+}

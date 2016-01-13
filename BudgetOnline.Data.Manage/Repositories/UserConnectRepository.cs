@@ -23,12 +23,17 @@ namespace BudgetOnline.Data.Manage.Repositories
 
         public Types.Simple.UserConnect FindByToken(string token)
         {
-            return GetList(o => o.Token == token && o.LastUsed != null).OrderByDescending(o => o.LastUsed).FirstOrDefault();
+            return GetList(o => o.Token == token && o.ExpiresWhen != null).OrderByDescending(o => o.ExpiresWhen).FirstOrDefault();
         }
 
-        public void UpdateTokenUsage(int userConnectId)
+        public void UpdateTokenUsage(int userConnectId, DateTime expiresWhen)
         {
-            UpdateInternal(o => o.Id == userConnectId, o => { o.LastUsed = DateTime.UtcNow; });
+            UpdateInternal(
+                o => o.Id == userConnectId,
+                o =>
+                {
+                    o.ExpiresWhen = expiresWhen.ToUniversalTime();
+                });
         }
 
         public override Types.Simple.UserConnect Insert(Types.Simple.UserConnect userConnect)
@@ -47,9 +52,15 @@ namespace BudgetOnline.Data.Manage.Repositories
                 {
                     uc.Origin = userConnect.Origin;
                     if (!string.IsNullOrWhiteSpace(userConnect.Token))
+                    {
                         uc.Token = userConnect.Token;
-                    if (userConnect.LastUsed.HasValue && (!uc.LastUsed.HasValue || userConnect.LastUsed.Value > uc.LastUsed))
-                        uc.LastUsed = userConnect.LastUsed;
+                    }
+
+                    if (userConnect.ExpiresWhen.HasValue
+                        && (!uc.ExpiresWhen.HasValue || userConnect.ExpiresWhen.Value > uc.ExpiresWhen))
+                    {
+                        uc.ExpiresWhen = userConnect.ExpiresWhen.Value.ToUniversalTime();
+                    }
                 });
         }
 
@@ -94,5 +105,19 @@ namespace BudgetOnline.Data.Manage.Repositories
                 }).ToList();
             }
         }
+
+        public void MarkPreviousTokensDisabled(Types.Simple.UserConnect currentConnect)
+        {
+            var connections = GetList(x => x.UserId == currentConnect.UserId
+                && x.Id != currentConnect.Id
+                && (!x.ExpiresWhen.HasValue || x.ExpiresWhen.Value > DateTime.UtcNow));
+
+            foreach (var connection in connections)
+            {
+                var c = connection;
+                UpdateInternal(x => x.Id == c.Id, x => x.ExpiresWhen = DateTime.UtcNow);
+            }
+        }
+
     }
 }

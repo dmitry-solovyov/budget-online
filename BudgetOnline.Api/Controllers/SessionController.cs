@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using BudgetOnline.Api.Models;
@@ -11,7 +12,7 @@ namespace BudgetOnline.Api.Controllers
         public IApiSessionProvider CurrentApiUserProvider { get; set; }
 
         [HttpPost]
-        [ActionName("login")]
+        [Route("session/login")]
         public HttpResponseMessage LoginPost()
         {
             var request = GetPostData<SessionLoginRequest>();
@@ -30,28 +31,35 @@ namespace BudgetOnline.Api.Controllers
         }
 
         [HttpGet]
-        [ActionName("validate")]
+        [Route("session/validate")]
         public HttpResponseMessage ValidateGet()
         {
-            if (CurrentApiUserProvider.CurrentUser == null)
+            if (CurrentApiUserProvider.CurrentSession == null)
+            {
                 return PrepareResponse(HttpStatusCode.Forbidden);
+            }
+
+            var currentSession = CurrentApiUserProvider.CurrentSession;
 
             var response = new SessionValidationResponse
             {
-                Valid = true
+                Valid = currentSession != null,
+                ExpiredAfter = currentSession != null ? currentSession.ExpiresWhen : new DateTime()
             };
 
             return PrepareResponse(response);
         }
 
         [HttpGet]
-        [ActionName("me")]
+        [Route("session/me")]
         public HttpResponseMessage MeGet()
         {
-            if(CurrentApiUserProvider.CurrentUser == null)
+            if (CurrentApiUserProvider.CurrentSession == null)
+            {
                 return new HttpResponseMessage(HttpStatusCode.Forbidden);
+            }
 
-            var user = new User { Name = CurrentApiUserProvider.CurrentUser.Email };
+            var user = new User { Name = CurrentApiUserProvider.CurrentSession.User.Email };
 
             return PrepareResponse(user);
         }

@@ -10,6 +10,8 @@ namespace BudgetOnline.BusinessLayer.Helpers
 {
     public class AuthenticationDataHelper : IAuthenticationDataHelper
     {
+        private const string CurrentOrigin = "api";
+
         public IUserRepository UserRepository { get; set; }
         public ISettingsHelper SettingsHelper { get; set; }
         public IUserPasswordRepository UserPasswordRepository { get; set; }
@@ -24,7 +26,7 @@ namespace BudgetOnline.BusinessLayer.Helpers
             {
                 if (!userPasswordInfo.UserPassword.Password.Equals(password))
                 {
-                    userPasswordInfo.Status = AccountCheckStatus.PasswordNotMatch;
+                    userPasswordInfo.Status = AccountCheckStatuses.PasswordNotMatch;
                     userPasswordInfo.UserPassword = null;
                 }
             }
@@ -41,7 +43,7 @@ namespace BudgetOnline.BusinessLayer.Helpers
 
             return new AccountCheckResult
             {
-                Status = AccountCheckStatus.UserNotFound
+                Status = AccountCheckStatuses.UserNotFound
             };
         }
 
@@ -52,14 +54,14 @@ namespace BudgetOnline.BusinessLayer.Helpers
             var dbUser = UserRepository.GetUser(userId);
 
             result.Status = CheckLoginValidity(dbUser);
-            if (result.Status != AccountCheckStatus.Ok)
+            if (result.Status != AccountCheckStatuses.Ok)
                 return result;
 
             var dbPassword = UserPasswordRepository.GetPasswords(dbUser.Id).Last();
 
             result.User = dbUser;
             result.Status = CheckPasswordValidity(dbPassword, null, dbUser.SectionId);
-            if (result.Status != AccountCheckStatus.Ok)
+            if (result.Status != AccountCheckStatuses.Ok)
                 return result;
 
             result.UserPassword = dbPassword;
@@ -67,73 +69,96 @@ namespace BudgetOnline.BusinessLayer.Helpers
             return result;
         }
 
-        private AccountCheckStatus CheckLoginValidity(User user)
+        private AccountCheckStatuses CheckLoginValidity(User user)
         {
             if (user == null || user.Id <= 0)
-                return AccountCheckStatus.UserNotFound;
+                return AccountCheckStatuses.UserNotFound;
 
             if (user.IsDisabled)
-                return AccountCheckStatus.UserDisabled;
+                return AccountCheckStatuses.UserDisabled;
 
-            return AccountCheckStatus.Ok;
+            return AccountCheckStatuses.Ok;
         }
 
-        private AccountCheckStatus CheckPasswordValidity(UserPassword recentPassword, string password, int sectionId)
+        private AccountCheckStatuses CheckPasswordValidity(UserPassword recentPassword, string password, int sectionId)
         {
             if (recentPassword == null || recentPassword.Id <= 0)
-                return AccountCheckStatus.PasswordNotFound;
+                return AccountCheckStatuses.PasswordNotFound;
 
             if (recentPassword.IsDisabled)
             {
                 Log.DebugFormat("User's password is disabled. RecentPasswordId={0}", recentPassword.Id);
-                return AccountCheckStatus.PasswordDisabled;
+                return AccountCheckStatuses.PasswordDisabled;
             }
 
             var passwordValidityPeriod = SettingsHelper.PasswordValidityPeriod(sectionId);
             if (passwordValidityPeriod > TimeSpan.Zero && recentPassword.CreatedWhen <= DateTime.UtcNow.Subtract(passwordValidityPeriod))
             {
                 Log.DebugFormat("User's password is expired. RecentPasswordId={0}, Period={1}", recentPassword.Id, passwordValidityPeriod);
-                return AccountCheckStatus.PasswordExpired;
+                return AccountCheckStatuses.PasswordExpired;
             }
 
             if (!string.IsNullOrWhiteSpace(password))
                 if (recentPassword.Password != password)
                 {
                     Log.DebugFormat("User's password doesn't match password in database. RecentPasswordId={0}", recentPassword.Id);
-                    return AccountCheckStatus.PasswordNotFound;
+                    return AccountCheckStatuses.PasswordNotFound;
                 }
 
-            return AccountCheckStatus.Ok;
+            return AccountCheckStatuses.Ok;
         }
 
-        private AccountCheckStatus CheckTokenValidity(UserConnect userConnect, int sectionId)
+        private AccountCheck CheckTokenValidity(UserConnect userConnect, int sectionId)
         {
             if (string.IsNullOrWhiteSpace(userConnect.Token))
-                return AccountCheckStatus.TokenNotFound;
+                return new AccountCheck
+                {
+                    Status = AccountCheckStatuses.TokenNotFound,
+                    ExpiredAfter = DateTime.UtcNow
+                };
 
             if (!userConnect.UserPasswordId.HasValue)
             {
                 Log.DebugFormat("Passoword not populated for token. UserConnectId={0}", userConnect.Id);
-                return AccountCheckStatus.PasswordNotFound;
+                return new AccountCheck
+                {
+                    Status = AccountCheckStatuses.PasswordNotFound,
+                    ExpiredAfter = DateTime.UtcNow
+                };
             }
 
-            if (!userConnect.LastUsed.HasValue)
+            if (!userConnect.ExpiresWhen.HasValue)
             {
-                Log.DebugFormat("LastUsed not updated for token. UserConnectId={0}", userConnect.Id);
-                return AccountCheckStatus.TokenNotFound;
+                Log.DebugFormat("ExpiresWhen not updated for token. UserConnectId={0}", userConnect.Id);
+                return new AccountCheck
+                {
+                    Status = AccountCheckStatuses.TokenNotFound,
+                    ExpiredAfter = DateTime.UtcNow
+                };
             }
 
             var passwordValidityPeriod = SettingsHelper.TokenValidityPeriod(sectionId);
             if (passwordValidityPeriod > TimeSpan.Zero)
             {
-                if (userConnect.LastUsed.Value <= DateTime.UtcNow.Subtract(passwordValidityPeriod))
+                if (userConnect.ExpiresWhen.Value <= DateTime.UtcNow.Subtract(passwordValidityPeriod))
                 {
-                    Log.DebugFormat("Token is expired. userConnect={0}, Period={1}", userConnect.Id, passwordValidityPeriod);
-                    return AccountCheckStatus.TokenExpired;
+                    Log.DebugFormat("Token is expired. userConnect={0}, Period={1}", userConnect.Id,
+                        passwordValidityPeriod);
+
+                    return new AccountCheck
+                    {
+                        Status = AccountCheckStatuses.TokenExpired,
+                        ExpiredAfter = DateTime.UtcNow
+                    };
                 }
             }
 
-            return AccountCheckStatus.Ok;
+            return 
+                new AccountCheck
+                {
+                    Status = AccountCheckStatuses.Ok,
+                    ExpiredAfter = userConnect.ExpiresWhen.Value.ToUniversalTime()
+                };
         }
 
         public UserConnect TrackUsersLogin(string userName)
@@ -150,27 +175,50 @@ namespace BudgetOnline.BusinessLayer.Helpers
 
         public UserConnect TrackUsersLogin(int userId)
         {
+            var user = UserRepository.GetUser(userId);
+
+            var passwordValidityPeriod = SettingsHelper.TokenValidityPeriod(user.SectionId);
+
             var connect = new UserConnect
             {
                 UserId = userId,
                 UserConnectStatusId = UserConnectStatuses.Success,
                 CreatedWhen = DateTime.UtcNow,
+                ExpiresWhen = DateTime.UtcNow.Add(passwordValidityPeriod)
             };
 
-            return UserConnectRepository.Insert(connect);
+            var newConnect = UserConnectRepository.Insert(connect);
+
+            UserConnectRepository.MarkPreviousTokensDisabled(newConnect);
+
+            return newConnect;
+        }
+
+        public UserConnect GetUserConnect(string token)
+        {
+            return UserConnectRepository.FindByToken(token);
+        }
+
+        public TimeSpan GetTokenValidityPeriod(int sectionId)
+        {
+            return SettingsHelper.TokenValidityPeriod(sectionId);
         }
 
         public UserConnect TrackUsersToken(int userId, string token, int passwordId)
         {
+            var user = UserRepository.GetUser(userId);
+
+            var passwordValidityPeriod = SettingsHelper.TokenValidityPeriod(user.SectionId);
+
             var connect = new UserConnect
             {
                 UserId = userId,
                 UserConnectStatusId = UserConnectStatuses.Success,
                 Token = token,
-                Origin = "api",
+                Origin = CurrentOrigin,
                 UserPasswordId = passwordId,
-                LastUsed = DateTime.UtcNow,
-                CreatedWhen = DateTime.UtcNow,
+                ExpiresWhen = DateTime.UtcNow.Add(passwordValidityPeriod),
+                CreatedWhen = DateTime.UtcNow
             };
 
             return UserConnectRepository.Insert(connect);
@@ -194,18 +242,31 @@ namespace BudgetOnline.BusinessLayer.Helpers
             if (userConnect == null)
                 return null;
 
-            var result = CheckAccount(userConnect.UserId);
-            if (result.Status == AccountCheckStatus.Ok)
-            {
-                result.Status = CheckTokenValidity(userConnect, result.User.SectionId);
+            var user = UserRepository.GetUser(userConnect.UserId);
 
-                if (result.Status == AccountCheckStatus.Ok)
-                    result.UserConnect = userConnect;
+            var checkResult = CheckTokenValidity(userConnect, user.SectionId);
+            if (checkResult.Status != AccountCheckStatuses.Ok)
+            {
+                return new AccountCheckResult
+                {
+                    User = user,
+                    UserConnect = userConnect,
+                    Status = checkResult.Status
+                };
             }
 
-            return result;
+            var accountCheckResult = CheckAccount(userConnect.UserId);
+
+            return accountCheckResult;
         }
 
+        public void UpdateConnectUsage(UserConnect userConnect)
+        {
+            var user = UserRepository.GetUser(userConnect.UserId);
 
+            var passwordValidityPeriod = SettingsHelper.TokenValidityPeriod(user.SectionId);
+
+            UserConnectRepository.UpdateTokenUsage(userConnect.Id, DateTime.UtcNow.Add(passwordValidityPeriod));
+        }
     }
 }

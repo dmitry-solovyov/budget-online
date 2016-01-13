@@ -1,6 +1,6 @@
 ﻿namespace BudgetOnline.Common.Enums
 {
-	public enum AccountCheckStatus
+	public enum AccountCheckStatuses
 	{
 		Ok,
 		UserNotFound,

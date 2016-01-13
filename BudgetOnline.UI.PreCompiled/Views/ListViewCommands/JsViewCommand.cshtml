@@ -1,0 +1,33 @@
+@* Generator: MvcHelper *@
+@using BudgetOnline.UI.PreCompiled.Models.ViewCommands
+@functions {
+}
+@helper Render(ViewCommandUIModel command)
+    {
+        var jsCommand = command.Command as JsViewCommandModel;
+        if (jsCommand == null)
+        {
+            throw new HttpException(404, "ViewCommand has invalid argument!");
+        }
+        var uid = Guid.NewGuid().ToString().Replace("-", "");
+        
+    <a id="js@(uid)" href="#" title="@command.Title">@command.Text</a>
+    <script type="text/javascript">
+        $().ready(function() {
+			$('a#js@(uid)').click(
+				function(e) {
+					e.preventDefault();
+					@if (!string.IsNullOrWhiteSpace(jsCommand.Data))
+     {<text>
+                        @(jsCommand.ClientFunction)("@jsCommand.Data");
+                    </text>}
+     else
+     {<text>
+                        @(jsCommand.ClientFunction)();
+                    </text>}
+				}
+			);
+		});
+		
+    </script>
+}

@@ -6,8 +6,6 @@ namespace BudgetOnline.Api.Controllers
 {
     public class HomeController : BaseApiAuthController
     {
-
-
         [HttpPost]
         [ActionName("me")]
         public HttpResponseMessage MePost()

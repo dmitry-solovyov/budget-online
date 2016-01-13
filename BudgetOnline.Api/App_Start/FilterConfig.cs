@@ -1,19 +1,19 @@
 ﻿using System.Web.Http;
-using System.Web.Mvc;
+using System.Web.Http.Filters;
 using BudgetOnline.Api.Infrastructure.Filters;
-using AuthorizeAttribute = System.Web.Mvc.AuthorizeAttribute;
 
 namespace BudgetOnline.Api
 {
-    public class FilterConfig
+    public static class FilterConfig
     {
-        public static void RegisterGlobalFilters(GlobalFilterCollection filters)
+        public static IFilter[] GlobalFilters()
         {
             //filters.Add(new HandleErrorAttribute());
-            //filters.Add(new UnhandledExceptionFilter());
-            filters.Add(new AuthorizeAttribute());
+            //filters.Add(new AuthorizeAttribute());
 
             //filters.Add(new ForceHttpsAttribute());
+
+            return new IFilter[0];
         }
     }
 }

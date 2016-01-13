@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using BudgetOnline.Data.Manage.Types.Simple;
 
 namespace BudgetOnline.Data.Manage.Contracts

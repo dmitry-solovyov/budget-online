@@ -2,27 +2,39 @@
 using System.Net;
 using System.Net.Http;
 using System.Web.Http.Filters;
+using BudgetOnline.Common.Contracts;
 
 namespace BudgetOnline.Api.Infrastructure.Filters
 {
     public class UnhandledExceptionFilter : ExceptionFilterAttribute
     {
+        public ILogWriter LogWriter { get; set; }
+
         public override void OnException(HttpActionExecutedContext context)
         {
-            HttpStatusCode status = HttpStatusCode.InternalServerError;
+            var statusCode = HttpStatusCode.InternalServerError;
 
-            var exType = context.Exception.GetType();
+            if (context.Exception != null)
+            {
+                LogWriter.Error(context.Exception);
 
-            if (exType == typeof(UnauthorizedAccessException))
-                status = HttpStatusCode.Unauthorized;
-            else if (exType == typeof(ArgumentException))
-                status = HttpStatusCode.NotFound;
+                var exType = context.Exception.GetType();
 
-            var apiError = new ApiMessageError { Message = context.Exception.Message };
+                if (exType == typeof(UnauthorizedAccessException))
+                {
+                    statusCode = HttpStatusCode.Unauthorized;
+                }
+                else if (exType == typeof(ArgumentException))
+                {
+                    statusCode = HttpStatusCode.NotFound;
+                }
+            }
+
+            var apiError = new ApiMessageError { Message = "Error occured" };
 
             // create a new response and attach our ApiError object
             // which now gets returned on ANY exception result
-            var errorResponse = context.Request.CreateResponse(status, apiError);
+            var errorResponse = context.Request.CreateResponse(statusCode, apiError);
             context.Response = errorResponse;
 
             base.OnException(context);

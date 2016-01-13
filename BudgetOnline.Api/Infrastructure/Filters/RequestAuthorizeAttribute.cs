@@ -16,10 +16,10 @@ namespace BudgetOnline.Api.Infrastructure.Filters
         {
             if (!Thread.CurrentPrincipal.Identity.IsAuthenticated)
             {
-                var currentUser = CurrentApiUserProvider.CurrentUser;
-                if (currentUser != null)
+                var currentSession = CurrentApiUserProvider.CurrentSession;
+                if (currentSession != null)
                 {
-                    var currentPrincipal = new GenericPrincipal(new GenericIdentity(currentUser.Name), null);
+                    var currentPrincipal = new GenericPrincipal(new GenericIdentity(currentSession.User.Name), null);
                     Thread.CurrentPrincipal = currentPrincipal;
 
                     RefreshTicketUsage();

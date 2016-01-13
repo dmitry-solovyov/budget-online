@@ -48,7 +48,7 @@
     <Compile Include="Contracts\ICompressor.cs" />
     <Compile Include="Contracts\ICurrentUserProvider.cs" />
     <Compile Include="Contracts\IValidated.cs" />
-    <Compile Include="Enums\AccountCheckStatus.cs" />
+    <Compile Include="Enums\AccountCheckStatuses.cs" />
     <Compile Include="Contracts\ICachedStorage.cs" />
     <Compile Include="Contracts\ICacheWrapper.cs" />
     <Compile Include="Contracts\IDateTimeProvider.cs" />

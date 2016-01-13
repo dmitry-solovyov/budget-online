@@ -5,10 +5,10 @@ using System.Data.Linq;
 using AutoMapper;
 using BudgetOnline.Common.Contracts;
 using BudgetOnline.Common.Enums;
-using BudgetOnline.Data.MSSQL;
 using BudgetOnline.Data.Manage.Contracts;
 using BudgetOnline.Data.Manage.Types.Complex;
 using BudgetOnline.Data.Manage.Types.Simple;
+using Fasterflect;
 using Transaction = BudgetOnline.Data.MSSQL.Transaction;
 
 namespace BudgetOnline.Data.Manage.Repositories
@@ -224,7 +224,11 @@ namespace BudgetOnline.Data.Manage.Repositories
 
         public int GetListLength(int sectionId, TransactionSearchOptions options)
         {
-            return PrepareQuery(sectionId, options).Count();
+            var clonedOptions = options.DeepClone();
+            clonedOptions.PageSize = null;
+            clonedOptions.PageNumber = null;
+
+            return PrepareQuery(sectionId, clonedOptions).Count();
         }
 
         public IEnumerable<Types.Simple.Transaction> GetList(int sectionId, TransactionSearchOptions options)

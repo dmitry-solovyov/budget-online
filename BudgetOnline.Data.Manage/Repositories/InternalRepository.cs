@@ -139,7 +139,7 @@ namespace BudgetOnline.Data.Manage.Repositories
             }
             catch (Exception ex)
             {
-                new DeleteException(ex);
+                throw new DeleteException(ex);
             }
             //}
             //else

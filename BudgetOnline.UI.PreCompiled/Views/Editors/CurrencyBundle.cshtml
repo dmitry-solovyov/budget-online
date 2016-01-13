@@ -1,0 +1,66 @@
+﻿@using System.Web.Mvc
+@using System.Globalization
+@using BudgetOnline.UI.PreCompiled.Extensions
+@functions {
+}
+@helper Render(BudgetOnline.UI.PreCompiled.Models.Editors.CurrencyBundle model, string propertyName, ModelState state, IDictionary<string, object> additionalValues)
+    {
+        var id = Html.GetUniqId(10);
+
+        var placeholder = "";
+        if (additionalValues.ContainsKey("placeholder"))
+        {
+            placeholder = additionalValues["placeholder"].ToString();
+        }
+
+        var value = model.Sum.ToString(CultureInfo.CurrentUICulture);
+
+        var cssFormulaClass = " col-md-10 data-type-calculator form-control";
+        if (state != null && state.Errors.Count > 0)
+        {
+            cssFormulaClass += " input-validation-error";
+        }
+
+        var cssCurrencyListClass = " data-type-calculator form-control";
+        if (state != null && state.Errors.Count > 0)
+        {
+            cssCurrencyListClass += " input-validation-error";
+        }
+
+        var cssAccountListClass = " data-type-calculator form-control";
+        if (state != null && state.Errors.Count > 0)
+        {
+            cssAccountListClass += " input-validation-error";
+        }
+
+    <div id="@id">
+        <div class="row">
+            <div class="col-md-4">
+                @(new _Views_Editors_SelectList_cshtml().Render(model.Account.Items, propertyName + ".Account", cssAccountListClass, false))
+            </div>
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="input-group col-md-12">
+                        <input type="text" name="@(propertyName).Formula" id="@(propertyName)_Formula" value="@(model.Formula)" class="@cssFormulaClass" autocomplete = "off" placeholder="@placeholder"/>
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-group col-md-12">
+                        <input type="text" name="@(propertyName).Sum" id="@(propertyName)_Sum" value="@value" class="form-control input-sm calculator-result" readonly = "readonly" autocomplete = "off" title = "Результат из поля Сумма"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                @(new _Views_Editors_SelectList_cshtml().Render(model.Currency.Items, propertyName + ".Currency", cssCurrencyListClass, false))
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            turnOn_calculator('@(id)');
+        });
+    </script>
+}

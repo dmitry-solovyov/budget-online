@@ -57,6 +57,7 @@
     <Compile Include="Contracts\IDictionaries.cs" />
     <Compile Include="Contracts\ITransactionCalculator.cs" />
     <Compile Include="Contracts\IPlannedTransactionCalculator.cs" />
+    <Compile Include="Helpers\AccountCheck.cs" />
     <Compile Include="Helpers\AuthenticationDataHelper.cs" />
     <Compile Include="Helpers\PlannedTransactionCalculator.cs" />
     <Compile Include="Helpers\CurrencyRateCalculator.cs" />

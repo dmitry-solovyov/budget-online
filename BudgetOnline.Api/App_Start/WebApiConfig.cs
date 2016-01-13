@@ -8,11 +8,22 @@ namespace BudgetOnline.Api
     {
         public static void Register(HttpConfiguration config)
         {
+            config.Routes.Clear();
+
+            config.MapHttpAttributeRoutes();
+
             config.Routes.MapHttpRoute(
                 name: "GetApi",
                 routeTemplate: "{controller}/{id}",
                 defaults: new { action = "Get", id = RouteParameter.Optional },
                 constraints: new { httpMethod = new HttpMethodConstraint(HttpMethod.Get), id = @"\d+" }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "FilterApi",
+                routeTemplate: "{controller}/filter",
+                defaults: new { action = "Filter" },
+                constraints: new { httpMethod = new HttpMethodConstraint(HttpMethod.Post) }
             );
 
             config.Routes.MapHttpRoute(

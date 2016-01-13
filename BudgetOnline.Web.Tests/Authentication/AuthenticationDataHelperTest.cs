@@ -137,7 +137,7 @@ namespace BudgetOnline.Web.Tests.Authentication
         {
             var result = _authenticationDataHelper.ValidateLogin(UserEmail, UserPass);
 
-            Assert.AreEqual(AccountCheckStatus.Ok, result.Status);
+            Assert.AreEqual(AccountCheckStatuses.Ok, result.Status);
         }
 
         [TestMethod]
@@ -149,7 +149,7 @@ namespace BudgetOnline.Web.Tests.Authentication
 
             var result = _authenticationDataHelper.ValidateLogin(UserEmail, UserPass);
 
-            Assert.AreEqual(AccountCheckStatus.PasswordExpired, result.Status);
+            Assert.AreEqual(AccountCheckStatuses.PasswordExpired, result.Status);
         }
 
         [TestMethod]
@@ -165,7 +165,7 @@ namespace BudgetOnline.Web.Tests.Authentication
 
             var result = _authenticationDataHelper.ValidateLogin(UserEmail, UserPass);
 
-            Assert.AreEqual(AccountCheckStatus.Ok, result.Status);
+            Assert.AreEqual(AccountCheckStatuses.Ok, result.Status);
         }
 
         [TestMethod]
@@ -177,7 +177,7 @@ namespace BudgetOnline.Web.Tests.Authentication
 
             var result = _authenticationDataHelper.ValidateLogin(UserEmail, UserPass);
 
-            Assert.AreEqual(AccountCheckStatus.PasswordDisabled, result.Status);
+            Assert.AreEqual(AccountCheckStatuses.PasswordDisabled, result.Status);
         }
 
         [TestMethod]
@@ -189,7 +189,7 @@ namespace BudgetOnline.Web.Tests.Authentication
 
             var result = _authenticationDataHelper.ValidateLogin(UserEmail, UserPass);
 
-            Assert.AreEqual(AccountCheckStatus.PasswordNotMatch, result.Status);
+            Assert.AreEqual(AccountCheckStatuses.PasswordNotMatch, result.Status);
         }
     }
 }

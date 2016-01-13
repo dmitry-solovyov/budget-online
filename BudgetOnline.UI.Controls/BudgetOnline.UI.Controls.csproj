@@ -76,13 +76,16 @@
       <Name>BudgetOnline.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\BudgetOnline.UI\BudgetOnline.UI.csproj">
-      <Project>{555CFDA0-1BE1-4577-A36F-AC8C796E7EB1}</Project>
+      <Project>{555cfda0-1be1-4577-a36f-ac8c796e7eb1}</Project>
       <Name>BudgetOnline.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extensions\" />
     <Folder Include="Tables\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

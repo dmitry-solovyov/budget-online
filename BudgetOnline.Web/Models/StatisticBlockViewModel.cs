@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BudgetOnline.Web.ViewModels
+namespace BudgetOnline.Web.Models
 {
 	public class StatisticBlockViewModel
 	{
@@ -26,7 +26,6 @@ namespace BudgetOnline.Web.ViewModels
 
 	public class StatisticBlockItemsGroupViewModel
 	{
-		public string Id { get; set; }
 		public string Title { get; set; }
 		public string Tooltip { get; set; }
 
