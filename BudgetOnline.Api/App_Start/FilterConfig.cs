@@ -1,5 +1,4 @@
-﻿using System.Web.Http;
-using System.Web.Http.Filters;
+﻿using System.Web.Http.Filters;
 using BudgetOnline.Api.Infrastructure.Filters;
 
 namespace BudgetOnline.Api
@@ -10,10 +9,12 @@ namespace BudgetOnline.Api
         {
             //filters.Add(new HandleErrorAttribute());
             //filters.Add(new AuthorizeAttribute());
-
             //filters.Add(new ForceHttpsAttribute());
 
-            return new IFilter[0];
+            return new IFilter[]
+            {
+                //new RequestAuthorizeAttribute()
+            };
         }
     }
 }

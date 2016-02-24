@@ -17,7 +17,7 @@ namespace BudgetOnline.Api.Infrastructure.IoC
         public static IContainer GetBuilder()
         {
             var builder = new ContainerBuilder();
-            builder.RegisterApiControllers(Assembly.GetExecutingAssembly()).PropertiesAutowired().InstancePerApiRequest();
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly()).PropertiesAutowired().InstancePerRequest();
 
             RegisterInfrustructure(builder);
             RegisterCommonBindings(builder);

@@ -1,7 +1,9 @@
-﻿using System.Net;
+﻿using System.Data.Entity.Core;
+using System.Net;
 using System.Net.Http;
 using System.Security.Principal;
 using System.Threading;
+using System.Web.Http;
 using System.Web.Http.Filters;
 using Autofac.Integration.WebApi;
 using BudgetOnline.Security.Api;
@@ -10,11 +12,23 @@ namespace BudgetOnline.Api.Infrastructure.Filters
 {
     public class RequestAuthorizeAttribute : AuthorizationFilterAttribute, IAutofacAuthorizationFilter
     {
-        public IApiSessionProvider CurrentApiUserProvider { get; set; }
+        private IApiSessionProvider CurrentApiUserProvider
+        {
+            get
+            {
+                var resolver = GlobalConfiguration.Configuration.DependencyResolver;
+
+                var apiSessionProvider = resolver.GetService(typeof(IApiSessionProvider)) as IApiSessionProvider;
+                if (apiSessionProvider == null)
+                    throw new ObjectNotFoundException();
+
+                return apiSessionProvider;
+            }
+        }
 
         public override void OnAuthorization(System.Web.Http.Controllers.HttpActionContext actionContext)
         {
-            if (!Thread.CurrentPrincipal.Identity.IsAuthenticated)
+            if (Thread.CurrentPrincipal.Identity.IsAuthenticated)
             {
                 var currentSession = CurrentApiUserProvider.CurrentSession;
                 if (currentSession != null)

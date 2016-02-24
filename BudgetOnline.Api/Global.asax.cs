@@ -16,7 +16,7 @@ namespace BudgetOnline.Api
 
             GlobalConfiguration.Configuration.Filters.AddRange(FilterConfig.GlobalFilters());
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            GlobalConfiguration.Configuration.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.LocalOnly; 
+            GlobalConfiguration.Configuration.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.LocalOnly;
 
             var resolver = new AutofacWebApiDependencyResolver(AutofacInitializer.GetBuilder());
             GlobalConfiguration.Configuration.DependencyResolver = resolver;

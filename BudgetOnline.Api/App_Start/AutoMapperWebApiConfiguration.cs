@@ -10,7 +10,6 @@ namespace BudgetOnline.Api
             Mapper.Initialize(cfg =>
             {
                 cfg.AddProfile(new DataManageProfile());
-                cfg.AddProfile(new DataManageProfile());
             });
         }
     }
