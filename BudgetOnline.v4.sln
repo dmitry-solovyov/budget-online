@@ -49,6 +49,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetOnline.UI.PreCompiled
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetOnline.Web.Models", "BudgetOnline.Web.Models\BudgetOnline.Web.Models.csproj", "{B3C82C4D-013B-4629-B796-0C4CDD2D35EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetOnline.Data.MSSQL.EF", "BudgetOnline.Data.MSSQL.EF\BudgetOnline.Data.MSSQL.EF.csproj", "{A6D7AC96-D49B-49D4-B00D-D470ED8ABDC6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -113,6 +115,10 @@ Global
 		{B3C82C4D-013B-4629-B796-0C4CDD2D35EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3C82C4D-013B-4629-B796-0C4CDD2D35EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3C82C4D-013B-4629-B796-0C4CDD2D35EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6D7AC96-D49B-49D4-B00D-D470ED8ABDC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6D7AC96-D49B-49D4-B00D-D470ED8ABDC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6D7AC96-D49B-49D4-B00D-D470ED8ABDC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6D7AC96-D49B-49D4-B00D-D470ED8ABDC6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -136,6 +142,7 @@ Global
 		{ED3804C4-BCB2-4639-9A00-91C3B9632D1B} = {DA9CB266-23D2-4049-B51E-242A216553AF}
 		{CA5F3BF2-A23B-48DF-91D7-1809B51A6E92} = {DA9CB266-23D2-4049-B51E-242A216553AF}
 		{B3C82C4D-013B-4629-B796-0C4CDD2D35EB} = {99815922-7C18-4B0F-BA92-BC3B54607AA6}
+		{A6D7AC96-D49B-49D4-B00D-D470ED8ABDC6} = {B5CC84AA-5DBA-4FA2-9527-2D302739C7FA}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = BudgetOnline.v4.vsmdi
