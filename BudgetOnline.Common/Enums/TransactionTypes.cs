@@ -9,7 +9,7 @@ namespace BudgetOnline.Common.Enums
         [Display(Name = "Доход")]
         Income = 1,
         [Display(Name = "Расход")]
-        Outcome,
+        Expense,
         [Display(Name = "Перевод")]
         Transfer,
         [Display(Name = "Обмен")]

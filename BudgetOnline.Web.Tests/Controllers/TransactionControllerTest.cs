@@ -177,7 +177,7 @@ namespace BudgetOnline.Web.Tests.Controllers
 		[TestMethod]
 		public void EditGet_ShouldReturnPositiveSum_WhenOutcomeLoaded()
 		{
-			var tr = GetSimpleTransaction(TransactionTypes.Outcome);
+			var tr = GetSimpleTransaction(TransactionTypes.Expense);
 
 			var controller = GetTransactionController(tr);
 
@@ -207,7 +207,7 @@ namespace BudgetOnline.Web.Tests.Controllers
 		public void EditGet_ShouldSumFieldAccordingTotype_WhenOutcome()
 		{
 			var tr = GetSimpleTransaction();
-			tr.TransactionTypeId = (int)TransactionTypes.Outcome;
+			tr.TransactionTypeId = (int)TransactionTypes.Expense;
 
 			var controller = GetTransactionController(tr);
 
@@ -456,13 +456,13 @@ namespace BudgetOnline.Web.Tests.Controllers
 		[TestMethod]
 		public void EditPost_ShouldDeleteFromLinkedTransactionRepository_WhenChangedFromLinkedToNonLinked()
 		{
-			var tr1 = GetSimpleTransaction(TransactionTypes.Outcome);
+			var tr1 = GetSimpleTransaction(TransactionTypes.Expense);
 			var tr2 = GetSimpleTransaction(TransactionTypes.Income);
 			tr2.Id = 2;
 
 			var controller = GetTransactionController(tr1, tr2);
 
-			var initialModel = GetSimpleEditModel(TransactionTypes.Outcome);
+			var initialModel = GetSimpleEditModel(TransactionTypes.Expense);
 
 			var result = controller.Edit(initialModel);
 
@@ -640,7 +640,7 @@ namespace BudgetOnline.Web.Tests.Controllers
 			var controller = GetTransactionController();
 
 			var initialModel = GetSimpleCreateModel();
-			initialModel.TransactionType.Id = (int)TransactionTypes.Outcome;
+			initialModel.TransactionType.Id = (int)TransactionTypes.Expense;
 			initialModel.LinkedId = 1;
 			initialModel.SumOut = new CurrencyBundle
 			{
@@ -662,14 +662,14 @@ namespace BudgetOnline.Web.Tests.Controllers
 			var controller = GetTransactionController();
 
 			var initialModel = GetSimpleCreateModel();
-			initialModel.TransactionType.Id = (int)TransactionTypes.Outcome;
+			initialModel.TransactionType.Id = (int)TransactionTypes.Expense;
 			initialModel.SumOut.Sum = 100m;
 
 			controller.Create(initialModel);
 
 			_transactionRepositoryMock.Verify(
 				o => o.Insert(It.Is<Transaction>(
-					t => t.TransactionTypeId == (int)TransactionTypes.Outcome
+					t => t.TransactionTypeId == (int)TransactionTypes.Expense
 						&& t.Sum == -100m
 					)), Times.Once());
 		}
@@ -680,14 +680,14 @@ namespace BudgetOnline.Web.Tests.Controllers
 			var controller = GetTransactionController();
 
 			var initialModel = GetSimpleCreateModel();
-			initialModel.TransactionType.Id = (int)TransactionTypes.Outcome;
+			initialModel.TransactionType.Id = (int)TransactionTypes.Expense;
 			initialModel.SumOut.Sum = -100m;
 
 			controller.Create(initialModel);
 
 			_transactionRepositoryMock.Verify(
 				o => o.Insert(It.Is<Transaction>(
-					t => t.TransactionTypeId == (int)TransactionTypes.Outcome
+					t => t.TransactionTypeId == (int)TransactionTypes.Expense
 						&& t.Sum == -100m
 					)), Times.Once());
 		}
@@ -857,12 +857,12 @@ namespace BudgetOnline.Web.Tests.Controllers
 
 			_transactionDataHelperMock
 				.Setup(o => o.GetRealSumValue(
-					It.Is<TransactionTypes>(t => new[] { TransactionTypes.Outcome, }.Contains(t)),
+					It.Is<TransactionTypes>(t => new[] { TransactionTypes.Expense, }.Contains(t)),
 					It.IsAny<decimal>()))
 				.Returns<TransactionTypes, decimal>((type, sum) => -Math.Abs(sum));
             _transactionDataHelperMock
                 .Setup(o => o.GetRealSumValue(
-                    It.Is<int>(t => new[] { (int)TransactionTypes.Outcome, }.Contains(t)),
+                    It.Is<int>(t => new[] { (int)TransactionTypes.Expense, }.Contains(t)),
                     It.IsAny<decimal>()))
                 .Returns<TransactionTypes, decimal>((type, sum) => -Math.Abs(sum));
 
@@ -938,7 +938,7 @@ namespace BudgetOnline.Web.Tests.Controllers
 										Currency = new IdWithSelectList { Id = _transacion.CurrencyId },
 									};
 					break;
-				case TransactionTypes.Outcome:
+				case TransactionTypes.Expense:
 					model.SumOut = new CurrencyBundle
 									{
 										Formula = _transacion.Formula,
@@ -1004,7 +1004,7 @@ namespace BudgetOnline.Web.Tests.Controllers
 				SectionId = SectionId,
 				TransactionTypeId = (int)type,
 				Amount = 1m,
-				Sum = 123m * (type == TransactionTypes.Outcome ? -1 : 1),
+				Sum = 123m * (type == TransactionTypes.Expense ? -1 : 1),
 				Formula = "100+23",
 				CreatedBy = _createdUser.Id,
 				Date = DateTime.UtcNow.Date,
@@ -1054,7 +1054,7 @@ namespace BudgetOnline.Web.Tests.Controllers
 					Assert.IsNull(resultModel.SumOut.Formula, "Formula should be empty");
 					Assert.AreEqual(0, resultModel.SumOut.Currency.Id, "CurrencyId should be empty");
 					break;
-				case TransactionTypes.Outcome:
+				case TransactionTypes.Expense:
 					Assert.AreEqual(0m, resultModel.SumIn.Sum, "Sum should be empty");
 					Assert.IsNull(resultModel.SumIn.Formula, "Formula should be empty");
 					Assert.AreEqual(0, resultModel.SumIn.Currency.Id, "CurrencyId should be empty");

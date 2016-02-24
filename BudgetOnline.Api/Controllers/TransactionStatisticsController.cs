@@ -122,7 +122,7 @@ namespace BudgetOnline.Api.Controllers
             {
                 Date1 = date1,
                 Date2 = date2,
-                TransactionTypes = new[] { (int)TransactionTypes.Income, (int)TransactionTypes.Outcome },
+                TransactionTypes = new[] { (int)TransactionTypes.Income, (int)TransactionTypes.Expense },
                 ExcludeTags = _excludeTags
             };
 

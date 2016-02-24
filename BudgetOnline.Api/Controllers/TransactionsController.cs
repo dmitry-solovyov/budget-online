@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using BudgetOnline.Api.Exceptions;
 using BudgetOnline.Api.Models;
 using BudgetOnline.Api.ViewModels;
 using BudgetOnline.BusinessLayer.Contracts;
@@ -20,6 +21,7 @@ namespace BudgetOnline.Api.Controllers
     {
         public ILogWriter LogWriter { get; set; }
         public ITransactionRepository TransactionRepository { get; set; }
+        public ITransactionLinkRepository TransactionLinkRepository { get; set; }
         public IDictionaries Dictionaries { get; set; }
 
         [HttpGet]
@@ -56,8 +58,8 @@ namespace BudgetOnline.Api.Controllers
         }
 
         [HttpPost]
-        [Route("")]
-        public HttpResponseMessage CreateOrUpdate()
+        [Route("create/income")]
+        public HttpResponseMessage CreateIncode()
         {
             var data = GetPostData<TransactionMoveViewModel>();
             if (data == null)
@@ -67,62 +69,214 @@ namespace BudgetOnline.Api.Controllers
 
             try
             {
-                Transaction transaction1 = null;
-                Transaction transaction2 = null;
+                if (!data.Sum.HasValue)
+                    return PrepareResponse(new { Message = "Sum should be specified" }, HttpStatusCode.BadRequest);
 
-                var categoryId = 0;
-                if (!string.IsNullOrWhiteSpace(data.Category))
-                {
-                    var category = Dictionaries.Categories().FirstOrDefault(x => x.Name == data.Category);
-                    if (category != null)
-                    {
-                        categoryId = category.Id;
-                    }
-                }
+                var categoryId = ResolveCategory(data.Category);
+                var currencyId = ResolveCurrency(data.Currency);
+                var accountId = ResolveAccount(data.Account);
 
-                var currencyId = 0;
-                if (!string.IsNullOrWhiteSpace(data.Category))
+                if (accountId > 0)
                 {
-                    var currency = Dictionaries.Currencies().FirstOrDefault(x => x.Name == data.Currency || x.Symbol == data.Currency);
-                    if (currency != null)
+                    var transaction = new Transaction
                     {
-                        currencyId = currency.Id;
-                    }
-                }
+                        TransactionTypeId = (int)TransactionTypes.Expense,
+                        Id = data.Id,
+                        SectionId = CurrentApiUserProvider.CurrentSession.User.SectionId,
+                        Date = data.Date,
+                        AccountId = accountId,
+                        CategoryId = categoryId > 0 ? categoryId : (int?)null,
+                        Amount = 1,
+                        Sum = Math.Abs(data.Sum.Value),
+                        Formula = Math.Abs(data.Sum.Value).ToString(CultureInfo.CurrentCulture),
+                        CurrencyId = currencyId,
+                        Description = data.Description,
+                        Tags = data.Tags,
+                        IsDisabled = data.IsDisabled,
+                        CreatedBy = CurrentApiUserProvider.CurrentSession.User.Id,
+                        CreatedWhen = DateTime.UtcNow
+                    };
 
-                var accounts = Dictionaries.Accounts().ToArray();
+                    TransactionRepository.Insert(transaction);
+                }
+            }
+            catch (Exception ex)
+            {
+                LogWriter.Error(ex);
 
-                int accountFromId = 0, accountToId = 0;
-                if (!string.IsNullOrWhiteSpace(data.AccountFrom))
+                return PrepareResponse(HttpStatusCode.BadRequest);
+            }
+
+            return PrepareResponse(HttpStatusCode.Accepted);
+        }
+
+        [HttpPost]
+        [Route("create/expense")]
+        public HttpResponseMessage CreateExpense()
+        {
+            var data = GetPostData<TransactionMoveViewModel>();
+            if (data == null)
+            {
+                return PrepareResponse(HttpStatusCode.BadRequest);
+            }
+
+            try
+            {
+                if (!data.Sum.HasValue)
+                    return PrepareResponse(new { Message = "Sum should be specified" }, HttpStatusCode.BadRequest);
+
+                var categoryId = ResolveCategory(data.Category);
+                var currencyId = ResolveCurrency(data.Currency);
+                var accountId = ResolveAccount(data.Account);
+
+                if (accountId > 0)
                 {
-                    var accountFrom = accounts.FirstOrDefault(x => x.Name == data.AccountFrom);
-                    if (accountFrom != null)
+                    var transaction = new Transaction
                     {
-                        accountFromId = accountFrom.Id;
-                    }
+                        TransactionTypeId = (int)TransactionTypes.Expense,
+                        Id = data.Id,
+                        SectionId = CurrentApiUserProvider.CurrentSession.User.SectionId,
+                        Date = data.Date,
+                        AccountId = accountId,
+                        CategoryId = categoryId > 0 ? categoryId : (int?)null,
+                        Amount = 1,
+                        Sum = -Math.Abs(data.Sum.Value),
+                        Formula = Math.Abs(data.Sum.Value).ToString(CultureInfo.CurrentCulture),
+                        CurrencyId = currencyId,
+                        Description = data.Description,
+                        Tags = data.Tags,
+                        IsDisabled = data.IsDisabled,
+                        CreatedBy = CurrentApiUserProvider.CurrentSession.User.Id,
+                        CreatedWhen = DateTime.UtcNow
+                    };
+
+                    TransactionRepository.Insert(transaction);
                 }
-                if (!string.IsNullOrWhiteSpace(data.AccountTo))
-                {
-                    var accountTo = accounts.OrderBy(x => !x.IsDisabled).FirstOrDefault(x => x.Name == data.AccountTo);
-                    if (accountTo != null)
-                    {
-                        accountToId = accountTo.Id;
-                    }
-                }
+            }
+            catch (Exception ex)
+            {
+                LogWriter.Error(ex);
+
+                return PrepareResponse(new { ex.Message }, HttpStatusCode.BadRequest);
+            }
+
+            return PrepareResponse(HttpStatusCode.Accepted);
+        }
+
+        [HttpPost]
+        [Route("create/transfer")]
+        public HttpResponseMessage CreateTransfer()
+        {
+            var data = GetPostData<TransactionMoveViewModel>();
+            if (data == null)
+            {
+                return PrepareResponse(HttpStatusCode.BadRequest);
+            }
+
+            try
+            {
+                if (!data.Sum.HasValue)
+                    return PrepareResponse(new { Message = "Sum should be specified" }, HttpStatusCode.BadRequest);
+
+                var categoryId = ResolveCategory(data.Category);
+                var currencyId = ResolveCurrency(data.Currency);
+                var accountFromId = ResolveAccount(data.AccountFrom);
+                var accountToId = ResolveAccount(data.AccountTo);
 
                 if (accountFromId > 0)
                 {
-                    transaction1 = new Transaction
+                    var transaction1 = new Transaction
                     {
-                        TransactionTypeId = (int)TransactionTypes.Outcome,
+                        TransactionTypeId = (int)TransactionTypes.Expense,
+                        Id = 0,
+                        SectionId = CurrentApiUserProvider.CurrentSession.User.SectionId,
+                        Date = data.Date,
+                        AccountId = accountFromId,
+                        CategoryId = categoryId,
+                        Amount = 1,
+                        Sum = -Math.Abs(data.Sum.Value),
+                        Formula = Math.Abs(data.Sum.Value).ToString(CultureInfo.CurrentCulture),
+                        CurrencyId = currencyId,
+                        Description = data.Description,
+                        Tags = data.Tags,
+                        IsDisabled = data.IsDisabled,
+                        CreatedBy = CurrentApiUserProvider.CurrentSession.User.Id,
+                        CreatedWhen = DateTime.UtcNow
+                    };
+
+                    transaction1 = TransactionRepository.Insert(transaction1);
+
+                    var transaction2 = new Transaction
+                    {
+                        TransactionTypeId = (int)TransactionTypes.Expense,
+                        Id = 0,
+                        LinkedId = transaction1.Id,
+                        SectionId = CurrentApiUserProvider.CurrentSession.User.SectionId,
+                        Date = data.Date,
+                        AccountId = accountToId,
+                        CategoryId = categoryId,
+                        Amount = 1,
+                        Sum = Math.Abs(data.Sum.Value),
+                        Formula = Math.Abs(data.Sum.Value).ToString(CultureInfo.CurrentCulture),
+                        CurrencyId = currencyId,
+                        Description = data.Description,
+                        Tags = data.Tags,
+                        IsDisabled = data.IsDisabled,
+                        CreatedBy = CurrentApiUserProvider.CurrentSession.User.Id,
+                        CreatedWhen = DateTime.UtcNow
+                    };
+
+                    transaction2 = TransactionRepository.Insert(transaction2);
+
+                    TransactionLinkRepository.Insert(new TransactionLink
+                    {
+                        ParentId = transaction1.Id,
+                        ChildId = transaction2.Id,
+                        CreatedBy = CurrentApiUserProvider.CurrentSession.User.Id,
+                        CreatedWhen = DateTime.UtcNow,
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                LogWriter.Error(ex);
+
+                return PrepareResponse(new { ex.Message }, HttpStatusCode.BadRequest);
+            }
+
+            return PrepareResponse(HttpStatusCode.Accepted);
+        }
+
+        [HttpPost]
+        [Route("create/exchange")]
+        public HttpResponseMessage UpsetExchange()
+        {
+            var data = GetPostData<TransactionMoveViewModel>();
+            if (data == null)
+            {
+                return PrepareResponse(HttpStatusCode.BadRequest);
+            }
+
+            try
+            {
+                var categoryId = ResolveCategory(data.Category);
+                var currencyId = ResolveCurrency(data.Currency);
+                var accountFromId = ResolveAccount(data.AccountFrom);
+                var accountToId = ResolveAccount(data.AccountTo);
+
+                if (accountFromId > 0)
+                {
+                    var transaction1 = new Transaction
+                    {
+                        TransactionTypeId = (int)TransactionTypes.Expense,
                         Id = data.Id,
                         SectionId = CurrentApiUserProvider.CurrentSession.User.SectionId,
                         Date = data.Date,
                         AccountId = accountFromId,
                         CategoryId = categoryId,
                         Amount = 1,
-                        Sum = -Math.Abs(data.Sum),
-                        Formula = Math.Abs(data.Sum).ToString(CultureInfo.CurrentCulture),
+                        Sum = -Math.Abs(data.Sum.Value),
+                        Formula = Math.Abs(data.Sum.Value).ToString(CultureInfo.CurrentCulture),
                         CurrencyId = currencyId,
                         Description = data.Description,
                         Tags = data.Tags,
@@ -142,6 +296,48 @@ namespace BudgetOnline.Api.Controllers
             }
 
             return PrepareResponse(HttpStatusCode.Accepted);
+        }
+
+        private int ResolveCategory(string categoryName)
+        {
+            if (!string.IsNullOrWhiteSpace(categoryName))
+            {
+                var category = Dictionaries.Categories().FirstOrDefault(x => x.Name == categoryName);
+                if (category != null)
+                {
+                    return category.Id;
+                }
+                throw new ApiOperationException("Category is not found!");
+            }
+            return 0;
+        }
+
+        private int ResolveCurrency(string currencyName)
+        {
+            if (!string.IsNullOrWhiteSpace(currencyName))
+            {
+                var currency = Dictionaries.Currencies().FirstOrDefault(x => x.Name.ToLower() == currencyName.ToLower() || x.Symbol.ToLower() == currencyName.ToLower());
+                if (currency != null)
+                {
+                    return currency.Id;
+                }
+                throw new ApiOperationException("Currency is not found!");
+            }
+            return 0;
+        }
+
+        private int ResolveAccount(string accountName)
+        {
+            if (!string.IsNullOrWhiteSpace(accountName))
+            {
+                var account = Dictionaries.Accounts().FirstOrDefault(x => x.Name == accountName);
+                if (account != null)
+                {
+                    return account.Id;
+                }
+                throw new ApiOperationException("Account is not found!");
+            }
+            return 0;
         }
     }
 }

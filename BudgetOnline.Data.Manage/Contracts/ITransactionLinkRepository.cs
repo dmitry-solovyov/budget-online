@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq.Expressions;
-using BudgetOnline.Data.Manage.Types.Simple;
+﻿using BudgetOnline.Data.Manage.Types.Simple;
 
 namespace BudgetOnline.Data.Manage.Contracts
 {
