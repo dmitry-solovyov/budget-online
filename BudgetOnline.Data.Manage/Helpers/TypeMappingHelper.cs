@@ -9,7 +9,7 @@ namespace BudgetOnline.Data.Manage.Helpers
 	{
 		public TypeMappingHelper()
 		{
-			Console.WriteLine(string.Format("Preparing mapper in CommonRepository at {0}. In={1} Out={2}", DateTime.Now, typeof(TIn).Name, typeof(TOut).Name));
+			Console.WriteLine("Preparing mapper in CommonRepository at {0}. In={1} Out={2}", DateTime.Now, typeof(TIn).Name, typeof(TOut).Name);
 			Mapper.CreateMap<TIn, TOut>();
 		}
 

@@ -13,7 +13,7 @@ namespace BudgetOnline.Data.MSSQL.EF.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201602240927464_Init"; }
+            get { return "201603011100078_Init"; }
         }
         
         string IMigrationMetadata.Source

@@ -49,29 +49,62 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\ClusteredKeyAttribute.cs" />
     <Compile Include="BuilderConfiguration.cs" />
     <Compile Include="DataModelBuilders\Base\BaseBuilder.cs" />
     <Compile Include="DataModelBuilders\Base\IModelBuilder.cs" />
     <Compile Include="DataModelBuilders\UserBuilder.cs" />
     <Compile Include="DataModelBuilders\SectionBuilder.cs" />
-    <Compile Include="DataModels\Base\BaseModel.cs" />
+    <Compile Include="DataModels\Base\ClusteredGuidIdentifiedBaseModel.cs" />
+    <Compile Include="DataModels\CurrencySectionMap.cs" />
+    <Compile Include="DataModels\AdminUser.cs" />
+    <Compile Include="DataModels\PermissionSystemModuleMap.cs" />
+    <Compile Include="DataModels\TransactionCorrectionDetail.cs" />
+    <Compile Include="DataModels\TransactionDetail.cs" />
+    <Compile Include="DataModels\TransactionTagMap.cs" />
+    <Compile Include="DataModels\Transaction.cs" />
+    <Compile Include="DataModels\UserSession.cs" />
+    <Compile Include="DataModels\UserPassword.cs" />
+    <Compile Include="DataModels\SystemModule.cs" />
+    <Compile Include="DataModels\PermissionSystemModuleUserMap.cs" />
+    <Compile Include="DataModels\Permission.cs" />
+    <Compile Include="DataModels\Setting.cs" />
+    <Compile Include="DataModels\CategorySectionMap.cs" />
+    <Compile Include="DataModels\Currency.cs" />
+    <Compile Include="DataModels\Category.cs" />
+    <Compile Include="DataModels\Base\IntIdentifiedBaseModel.cs" />
+    <Compile Include="DataModels\Base\GuidIdentifiedBaseModel.cs" />
     <Compile Include="DataModels\Base\ILastUpdateTrakingModel.cs" />
+    <Compile Include="DataModels\OperationTypeSectionMap.cs" />
+    <Compile Include="DataModels\OperationType.cs" />
     <Compile Include="DataModels\Section.cs" />
     <Compile Include="DataModels\Base\ICreateTrakingModel.cs" />
+    <Compile Include="DataModels\Account.cs" />
     <Compile Include="DataModels\User.cs" />
-    <Compile Include="Db\BudgetDatabase.cs" />
-    <Compile Include="Migrations\201602240927464_Init.cs" />
-    <Compile Include="Migrations\201602240927464_Init.Designer.cs">
-      <DependentUpon>201602240927464_Init.cs</DependentUpon>
+    <Compile Include="BudgetDatabase.cs" />
+    <Compile Include="DataModels\UserSessionStatus.cs" />
+    <Compile Include="Helpers\PasswordManager.cs" />
+    <Compile Include="Helpers\SectionDataFiller.cs" />
+    <Compile Include="Migrations\201603011100078_Init.cs" />
+    <Compile Include="Migrations\201603011100078_Init.Designer.cs">
+      <DependentUpon>201603011100078_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\NonClusteredPrimaryKeySqlMigrationSqlGenerator.cs" />
+    <Compile Include="Migrations\SqlDefaultValueAnnotationGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlDefaultValueAttribute.cs" />
+    <Compile Include="DataModels\Tag.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BudgetOnline.Common.Enums\BudgetOnline.Common.Enums.csproj">
+      <Project>{8A4204B1-1A91-496D-B3F1-ECFFA4FE8477}</Project>
+      <Name>BudgetOnline.Common.Enums</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BudgetOnline.Common.Logger\BudgetOnline.Common.Logger.csproj">
       <Project>{704F3252-A124-4B63-B593-5C55EC542597}</Project>
       <Name>BudgetOnline.Common.Logger</Name>
@@ -82,8 +115,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201602240927464_Init.resx">
-      <DependentUpon>201602240927464_Init.cs</DependentUpon>
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201603011100078_Init.resx">
+      <DependentUpon>201603011100078_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

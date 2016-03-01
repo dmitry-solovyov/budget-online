@@ -4,7 +4,7 @@ namespace BudgetOnline.Data.MSSQL.EF.DataModels.Base
 {
     public interface ICreateTrakingModel
     {
-        DateTime CreatedWhen { get; set; }
+        DateTime? CreatedWhen { get; set; }
         Guid CreatedBy { get; set; }
         User CreatedUser { get; set; }
     }

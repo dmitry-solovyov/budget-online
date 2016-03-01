@@ -10,16 +10,6 @@ namespace BudgetOnline.Data.MSSQL.EF.DataModelBuilders
 
         public override void Build()
         {
-            EntityBuilder.HasKey(x => x.Id);
-            EntityBuilder.Property(x => x.Id).IsRequired().HasColumnOrder(1);
-
-            EntityBuilder.Property(x => x.Description)
-                .HasMaxLength(512)
-                .IsUnicode()
-                .IsVariableLength();
-
-            EntityBuilder.Property(x => x.IsDeleted).IsRequired();
-            EntityBuilder.Property(x => x.IsDisabled).IsRequired();
         }
     }
 }
