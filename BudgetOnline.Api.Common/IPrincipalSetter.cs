@@ -1,7 +1,7 @@
 ﻿using System.Security.Principal;
 using System.Web.Http.Controllers;
 
-namespace BudgetOnline.Api.Infrastructure.Security
+namespace BudgetOnline.Api.Common
 {
     public interface IPrincipalSetter
     {

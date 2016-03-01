@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Web.Http.Filters;
 using BudgetOnline.Common.Contracts;
 
-namespace BudgetOnline.Api.Infrastructure.Filters
+namespace BudgetOnline.Api.Common.Filters
 {
     public class UnhandledExceptionFilter : ExceptionFilterAttribute
     {

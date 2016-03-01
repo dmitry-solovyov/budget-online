@@ -1,4 +1,4 @@
-﻿using System.Data.Entity.Core;
+﻿using System;
 using System.Net;
 using System.Net.Http;
 using System.Security.Principal;
@@ -20,7 +20,7 @@ namespace BudgetOnline.Api.Infrastructure.Filters
 
                 var apiSessionProvider = resolver.GetService(typeof(IApiSessionProvider)) as IApiSessionProvider;
                 if (apiSessionProvider == null)
-                    throw new ObjectNotFoundException();
+                    throw new Exception("Can't initialise session provider");
 
                 return apiSessionProvider;
             }

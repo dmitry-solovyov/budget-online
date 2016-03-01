@@ -1,5 +1,4 @@
 ﻿using System.Web.Http.Filters;
-using BudgetOnline.Api.Infrastructure.Filters;
 
 namespace BudgetOnline.Api
 {

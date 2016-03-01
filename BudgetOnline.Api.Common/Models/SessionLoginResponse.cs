@@ -1,4 +1,4 @@
-﻿namespace BudgetOnline.Api.Models
+﻿namespace BudgetOnline.Api.Common.Models
 {
     public class SessionLoginResponse
     {

@@ -1,11 +1,11 @@
 ﻿using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using BudgetOnline.Api.Infrastructure.Filters;
+using BudgetOnline.Api.Common.Filters;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace BudgetOnline.Api.Controllers
+namespace BudgetOnline.Api.Common.Controllers
 {
     //[ForceHttps]
     [UnhandledExceptionFilter]

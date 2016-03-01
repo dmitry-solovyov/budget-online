@@ -4,17 +4,17 @@ using System.Net.Http;
 using System.Web.Http;
 using BudgetOnline.Api.Common.Controllers;
 using BudgetOnline.Api.Common.Models;
-using BudgetOnline.Api.Models;
+using BudgetOnline.Data.Models;
 using BudgetOnline.Security.Api;
 
-namespace BudgetOnline.Api.Controllers
+namespace BudgetOnline.Api.Admin.Controllers
 {
     public class SessionController : BaseApiController
     {
         public IApiSessionProvider CurrentApiUserProvider { get; set; }
 
         [HttpPost]
-        [Route("session/login")]
+        [Route("account/login")]
         public HttpResponseMessage LoginPost()
         {
             var request = GetPostData<SessionLoginRequest>();
@@ -33,7 +33,7 @@ namespace BudgetOnline.Api.Controllers
         }
 
         [HttpGet]
-        [Route("session/validate")]
+        [Route("account/validate")]
         public HttpResponseMessage ValidateGet()
         {
             if (CurrentApiUserProvider.CurrentSession == null)
@@ -53,7 +53,7 @@ namespace BudgetOnline.Api.Controllers
         }
 
         [HttpGet]
-        [Route("session/me")]
+        [Route("account/me")]
         public HttpResponseMessage MeGet()
         {
             if (CurrentApiUserProvider.CurrentSession == null)

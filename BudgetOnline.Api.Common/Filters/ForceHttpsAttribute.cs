@@ -2,10 +2,9 @@
 using System.Net;
 using System.Net.Http;
 using System.Text;
-using System.Web.Http;
 using System.Web.Http.Filters;
 
-namespace BudgetOnline.Api.Infrastructure.Filters
+namespace BudgetOnline.Api.Common.Filters
 {
     public class ForceHttpsAttribute : AuthorizationFilterAttribute
     {

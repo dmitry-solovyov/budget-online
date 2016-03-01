@@ -1,4 +1,4 @@
-﻿namespace BudgetOnline.Api.Infrastructure
+﻿namespace BudgetOnline.Api.Common
 {
     public class ApiMessageError
     {

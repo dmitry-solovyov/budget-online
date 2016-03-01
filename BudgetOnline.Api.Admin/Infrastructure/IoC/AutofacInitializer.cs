@@ -2,16 +2,13 @@
 using System.Web.Http;
 using Autofac;
 using Autofac.Integration.WebApi;
-using BudgetOnline.Api.Common.Filters;
-using BudgetOnline.Api.Controllers;
-using BudgetOnline.Api.Infrastructure.Filters;
 using BudgetOnline.BusinessLayer.Helpers;
 using BudgetOnline.Common;
 using BudgetOnline.Common.Logger;
 using BudgetOnline.Data.Manage.Repositories;
 using BudgetOnline.Security.Api;
 
-namespace BudgetOnline.Api.Infrastructure.IoC
+namespace BudgetOnline.Api.Admin.Infrastructure.IoC
 {
     public static class AutofacInitializer
     {
@@ -49,23 +46,23 @@ namespace BudgetOnline.Api.Infrastructure.IoC
 
         private static void RegisterInfrustructure(ContainerBuilder builder)
         {
-            builder.RegisterAssemblyTypes(typeof(ForceHttpsAttribute).Assembly)
-                .Where(t => !string.IsNullOrWhiteSpace(t.Namespace) && t.Namespace.StartsWith("BudgetOnline.Api.Infrastructure.") && !t.Name.Contains("Attribute"))
-                .PropertiesAutowired()
-                .AsImplementedInterfaces()
-                .InstancePerRequest();
+            //builder.RegisterAssemblyTypes(typeof(ForceHttpsAttribute).Assembly)
+            //    .Where(t => !string.IsNullOrWhiteSpace(t.Namespace) && t.Namespace.StartsWith("BudgetOnline.Api.Infrastructure.") && !t.Name.Contains("Attribute"))
+            //    .PropertiesAutowired()
+            //    .AsImplementedInterfaces()
+            //    .InstancePerRequest();
 
-            builder.Register(c => new RequestAuthorizeAttribute())
-                .AsWebApiAuthorizationFilterFor<HomeController>()
-                .PropertiesAutowired()
-                .InstancePerRequest();
+            //builder.Register(c => new RequestAuthorizeAttribute())
+            //    .AsWebApiAuthorizationFilterFor<HomeController>()
+            //    .PropertiesAutowired()
+            //    .InstancePerRequest();
         }
 
         private static void RegisterBusinessLayerBindings(ContainerBuilder builder)
         {
-            builder.RegisterType<Dictionaries>().AsImplementedInterfaces()
-                .PropertiesAutowired()
-                .InstancePerDependency();
+            //builder.RegisterType<Dictionaries>().AsImplementedInterfaces()
+            //    .PropertiesAutowired()
+            //    .InstancePerDependency();
 
             builder.RegisterAssemblyTypes(typeof(SettingsHelper).Assembly)
                 .Where(t => !string.IsNullOrWhiteSpace(t.Namespace) && t.Namespace.StartsWith("BudgetOnline.BusinessLayer."))

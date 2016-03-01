@@ -1,6 +1,6 @@
 ﻿using BudgetOnline.Security.Api;
 
-namespace BudgetOnline.Api.Controllers
+namespace BudgetOnline.Api.Common.Controllers
 {
     //authorization filter integrated with Autofac
     public class BaseApiAuthController : BaseApiController
