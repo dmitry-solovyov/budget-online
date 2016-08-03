@@ -6,6 +6,6 @@ namespace BudgetOnline.Data.MSSQL.EF.DataModels.Base
     {
         DateTime? UpdatedWhen { get; set; }
         Guid? UpdatedBy { get; set; }
-        User UpdatedUser { get; set; }
+        UserRecord UpdatedUser { get; set; }
     }
 }

@@ -8,6 +8,7 @@ using BudgetOnline.Common.Enums;
 using BudgetOnline.Data.Manage;
 using BudgetOnline.Data.Manage.Contracts;
 using BudgetOnline.Web.Infrastructure.Helpers;
+using BudgetOnline.Web.Models;
 using BudgetOnline.Web.ViewModels;
 
 namespace BudgetOnline.Web.Controllers.Statistics
@@ -240,7 +241,7 @@ namespace BudgetOnline.Web.Controllers.Statistics
                     .OrderBy(o => o.Key.AccountIsExternal).ThenBy(o => o.Key.AccountName)
                     .Select(acc => new StatisticBlockItemsGroupViewModel
                                        {
-                                           Id = acc.Key.AccountId.Value.ToString(CultureInfo.CurrentUICulture),
+                                           Id = acc.Key.AccountId.Value,
                                            Title = acc.Key.AccountName,
                                            Items = items.Where(cur => cur.AccountId == acc.Key.AccountId)
                                                .Select(cur => new StatisticDetailItemViewModel
@@ -288,7 +289,7 @@ namespace BudgetOnline.Web.Controllers.Statistics
             {
                 Date1 = date1,
                 Date2 = date2,
-                TransactionTypes = new[] { (int)TransactionTypes.Income, (int)TransactionTypes.Outcome },
+                TransactionTypes = new[] { (int)TransactionTypes.Income, (int)TransactionTypes.Expense },
                 ExcludeTags = _excludeTags
             };
 

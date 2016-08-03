@@ -1,5 +1,4 @@
-﻿using System;
-using BudgetOnline.Common.Enums;
+﻿using BudgetOnline.Common.Enums;
 using BudgetOnline.Data.Manage.Types.Simple;
 
 namespace BudgetOnline.Data.Manage.Types.Complex

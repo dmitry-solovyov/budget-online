@@ -17,21 +17,25 @@ namespace BudgetOnline.Api.Admin
         {
             var httpConfiguration = new HttpConfiguration();
 
-            var builder = new ContainerBuilder();
+            var builder = AutofacInitializer.GetBuilder();
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly())
+                .InstancePerRequest()
+                .PropertiesAutowired();
 
             var container = builder.Build();
-            
-            var dependencyResolver = new AutofacWebApiDependencyResolver(AutofacInitializer.GetBuilder());
-            httpConfiguration.DependencyResolver = dependencyResolver;
 
-            builder.RegisterApiControllers(Assembly.GetExecutingAssembly()).InstancePerRequest();
+            var resolver = new AutofacWebApiDependencyResolver(container);
+            httpConfiguration.DependencyResolver = resolver;
 
-            GlobalConfiguration.Configuration.DependencyResolver = dependencyResolver;
+            GlobalConfiguration.Configuration.DependencyResolver = resolver;
 
             WebApiConfig.Register(httpConfiguration);
+
             app.UseAutofacMiddleware(container);
             app.UseAutofacWebApi(httpConfiguration);
             app.UseWebApi(httpConfiguration);
+
+            httpConfiguration.EnsureInitialized();
         }
     }
 }

@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -54,47 +56,47 @@
     <Compile Include="DataModelBuilders\Base\BaseBuilder.cs" />
     <Compile Include="DataModelBuilders\Base\IModelBuilder.cs" />
     <Compile Include="DataModelBuilders\UserBuilder.cs" />
-    <Compile Include="DataModelBuilders\SectionBuilder.cs" />
+    <Compile Include="DataModelBuilders\AccountBuilder.cs" />
     <Compile Include="DataModels\Base\ClusteredGuidIdentifiedBaseModel.cs" />
-    <Compile Include="DataModels\CurrencySectionMap.cs" />
-    <Compile Include="DataModels\AdminUser.cs" />
-    <Compile Include="DataModels\PermissionSystemModuleMap.cs" />
-    <Compile Include="DataModels\TransactionCorrectionDetail.cs" />
-    <Compile Include="DataModels\TransactionDetail.cs" />
-    <Compile Include="DataModels\TransactionTagMap.cs" />
-    <Compile Include="DataModels\Transaction.cs" />
-    <Compile Include="DataModels\UserSession.cs" />
-    <Compile Include="DataModels\UserPassword.cs" />
-    <Compile Include="DataModels\SystemModule.cs" />
-    <Compile Include="DataModels\PermissionSystemModuleUserMap.cs" />
-    <Compile Include="DataModels\Permission.cs" />
-    <Compile Include="DataModels\Setting.cs" />
-    <Compile Include="DataModels\CategorySectionMap.cs" />
-    <Compile Include="DataModels\Currency.cs" />
-    <Compile Include="DataModels\Category.cs" />
+    <Compile Include="DataModels\CurrencySectionMapRecord.cs" />
+    <Compile Include="DataModels\AdminUserRecord.cs" />
+    <Compile Include="DataModels\PermissionSystemModuleMapRecord.cs" />
+    <Compile Include="DataModels\TransactionCorrectionDetailRecord.cs" />
+    <Compile Include="DataModels\TransactionDetailRecord.cs" />
+    <Compile Include="DataModels\TransactionTagMapRecord.cs" />
+    <Compile Include="DataModels\TransactionRecord.cs" />
+    <Compile Include="DataModels\UserSessionRecord.cs" />
+    <Compile Include="DataModels\UserPasswordRecord.cs" />
+    <Compile Include="DataModels\SystemModuleRecord.cs" />
+    <Compile Include="DataModels\PermissionSystemModuleUserMapRecord.cs" />
+    <Compile Include="DataModels\PermissionRecord.cs" />
+    <Compile Include="DataModels\SettingRecord.cs" />
+    <Compile Include="DataModels\CategorySectionMapRecord.cs" />
+    <Compile Include="DataModels\CurrencyRecord.cs" />
+    <Compile Include="DataModels\CategoryRecord.cs" />
     <Compile Include="DataModels\Base\IntIdentifiedBaseModel.cs" />
     <Compile Include="DataModels\Base\GuidIdentifiedBaseModel.cs" />
     <Compile Include="DataModels\Base\ILastUpdateTrakingModel.cs" />
-    <Compile Include="DataModels\OperationTypeSectionMap.cs" />
-    <Compile Include="DataModels\OperationType.cs" />
-    <Compile Include="DataModels\Section.cs" />
+    <Compile Include="DataModels\OperationTypeSectionMapRecord.cs" />
+    <Compile Include="DataModels\OperationTypeRecord.cs" />
+    <Compile Include="DataModels\SectionRecord.cs" />
     <Compile Include="DataModels\Base\ICreateTrakingModel.cs" />
-    <Compile Include="DataModels\Account.cs" />
-    <Compile Include="DataModels\User.cs" />
+    <Compile Include="DataModels\AccountRecord.cs" />
+    <Compile Include="DataModels\UserRecord.cs" />
     <Compile Include="BudgetDatabase.cs" />
-    <Compile Include="DataModels\UserSessionStatus.cs" />
+    <Compile Include="DataModels\UserSessionStatusRecord.cs" />
     <Compile Include="Helpers\PasswordManager.cs" />
     <Compile Include="Helpers\SectionDataFiller.cs" />
-    <Compile Include="Migrations\201603011100078_Init.cs" />
-    <Compile Include="Migrations\201603011100078_Init.Designer.cs">
-      <DependentUpon>201603011100078_Init.cs</DependentUpon>
+    <Compile Include="Migrations\201603100840248_Init.cs" />
+    <Compile Include="Migrations\201603100840248_Init.Designer.cs">
+      <DependentUpon>201603100840248_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\NonClusteredPrimaryKeySqlMigrationSqlGenerator.cs" />
     <Compile Include="Migrations\SqlDefaultValueAnnotationGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlDefaultValueAttribute.cs" />
-    <Compile Include="DataModels\Tag.cs" />
+    <Compile Include="DataModels\TagRecord.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -118,8 +120,8 @@
     <Folder Include="Repositories\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603011100078_Init.resx">
-      <DependentUpon>201603011100078_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603100840248_Init.resx">
+      <DependentUpon>201603100840248_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

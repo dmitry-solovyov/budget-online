@@ -219,7 +219,7 @@ namespace BudgetOnline.Web.Controllers
             var newId = id;
 
             var errors = new StringBuilder();
-            if (linked.First.TransactionTypeId != (int)TransactionTypes.Outcome)
+            if (linked.First.TransactionTypeId != (int)TransactionTypes.Expense)
             {
                 errors.AppendLine("Операция возможна только для расходов!");
                 LogWriter.WarnFormat("Available obly for outcome. Id={0}, CurrentType={1}", id, (TransactionTypes)linked.First.TransactionTypeId);
@@ -302,7 +302,7 @@ namespace BudgetOnline.Web.Controllers
 
             var defaultCurrency = Dictionaries.Currencies().FirstOrDefault(o => o.IsDefault);
 
-            var totalsByDates = TransactionCalculator.TotalsByDates(transactions.Where(o => o.TransactionTypeId == (int)TransactionTypes.Outcome), defaultCurrency.Id).ToList();
+            var totalsByDates = TransactionCalculator.TotalsByDates(transactions.Where(o => o.TransactionTypeId == (int)TransactionTypes.Expense), defaultCurrency.Id).ToList();
 
             PopulateSearch(search);
 
@@ -495,7 +495,7 @@ namespace BudgetOnline.Web.Controllers
                         Currency = new IdWithSelectList { Id = linked.First.CurrencyId },
                         Account = new IdWithSelectList { Id = linked.First.AccountId },
                     };
-                else if (linked.First.TransactionTypeId == (int)TransactionTypes.Outcome)
+                else if (linked.First.TransactionTypeId == (int)TransactionTypes.Expense)
                     sumOut = new CurrencyBundle
                     {
                         Sum = Math.Abs(linked.First.Sum),
@@ -576,7 +576,7 @@ namespace BudgetOnline.Web.Controllers
                 linked.First.CurrencyId = model.SumOut.Currency.Id;
                 linked.First.AccountId = model.SumOut.Account.Id;
                 linked.First.Formula = model.SumOut.Formula;
-                linked.First.Sum = TransactionDataHelper.GetRealSumValue(TransactionTypes.Outcome, model.SumOut.Sum);
+                linked.First.Sum = TransactionDataHelper.GetRealSumValue(TransactionTypes.Expense, model.SumOut.Sum);
             }
 
             if (type == TransactionTypes.Exchange)
@@ -770,7 +770,7 @@ namespace BudgetOnline.Web.Controllers
             {
                 case TransactionTypes.Income:
                     return "cus-calculator-add";
-                case TransactionTypes.Outcome:
+                case TransactionTypes.Expense:
                     return "cus-calculator-delete";
                 case TransactionTypes.Transfer:
                     return "cus-table-relationship";

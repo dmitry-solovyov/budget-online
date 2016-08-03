@@ -24,7 +24,7 @@ namespace BudgetOnline.Web.ViewModels
             SumOut = new CurrencyBundle();
             Category = new IdWithSelectList();
             Date = DateTime.Now.Date;
-            TransactionType = new IdWithSelectList { Id = (int)TransactionTypes.Outcome };
+            TransactionType = new IdWithSelectList { Id = (int)TransactionTypes.Expense };
         }
 
         [HiddenInput(DisplayValue = false)]

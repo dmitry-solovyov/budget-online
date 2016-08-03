@@ -5,14 +5,14 @@ using Autofac.Integration.WebApi;
 using BudgetOnline.BusinessLayer.Helpers;
 using BudgetOnline.Common;
 using BudgetOnline.Common.Logger;
-using BudgetOnline.Data.Manage.Repositories;
+using BudgetOnline.Data.Repositories;
 using BudgetOnline.Security.Api;
 
 namespace BudgetOnline.Api.Admin.Infrastructure.IoC
 {
     public static class AutofacInitializer
     {
-        public static IContainer GetBuilder()
+        public static ContainerBuilder GetBuilder()
         {
             var builder = new ContainerBuilder();
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly()).PropertiesAutowired().InstancePerRequest();
@@ -24,7 +24,7 @@ namespace BudgetOnline.Api.Admin.Infrastructure.IoC
 
             builder.RegisterWebApiFilterProvider(GlobalConfiguration.Configuration);
 
-            return builder.Build();
+            return builder;
         }
 
         private static void RegisterCommonBindings(ContainerBuilder builder)
@@ -73,7 +73,7 @@ namespace BudgetOnline.Api.Admin.Infrastructure.IoC
 
         private static void RegisterDataLayerBindings(ContainerBuilder builder)
         {
-            builder.RegisterAssemblyTypes(typeof(SettingRepository).Assembly)
+            builder.RegisterAssemblyTypes(typeof(UserRepository).Assembly)
                 .Where(t => t.Name.EndsWith("Repository"))
                 .PropertiesAutowired()
                 .AsImplementedInterfaces()

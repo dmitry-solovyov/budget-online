@@ -1,11 +1,11 @@
 ﻿using System.Reflection;
 using Autofac;
 using Autofac.Integration.Mvc;
+using BudgetOnline.Api.Admin.Infrastructure;
 using BudgetOnline.BusinessLayer.Helpers;
 using BudgetOnline.Common;
 using BudgetOnline.Common.Logger;
 using BudgetOnline.Data.Manage.Repositories;
-using BudgetOnline.Security.Api;
 
 namespace BudgetOnline.Web.Infrastructure.IoC
 {

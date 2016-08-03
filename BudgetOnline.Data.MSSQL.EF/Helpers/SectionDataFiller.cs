@@ -17,7 +17,7 @@ namespace BudgetOnline.Data.MSSQL.EF.Helpers
 
             if (!dataContext.Sections.Any(x => x.Id == sectionId))
                 dataContext.Sections.Add(
-                  new Section
+                  new SectionRecord
                   {
                       Id = sectionId.Value,
                       Description = "default",
@@ -30,7 +30,7 @@ namespace BudgetOnline.Data.MSSQL.EF.Helpers
 
             if (!dataContext.CategorySectionMaps.Any(x => x.CategoryId == new Guid("{972919F1-A7DE-4D7E-A7A1-389591DF9A93}") && x.SectionId == sectionId.Value))
                 dataContext.CategorySectionMaps.Add(
-                    new CategorySectionMap
+                    new CategorySectionMapRecord
                     {
                         Id = Guid.NewGuid(),
                         SectionId = sectionId.Value,
@@ -63,7 +63,7 @@ namespace BudgetOnline.Data.MSSQL.EF.Helpers
                 if (!dataContext.Accounts.Any(x => x.Name == item.Key && x.SectionId == sectionId))
                     dataContext.Accounts.AddOrUpdate(
                         x => x.Id,
-                        new Account
+                        new AccountRecord
                         {
                             Id = Guid.NewGuid(),
                             Name = item.Key,

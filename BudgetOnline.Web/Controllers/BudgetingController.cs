@@ -76,7 +76,7 @@ namespace BudgetOnline.Web.Controllers
             {
                 Date1 = model.FromDate,
                 Date2 = model.ToDate,
-                TransactionTypes = new[] { (int)TransactionTypes.Income, (int)TransactionTypes.Outcome },
+                TransactionTypes = new[] { (int)TransactionTypes.Income, (int)TransactionTypes.Expense },
                 ExcludeTags = _excludeTags
             };
 

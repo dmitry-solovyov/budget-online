@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BudgetOnline.UI</RootNamespace>
     <AssemblyName>BudgetOnline.UI</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>false</UseIISExpress>
     <FileUpgradeFlags>
@@ -25,6 +25,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,6 +35,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -42,6 +44,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -52,7 +55,9 @@
       <HintPath>..\packages\RazorGenerator.Mvc.2.3.12\lib\net40\RazorGenerator.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
       <Private>True</Private>
@@ -73,8 +78,6 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
       <Private>True</Private>
@@ -87,15 +90,14 @@
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
       <HintPath>..\packages\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll</HintPath>
       <Private>True</Private>
@@ -182,15 +184,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DynamicContainer.cshtml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Editors\MultiColumnSelectList.generated.cs">
-      <DependentUpon>MultiColumnSelectList.cshtml</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Views\Editors\CurrencyBundle.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CurrencyBundle.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Editors\MultiColumnSelectList.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MultiColumnSelectList.cshtml</DependentUpon>
     </Compile>
     <Compile Include="Views\Editors\SelectList.generated.cs">
       <AutoGen>True</AutoGen>
@@ -198,19 +200,19 @@
       <DependentUpon>SelectList.cshtml</DependentUpon>
     </Compile>
     <Compile Include="Views\ListViewCommands\JsViewCommand.generated.cs">
-      <DependentUpon>JsViewCommand.cshtml</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>JsViewCommand.cshtml</DependentUpon>
     </Compile>
     <Compile Include="Views\ListViewCommands\ListOfViewCommandUI.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ListOfViewCommandUI.cshtml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ListViewCommands\ListOfViewCommandUI1.generated.cs">
+    <Compile Include="Views\ListViewCommands\PostViewCommand.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ListOfViewCommandUI.cshtml</DependentUpon>
+      <DependentUpon>PostViewCommand.cshtml</DependentUpon>
     </Compile>
     <Compile Include="Views\ListViewCommands\ViewCommandUI.generated.cs">
       <AutoGen>True</AutoGen>
@@ -221,11 +223,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MenuHorizontal.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ListViewCommands\PostViewCommand.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PostViewCommand.cshtml</DependentUpon>
     </Compile>
     <Compile Include="Views\ListViewCommands\RedirectViewCommand.generated.cs">
       <AutoGen>True</AutoGen>
@@ -334,10 +331,10 @@
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Views\Editors\MultiColumnSelectList.cshtml">
+    <None Include="Views\Editors\MultiColumnSelectList.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>MultiColumnSelectList.generated.cs</LastGenOutput>
-    </Content>
+    </None>
     <None Include="Scripts\jquery-2.1.1.min.map" />
     <None Include="Web.config" />
     <Content Include="README.jQuery.vsdoc.txt" />
@@ -411,7 +408,6 @@
     <None Include="Views\Editors\SelectList.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>SelectList.generated.cs</LastGenOutput>
-      <CustomToolNamespace>BudgetOnline.UI.Views.Editors</CustomToolNamespace>
     </None>
     <None Include="Views\ListViewCommands\PostViewCommand.cshtml">
       <Generator>RazorGenerator</Generator>

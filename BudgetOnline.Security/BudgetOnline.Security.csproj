@@ -44,7 +44,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Api\ApiSessionProvider.cs" />
     <Compile Include="Api\AuthTokenHelper.cs" />
     <Compile Include="Api\IApiSessionProvider.cs" />
     <Compile Include="Api\IAuthTokenHelper.cs" />

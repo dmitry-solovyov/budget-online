@@ -11,29 +11,29 @@ namespace BudgetOnline.Data.MSSQL.EF
             : base("BudgetDatabase")
         { }
 
-        public DbSet<Account> Accounts { get; set; }
-        public DbSet<AdminUser> AdminUsers { get; set; }
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<CategorySectionMap> CategorySectionMaps { get; set; }
-        public DbSet<Currency> Currencies { get; set; }
-        public DbSet<CurrencySectionMap> CurrencySectionMaps { get; set; }
-        public DbSet<OperationType> OperationTypes { get; set; }
-        public DbSet<OperationTypeSectionMap> OperationTypeSectionMaps { get; set; }
-        public DbSet<Permission> Permissions { get; set; }
-        public DbSet<PermissionSystemModuleMap> PermissionSystemModuleMaps { get; set; }
-        public DbSet<PermissionSystemModuleUserMap> PermissionSystemModuleUserMaps { get; set; }
-        public DbSet<Section> Sections { get; set; }
-        public DbSet<Setting> Settings { get; set; }
-        public DbSet<SystemModule> SystemModules { get; set; }
-        public DbSet<Tag> Tags { get; set; }
-        public DbSet<Transaction> Transactions { get; set; }
-        public DbSet<TransactionCorrectionDetail> TransactionCorrectionDetail { get; set; }
-        public DbSet<TransactionDetail> TransactionDetails { get; set; }
-        public DbSet<TransactionTagMap> TransactionTagMaps { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<UserPassword> UserPasswords { get; set; }
-        public DbSet<UserSession> UserSessions { get; set; }
-        public DbSet<UserSessionStatus> UserSessionStatuses { get; set; }
+        public DbSet<AccountRecord> Accounts { get; set; }
+        public DbSet<AdminUserRecord> AdminUsers { get; set; }
+        public DbSet<CategoryRecord> Categories { get; set; }
+        public DbSet<CategorySectionMapRecord> CategorySectionMaps { get; set; }
+        public DbSet<CurrencyRecord> Currencies { get; set; }
+        public DbSet<CurrencySectionMapRecord> CurrencySectionMaps { get; set; }
+        public DbSet<OperationTypeRecord> OperationTypes { get; set; }
+        public DbSet<OperationTypeSectionMapRecord> OperationTypeSectionMaps { get; set; }
+        public DbSet<PermissionRecord> Permissions { get; set; }
+        public DbSet<PermissionSystemModuleMapRecord> PermissionSystemModuleMaps { get; set; }
+        public DbSet<PermissionSystemModuleUserMapRecord> PermissionSystemModuleUserMaps { get; set; }
+        public DbSet<SectionRecord> Sections { get; set; }
+        public DbSet<SettingRecord> Settings { get; set; }
+        public DbSet<SystemModuleRecord> SystemModules { get; set; }
+        public DbSet<TagRecord> Tags { get; set; }
+        public DbSet<TransactionRecord> Transactions { get; set; }
+        public DbSet<TransactionCorrectionDetailRecord> TransactionCorrectionDetail { get; set; }
+        public DbSet<TransactionDetailRecord> TransactionDetails { get; set; }
+        public DbSet<TransactionTagMapRecord> TransactionTagMaps { get; set; }
+        public DbSet<UserRecord> Users { get; set; }
+        public DbSet<UserPasswordRecord> UserPasswords { get; set; }
+        public DbSet<UserSessionRecord> UserSessions { get; set; }
+        public DbSet<UserSessionStatusRecord> UserSessionStatuses { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

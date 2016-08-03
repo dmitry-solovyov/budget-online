@@ -26,6 +26,7 @@ namespace BudgetOnline.Web.Models
 
 	public class StatisticBlockItemsGroupViewModel
 	{
+        public int Id { get; set; }
 		public string Title { get; set; }
 		public string Tooltip { get; set; }
 

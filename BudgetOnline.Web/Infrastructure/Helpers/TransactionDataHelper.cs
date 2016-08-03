@@ -36,7 +36,7 @@ namespace BudgetOnline.Web.Infrastructure.Helpers
         {
             switch (transactionTypeId)
             {
-                case (int)TransactionTypes.Outcome:
+                case (int)TransactionTypes.Expense:
                     return -Math.Abs(sum);
 
                 case (int)TransactionTypes.Income:

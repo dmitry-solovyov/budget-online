@@ -2,15 +2,16 @@
 @* Generator: MvcHelper *@
 @model IEnumerable<ViewCommandUIModel>
 
-@{
-    if (Model == null || !Model.Any())
+@helper Render(IEnumerable<ViewCommandUIModel> commands)
+{
+    if (commands == null || !commands.Any())
     {
     }
     else
     {
         <div class="btn-group"> 
             @{
-        ViewCommandUIModel defaultCommand = Model.FirstOrDefault(o => o.IsDefault && o.Command.CommandType == CommandType.Redirect);
+                var defaultCommand = commands.FirstOrDefault(o => o.IsDefault && o.Command.CommandType == CommandType.Redirect);
                 if (defaultCommand != null)
                 {
                     @_Views_ListViewCommands_ViewCommandUIDefault_cshtml.Render(defaultCommand)
@@ -24,7 +25,7 @@
             }
             <a class="btn btn-default dropdown-toggle btn-xs" data-toggle="dropdown"><span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-                @foreach (ViewCommandUIModel command in Model)
+                @foreach (ViewCommandUIModel command in commands)
                 {
                     @_Views_ListViewCommands_ViewCommandUI_cshtml.Render(command, false)
                 }

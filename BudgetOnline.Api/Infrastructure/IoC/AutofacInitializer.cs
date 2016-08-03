@@ -5,6 +5,7 @@ using Autofac.Integration.WebApi;
 using BudgetOnline.Api.Common.Filters;
 using BudgetOnline.Api.Controllers;
 using BudgetOnline.Api.Infrastructure.Filters;
+using BudgetOnline.Api.Infrastructure.Security;
 using BudgetOnline.BusinessLayer.Helpers;
 using BudgetOnline.Common;
 using BudgetOnline.Common.Logger;
@@ -24,6 +25,7 @@ namespace BudgetOnline.Api.Infrastructure.IoC
             RegisterCommonBindings(builder);
             RegisterBusinessLayerBindings(builder);
             RegisterDataLayerBindings(builder);
+            RegisterSecurity(builder);
 
             builder.RegisterWebApiFilterProvider(GlobalConfiguration.Configuration);
 
@@ -81,6 +83,11 @@ namespace BudgetOnline.Api.Infrastructure.IoC
                 .PropertiesAutowired()
                 .AsImplementedInterfaces()
                 .InstancePerRequest();
+        }
+
+        private static void RegisterSecurity(ContainerBuilder builder)
+        {
+            builder.RegisterType<AuthTokenHelper>().AsImplementedInterfaces().InstancePerDependency();
         }
     }
 }

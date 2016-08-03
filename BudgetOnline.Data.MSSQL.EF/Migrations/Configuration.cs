@@ -53,19 +53,20 @@ namespace BudgetOnline.Data.MSSQL.EF.Migrations
             if (!context.Users.Any(x => x.Id == new Guid("{169D36CE-7556-4CCA-A715-07CA0D008310}")))
             {
                 context.Users.Add(
-                  new User
+                  new UserRecord
                   {
                       Id = new Guid("{169D36CE-7556-4CCA-A715-07CA0D008310}"),
                       Email = "admin@budget.com",
                       UserName = "Domain Admin",
                       CreatedWhen = DateTime.UtcNow,
                       CreatedBy = new Guid("{169D36CE-7556-4CCA-A715-07CA0D008310}"),
-                      SectionId = null
+                      SectionId = null,
+                      IsLocked = false
                   }
                 );
 
                 context.UserPasswords.Add(
-                    new UserPassword
+                    new UserPasswordRecord
                     {
                         Id = Guid.NewGuid(),
                         UserId = new Guid("{169D36CE-7556-4CCA-A715-07CA0D008310}"),
@@ -90,7 +91,7 @@ namespace BudgetOnline.Data.MSSQL.EF.Migrations
                 if (!context.Settings.Any(x => x.Name == item.Key && x.Value == item.Value && x.SectionId == null))
                     context.Settings.AddOrUpdate(
                         x => x.Id,
-                        new Setting
+                        new SettingRecord
                         {
                             Id = Guid.NewGuid(),
                             Name = item.Key,
@@ -110,7 +111,7 @@ namespace BudgetOnline.Data.MSSQL.EF.Migrations
             if (!context.Categories.Any(x => x.Id == new Guid("{972919F1-A7DE-4D7E-A7A1-389591DF9A93}")))
                 context.Categories.AddOrUpdate(
                     x => x.Id,
-                    new Category
+                    new CategoryRecord
                     {
                         Id = new Guid("{972919F1-A7DE-4D7E-A7A1-389591DF9A93}"),
                         ParentId = null,
@@ -136,7 +137,7 @@ namespace BudgetOnline.Data.MSSQL.EF.Migrations
                 if (!context.OperationTypes.Any(x => x.Id == operationType.Key))
                     context.OperationTypes.AddOrUpdate(
                         x => x.Id,
-                        new OperationType
+                        new OperationTypeRecord
                         {
                             Id = operationType.Key,
                             Name = operationType.Value
@@ -160,7 +161,7 @@ namespace BudgetOnline.Data.MSSQL.EF.Migrations
                 if (!context.UserSessionStatuses.Any(x => x.Id == item.Key))
                     context.UserSessionStatuses.AddOrUpdate(
                         x => x.Id,
-                        new UserSessionStatus
+                        new UserSessionStatusRecord
                         {
                             Id = item.Key,
                             Name = item.Value
@@ -185,7 +186,7 @@ namespace BudgetOnline.Data.MSSQL.EF.Migrations
                 if (!context.Permissions.Any(x => x.Id == permission.Key))
                     context.Permissions.AddOrUpdate(
                         x => x.Id,
-                        new Permission
+                        new PermissionRecord
                         {
                             Id = permission.Key,
                             Code = permission.Value.Item2,
@@ -210,7 +211,7 @@ namespace BudgetOnline.Data.MSSQL.EF.Migrations
                 if (!context.SystemModules.Any(x => x.Id == systemModule.Key))
                     context.SystemModules.AddOrUpdate(
                         x => x.Id,
-                        new SystemModule
+                        new SystemModuleRecord
                         {
                             Id = systemModule.Key,
                             Description = systemModule.Value
@@ -241,7 +242,7 @@ namespace BudgetOnline.Data.MSSQL.EF.Migrations
                 if (!context.PermissionSystemModuleMaps.Any(x => x.PermissionId == item.PermissionId && x.SystemModuleId == item.SystemModuleId))
                     context.PermissionSystemModuleMaps.AddOrUpdate(
                         x => x.Id,
-                        new PermissionSystemModuleMap
+                        new PermissionSystemModuleMapRecord
                         {
                             Id = Guid.NewGuid(),
                             PermissionId = item.PermissionId,

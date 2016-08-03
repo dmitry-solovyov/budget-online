@@ -61,7 +61,10 @@ namespace BudgetOnline.Api.Admin.Controllers
                 return new HttpResponseMessage(HttpStatusCode.Forbidden);
             }
 
-            var user = new User { Name = CurrentApiUserProvider.CurrentSession.User.Email };
+            var user = new User
+            {
+                //Name = CurrentApiUserProvider.CurrentSession.User.Email
+            };
 
             return PrepareResponse(user);
         }

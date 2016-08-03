@@ -125,6 +125,7 @@
     <Compile Include="Infrastructure\Dictionaries.cs" />
     <Compile Include="Infrastructure\Filters\RequestAuthorizeAttribute.cs" />
     <Compile Include="Infrastructure\IoC\AutofacInitializer.cs" />
+    <Compile Include="Infrastructure\Security\ApiSessionProvider.cs" />
     <Compile Include="Infrastructure\Security\Consts.cs" />
     <Compile Include="Infrastructure\Security\CurrentUserProvider.cs" />
     <Compile Include="Infrastructure\Security\HttpTokenHelper.cs" />

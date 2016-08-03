@@ -4,12 +4,13 @@ using BudgetOnline.Data.MSSQL.EF.DataModels;
 
 namespace BudgetOnline.Data.MSSQL.EF.DataModelBuilders
 {
-    public class UserBuilder : BaseBuilder<User>
+    public class UserBuilder : BaseBuilder<UserRecord>
     {
         public UserBuilder(DbModelBuilder builder) : base(builder) { }
 
         public override void Build()
         {
+
         }
     }
 }

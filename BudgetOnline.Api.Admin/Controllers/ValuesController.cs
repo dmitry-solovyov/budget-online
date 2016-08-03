@@ -1,26 +1,28 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-using BudgetOnline.Data.Repositories;
+using BudgetOnline.Data.Contracts;
+using BudgetOnline.Data.Keys;
+using BudgetOnline.Data.Models;
 
 namespace BudgetOnline.Api.Admin.Controllers
 {
     //[Authorize]
     public class ValuesController : ApiController
     {
-        public IUserRepository UserRepository { get; set; }
+        public IRepository<User> UserRepository { get; set; }
 
         [Route("values")]
         public IEnumerable<string> Get()
         {
-            UserRepository = new UserRepository();
-            return new [] { UserRepository.GetAll().Count().ToString() };
+            return new [] { UserRepository.GetAll().FirstOrDefault().Email };
         }
 
         [Route("values/{id}")]
         public string Get(int id)
         {
-            return "value";
+            return UserRepository.GetById(new GuidKeyField { Id = new Guid("{169D36CE-7556-4CCA-A715-07CA0D008310}") }).Email;
         }
 
         // POST api/values

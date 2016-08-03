@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using BudgetOnline.Data.Manage.AutomapperConfig;
 
 namespace BudgetOnline.Api.Admin.Infrastructure
 {
@@ -9,7 +8,7 @@ namespace BudgetOnline.Api.Admin.Infrastructure
         {
             Mapper.Initialize(cfg =>
             {
-                cfg.AddProfile(new DataManageProfile());
+                //cfg.AddProfile(new DataManageProfile());
             });
         }
     }

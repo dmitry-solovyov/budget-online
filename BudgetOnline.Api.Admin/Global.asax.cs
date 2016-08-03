@@ -9,16 +9,6 @@ namespace BudgetOnline.Api.Admin
     {
         protected void Application_Start()
         {
-            AutoMapperWebApiConfiguration.Configure();
-
-            //GlobalConfiguration.Configuration.Filters.AddRange(FilterConfig.GlobalFilters());
-            GlobalConfiguration.Configure(WebApiConfig.Register);
-            GlobalConfiguration.Configuration.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.LocalOnly;
-
-            var resolver = new AutofacWebApiDependencyResolver(AutofacInitializer.GetBuilder());
-            GlobalConfiguration.Configuration.DependencyResolver = resolver;
-
-            GlobalConfiguration.Configuration.EnsureInitialized(); 
         }
     }
 }

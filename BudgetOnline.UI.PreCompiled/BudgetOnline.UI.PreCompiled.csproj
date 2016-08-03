@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BudgetOnline.UI.PreCompiled</RootNamespace>
     <AssemblyName>BudgetOnline.UI.PreCompiled</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>0f09094f</NuGetPackageImportStamp>
     <TargetFrameworkProfile />
@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,6 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -139,6 +141,101 @@
     <Compile Include="Models\ViewCommands\ViewCommandUIModel.cs" />
     <Compile Include="Models\ViewCommands\ViewCommandUIModelHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\AlertSuccess.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AlertSuccess.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AutoCompleteTextBox.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoCompleteTextBox.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DateEditBox.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DateEditBox.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DynamicContainer.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DynamicContainer.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Editors\CurrencyBundle.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CurrencyBundle.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Editors\MultiColumnSelectList.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MultiColumnSelectList.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Editors\SelectList.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SelectList.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListViewCommands\JsViewCommand.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JsViewCommand.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListViewCommands\ListOfViewCommandUI.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListOfViewCommandUI.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListViewCommands\MenuHorizontal.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MenuHorizontal.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListViewCommands\PostViewCommand.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PostViewCommand.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListViewCommands\RedirectViewCommand.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RedirectViewCommand.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListViewCommands\ViewCommandUI.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ViewCommandUI.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListViewCommands\ViewCommandUIDefault.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ViewCommandUIDefault.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuItemWithActions.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MenuItemWithActions.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Paginator1.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Paginator.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProgressIndicator.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProgressIndicator.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Error.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Error.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_Layout.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Layout.cshtml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

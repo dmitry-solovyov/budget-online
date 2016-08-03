@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using System.Web.WebPages;
+using ASP;
 using BudgetOnline.UI.Models.Alerts;
 using BudgetOnline.Web.UI.Controls;
 
@@ -32,7 +33,7 @@ namespace System.Web.Mvc
             if (HttpContext.Current.Request.QueryString["infoMessage"] == "created")
             {
                 return new HtmlString(
-                    new BudgetOnline.UI.Views.AlertSuccess()
+                    new _Views_AlertSuccess_cshtml()
                         .Render(new AlertSuccessModel
                                 {
                                     Message = "Запись сохранена успешно (<a href='edit/" + HttpContext.Current.Request.QueryString["savedid"] + "'>ссылка</a>)",
