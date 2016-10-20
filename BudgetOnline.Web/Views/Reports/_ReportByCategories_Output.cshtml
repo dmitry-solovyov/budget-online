@@ -1,6 +1,6 @@
 ﻿@using BudgetOnline.Data.Manage.Types.Simple
 @using BudgetOnline.UI.Controls
-@model IEnumerable<TransactionTotal>
+@model IEnumerable<BudgetOnline.Data.Manage.Types.Simple.TransactionTotal>
 @{
     Layout = null;
     var totals = Model.GroupBy(o => new { o.CategoryId, o.CategoryName })

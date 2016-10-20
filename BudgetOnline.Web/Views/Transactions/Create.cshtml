@@ -1,5 +1,4 @@
-﻿@using BudgetOnline.UI.Models.Alerts
-@using BudgetOnline.Web.UI.Controls
+﻿@using BudgetOnline.Web.UI.Controls
 @model BudgetOnline.Web.ViewModels.TransactionEditViewModel
 @{
     ViewBag.Title = "Новая запись";
@@ -30,19 +29,18 @@
 </div>
 <div class="row body-container" id="@editorId">
     @(Html.BudgetOnlineWeb().Form(BudgetOnlineWebControls.FormTypes.Horizontal).ActionUrl(Url.Action("create"))
-        .Content(@<text>
-    @Html.ValidationSummary()
-    @Html.EditorForModel("~/Views/Shared/EditorTemplates/Object.cshtml")
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-9">
-            @Html.BudgetOnlineWeb().SubmitNormalButton(BudgetOnlineWebControls.ButtonCaptionTypes.Save).Build()
-            @Html.BudgetOnlineWeb().ButtonNormal(BudgetOnlineWebControls.ButtonCaptionTypes.Cancel).RedirectTo(Url.Action("list")).Build()
-            <span style="padding-left: 3em">@Html.EditorFor(o => o.IsCreateNewAfterSave)</span>
-        </div>
-    </div>
-    </text>)
-        .Build()
-        )
+          .Content(@<text>
+                       @Html.ValidationSummary()
+                       @Html.EditorForModel("~/Views/Shared/EditorTemplates/Object.cshtml")
+                       <div class="form-group">
+                           <div class="col-md-offset-2 col-md-9">
+                               @Html.BudgetOnlineWeb().SubmitNormalButton(BudgetOnlineWebControls.ButtonCaptionTypes.Save).Build()
+                               @Html.BudgetOnlineWeb().ButtonNormal(BudgetOnlineWebControls.ButtonCaptionTypes.Cancel).RedirectTo(Url.Action("list")).Build()
+                               <span style="padding-left: 3em">@Html.EditorFor(o => o.IsCreateNewAfterSave)</span>
+                           </div>
+                       </div>
+                    </text>)
+          .Build())
     <script type="text/javascript" src="@Url.Content("~/Scripts/Transactions/editor.js")"></script>
     <script type="text/javascript">
         $(document).ready(function () {

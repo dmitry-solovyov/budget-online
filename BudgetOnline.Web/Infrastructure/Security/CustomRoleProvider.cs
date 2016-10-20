@@ -3,7 +3,6 @@ using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
 using BudgetOnline.Common.Contracts;
-using BudgetOnline.Contracts;
 
 namespace BudgetOnline.Web.Infrastructure.Security
 {

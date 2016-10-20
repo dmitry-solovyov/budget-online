@@ -1,12 +1,12 @@
-﻿using System;
-using System.Web;
-using BudgetOnline.Contracts;
+﻿using System.Web;
+using System.Web.SessionState;
+using BudgetOnline.Common.Contracts;
 
 namespace BudgetOnline.Web.Infrastructure.Core
 {
 	public class SessionWrapper : ISessionWrapper
 	{
-		public bool IsAvailable { get { return HttpContext.Current.Session != null && HttpContext.Current.Session.Mode != System.Web.SessionState.SessionStateMode.Off; } }
+		public bool IsAvailable { get { return HttpContext.Current.Session != null && HttpContext.Current.Session.Mode != SessionStateMode.Off; } }
 
 		/// <summary>
 		/// Put object to session

@@ -63,7 +63,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetOnline.Api.Common", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetOnline.Data", "BudgetOnline.Data\BudgetOnline.Data.csproj", "{A3F549E4-4053-4D15-A268-BEBE3F32117D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetOnline.Web2", "BudgetOnline.Web2\BudgetOnline.Web2.csproj", "{4BCC50A7-6F05-4399-BE9E-2602548E0B1B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetOnline.Interfaces", "BudgetOnline.Interfaces\BudgetOnline.Interfaces.csproj", "{A5569B4F-067A-4288-8A19-E29DAF0F1EE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetOnline.Web.Security", "BudgetOnline.Web.Security\BudgetOnline.Web.Security.csproj", "{51894F26-2AC4-4553-9508-4AA1259B9684}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -153,10 +155,14 @@ Global
 		{A3F549E4-4053-4D15-A268-BEBE3F32117D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3F549E4-4053-4D15-A268-BEBE3F32117D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3F549E4-4053-4D15-A268-BEBE3F32117D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4BCC50A7-6F05-4399-BE9E-2602548E0B1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4BCC50A7-6F05-4399-BE9E-2602548E0B1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4BCC50A7-6F05-4399-BE9E-2602548E0B1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4BCC50A7-6F05-4399-BE9E-2602548E0B1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5569B4F-067A-4288-8A19-E29DAF0F1EE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5569B4F-067A-4288-8A19-E29DAF0F1EE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5569B4F-067A-4288-8A19-E29DAF0F1EE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5569B4F-067A-4288-8A19-E29DAF0F1EE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51894F26-2AC4-4553-9508-4AA1259B9684}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51894F26-2AC4-4553-9508-4AA1259B9684}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51894F26-2AC4-4553-9508-4AA1259B9684}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51894F26-2AC4-4553-9508-4AA1259B9684}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -186,7 +192,8 @@ Global
 		{CE866024-F965-46F7-A6B1-DC501099F357} = {99815922-7C18-4B0F-BA92-BC3B54607AA6}
 		{6F5DA867-E30F-4DA4-AA41-20310FC27139} = {99815922-7C18-4B0F-BA92-BC3B54607AA6}
 		{A3F549E4-4053-4D15-A268-BEBE3F32117D} = {B5CC84AA-5DBA-4FA2-9527-2D302739C7FA}
-		{4BCC50A7-6F05-4399-BE9E-2602548E0B1B} = {99815922-7C18-4B0F-BA92-BC3B54607AA6}
+		{A5569B4F-067A-4288-8A19-E29DAF0F1EE1} = {A9BAC2AC-9783-4B6D-9390-FDDC008FF0B3}
+		{51894F26-2AC4-4553-9508-4AA1259B9684} = {99815922-7C18-4B0F-BA92-BC3B54607AA6}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = BudgetOnline.v4.vsmdi

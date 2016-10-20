@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
+using AutoMapper;
 using BudgetOnline.BusinessLayer.Contracts;
 using BudgetOnline.Common.Contracts;
 using BudgetOnline.Common.Enums;
@@ -17,11 +18,11 @@ using BudgetOnline.UI.Models.Editors;
 using BudgetOnline.UI.Models.SelectItems;
 using BudgetOnline.UI.Models.ViewCommands;
 using BudgetOnline.Web.Infrastructure.Binders;
-using BudgetOnline.Web.Infrastructure.Core;
 using BudgetOnline.Web.Infrastructure.Extensions;
 using BudgetOnline.Web.Infrastructure.Helpers;
 using BudgetOnline.Web.Infrastructure.Security;
 using BudgetOnline.Web.ViewModels;
+using Fasterflect;
 
 namespace BudgetOnline.Web.Controllers
 {
@@ -295,7 +296,7 @@ namespace BudgetOnline.Web.Controllers
                                     Categories = search.CategoryId.HasValue && search.CategoryId.Value > 0 ? new[] { search.CategoryId.Value } : new int[0],
                                 };
 
-            var totalsSearchOptions = AutoMapper.Mapper.DynamicMap<TransactionSearchOptions, TransactionStatisticsSearchOptions>(searchOptions);
+            var totalsSearchOptions = Mapper.DynamicMap<TransactionSearchOptions, TransactionStatisticsSearchOptions>(searchOptions);
 
             var transactions = TransactionRepository.GetList(CurrentUser.SectionId, searchOptions).ToList();
             var transactionsTotal = TransactionStatisticsRepository.GetTotalsByCurrencies(CurrentUser.SectionId, totalsSearchOptions).ToList();
@@ -551,7 +552,7 @@ namespace BudgetOnline.Web.Controllers
             {
                 LogWriter.WarnFormat("Transaction recovery logic implemented for TransactionId={0}", linked.First.Id);
 
-                linked.Second = Fasterflect.CloneExtensions.DeepClone(linked.First);
+                linked.Second = CloneExtensions.DeepClone(linked.First);
                 linked.Second.Id = 0;
                 linked.Second.Sum = TransactionDataHelper.GetRealSumValue(linked.First.TransactionTypeId, linked.First.Sum);
             }

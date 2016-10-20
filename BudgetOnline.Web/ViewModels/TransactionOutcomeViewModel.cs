@@ -6,7 +6,6 @@ using BudgetOnline.Common.Enums;
 using BudgetOnline.UI.Attributes;
 using BudgetOnline.UI.Models;
 using BudgetOnline.UI.Models.Editors;
-using BudgetOnline.Web.UI.Controls.Attributes;
 using BudgetOnline.Web.UI.Validators;
 
 namespace BudgetOnline.Web.ViewModels

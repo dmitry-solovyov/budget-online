@@ -1,4 +1,5 @@
 ﻿@using System.Globalization
+@using BudgetOnline.UI.Controls.Buttons
 @using BudgetOnline.Web.UI.Controls
 @model BudgetOnline.Web.ViewModels.TransactionEditViewModel
 @{
@@ -48,22 +49,22 @@
 </div>
 <div class="row" id="@editorId">
     <div class="col-md-1">
-        @(BudgetOnline.UI.Controls.Buttons.ButtonBuilder.Get().Icon("glyphicon-share", "Отделить сумму").ClientClickAction("SeparateInstance").Build())
+        @ButtonBuilder.Get().Icon("glyphicon-share", "Отделить сумму").ClientClickAction("SeparateInstance").Build()
     </div>
     <div class="col-md-11">
         @(Html.BudgetOnlineWeb().Form(BudgetOnlineWebControls.FormTypes.Horizontal)
- .ActionUrl(Url.Action("edit"))
-                        .Content(@<text>
-        @Html.ValidationSummary()
-        @Html.EditorForModel("~/Views/Shared/EditorTemplates/Object.cshtml")
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-9">
-                @Html.BudgetOnlineWeb().PrimaryButton().Caption("Сохранить").Build()
-                @Html.BudgetOnlineWeb().ButtonNormal().Caption("Отмена").RedirectTo(Url.Action("list")).Build()
-            </div>
-        </div>
-        </text>)
-        .Build())
+              .ActionUrl(Url.Action("edit"))
+              .Content(@<text>
+                           @Html.ValidationSummary()
+                           @Html.EditorForModel("~/Views/Shared/EditorTemplates/Object.cshtml")
+                           <div class="form-group">
+                               <div class="col-md-offset-2 col-md-9">
+                                   @Html.BudgetOnlineWeb().PrimaryButton().Caption("Сохранить").Build()
+                                   @Html.BudgetOnlineWeb().ButtonNormal().Caption("Отмена").RedirectTo(Url.Action("list")).Build()
+                               </div>
+                           </div>
+                        </text>)
+              .Build())
         <script type="text/javascript" src="@Url.Content("~/Scripts/Transactions/editor.js")"></script>
         <script type="text/javascript">
             $(document).ready(function () {

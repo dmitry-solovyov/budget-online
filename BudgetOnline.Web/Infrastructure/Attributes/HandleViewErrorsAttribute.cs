@@ -1,7 +1,6 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using BudgetOnline.Common.Contracts;
-using BudgetOnline.Contracts;
 
 namespace BudgetOnline.Web.Infrastructure.Attributes
 {

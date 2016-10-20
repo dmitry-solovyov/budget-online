@@ -1,4 +1,4 @@
-﻿namespace BudgetOnline.Contracts
+﻿namespace BudgetOnline.Common.Contracts
 {
 	public interface ISessionWrapper
 	{

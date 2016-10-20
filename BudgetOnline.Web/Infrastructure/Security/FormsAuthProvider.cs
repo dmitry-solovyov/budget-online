@@ -1,5 +1,5 @@
 ﻿using System.Web.Security;
-using BudgetOnline.Contracts;
+using BudgetOnline.Common.Contracts;
 using BudgetOnline.Data.Manage.Contracts;
 
 namespace BudgetOnline.Web.Infrastructure.Security

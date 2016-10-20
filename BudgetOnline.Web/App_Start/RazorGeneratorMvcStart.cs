@@ -1,9 +1,11 @@
 using System.Web;
 using System.Web.Mvc;
 using System.Web.WebPages;
+using BudgetOnline.Web;
 using RazorGenerator.Mvc;
+using WebActivatorEx;
 
-[assembly: WebActivatorEx.PostApplicationStartMethod(typeof(BudgetOnline.Web.RazorGeneratorMvcStart), "Start")]
+[assembly: PostApplicationStartMethod(typeof(RazorGeneratorMvcStart), "Start")]
 
 namespace BudgetOnline.Web {
     public static class RazorGeneratorMvcStart {

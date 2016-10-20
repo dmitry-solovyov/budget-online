@@ -230,8 +230,8 @@
     <Compile Include="Infrastructure\Security\CurrentUserProvider.cs" />
     <Compile Include="Infrastructure\Security\CustomeMembershipProvider.cs" />
     <Compile Include="Infrastructure\Security\CustomRoleProvider.cs" />
-    <Compile Include="Infrastructure\Security\IAuthProvider.cs" />
     <Compile Include="Infrastructure\Security\FormsAuthProvider.cs" />
+    <Compile Include="Infrastructure\Security\IAuthProvider.cs" />
     <Compile Include="Infrastructure\Security\IMembershipHelper.cs" />
     <Compile Include="Infrastructure\Security\MembershipHelper.cs" />
     <Compile Include="Infrastructure\Security\RestrictRoleAttribute.cs" />
@@ -625,6 +625,10 @@
     <ProjectReference Include="..\BudgetOnline.Data.Manage\BudgetOnline.Data.Manage.csproj">
       <Project>{F192A0A1-3F2F-41FB-9E91-257D35D8C027}</Project>
       <Name>BudgetOnline.Data.Manage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BudgetOnline.Interfaces\BudgetOnline.Interfaces.csproj">
+      <Project>{A5569B4F-067A-4288-8A19-E29DAF0F1EE1}</Project>
+      <Name>BudgetOnline.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\BudgetOnline.Security\BudgetOnline.Security.csproj">
       <Project>{B3C32641-9628-44D7-AE78-446638646786}</Project>

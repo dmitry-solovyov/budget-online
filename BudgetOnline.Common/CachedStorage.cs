@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using BudgetOnline.Common.Contracts;
-using BudgetOnline.Contracts;
 
 namespace BudgetOnline.Common
 {

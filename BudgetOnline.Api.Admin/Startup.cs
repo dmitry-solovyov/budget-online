@@ -29,7 +29,7 @@ namespace BudgetOnline.Api.Admin
 
             GlobalConfiguration.Configuration.DependencyResolver = resolver;
 
-            WebApiConfig.Register(httpConfiguration);
+            GlobalConfiguration.Register(httpConfiguration);
 
             app.UseAutofacMiddleware(container);
             app.UseAutofacWebApi(httpConfiguration);

@@ -5,7 +5,6 @@ using System.Linq;
 using BudgetOnline.UI.Attributes;
 using BudgetOnline.UI.Models;
 using BudgetOnline.UI.Models.SelectItems;
-using BudgetOnline.Web.UI.Controls.Attributes;
 
 namespace BudgetOnline.Web.ViewModels
 {

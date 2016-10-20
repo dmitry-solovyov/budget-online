@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 using System.Linq;
 using System.Web.Mvc;
 using BudgetOnline.BusinessLayer.Contracts;
@@ -9,7 +8,6 @@ using BudgetOnline.Data.Manage;
 using BudgetOnline.Data.Manage.Contracts;
 using BudgetOnline.Web.Infrastructure.Helpers;
 using BudgetOnline.Web.Models;
-using BudgetOnline.Web.ViewModels;
 
 namespace BudgetOnline.Web.Controllers.Statistics
 {

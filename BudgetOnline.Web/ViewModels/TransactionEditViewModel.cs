@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Web.Mvc;
 using BudgetOnline.Common.Contracts;
 using BudgetOnline.Common.Enums;
 using BudgetOnline.UI.Attributes;
 using BudgetOnline.UI.Models;
 using BudgetOnline.UI.Models.Editors;
-using BudgetOnline.Web.Models;
 using BudgetOnline.Web.UI.Controls.Attributes;
 using BudgetOnline.Web.UI.Validators;
 

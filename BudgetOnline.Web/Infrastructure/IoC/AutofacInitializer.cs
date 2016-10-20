@@ -6,6 +6,7 @@ using BudgetOnline.BusinessLayer.Helpers;
 using BudgetOnline.Common;
 using BudgetOnline.Common.Logger;
 using BudgetOnline.Data.Manage.Repositories;
+using BudgetOnline.Web.Infrastructure.Binders;
 
 namespace BudgetOnline.Web.Infrastructure.IoC
 {
@@ -45,7 +46,7 @@ namespace BudgetOnline.Web.Infrastructure.IoC
 
         private static void RegisterInfrustructure(ContainerBuilder builder)
         {
-            builder.RegisterAssemblyTypes(typeof(Binders.CustomViewModelBinder).Assembly)
+            builder.RegisterAssemblyTypes(typeof(CustomViewModelBinder).Assembly)
                 .Where(t => !string.IsNullOrWhiteSpace(t.Namespace) && t.Namespace.StartsWith("BudgetOnline.Web.Infrastructure."))
                 .PropertiesAutowired()
                 .AsImplementedInterfaces()

@@ -2,17 +2,15 @@
 using System.Linq.Expressions;
 using System.Web.Mvc;
 using BudgetOnline.Common.Contracts;
-using BudgetOnline.Contracts;
 using BudgetOnline.Web.Infrastructure;
 using BudgetOnline.Web.Infrastructure.Attributes;
 using BudgetOnline.Web.Infrastructure.Filters;
 using BudgetOnline.Web.Infrastructure.Security;
 using BudgetOnline.Web.Models;
-using StackExchange.Profiling;
 
 namespace BudgetOnline.Web.Controllers
 {
-	[HandleViewErrorsAttribute]
+	[HandleViewErrors]
 	public class BaseController : Controller
 	{
 		public IAuthProvider AuthProvier { get; set; }

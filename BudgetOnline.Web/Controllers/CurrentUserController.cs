@@ -1,7 +1,4 @@
 ﻿using System.Web.Mvc;
-using System.Web.Security;
-using BudgetOnline.Web.Infrastructure.Security;
-using BudgetOnline.Web.Models;
 using BudgetOnline.Web.ViewModels;
 
 namespace BudgetOnline.Web.Controllers

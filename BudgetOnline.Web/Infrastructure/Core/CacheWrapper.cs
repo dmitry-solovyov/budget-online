@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Caching;
+using System.Web.SessionState;
 using BudgetOnline.Common.Contracts;
 
 namespace BudgetOnline.Web.Infrastructure.Core
@@ -32,7 +33,7 @@ namespace BudgetOnline.Web.Infrastructure.Core
 			{
 				return HttpContext.Current.Cache != null
 					&& HttpContext.Current.Session != null
-					&& HttpContext.Current.Session.Mode != System.Web.SessionState.SessionStateMode.Off;
+					&& HttpContext.Current.Session.Mode != SessionStateMode.Off;
 			}
 		}
 

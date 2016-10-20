@@ -8,32 +8,32 @@
 <div class="row">
     <div class="col-md-12">
         @(Html.BudgetOnlineWeb().Form(BudgetOnlineWebControls.FormTypes.Inline)
-        .Content(@<text>
-        <div class="row compact">
-            <div class="col-md-3">
-                <label>
-                    Рассчитать по дату</label></div>
-            <div class="col-md-3">
-                <label>
-                    Результаты в валюте</label></div>
-            <div class="col-md-6">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">@Html.EditorFor(m => m.FinalDate)</div>
-            <div class="col-md-3">@Html.EditorFor(m => m.TargetCurrency)</div>
-            <div class="col-md-6">@Html.BudgetOnlineWeb().PrimaryButton().Caption("Рассчитать").Build()</div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">@Html.EditorFor(m => m.UseActualTotals)</div>
-            <div class="col-md-3">
-            </div>
-            <div class="col-md-6">
-            </div>
-        </div>
-        </text>
-            )
-           .Build())
+              .Content(@<text>
+                           <div class="row compact">
+                               <div class="col-md-3">
+                                   <label>
+                                       Рассчитать по дату</label></div>
+                               <div class="col-md-3">
+                                   <label>
+                                       Результаты в валюте</label></div>
+                               <div class="col-md-6">
+                               </div>
+                           </div>
+                           <div class="row">
+                               <div class="col-md-3">@Html.EditorFor(m => m.FinalDate)</div>
+                               <div class="col-md-3">@Html.EditorFor(m => m.TargetCurrency)</div>
+                               <div class="col-md-6">@Html.BudgetOnlineWeb().PrimaryButton().Caption("Рассчитать").Build()</div>
+                           </div>
+                           <div class="row">
+                               <div class="col-md-3">@Html.EditorFor(m => m.UseActualTotals)</div>
+                               <div class="col-md-3">
+                               </div>
+                               <div class="col-md-6">
+                               </div>
+                           </div>
+                        </text>
+              )
+              .Build())
     </div>
 </div>
 <hr />

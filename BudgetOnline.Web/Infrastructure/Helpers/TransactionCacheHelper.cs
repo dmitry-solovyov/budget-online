@@ -1,6 +1,5 @@
 ﻿using System;
 using BudgetOnline.Common.Contracts;
-using BudgetOnline.Contracts;
 
 namespace BudgetOnline.Web.Infrastructure.Helpers
 {
