@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace BudgetOnline.UI.Controls
+namespace BudgetOnline.UI.Controls.Tables
 {
 	public class TableColumnOptions : Attribute
 	{

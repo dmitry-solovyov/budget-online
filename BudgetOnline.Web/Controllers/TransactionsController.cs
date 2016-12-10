@@ -283,6 +283,12 @@ namespace BudgetOnline.Web.Controllers
 
         #region Overrides
 
+        private readonly IMapper _mapper =
+            new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<TransactionSearchOptions, TransactionStatisticsSearchOptions>();
+            }).CreateMapper();
+
         public TransactionListViewModel GetModel(TransactionListSearchViewModel search)
         {
             var searchOptions = new TransactionSearchOptions
@@ -296,7 +302,7 @@ namespace BudgetOnline.Web.Controllers
                                     Categories = search.CategoryId.HasValue && search.CategoryId.Value > 0 ? new[] { search.CategoryId.Value } : new int[0],
                                 };
 
-            var totalsSearchOptions = Mapper.DynamicMap<TransactionSearchOptions, TransactionStatisticsSearchOptions>(searchOptions);
+            var totalsSearchOptions = _mapper.Map<TransactionSearchOptions, TransactionStatisticsSearchOptions>(searchOptions);
 
             var transactions = TransactionRepository.GetList(CurrentUser.SectionId, searchOptions).ToList();
             var transactionsTotal = TransactionStatisticsRepository.GetTotalsByCurrencies(CurrentUser.SectionId, totalsSearchOptions).ToList();

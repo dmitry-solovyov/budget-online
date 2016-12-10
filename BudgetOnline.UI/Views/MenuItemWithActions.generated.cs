@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASP
+namespace BudgetOnline.UI.Views
 {
     using System;
     using System.Collections.Generic;
@@ -27,33 +27,32 @@ namespace ASP
     using System.Web.UI;
     using System.Web.WebPages;
     
-    #line 1 "..\..\Views\MenuItemWithActions.cshtml"
+    #line 6 "..\..\Views\MenuItemWithActions.cshtml"
+    using BudgetOnline.UI.Helpers;
+    
+    #line default
+    #line hidden
+    
+    #line 7 "..\..\Views\MenuItemWithActions.cshtml"
     using BudgetOnline.UI.Models;
     
     #line default
     #line hidden
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
-    [System.Web.WebPages.PageVirtualPathAttribute("~/Views/MenuItemWithActions.cshtml")]
-    public partial class _Views_MenuItemWithActions_cshtml : System.Web.Mvc.WebViewPage<dynamic>
+    public class MenuItemWithActions : System.Web.WebPages.HelperPage
     {
-        
-        #line 3 "..\..\Views\MenuItemWithActions.cshtml"
-            
 
-        #line default
-        #line hidden
-
-#line 6 "..\..\Views\MenuItemWithActions.cshtml"
-public System.Web.WebPages.HelperResult Render(PaginationModel model)
+#line 9 "..\..\Views\MenuItemWithActions.cshtml"
+public static System.Web.WebPages.HelperResult Render(PaginationModel model)
 {
 #line default
 #line hidden
 return new System.Web.WebPages.HelperResult(__razor_helper_writer => {
 
-#line 7 "..\..\Views\MenuItemWithActions.cshtml"
+#line 10 "..\..\Views\MenuItemWithActions.cshtml"
  
-    var id = string.IsNullOrWhiteSpace(model.Name) ? Html.GetUniqId(10) : model.Name;
+    var id = string.IsNullOrWhiteSpace(model.Name) ? UIHelper.GenerateRandomCode(10) : model.Name;
 
 
 
@@ -106,28 +105,18 @@ WriteLiteralTo(__razor_helper_writer, " href=\"#\"");
 WriteLiteralTo(__razor_helper_writer, ">One more separated link</a></li>\r\n\t\t</ul>\r\n\t</li>\r\n");
 
 
-#line 22 "..\..\Views\MenuItemWithActions.cshtml"
+#line 25 "..\..\Views\MenuItemWithActions.cshtml"
 
 
 #line default
 #line hidden
 });
 
-#line 22 "..\..\Views\MenuItemWithActions.cshtml"
+#line 25 "..\..\Views\MenuItemWithActions.cshtml"
 }
 #line default
 #line hidden
 
-        public _Views_MenuItemWithActions_cshtml()
-        {
-        }
-        public override void Execute()
-        {
-WriteLiteral("\r\n");
-
-WriteLiteral("\r\n");
-
-        }
     }
 }
 #pragma warning restore 1591

@@ -1,17 +1,24 @@
-﻿@* Generator: MvcHelper *@
+﻿@*
+    Generator: MvcHelper
+    GeneratePrettyNames : true
+*@
+
 @using BudgetOnline.UI.Models.ViewCommands
-@functions {
-}
+@using BudgetOnline.UI.Views.ListViewCommands
+
 @helper Render(IEnumerable<ViewCommandUIModelHelper> commands)
+{
+    if (commands != null)
     {
-        if (commands == null || !commands.Any())
-        {
-        }
-        else
-        { 
-            foreach (var command in commands)
-            {
-    @_Views_ListViewCommands_ViewCommandUI_cshtml.Render(command.GetResult(), true)
-            }
-        }
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+
+                @foreach (var command in commands)
+                {
+                    @ViewCommandUI.Render(command.GetResult(), true)
+                }
+
+            </ul>
+        </div>
+    }
 }

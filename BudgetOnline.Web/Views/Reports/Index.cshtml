@@ -1,8 +1,10 @@
-﻿@model IEnumerable<BudgetOnline.Web.Models.StatisticsReports.IReport>
+﻿@using BudgetOnline.Web.Infrastructure.Controls
+
+@model IEnumerable<BudgetOnline.Web.Models.StatisticsReports.IReport>
+
 @{
     ViewBag.Title = "Статистика";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var editorId = Html.GetUniqId(10);
 }
 @Html.Label("ReportSelector", "Выберите отчет...")
 @Html.DropDownList("ReportSelector", Model.Select(o => new SelectListItem { Selected = false, Text = o.Name, Value = o.Code }), "")

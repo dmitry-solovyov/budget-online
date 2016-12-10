@@ -36,31 +36,14 @@ namespace ASP
         }
         public override void Execute()
         {
-WriteLiteral("<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <meta");
-
-WriteLiteral(" charset=\"utf-8\"");
-
-WriteLiteral(" />\r\n    <title>Бюджет On-Line :: ");
-
             
-            #line 5 "..\..\Views\Shared\_Layout.cshtml"
-                        Write(ViewBag.Title);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</title>\r\n</head>\r\n\r\n<body>\r\n");
-
-WriteLiteral("    ");
-
-            
-            #line 9 "..\..\Views\Shared\_Layout.cshtml"
+            #line 1 "..\..\Views\Shared\_Layout.cshtml"
 Write(RenderBody());
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n</body>\r\n</html>\r\n");
+WriteLiteral("\r\n");
 
         }
     }

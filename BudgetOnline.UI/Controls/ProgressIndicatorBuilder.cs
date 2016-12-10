@@ -1,6 +1,5 @@
 ﻿
 using System.Web;
-using ASP;
 using BudgetOnline.UI.Models;
 
 namespace BudgetOnline.UI.Controls
@@ -50,8 +49,9 @@ namespace BudgetOnline.UI.Controls
 
 		public virtual HtmlString Build()
 		{
-			var container = new _Views_ProgressIndicator_cshtml();
-			return new HtmlString(container.Render(Model).ToHtmlString());
+            return new HtmlString("");
+			//var container = new _Views_ProgressIndicator_cshtml();
+			//return new HtmlString(container.Render(Model).ToHtmlString());
 		}
 	}
 }

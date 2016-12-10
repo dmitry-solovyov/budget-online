@@ -28,24 +28,24 @@ namespace BudgetOnline.Web.Infrastructure.Security
 		}
 	}
 
-	[Flags]
-	public enum Roles
-	{
-		[RowId(1)]
-		SystemAdmin = 1,
-		[RowId(2)]
-		SectionAdmin = 2,
-		[RowId(3)]
-		FactAdd = 4,
-		[RowId(4)]
-		FactView = 8,
-		[RowId(5)]
-		PlanAdd = 16,
-		[RowId(6)]
-		PlanView = 32,
-		[RowId(7)]
-		Statistics = 64,
-	}
+    [Flags]
+    public enum Roles
+    {
+        [RowId(1)]
+        SystemAdmin = 1,
+        [RowId(2)]
+        SectionAdmin = 2,
+        [RowId(3)]
+        FactAdd = 4,
+        [RowId(4)]
+        FactView = 8,
+        [RowId(5)]
+        PlanAdd = 16,
+        [RowId(6)]
+        PlanView = 32,
+        [RowId(7)]
+        Statistics = 64,
+    }
 
 	public static class RolesExtensions
 	{

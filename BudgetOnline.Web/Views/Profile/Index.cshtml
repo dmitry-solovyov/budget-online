@@ -1,17 +1,19 @@
 ﻿@{
 	var route = ViewContext.RequestContext.RouteData;
 }
-@using BudgetOnline.Web.UI.Controls
+@using BudgetOnline.Web.Infrastructure.Controls
 @model BudgetOnline.Web.ViewModels.ProfileViewModel
 @{
 	ViewBag.Title = "Profile";
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+
 @(Html.BudgetOnlineWeb().Form(BudgetOnlineWebControls.FormTypes.Horizontal)
       .ActionUrl(Url.Action(route.GetRequiredString("action"), route.GetRequiredString("controller")))
       .Content(
           @<text>
-              @Html.EditorForModel()
+               @Html.EditorForModel()
            </text>)
       .Build())

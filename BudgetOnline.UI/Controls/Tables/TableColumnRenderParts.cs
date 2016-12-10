@@ -1,4 +1,4 @@
-namespace BudgetOnline.UI.Controls
+namespace BudgetOnline.UI.Controls.Tables
 {
 	public enum ColumnRenderParts
 	{

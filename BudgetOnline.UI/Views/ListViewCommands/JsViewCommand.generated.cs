@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASP
+namespace BudgetOnline.UI.Views.ListViewCommands
 {
     using System;
     using System.Collections.Generic;
@@ -19,12 +19,7 @@ namespace ASP
     using System.Text;
     using System.Web;
     using System.Web.Helpers;
-    
-    #line 2 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
     using System.Web.Mvc;
-    
-    #line default
-    #line hidden
     using System.Web.Mvc.Ajax;
     using System.Web.Mvc.Html;
     using System.Web.Routing;
@@ -32,37 +27,31 @@ namespace ASP
     using System.Web.UI;
     using System.Web.WebPages;
     
-    #line 3 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
+    #line 6 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
     using BudgetOnline.UI.Models.ViewCommands;
     
     #line default
     #line hidden
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
-    public class _Views_ListViewCommands_JsViewCommand_cshtml : System.Web.WebPages.HelperPage
+    public class JsViewCommand : System.Web.WebPages.HelperPage
     {
-        
-        #line 4 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
-            
 
-        #line default
-        #line hidden
-
-#line 6 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
+#line 8 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
 public static System.Web.WebPages.HelperResult Render(ViewCommandUIModel command)
     {
 #line default
 #line hidden
 return new System.Web.WebPages.HelperResult(__razor_helper_writer => {
 
-#line 7 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
+#line 9 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
      
         var jsCommand = command.Command as JsViewCommandModel;
         if (jsCommand == null)
         {
             throw new HttpException(404, "ViewCommand has invalid argument!");
         }
-        var uid = Guid.NewGuid().ToString().Replace("-", "");
+        var uid = Guid.NewGuid().ToString("N");
         
 
 
@@ -70,33 +59,33 @@ return new System.Web.WebPages.HelperResult(__razor_helper_writer => {
 #line hidden
 WriteLiteralTo(__razor_helper_writer, "    <a");
 
-WriteAttributeTo(__razor_helper_writer, "id", Tuple.Create(" id=\"", 440), Tuple.Create("\"", 453)
-, Tuple.Create(Tuple.Create("", 445), Tuple.Create("js", 445), true)
+WriteAttributeTo(__razor_helper_writer, "id", Tuple.Create(" id=\"", 428), Tuple.Create("\"", 441)
+, Tuple.Create(Tuple.Create("", 433), Tuple.Create("js", 433), true)
 
-#line 15 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
-, Tuple.Create(Tuple.Create("", 447), Tuple.Create<System.Object, System.Int32>(uid
+#line 17 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
+, Tuple.Create(Tuple.Create("", 435), Tuple.Create<System.Object, System.Int32>(uid
 
 #line default
 #line hidden
-, 447), false)
+, 435), false)
 );
 
 WriteLiteralTo(__razor_helper_writer, " href=\"#\"");
 
-WriteAttributeTo(__razor_helper_writer, "title", Tuple.Create(" title=\"", 463), Tuple.Create("\"", 485)
+WriteAttributeTo(__razor_helper_writer, "title", Tuple.Create(" title=\"", 451), Tuple.Create("\"", 473)
 
-#line 15 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
-, Tuple.Create(Tuple.Create("", 471), Tuple.Create<System.Object, System.Int32>(command.Title
+#line 17 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
+, Tuple.Create(Tuple.Create("", 459), Tuple.Create<System.Object, System.Int32>(command.Title
 
 #line default
 #line hidden
-, 471), false)
+, 459), false)
 );
 
 WriteLiteralTo(__razor_helper_writer, ">");
 
 
-#line 15 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
+#line 17 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
                        WriteTo(__razor_helper_writer, command.Text);
 
 
@@ -111,7 +100,7 @@ WriteLiteralTo(__razor_helper_writer, " type=\"text/javascript\"");
 WriteLiteralTo(__razor_helper_writer, ">\r\n        $().ready(function() {\r\n\t\t\t$(\'a#js");
 
 
-#line 18 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
+#line 20 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
 WriteTo(__razor_helper_writer, uid);
 
 
@@ -120,14 +109,14 @@ WriteTo(__razor_helper_writer, uid);
 WriteLiteralTo(__razor_helper_writer, "\').click(\r\n\t\t\t\tfunction(e) {\r\n\t\t\t\t\te.preventDefault();\r\n");
 
 
-#line 21 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
+#line 23 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
 					
 
 #line default
 #line hidden
 
-#line 21 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
-      if (!string.IsNullOrWhiteSpace(jsCommand.Data))
+#line 23 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
+                     if (!string.IsNullOrWhiteSpace(jsCommand.Data))
      {
 
 #line default
@@ -137,7 +126,7 @@ WriteLiteralTo(__razor_helper_writer, "\r\n");
 WriteLiteralTo(__razor_helper_writer, "                        ");
 
 
-#line 23 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
+#line 25 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
 WriteTo(__razor_helper_writer, jsCommand.ClientFunction);
 
 
@@ -146,7 +135,7 @@ WriteTo(__razor_helper_writer, jsCommand.ClientFunction);
 WriteLiteralTo(__razor_helper_writer, "(\"");
 
 
-#line 23 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
+#line 25 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
                        WriteTo(__razor_helper_writer, jsCommand.Data);
 
 
@@ -155,7 +144,7 @@ WriteLiteralTo(__razor_helper_writer, "(\"");
 WriteLiteralTo(__razor_helper_writer, "\");\r\n                    ");
 
 
-#line 24 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
+#line 26 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
                            }
      else
      {
@@ -167,7 +156,7 @@ WriteLiteralTo(__razor_helper_writer, "\r\n");
 WriteLiteralTo(__razor_helper_writer, "                        ");
 
 
-#line 27 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
+#line 29 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
 WriteTo(__razor_helper_writer, jsCommand.ClientFunction);
 
 
@@ -176,7 +165,7 @@ WriteTo(__razor_helper_writer, jsCommand.ClientFunction);
 WriteLiteralTo(__razor_helper_writer, "();\r\n                    ");
 
 
-#line 28 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
+#line 30 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
                            }
 
 
@@ -185,14 +174,14 @@ WriteLiteralTo(__razor_helper_writer, "();\r\n                    ");
 WriteLiteralTo(__razor_helper_writer, "\t\t\t\t}\r\n\t\t\t);\r\n\t\t});\r\n\t\t\r\n    </script>\r\n");
 
 
-#line 34 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
+#line 36 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
 
 
 #line default
 #line hidden
 });
 
-#line 34 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
+#line 36 "..\..\Views\ListViewCommands\JsViewCommand.cshtml"
 }
 #line default
 #line hidden

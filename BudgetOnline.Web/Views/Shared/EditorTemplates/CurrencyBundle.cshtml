@@ -1,5 +1,8 @@
-﻿@model BudgetOnline.UI.Models.Editors.CurrencyBundle
-@(new BudgetOnline.UI.Views.Editors.CurrencyBundle().Render(Model, ViewData.ModelMetadata.PropertyName, ViewData.ModelState[ViewData.ModelMetadata.PropertyName], ViewData.ModelMetadata.AdditionalValues))
+﻿@using BudgetOnline.UI.Views.Editors
+
+@model BudgetOnline.UI.Models.Editors.CurrencyBundle
+
+@CurrencyBundle.Render(Model, ViewData.ModelMetadata.PropertyName, ViewData.ModelState[ViewData.ModelMetadata.PropertyName], ViewData.ModelMetadata.AdditionalValues))
 
 @*@{
     var id = Html.GetUniqId(10);

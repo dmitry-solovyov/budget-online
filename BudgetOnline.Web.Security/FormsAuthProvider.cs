@@ -1,4 +1,9 @@
-﻿namespace BudgetOnline.Web.Security
+﻿using System.Web.Security;
+using BudgetOnline.Common.Contracts;
+using BudgetOnline.Data.Manage.Contracts;
+using BudgetOnline.Web.Infrastructure.Security;
+
+namespace BudgetOnline.Web.Security
 {
 	public class FormsAuthProvider : IAuthProvider
 	{

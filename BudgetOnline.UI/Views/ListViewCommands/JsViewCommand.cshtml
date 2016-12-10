@@ -1,8 +1,10 @@
-@* Generator: MvcHelper *@
-@using System.Web.Mvc
+@*
+    Generator: MvcHelper
+    GeneratePrettyNames : true
+*@
+
 @using BudgetOnline.UI.Models.ViewCommands
-@functions {
-}
+
 @helper Render(ViewCommandUIModel command)
     {
         var jsCommand = command.Command as JsViewCommandModel;
@@ -10,7 +12,7 @@
         {
             throw new HttpException(404, "ViewCommand has invalid argument!");
         }
-        var uid = Guid.NewGuid().ToString().Replace("-", "");
+        var uid = Guid.NewGuid().ToString("N");
         
     <a id="js@(uid)" href="#" title="@command.Title">@command.Text</a>
     <script type="text/javascript">

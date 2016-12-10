@@ -6,6 +6,7 @@ using BudgetOnline.Common.Contracts;
 using BudgetOnline.Common.Enums;
 using BudgetOnline.Data.Manage;
 using BudgetOnline.Data.Manage.Contracts;
+using BudgetOnline.UI.Extensions;
 using BudgetOnline.Web.Infrastructure.Helpers;
 using BudgetOnline.Web.Models;
 

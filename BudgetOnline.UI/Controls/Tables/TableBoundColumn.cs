@@ -1,11 +1,10 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Globalization;
 using System.Linq.Expressions;
-using System.Reflection;
 using System.Web;
-using System.ComponentModel;
 
-namespace BudgetOnline.UI.Controls
+namespace BudgetOnline.UI.Controls.Tables
 {
 	public class TableBoundColumnBuilder<T> : TableBaseColumnBuilder<T, TableBoundColumnBuilder<T>>
 		where T : class

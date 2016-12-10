@@ -235,9 +235,11 @@ namespace BudgetOnline.Data.Manage.Repositories
         {
             var localItems = PrepareQuery(sectionId, options).ToList();
 
+            Mapper.Initialize(cfg => cfg.CreateMap<TransactionJoined, Types.Simple.Transaction>());
+
             foreach (var item in localItems)
             {
-                var t = Mapper.DynamicMap<TransactionJoined, Types.Simple.Transaction>(item);
+                var t = Mapper.Map<TransactionJoined, Types.Simple.Transaction>(item);
 
                 t.AccountNameSource = item.AccountOutName;
                 t.AccountNameTarget = item.AccountInName;

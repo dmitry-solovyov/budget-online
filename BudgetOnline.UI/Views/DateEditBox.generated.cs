@@ -9,12 +9,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASP
+namespace BudgetOnline.UI.Views
 {
     using System;
     using System.Collections.Generic;
     
-    #line 1 "..\..\Views\DateEditBox.cshtml"
+    #line 6 "..\..\Views\DateEditBox.cshtml"
     using System.Globalization;
     
     #line default
@@ -33,33 +33,32 @@ namespace ASP
     using System.Web.UI;
     using System.Web.WebPages;
     
-    #line 2 "..\..\Views\DateEditBox.cshtml"
+    #line 7 "..\..\Views\DateEditBox.cshtml"
+    using BudgetOnline.UI.Helpers;
+    
+    #line default
+    #line hidden
+    
+    #line 8 "..\..\Views\DateEditBox.cshtml"
     using BudgetOnline.UI.Models;
     
     #line default
     #line hidden
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
-    [System.Web.WebPages.PageVirtualPathAttribute("~/Views/DateEditBox.cshtml")]
-    public partial class _Views_DateEditBox_cshtml : System.Web.Mvc.WebViewPage<dynamic>
+    public class DateEditBox : System.Web.WebPages.HelperPage
     {
-        
-        #line 4 "..\..\Views\DateEditBox.cshtml"
-            
 
-        #line default
-        #line hidden
-
-#line 6 "..\..\Views\DateEditBox.cshtml"
-public System.Web.WebPages.HelperResult Render(DateEditModel model) 
+#line 10 "..\..\Views\DateEditBox.cshtml"
+public static System.Web.WebPages.HelperResult Render(DateEditModel model) 
 {
 #line default
 #line hidden
 return new System.Web.WebPages.HelperResult(__razor_helper_writer => {
 
-#line 7 "..\..\Views\DateEditBox.cshtml"
+#line 11 "..\..\Views\DateEditBox.cshtml"
  
-    var id = string.IsNullOrWhiteSpace(model.Name) ? Html.GetUniqId(10) : model.Name;
+    var id = string.IsNullOrWhiteSpace(model.Name) ? UIHelper.GenerateRandomCode(10) : model.Name;
     var value = model.Date.HasValue ? model.Date.Value.ToLocalTime().ToShortDateString() : string.Empty;
     
 
@@ -68,39 +67,39 @@ return new System.Web.WebPages.HelperResult(__razor_helper_writer => {
 #line hidden
 WriteLiteralTo(__razor_helper_writer, "    <div");
 
-WriteAttributeTo(__razor_helper_writer, "class", Tuple.Create(" class=\"", 353), Tuple.Create("\"", 469)
-, Tuple.Create(Tuple.Create("", 361), Tuple.Create("input-group", 361), true)
+WriteAttributeTo(__razor_helper_writer, "class", Tuple.Create(" class=\"", 423), Tuple.Create("\"", 539)
+, Tuple.Create(Tuple.Create("", 431), Tuple.Create("input-group", 431), true)
 
-#line 11 "..\..\Views\DateEditBox.cshtml"
-, Tuple.Create(Tuple.Create(" ", 372), Tuple.Create<System.Object, System.Int32>(model.Span > 0 ? "col-md-" + model.Span.ToString(CultureInfo.InvariantCulture) : string.Empty
+#line 15 "..\..\Views\DateEditBox.cshtml"
+, Tuple.Create(Tuple.Create(" ", 442), Tuple.Create<System.Object, System.Int32>(model.Span > 0 ? "col-md-" + model.Span.ToString(CultureInfo.InvariantCulture) : string.Empty
 
 #line default
 #line hidden
-, 373), false)
+, 443), false)
 );
 
 WriteLiteralTo(__razor_helper_writer, "> \r\n        <input");
 
 WriteLiteralTo(__razor_helper_writer, " type=\"text\"");
 
-WriteAttributeTo(__razor_helper_writer, "name", Tuple.Create(" name=\"", 500), Tuple.Create("\"", 510)
+WriteAttributeTo(__razor_helper_writer, "name", Tuple.Create(" name=\"", 570), Tuple.Create("\"", 580)
 
-#line 12 "..\..\Views\DateEditBox.cshtml"
-, Tuple.Create(Tuple.Create("", 507), Tuple.Create<System.Object, System.Int32>(id
+#line 16 "..\..\Views\DateEditBox.cshtml"
+, Tuple.Create(Tuple.Create("", 577), Tuple.Create<System.Object, System.Int32>(id
 
 #line default
 #line hidden
-, 507), false)
+, 577), false)
 );
 
-WriteAttributeTo(__razor_helper_writer, "value", Tuple.Create(" value=\"", 511), Tuple.Create("\"", 525)
+WriteAttributeTo(__razor_helper_writer, "value", Tuple.Create(" value=\"", 581), Tuple.Create("\"", 595)
 
-#line 12 "..\..\Views\DateEditBox.cshtml"
-, Tuple.Create(Tuple.Create("", 519), Tuple.Create<System.Object, System.Int32>(value
+#line 16 "..\..\Views\DateEditBox.cshtml"
+, Tuple.Create(Tuple.Create("", 589), Tuple.Create<System.Object, System.Int32>(value
 
 #line default
 #line hidden
-, 519), false)
+, 589), false)
 );
 
 WriteLiteralTo(__razor_helper_writer, " class=\"date-picker form-control\"");
@@ -118,26 +117,18 @@ WriteLiteralTo(__razor_helper_writer, " class=\"glyphicon glyphicon-calendar\"")
 WriteLiteralTo(__razor_helper_writer, "></i></span>\r\n    </div>\r\n");
 
 
-#line 15 "..\..\Views\DateEditBox.cshtml"
+#line 19 "..\..\Views\DateEditBox.cshtml"
 
 
 #line default
 #line hidden
 });
 
-#line 15 "..\..\Views\DateEditBox.cshtml"
+#line 19 "..\..\Views\DateEditBox.cshtml"
 }
 #line default
 #line hidden
 
-        public _Views_DateEditBox_cshtml()
-        {
-        }
-        public override void Execute()
-        {
-WriteLiteral("\r\n");
-
-        }
     }
 }
 #pragma warning restore 1591

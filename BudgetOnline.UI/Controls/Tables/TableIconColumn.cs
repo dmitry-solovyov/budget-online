@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web;
 
-namespace BudgetOnline.UI.Controls
+namespace BudgetOnline.UI.Controls.Tables
 {
 	public class TableIconColumnBuilder<T> : TableBaseColumnBuilder<T, TableIconColumnBuilder<T>>
 		where T : class

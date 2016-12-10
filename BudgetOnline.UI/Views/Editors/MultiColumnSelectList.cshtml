@@ -1,13 +1,13 @@
-﻿@using BudgetOnline.UI.Models.SelectItems
-@functions {
-    int GetRowsCount(int itemsCount, int columns)
-    {
-        return Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(itemsCount) / columns));
-    }
-}
+﻿@*
+    Generator: MvcHelper
+    GeneratePrettyNames : true
+*@
+
+@using BudgetOnline.UI.Models.SelectItems
+
 @helper Render(SelectItemsModel model, string propertyName, string cssClass, bool multiSelect, int columns)
     {
-    int rows = GetRowsCount(model.Items.Count(), columns);
+    var rows = Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(model.Items.Count()) / columns));
     for (int r = 0; r < rows; r++)
     {
         <div class="row visible-sm visible-xs" style="height: 10px"></div>
@@ -30,12 +30,4 @@
         }
     </div>
     }
-    
-    
-    @*<select class="selectpicker" multiple data-selected-text-format="count>3">
-        @foreach (var item in model.Items)
-        {
-            <option value="@item.Value" title="@item.Tooltip">@item.Text</option>
-        }
-    </select>*@
 }

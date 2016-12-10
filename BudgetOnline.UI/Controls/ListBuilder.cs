@@ -42,9 +42,9 @@ namespace BudgetOnline.UI.Controls
 		}
 
 		private IEnumerable<T> _rows;
-		public ListBuilder<T> Rows(IEnumerable<T> rows)
+		public ListBuilder<T> Rows(IEnumerable<T> items)
 		{
-			_rows = rows;
+            _rows = items;
 			return this;
 		}
 

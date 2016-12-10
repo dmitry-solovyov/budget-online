@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 
-namespace BudgetOnline.Web.UI.Controls.Attributes
+namespace BudgetOnline.UI.Attributes
 {
 	public class ControlRowIdAttribute : Attribute, IMetadataAware
 	{

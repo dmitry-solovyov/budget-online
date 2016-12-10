@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASP
+namespace BudgetOnline.UI.Views
 {
     using System;
     using System.Collections.Generic;
@@ -27,154 +27,129 @@ namespace ASP
     using System.Web.UI;
     using System.Web.WebPages;
     
-    #line 1 "..\..\Views\ProgressIndicator.cshtml"
+    #line 6 "..\..\Views\ProgressIndicator.cshtml"
+    using BudgetOnline.UI.Helpers;
+    
+    #line default
+    #line hidden
+    
+    #line 7 "..\..\Views\ProgressIndicator.cshtml"
     using BudgetOnline.UI.Models;
     
     #line default
     #line hidden
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
-    [System.Web.WebPages.PageVirtualPathAttribute("~/Views/ProgressIndicator.cshtml")]
-    public partial class _Views_ProgressIndicator_cshtml : System.Web.Mvc.WebViewPage<dynamic>
+    public class ProgressIndicator : System.Web.WebPages.HelperPage
     {
-        
-        #line 3 "..\..\Views\ProgressIndicator.cshtml"
-            
 
-        #line default
-        #line hidden
-
-#line 5 "..\..\Views\ProgressIndicator.cshtml"
-public System.Web.WebPages.HelperResult Render(ProgressIndicatorModel model)
-    {
+#line 9 "..\..\Views\ProgressIndicator.cshtml"
+public static System.Web.WebPages.HelperResult Render(ProgressIndicatorModel model)
+{
 #line default
 #line hidden
 return new System.Web.WebPages.HelperResult(__razor_helper_writer => {
 
-#line 6 "..\..\Views\ProgressIndicator.cshtml"
-     
-        var id = string.IsNullOrWhiteSpace(model.Name) ? Html.GetUniqId(10) : model.Name;
-    
+#line 10 "..\..\Views\ProgressIndicator.cshtml"
+ 
+    var id = string.IsNullOrWhiteSpace(model.Name) ? UIHelper.GenerateRandomCode(10) : model.Name;
+
 
 
 #line default
 #line hidden
 WriteLiteralTo(__razor_helper_writer, "    <div");
 
-WriteAttributeTo(__razor_helper_writer, "id", Tuple.Create(" id=\"", 234), Tuple.Create("\"", 242)
+WriteAttributeTo(__razor_helper_writer, "id", Tuple.Create(" id=\"", 292), Tuple.Create("\"", 300)
 
-#line 9 "..\..\Views\ProgressIndicator.cshtml"
-, Tuple.Create(Tuple.Create("", 239), Tuple.Create<System.Object, System.Int32>(id
+#line 13 "..\..\Views\ProgressIndicator.cshtml"
+, Tuple.Create(Tuple.Create("", 297), Tuple.Create<System.Object, System.Int32>(id
 
 #line default
 #line hidden
-, 239), false)
+, 297), false)
 );
 
 WriteLiteralTo(__razor_helper_writer, " style=\"width: 100px; height: 100px; position: absolute; z-index: 998;\"");
 
-WriteAttributeTo(__razor_helper_writer, "class", Tuple.Create(" class=\"", 314), Tuple.Create("\"", 343)
-, Tuple.Create(Tuple.Create("", 322), Tuple.Create("hidden", 322), true)
+WriteAttributeTo(__razor_helper_writer, "class", Tuple.Create(" class=\"", 372), Tuple.Create("\"", 401)
+, Tuple.Create(Tuple.Create("", 380), Tuple.Create("hidden", 380), true)
 
-#line 9 "..\..\Views\ProgressIndicator.cshtml"
-                        , Tuple.Create(Tuple.Create(" ", 328), Tuple.Create<System.Object, System.Int32>(model.Class
+#line 13 "..\..\Views\ProgressIndicator.cshtml"
+                        , Tuple.Create(Tuple.Create(" ", 386), Tuple.Create<System.Object, System.Int32>(model.Class
 
 #line default
 #line hidden
-, 329), false)
+, 387), false)
 );
 
 WriteLiteralTo(__razor_helper_writer, ">\r\n        <div");
 
-WriteAttributeTo(__razor_helper_writer, "style", Tuple.Create(" style=\"", 359), Tuple.Create("\"", 635)
-, Tuple.Create(Tuple.Create("", 367), Tuple.Create("background-image:", 367), true)
-, Tuple.Create(Tuple.Create(" ", 384), Tuple.Create("url(", 385), true)
+WriteAttributeTo(__razor_helper_writer, "style", Tuple.Create(" style=\"", 417), Tuple.Create("\"", 612)
+, Tuple.Create(Tuple.Create("", 425), Tuple.Create("background-image:", 425), true)
+, Tuple.Create(Tuple.Create(" ", 442), Tuple.Create("url(", 443), true)
 
-#line 10 "..\..\Views\ProgressIndicator.cshtml"
-, Tuple.Create(Tuple.Create("", 389), Tuple.Create<System.Object, System.Int32>(model.IndicatorUrl
+#line 14 "..\..\Views\ProgressIndicator.cshtml"
+, Tuple.Create(Tuple.Create("", 447), Tuple.Create<System.Object, System.Int32>(model.IndicatorUrl
 
 #line default
 #line hidden
-, 389), false)
-, Tuple.Create(Tuple.Create("", 410), Tuple.Create(");background-position:", 410), true)
-, Tuple.Create(Tuple.Create(" ", 432), Tuple.Create("center", 433), true)
-, Tuple.Create(Tuple.Create(" ", 439), Tuple.Create("center;", 440), true)
-, Tuple.Create(Tuple.Create(" ", 447), Tuple.Create("background-repeat:", 448), true)
-, Tuple.Create(Tuple.Create(" ", 466), Tuple.Create("no-repeat;", 467), true)
-, Tuple.Create(Tuple.Create(" ", 477), Tuple.Create("position:", 478), true)
-, Tuple.Create(Tuple.Create(" ", 487), Tuple.Create("absolute;", 488), true)
-, Tuple.Create(Tuple.Create(" ", 497), Tuple.Create("left:", 498), true)
-, Tuple.Create(Tuple.Create(" ", 503), Tuple.Create("0;", 504), true)
-, Tuple.Create(Tuple.Create(" ", 506), Tuple.Create("top:", 507), true)
-, Tuple.Create(Tuple.Create(" ", 511), Tuple.Create("0;", 512), true)
-, Tuple.Create(Tuple.Create(" ", 514), Tuple.Create("width:", 515), true)
-, Tuple.Create(Tuple.Create(" ", 521), Tuple.Create("100%;z-index:", 522), true)
-, Tuple.Create(Tuple.Create(" ", 535), Tuple.Create("999;", 536), true)
-, Tuple.Create(Tuple.Create(" \r\n                                                                              " +
-"\t", 540), Tuple.Create("height:", 622), true)
-, Tuple.Create(Tuple.Create(" ", 629), Tuple.Create("100%;", 630), true)
+, 447), false)
+, Tuple.Create(Tuple.Create("", 468), Tuple.Create(");background-position:", 468), true)
+, Tuple.Create(Tuple.Create(" ", 490), Tuple.Create("center", 491), true)
+, Tuple.Create(Tuple.Create(" ", 497), Tuple.Create("center;", 498), true)
+, Tuple.Create(Tuple.Create(" ", 505), Tuple.Create("background-repeat:", 506), true)
+, Tuple.Create(Tuple.Create(" ", 524), Tuple.Create("no-repeat;", 525), true)
+, Tuple.Create(Tuple.Create(" ", 535), Tuple.Create("position:", 536), true)
+, Tuple.Create(Tuple.Create(" ", 545), Tuple.Create("absolute;", 546), true)
+, Tuple.Create(Tuple.Create(" ", 555), Tuple.Create("left:", 556), true)
+, Tuple.Create(Tuple.Create(" ", 561), Tuple.Create("0;", 562), true)
+, Tuple.Create(Tuple.Create(" ", 564), Tuple.Create("top:", 565), true)
+, Tuple.Create(Tuple.Create(" ", 569), Tuple.Create("0;", 570), true)
+, Tuple.Create(Tuple.Create(" ", 572), Tuple.Create("width:", 573), true)
+, Tuple.Create(Tuple.Create(" ", 579), Tuple.Create("100%;z-index:", 580), true)
+, Tuple.Create(Tuple.Create(" ", 593), Tuple.Create("999;", 594), true)
+, Tuple.Create(Tuple.Create(" ", 598), Tuple.Create("height:", 599), true)
+, Tuple.Create(Tuple.Create(" ", 606), Tuple.Create("100%;", 607), true)
 );
 
 WriteLiteralTo(__razor_helper_writer, ">\r\n\t\t</div>\r\n        <div");
 
-WriteAttributeTo(__razor_helper_writer, "style", Tuple.Create(" style=\"", 661), Tuple.Create("\"", 805)
-, Tuple.Create(Tuple.Create("", 669), Tuple.Create("background-image:", 669), true)
-, Tuple.Create(Tuple.Create(" ", 686), Tuple.Create("url(", 687), true)
+WriteAttributeTo(__razor_helper_writer, "style", Tuple.Create(" style=\"", 638), Tuple.Create("\"", 746)
+, Tuple.Create(Tuple.Create("", 646), Tuple.Create("background-image:", 646), true)
+, Tuple.Create(Tuple.Create(" ", 663), Tuple.Create("url(", 664), true)
 
-#line 13 "..\..\Views\ProgressIndicator.cshtml"
-, Tuple.Create(Tuple.Create("", 691), Tuple.Create<System.Object, System.Int32>(model.BackgroundUrl
+#line 16 "..\..\Views\ProgressIndicator.cshtml"
+, Tuple.Create(Tuple.Create("", 668), Tuple.Create<System.Object, System.Int32>(model.BackgroundUrl
 
 #line default
 #line hidden
-, 691), false)
-, Tuple.Create(Tuple.Create("", 713), Tuple.Create(");", 713), true)
-, Tuple.Create(Tuple.Create(" ", 715), Tuple.Create("opacity:", 716), true)
-, Tuple.Create(Tuple.Create(" ", 724), Tuple.Create(".75;", 725), true)
-, Tuple.Create(Tuple.Create(" ", 729), Tuple.Create("width:", 730), true)
-, Tuple.Create(Tuple.Create(" ", 736), Tuple.Create("100%;z-index:", 737), true)
-, Tuple.Create(Tuple.Create(" ", 750), Tuple.Create("998;", 751), true)
-, Tuple.Create(Tuple.Create(" \r\n \t              \t                \t", 755), Tuple.Create("height:", 792), true)
-, Tuple.Create(Tuple.Create(" ", 799), Tuple.Create("100%;", 800), true)
+, 668), false)
+, Tuple.Create(Tuple.Create("", 690), Tuple.Create(");", 690), true)
+, Tuple.Create(Tuple.Create(" ", 692), Tuple.Create("opacity:", 693), true)
+, Tuple.Create(Tuple.Create(" ", 701), Tuple.Create(".75;", 702), true)
+, Tuple.Create(Tuple.Create(" ", 706), Tuple.Create("width:", 707), true)
+, Tuple.Create(Tuple.Create(" ", 713), Tuple.Create("100%;z-index:", 714), true)
+, Tuple.Create(Tuple.Create(" ", 727), Tuple.Create("998;", 728), true)
+, Tuple.Create(Tuple.Create(" ", 732), Tuple.Create("height:", 733), true)
+, Tuple.Create(Tuple.Create(" ", 740), Tuple.Create("100%;", 741), true)
 );
 
 WriteLiteralTo(__razor_helper_writer, ">\r\n        </div>\r\n    </div>\r\n");
 
 
-#line 17 "..\..\Views\ProgressIndicator.cshtml"
-            
-
-
-#line default
-#line hidden
-WriteLiteralTo(__razor_helper_writer, "    <script");
-
-WriteLiteralTo(__razor_helper_writer, " type=\"text/javascript\"");
-
-WriteLiteralTo(__razor_helper_writer, " language=\"javascript\"");
-
-WriteLiteralTo(__razor_helper_writer, "><!--\r\n        //\t\t$(function () {\r\n        //\t\t});\r\n\t\t//-->\r\n    </script>\r\n");
-
-
-#line 23 "..\..\Views\ProgressIndicator.cshtml"
+#line 19 "..\..\Views\ProgressIndicator.cshtml"
 
 
 #line default
 #line hidden
 });
 
-#line 23 "..\..\Views\ProgressIndicator.cshtml"
+#line 19 "..\..\Views\ProgressIndicator.cshtml"
 }
 #line default
 #line hidden
 
-        public _Views_ProgressIndicator_cshtml()
-        {
-        }
-        public override void Execute()
-        {
-WriteLiteral("\r\n");
-
-        }
     }
 }
 #pragma warning restore 1591

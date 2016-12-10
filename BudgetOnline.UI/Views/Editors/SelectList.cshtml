@@ -1,42 +1,36 @@
-﻿@using BudgetOnline.UI.Models.SelectItems
-@functions {
+﻿@*
+    Generator: MvcHelper
+    GeneratePrettyNames : true
+*@
 
-}
+@using BudgetOnline.UI.Models.SelectItems
+
 @helper Render(SelectItemsModel model, string propertyName, string cssClass, bool multiSelect)
-    {
+{
     var id = (propertyName ?? string.Empty).Replace(".", "_");
-        if (model == null)
-        {
-    <select class="@cssClass">
-    </select>
-        }
-        else if (multiSelect)
-        {
-            
-    
-    foreach (var item in model.Items)
+    if (model == null)
     {
-        //<option data-icon="@item.Icon" value="@item.Value" @(new HtmlString(item.Selected ? "selected='selected'" : string.Empty))>@item.Text</option>
-    <div class="">
-        <label class="checkbox form-inline">
-            <input type="checkbox" id="@item.Value" value="@item.Value" @(new HtmlString(item.Selected ? "checked='checked'" : string.Empty))/>
-            @item.Text
-        </label>
-    </div>
+        <select class="@cssClass"></select>
     }
-    
-            
-@*@Html.DropDownList("", Model, new { @class = cssClass })*@
-        }
-        else
+    else if (multiSelect)
+    {
+        foreach (var item in model.Items)
         {
-    <select class="form-control @cssClass" id="@id" name="@propertyName" @(new HtmlString(multiSelect ? "multiple='multiple'" : string.Empty))>
-        @foreach (var item in model.Items)
-        {
-            <option data-icon="@item.Icon" value="@item.Value" @(new HtmlString(item.Selected ? "selected='selected'" : string.Empty))>@item.Text</option>
+            <div class="">
+                <label class="checkbox form-inline">
+                    <input type="checkbox" id="@item.Value" value="@item.Value" @(new HtmlString(item.Selected ? "checked='checked'" : string.Empty)) />
+                    @item.Text
+                </label>
+            </div>
         }
-    </select>
-            
-@*@Html.DropDownList("", Model, new { @class = cssClass })*@
-        }
+    }
+    else
+    {
+        <select class="form-control @cssClass" id="@id" name="@propertyName" @(new HtmlString(multiSelect ? "multiple='multiple'" : string.Empty))>
+            @foreach (var item in model.Items)
+            {
+                <option data-icon="@item.Icon" value="@item.Value" @(new HtmlString(item.Selected ? "selected='selected'" : string.Empty))>@item.Text</option>
+            }
+        </select>
+    }
 }

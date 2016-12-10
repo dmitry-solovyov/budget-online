@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using BudgetOnline.UI.Attributes;
-using BudgetOnline.Web.UI.Controls.Attributes;
+using BudgetOnline.Web.Infrastructure.Controls.Attributes;
 
 namespace BudgetOnline.Web.Areas.Admin.Models
 {

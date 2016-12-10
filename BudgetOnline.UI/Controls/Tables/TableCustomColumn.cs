@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 using System.Web;
 using System.Web.WebPages;
 
-namespace BudgetOnline.UI.Controls
+namespace BudgetOnline.UI.Controls.Tables
 {
 	public class TableCustomColumnBuilder<T> : TableBaseColumnBuilder<T, TableCustomColumnBuilder<T>>
 		where T : class

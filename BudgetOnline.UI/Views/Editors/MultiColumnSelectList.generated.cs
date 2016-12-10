@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASP
+namespace BudgetOnline.UI.Views.Editors
 {
     using System;
     using System.Collections.Generic;
@@ -27,29 +27,18 @@ namespace ASP
     using System.Web.UI;
     using System.Web.WebPages;
     
-    #line 1 "..\..\Views\Editors\MultiColumnSelectList.cshtml"
+    #line 6 "..\..\Views\Editors\MultiColumnSelectList.cshtml"
     using BudgetOnline.UI.Models.SelectItems;
     
     #line default
     #line hidden
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
-    [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Editors/MultiColumnSelectList.cshtml")]
-    public partial class _Views_Editors_MultiColumnSelectList_cshtml : System.Web.Mvc.WebViewPage<dynamic>
+    public class MultiColumnSelectList : System.Web.WebPages.HelperPage
     {
-        
-        #line 2 "..\..\Views\Editors\MultiColumnSelectList.cshtml"
-            
-    int GetRowsCount(int itemsCount, int columns)
-    {
-        return Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(itemsCount) / columns));
-    }
-
-        #line default
-        #line hidden
 
 #line 8 "..\..\Views\Editors\MultiColumnSelectList.cshtml"
-public System.Web.WebPages.HelperResult Render(SelectItemsModel model, string propertyName, string cssClass, bool multiSelect, int columns)
+public static System.Web.WebPages.HelperResult Render(SelectItemsModel model, string propertyName, string cssClass, bool multiSelect, int columns)
     {
 #line default
 #line hidden
@@ -57,7 +46,7 @@ return new System.Web.WebPages.HelperResult(__razor_helper_writer => {
 
 #line 9 "..\..\Views\Editors\MultiColumnSelectList.cshtml"
      
-    int rows = GetRowsCount(model.Items.Count(), columns);
+    var rows = Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(model.Items.Count()) / columns));
     for (int r = 0; r < rows; r++)
     {
 
@@ -99,17 +88,17 @@ WriteLiteralTo(__razor_helper_writer, ">\r\n");
 #line hidden
 WriteLiteralTo(__razor_helper_writer, "            <div");
 
-WriteAttributeTo(__razor_helper_writer, "class", Tuple.Create(" class=\"", 774), Tuple.Create("\"", 854)
-, Tuple.Create(Tuple.Create("", 782), Tuple.Create("col-sm-6", 782), true)
-, Tuple.Create(Tuple.Create(" ", 790), Tuple.Create("col-xs-8", 791), true)
-, Tuple.Create(Tuple.Create(" ", 799), Tuple.Create("col-md-", 800), true)
+WriteAttributeTo(__razor_helper_writer, "class", Tuple.Create(" class=\"", 711), Tuple.Create("\"", 791)
+, Tuple.Create(Tuple.Create("", 719), Tuple.Create("col-sm-6", 719), true)
+, Tuple.Create(Tuple.Create(" ", 727), Tuple.Create("col-xs-8", 728), true)
+, Tuple.Create(Tuple.Create(" ", 736), Tuple.Create("col-md-", 737), true)
 
 #line 22 "..\..\Views\Editors\MultiColumnSelectList.cshtml"
-, Tuple.Create(Tuple.Create("", 807), Tuple.Create<System.Object, System.Int32>(Convert.ToInt32(Math.Ceiling(12m / columns))
+, Tuple.Create(Tuple.Create("", 744), Tuple.Create<System.Object, System.Int32>(Convert.ToInt32(Math.Ceiling(12m / columns))
 
 #line default
 #line hidden
-, 807), false)
+, 744), false)
 );
 
 WriteLiteralTo(__razor_helper_writer, ">\r\n                <label");
@@ -120,43 +109,43 @@ WriteLiteralTo(__razor_helper_writer, ">\r\n                    <input");
 
 WriteLiteralTo(__razor_helper_writer, " type=\"checkbox\"");
 
-WriteAttributeTo(__razor_helper_writer, "id", Tuple.Create(" id=\"", 949), Tuple.Create("\"", 965)
+WriteAttributeTo(__razor_helper_writer, "id", Tuple.Create(" id=\"", 886), Tuple.Create("\"", 902)
 
 #line 24 "..\..\Views\Editors\MultiColumnSelectList.cshtml"
-, Tuple.Create(Tuple.Create("", 954), Tuple.Create<System.Object, System.Int32>(item.Value
+, Tuple.Create(Tuple.Create("", 891), Tuple.Create<System.Object, System.Int32>(item.Value
 
 #line default
 #line hidden
-, 954), false)
+, 891), false)
 );
 
-WriteAttributeTo(__razor_helper_writer, "name", Tuple.Create(" name=\"", 966), Tuple.Create("\"", 1003)
+WriteAttributeTo(__razor_helper_writer, "name", Tuple.Create(" name=\"", 903), Tuple.Create("\"", 940)
 
 #line 24 "..\..\Views\Editors\MultiColumnSelectList.cshtml"
-, Tuple.Create(Tuple.Create("", 973), Tuple.Create<System.Object, System.Int32>(propertyName
+, Tuple.Create(Tuple.Create("", 910), Tuple.Create<System.Object, System.Int32>(propertyName
 
 #line default
 #line hidden
-, 973), false)
-, Tuple.Create(Tuple.Create("", 988), Tuple.Create("[", 988), true)
+, 910), false)
+, Tuple.Create(Tuple.Create("", 925), Tuple.Create("[", 925), true)
 
 #line 24 "..\..\Views\Editors\MultiColumnSelectList.cshtml"
-    , Tuple.Create(Tuple.Create("", 989), Tuple.Create<System.Object, System.Int32>(item.Value
+    , Tuple.Create(Tuple.Create("", 926), Tuple.Create<System.Object, System.Int32>(item.Value
 
 #line default
 #line hidden
-, 989), false)
-, Tuple.Create(Tuple.Create("", 1002), Tuple.Create("]", 1002), true)
+, 926), false)
+, Tuple.Create(Tuple.Create("", 939), Tuple.Create("]", 939), true)
 );
 
-WriteAttributeTo(__razor_helper_writer, "value", Tuple.Create(" value=\"", 1004), Tuple.Create("\"", 1022)
+WriteAttributeTo(__razor_helper_writer, "value", Tuple.Create(" value=\"", 941), Tuple.Create("\"", 959)
 
 #line 24 "..\..\Views\Editors\MultiColumnSelectList.cshtml"
-                         , Tuple.Create(Tuple.Create("", 1012), Tuple.Create<System.Object, System.Int32>(item.Text
+                          , Tuple.Create(Tuple.Create("", 949), Tuple.Create<System.Object, System.Int32>(item.Text
 
 #line default
 #line hidden
-, 1012), false)
+, 949), false)
 );
 
 WriteLiteralTo(__razor_helper_writer, " ");
@@ -194,32 +183,17 @@ WriteLiteralTo(__razor_helper_writer, "\r\n    </div>\r\n");
 
 #line 32 "..\..\Views\Editors\MultiColumnSelectList.cshtml"
     }
-    
-    
-    
-
-#line default
-#line hidden
-
-#line 40 "..\..\Views\Editors\MultiColumnSelectList.cshtml"
-               
 
 
 #line default
 #line hidden
 });
 
-#line 41 "..\..\Views\Editors\MultiColumnSelectList.cshtml"
+#line 33 "..\..\Views\Editors\MultiColumnSelectList.cshtml"
 }
 #line default
 #line hidden
 
-        public _Views_Editors_MultiColumnSelectList_cshtml()
-        {
-        }
-        public override void Execute()
-        {
-        }
     }
 }
 #pragma warning restore 1591

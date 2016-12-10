@@ -12,8 +12,8 @@ namespace BudgetOnline.Data.Manage.Tests.Mappers
 		[TestMethod]
 		public void SimpleToDbMapper()
 		{
-			Mapper.CreateMap<TransactionSimple, TransactionDb>();
-			//Mapper.AssertConfigurationIsValid();
+            Mapper.Initialize(cfg => cfg.CreateMap<TransactionSimple, TransactionDb>());
+            //Mapper.AssertConfigurationIsValid();
 
 			var source = new TransactionSimple
 			{

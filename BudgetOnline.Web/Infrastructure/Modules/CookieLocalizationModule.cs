@@ -26,6 +26,11 @@ namespace BudgetOnline.Web.Infrastructure.Modules
         {
             InitMembershipHelper();
 
+            if (MembershipHelper == null)
+            {
+                return;
+            }
+
             var cookie = HttpContext.Current.Request.Cookies["lang"];
             var culture = MembershipHelper.GetCulture();
 
@@ -45,7 +50,9 @@ namespace BudgetOnline.Web.Infrastructure.Modules
         private void InitMembershipHelper()
         {
             if (MembershipHelper == null)
+            {
                 MembershipHelper = DependencyResolver.Current.GetService<IMembershipHelper>();
+            }
         }
     }
 }

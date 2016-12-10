@@ -1,11 +1,15 @@
-﻿@using System.Globalization
+﻿@*
+    Generator: MvcHelper
+    GeneratePrettyNames : true
+*@
+
+@using System.Globalization
+@using BudgetOnline.UI.Helpers
 @using BudgetOnline.UI.Models
-@* Generator: MvcHelper *@
-@functions {
-}
+
 @helper Render(DateEditModel model) 
 {
-    var id = string.IsNullOrWhiteSpace(model.Name) ? Html.GetUniqId(10) : model.Name;
+    var id = string.IsNullOrWhiteSpace(model.Name) ? UIHelper.GenerateRandomCode(10) : model.Name;
     var value = model.Date.HasValue ? model.Date.Value.ToLocalTime().ToShortDateString() : string.Empty;
     
     <div class="input-group @(model.Span > 0 ? "col-md-" + model.Span.ToString(CultureInfo.InvariantCulture) : string.Empty)"> 

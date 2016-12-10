@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASP
+namespace BudgetOnline.UI.Views.ListViewCommands
 {
     using System;
     using System.Collections.Generic;
@@ -27,30 +27,24 @@ namespace ASP
     using System.Web.UI;
     using System.Web.WebPages;
     
-    #line 2 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
+    #line 5 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
     using BudgetOnline.UI.Models.ViewCommands;
     
     #line default
     #line hidden
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
-    public class _Views_ListViewCommands_PostViewCommand_cshtml : System.Web.WebPages.HelperPage
+    public class PostViewCommand : System.Web.WebPages.HelperPage
     {
-        
-        #line 3 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
-            
 
-        #line default
-        #line hidden
-
-#line 5 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
+#line 7 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
 public static System.Web.WebPages.HelperResult Render(ViewCommandUIModel command)
     {
 #line default
 #line hidden
 return new System.Web.WebPages.HelperResult(__razor_helper_writer => {
 
-#line 6 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
+#line 8 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
      
         var postCommand = command.Command as PostViewCommandModel;
         if (postCommand == null)
@@ -66,15 +60,15 @@ return new System.Web.WebPages.HelperResult(__razor_helper_writer => {
 #line hidden
 WriteLiteralTo(__razor_helper_writer, "    <a");
 
-WriteAttributeTo(__razor_helper_writer, "id", Tuple.Create(" id=\"", 425), Tuple.Create("\"", 440)
-, Tuple.Create(Tuple.Create("", 430), Tuple.Create("post", 430), true)
+WriteAttributeTo(__razor_helper_writer, "id", Tuple.Create(" id=\"", 448), Tuple.Create("\"", 463)
+, Tuple.Create(Tuple.Create("", 453), Tuple.Create("post", 453), true)
 
-#line 15 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
-, Tuple.Create(Tuple.Create("", 434), Tuple.Create<System.Object, System.Int32>(uid
+#line 17 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
+, Tuple.Create(Tuple.Create("", 457), Tuple.Create<System.Object, System.Int32>(uid
 
 #line default
 #line hidden
-, 434), false)
+, 457), false)
 );
 
 WriteLiteralTo(__razor_helper_writer, " role=\"menuitem\"");
@@ -83,20 +77,20 @@ WriteLiteralTo(__razor_helper_writer, " tabindex=\"-1\"");
 
 WriteLiteralTo(__razor_helper_writer, " href=\"#\"");
 
-WriteAttributeTo(__razor_helper_writer, "title", Tuple.Create(" title=\"", 480), Tuple.Create("\"", 502)
+WriteAttributeTo(__razor_helper_writer, "title", Tuple.Create(" title=\"", 503), Tuple.Create("\"", 525)
 
-#line 15 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
-, Tuple.Create(Tuple.Create("", 488), Tuple.Create<System.Object, System.Int32>(command.Title
+#line 17 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
+, Tuple.Create(Tuple.Create("", 511), Tuple.Create<System.Object, System.Int32>(command.Title
 
 #line default
 #line hidden
-, 488), false)
+, 511), false)
 );
 
 WriteLiteralTo(__razor_helper_writer, ">");
 
 
-#line 15 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
+#line 17 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
                                                        WriteTo(__razor_helper_writer, command.Text);
 
 
@@ -111,7 +105,7 @@ WriteLiteralTo(__razor_helper_writer, " type=\"text/javascript\"");
 WriteLiteralTo(__razor_helper_writer, ">\r\n        $().ready(function() {\r\n\t\t\t$(\'a#post");
 
 
-#line 18 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
+#line 20 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
 WriteTo(__razor_helper_writer, uid);
 
 
@@ -121,7 +115,7 @@ WriteLiteralTo(__razor_helper_writer, "\').click(\r\n\t\t\t\tfunction(e) {\r\n\t
 "tas({\r\n\t\t\t\t        url:\'");
 
 
-#line 22 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
+#line 24 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
 WriteTo(__razor_helper_writer, postCommand.Path);
 
 
@@ -130,14 +124,14 @@ WriteTo(__razor_helper_writer, postCommand.Path);
 WriteLiteralTo(__razor_helper_writer, "\',\r\n\t\t\t\t        datas:[\r\n");
 
 
-#line 24 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
+#line 26 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
 					        
 
 #line default
 #line hidden
 
-#line 24 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
-              if (postCommand.Parameters != null && postCommand.Parameters.Any())
+#line 26 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
+                             if (postCommand.Parameters != null && postCommand.Parameters.Any())
              {
                  foreach (var parameter in postCommand.Parameters)
                  {
@@ -150,7 +144,7 @@ WriteLiteralTo(__razor_helper_writer, "                                ");
 WriteLiteralTo(__razor_helper_writer, "\r\n                                {name:\"");
 
 
-#line 29 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
+#line 31 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
           WriteTo(__razor_helper_writer, parameter.Key);
 
 
@@ -159,7 +153,7 @@ WriteLiteralTo(__razor_helper_writer, "\r\n                                {name
 WriteLiteralTo(__razor_helper_writer, "\",value:\"");
 
 
-#line 29 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
+#line 31 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
                                    WriteTo(__razor_helper_writer, parameter.Value);
 
 
@@ -168,7 +162,7 @@ WriteLiteralTo(__razor_helper_writer, "\",value:\"");
 WriteLiteralTo(__razor_helper_writer, "\"}  ");
 
 
-#line 29 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
+#line 31 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
                                                          WriteTo(__razor_helper_writer, parameter.Key == postCommand.Parameters.Last().Key ? "" : ",");
 
 
@@ -179,7 +173,7 @@ WriteLiteralTo(__razor_helper_writer, "\r\n                                ");
 WriteLiteralTo(__razor_helper_writer, "\r\n");
 
 
-#line 31 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
+#line 33 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
                  }
              }
 
@@ -189,14 +183,14 @@ WriteLiteralTo(__razor_helper_writer, "\r\n");
 WriteLiteralTo(__razor_helper_writer, "\t\t\t\t               ]\r\n\t\t\t        });\r\n\t\t\t\t}\r\n\t\t\t);\r\n\t\t});\r\n\t\t\r\n    </script>\r\n");
 
 
-#line 40 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
+#line 42 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
 
 
 #line default
 #line hidden
 });
 
-#line 40 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
+#line 42 "..\..\Views\ListViewCommands\PostViewCommand.cshtml"
 }
 #line default
 #line hidden

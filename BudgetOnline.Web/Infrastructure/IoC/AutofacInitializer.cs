@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using Autofac;
 using Autofac.Integration.Mvc;
-using BudgetOnline.Api.Admin.Infrastructure;
 using BudgetOnline.BusinessLayer.Helpers;
 using BudgetOnline.Common;
 using BudgetOnline.Common.Logger;

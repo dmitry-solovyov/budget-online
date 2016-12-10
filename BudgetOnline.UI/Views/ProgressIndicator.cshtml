@@ -1,23 +1,19 @@
-﻿@using BudgetOnline.UI.Models
-@* Generator: MvcHelper *@
-@functions {
-}
+﻿@*
+    Generator: MvcHelper
+    GeneratePrettyNames : true
+*@
+
+@using BudgetOnline.UI.Helpers
+@using BudgetOnline.UI.Models
+
 @helper Render(ProgressIndicatorModel model)
-    {
-        var id = string.IsNullOrWhiteSpace(model.Name) ? Html.GetUniqId(10) : model.Name;
-    
+{
+    var id = string.IsNullOrWhiteSpace(model.Name) ? UIHelper.GenerateRandomCode(10) : model.Name;
+
     <div id="@id" style="width: 100px; height: 100px; position: absolute; z-index: 998;" class="hidden @(model.Class)">
-        <div style="background-image: url(@(model.IndicatorUrl));background-position: center center; background-repeat: no-repeat; position: absolute; left: 0; top: 0; width: 100%;z-index: 999; 
-                                                                              	height: 100%;">
+        <div style="background-image: url(@(model.IndicatorUrl));background-position: center center; background-repeat: no-repeat; position: absolute; left: 0; top: 0; width: 100%;z-index: 999; height: 100%;">
 		</div>
-        <div style="background-image: url(@(model.BackgroundUrl)); opacity: .75; width: 100%;z-index: 998; 
- 	              	                	height: 100%;">
+        <div style="background-image: url(@(model.BackgroundUrl)); opacity: .75; width: 100%;z-index: 998; height: 100%;">
         </div>
     </div>
-            
-    <script type="text/javascript" language="javascript"><!--
-        //		$(function () {
-        //		});
-		//-->
-    </script>
 }

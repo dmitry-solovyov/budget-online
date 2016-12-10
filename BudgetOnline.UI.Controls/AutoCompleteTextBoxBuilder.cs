@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web;
 using BudgetOnline.UI.Models;
+using BudgetOnline.UI.Views;
 
 namespace BudgetOnline.UI.Controls
 {
@@ -76,8 +77,7 @@ namespace BudgetOnline.UI.Controls
 								Name = _name,
 			            	};
 
-			var control = new AutoCompleteTextBox();
-			return new HtmlString(control.Render(model).ToHtmlString());
+            return new HtmlString(AutoCompleteTextBox.Render(model).ToHtmlString());
 		}
 	}
 }

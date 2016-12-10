@@ -1,6 +1,5 @@
 ﻿@using System.Web.Optimization
-@using StackExchange.Profiling
-@*@using StackExchange.Profiling;*@
+@using BudgetOnline.Web.Infrastructure.Controls
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,7 +41,6 @@
         </div>
     </div>
     @Scripts.Render("~/js2")
-    @MiniProfiler.RenderIncludes(showTrivial: true, showTimeWithChildren: true, position: RenderPosition.Left)
     @RenderSection("Header", false)
     <script type="text/javascript"><!-- $(function () { $('#language-switch ul.dropdown-menuli a').click(function (e) { e.preventDefault(); var lang = $(this).attr('data-lang');changeLang(lang); }); }); //--> </script>
 </body>

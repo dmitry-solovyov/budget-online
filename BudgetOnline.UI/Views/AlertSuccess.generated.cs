@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASP
+namespace BudgetOnline.UI.Views
 {
     using System;
     using System.Collections.Generic;
@@ -27,33 +27,32 @@ namespace ASP
     using System.Web.UI;
     using System.Web.WebPages;
     
-    #line 1 "..\..\Views\AlertSuccess.cshtml"
+    #line 6 "..\..\Views\AlertSuccess.cshtml"
+    using BudgetOnline.UI.Helpers;
+    
+    #line default
+    #line hidden
+    
+    #line 7 "..\..\Views\AlertSuccess.cshtml"
     using BudgetOnline.UI.Models.Alerts;
     
     #line default
     #line hidden
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
-    [System.Web.WebPages.PageVirtualPathAttribute("~/Views/AlertSuccess.cshtml")]
-    public partial class _Views_AlertSuccess_cshtml : System.Web.Mvc.WebViewPage<dynamic>
+    public class AlertSuccess : System.Web.WebPages.HelperPage
     {
-        
-        #line 3 "..\..\Views\AlertSuccess.cshtml"
-            
 
-        #line default
-        #line hidden
-
-#line 5 "..\..\Views\AlertSuccess.cshtml"
-public System.Web.WebPages.HelperResult Render(AlertSuccessModel model)
-    {
+#line 9 "..\..\Views\AlertSuccess.cshtml"
+public static System.Web.WebPages.HelperResult Render(AlertSuccessModel model)
+{
 #line default
 #line hidden
 return new System.Web.WebPages.HelperResult(__razor_helper_writer => {
 
-#line 6 "..\..\Views\AlertSuccess.cshtml"
-     
-    var id = string.IsNullOrWhiteSpace(model.Name) ? Html.GetUniqId(10) : model.Name;
+#line 10 "..\..\Views\AlertSuccess.cshtml"
+ 
+    var id = string.IsNullOrWhiteSpace(model.Name) ? UIHelper.GenerateRandomCode(10) : model.Name;
     
 
 
@@ -63,26 +62,26 @@ WriteLiteralTo(__razor_helper_writer, "    <div");
 
 WriteLiteralTo(__razor_helper_writer, " class=\"alert alert-success\"");
 
-WriteAttributeTo(__razor_helper_writer, "id", Tuple.Create(" id=\"", 260), Tuple.Create("\"", 268)
+WriteAttributeTo(__razor_helper_writer, "id", Tuple.Create(" id=\"", 326), Tuple.Create("\"", 334)
 
-#line 9 "..\..\Views\AlertSuccess.cshtml"
-, Tuple.Create(Tuple.Create("", 265), Tuple.Create<System.Object, System.Int32>(id
+#line 13 "..\..\Views\AlertSuccess.cshtml"
+, Tuple.Create(Tuple.Create("", 331), Tuple.Create<System.Object, System.Int32>(id
 
 #line default
 #line hidden
-, 265), false)
+, 331), false)
 );
 
 WriteLiteralTo(__razor_helper_writer, ">\r\n");
 
 
-#line 10 "..\..\Views\AlertSuccess.cshtml"
+#line 14 "..\..\Views\AlertSuccess.cshtml"
         
 
 #line default
 #line hidden
 
-#line 10 "..\..\Views\AlertSuccess.cshtml"
+#line 14 "..\..\Views\AlertSuccess.cshtml"
          if (!model.IsForbidClose)
         {
 
@@ -100,34 +99,6 @@ WriteLiteralTo(__razor_helper_writer, " type=\"button\"");
 WriteLiteralTo(__razor_helper_writer, ">\r\n                ×</button>\t\r\n");
 
 
-#line 14 "..\..\Views\AlertSuccess.cshtml"
-        }
-
-
-#line default
-#line hidden
-WriteLiteralTo(__razor_helper_writer, "        ");
-
-
-#line 15 "..\..\Views\AlertSuccess.cshtml"
-         if (!string.IsNullOrWhiteSpace(model.MessageSuffix))
-        {
-
-
-#line default
-#line hidden
-WriteLiteralTo(__razor_helper_writer, "            <strong>");
-
-
-#line 17 "..\..\Views\AlertSuccess.cshtml"
-WriteTo(__razor_helper_writer, model.MessageSuffix);
-
-
-#line default
-#line hidden
-WriteLiteralTo(__razor_helper_writer, "</strong> \r\n");
-
-
 #line 18 "..\..\Views\AlertSuccess.cshtml"
         }
 
@@ -138,6 +109,34 @@ WriteLiteralTo(__razor_helper_writer, "        ");
 
 
 #line 19 "..\..\Views\AlertSuccess.cshtml"
+         if (!string.IsNullOrWhiteSpace(model.MessageSuffix))
+        {
+
+
+#line default
+#line hidden
+WriteLiteralTo(__razor_helper_writer, "            <strong>");
+
+
+#line 21 "..\..\Views\AlertSuccess.cshtml"
+WriteTo(__razor_helper_writer, model.MessageSuffix);
+
+
+#line default
+#line hidden
+WriteLiteralTo(__razor_helper_writer, "</strong> \r\n");
+
+
+#line 22 "..\..\Views\AlertSuccess.cshtml"
+        }
+
+
+#line default
+#line hidden
+WriteLiteralTo(__razor_helper_writer, "        ");
+
+
+#line 23 "..\..\Views\AlertSuccess.cshtml"
 WriteTo(__razor_helper_writer, new HtmlString(model.Message));
 
 
@@ -146,41 +145,18 @@ WriteTo(__razor_helper_writer, new HtmlString(model.Message));
 WriteLiteralTo(__razor_helper_writer, "\r\n    </div>\r\n");
 
 
-#line 21 "..\..\Views\AlertSuccess.cshtml"
-    
-
-
-#line default
-#line hidden
-WriteLiteralTo(__razor_helper_writer, "    <script");
-
-WriteLiteralTo(__razor_helper_writer, " type=\"text/javascript\"");
-
-WriteLiteralTo(__razor_helper_writer, " language=\"javascript\"");
-
-WriteLiteralTo(__razor_helper_writer, "><!--\r\n        //\t\t$(function () {\r\n        //\t\t});\r\n\t\t//-->\r\n    </script>\r\n");
-
-
-#line 27 "..\..\Views\AlertSuccess.cshtml"
+#line 25 "..\..\Views\AlertSuccess.cshtml"
 
 
 #line default
 #line hidden
 });
 
-#line 27 "..\..\Views\AlertSuccess.cshtml"
+#line 25 "..\..\Views\AlertSuccess.cshtml"
 }
 #line default
 #line hidden
 
-        public _Views_AlertSuccess_cshtml()
-        {
-        }
-        public override void Execute()
-        {
-WriteLiteral("\r\n");
-
-        }
     }
 }
 #pragma warning restore 1591

@@ -49,6 +49,16 @@ namespace BudgetOnline.Api.Controllers
             return PrepareResponse(new PagedResult<Transaction>(items, itemsCount, options.PageSize ?? 10, options.PageNumber ?? 1));
         }
 
+        [HttpPost]
+        [Route("filter")]
+        public HttpResponseMessage FilterPost(TransactionStatisticsSearchOptions options)
+        {
+            var itemsCount = TransactionRepository.GetListLength(CurrentSession.User.SectionId, options);
+            var items = TransactionRepository.GetList(CurrentSession.User.SectionId, options);
+
+            return PrepareResponse(new PagedResult<Transaction>(items, itemsCount, options.PageSize ?? 10, options.PageNumber ?? 1));
+        }
+
         [HttpGet]
         [Route("{id}")]
         public HttpResponseMessage Get(int id)

@@ -1,43 +1,43 @@
-﻿@* Generator: MvcHelper *@
+﻿@*
+    Generator: MvcHelper
+    GeneratePrettyNames : true
+*@
+
 @using BudgetOnline.UI.Models.ViewCommands
-@functions {
-}
+@using BudgetOnline.UI.Views.ListViewCommands
+
 @helper Render(ViewCommandUIModel command, bool isRoot)
     {
         if (command.IsVisible)
         {
             if (command.IsDividerBefore)
             {
-    <li class="divider"></li>
+    <li class="divider" role="separator"></li>
             }
 
             if (command.ChildCommands != null && command.ChildCommands.Any())
             {
-    <li class="dropdown@(!isRoot ? "-submenu" : "")">
-        <a data-toggle="dropdown" class="dropdown-toggle" href="#">@command.Text
-                    @if (isRoot)
-                    {
-                    }
-                    <b class="caret"></b></a>
+    <li class="dropdown@(!isRoot ? "-submenu" : string.Empty)">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" rolw="button" aria-expanded="false">@command.Text<b class="caret"></b></a>
         <ul class="dropdown-menu">
             @foreach (var childItem in command.ChildCommands)
             {
-                @(_Views_ListViewCommands_ViewCommandUI_cshtml.Render(childItem, false))
+                @(ViewCommandUI.Render(childItem, false))
             }
         </ul>
     </li>
             }
             else if (command.Command.CommandType == CommandType.Post)
             {
-    <li role="presentation" class="t3">@_Views_ListViewCommands_PostViewCommand_cshtml.Render(command)</li>
+    <li>@PostViewCommand.Render(command)</li>
             }
             else if (command.Command.CommandType == CommandType.Redirect)
             {
-    <li role="presentation" class="t4">@_Views_ListViewCommands_RedirectViewCommand_cshtml.Render(command)</li>
+    <li>@RedirectViewCommand.Render(command)</li>
             }
             else if (command.Command.CommandType == CommandType.Js)
             {
-    <li role="presentation" class="t4">@_Views_ListViewCommands_JsViewCommand_cshtml.Render(command)</li>
+    <li>@JsViewCommand.Render(command)</li>
             }
 
             if (command.IsDividerAfter)

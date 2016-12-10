@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASP
+namespace BudgetOnline.UI.Views
 {
     using System;
     using System.Collections.Generic;
@@ -27,32 +27,31 @@ namespace ASP
     using System.Web.UI;
     using System.Web.WebPages;
     
-    #line 1 "..\..\Views\AutoCompleteTextBox.cshtml"
+    #line 6 "..\..\Views\AutoCompleteTextBox.cshtml"
+    using BudgetOnline.UI.Helpers;
+    
+    #line default
+    #line hidden
+    
+    #line 7 "..\..\Views\AutoCompleteTextBox.cshtml"
     using BudgetOnline.UI.Models;
     
     #line default
     #line hidden
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
-    [System.Web.WebPages.PageVirtualPathAttribute("~/Views/AutoCompleteTextBox.cshtml")]
-    public partial class _Views_AutoCompleteTextBox_cshtml : System.Web.Mvc.WebViewPage<dynamic>
+    public class AutoCompleteTextBox : System.Web.WebPages.HelperPage
     {
-        
-        #line 3 "..\..\Views\AutoCompleteTextBox.cshtml"
-            
 
-        #line default
-        #line hidden
-
-#line 6 "..\..\Views\AutoCompleteTextBox.cshtml"
-public System.Web.WebPages.HelperResult Render(AutoCompleteTextBoxModel model){
+#line 9 "..\..\Views\AutoCompleteTextBox.cshtml"
+public static System.Web.WebPages.HelperResult Render(AutoCompleteTextBoxModel model){
 #line default
 #line hidden
 return new System.Web.WebPages.HelperResult(__razor_helper_writer => {
 
-#line 6 "..\..\Views\AutoCompleteTextBox.cshtml"
+#line 9 "..\..\Views\AutoCompleteTextBox.cshtml"
                                                
-	var id = string.IsNullOrWhiteSpace(model.Name) ? Html.GetUniqId(10) : model.Name;
+    var id = string.IsNullOrWhiteSpace(model.Name) ? UIHelper.GenerateRandomCode(10) : model.Name;
     
 
 
@@ -60,36 +59,36 @@ return new System.Web.WebPages.HelperResult(__razor_helper_writer => {
 #line hidden
 WriteLiteralTo(__razor_helper_writer, "\t<input");
 
-WriteAttributeTo(__razor_helper_writer, "id", Tuple.Create(" id=\"", 276), Tuple.Create("\"", 284)
+WriteAttributeTo(__razor_helper_writer, "id", Tuple.Create(" id=\"", 295), Tuple.Create("\"", 303)
 
-#line 9 "..\..\Views\AutoCompleteTextBox.cshtml"
-, Tuple.Create(Tuple.Create("", 281), Tuple.Create<System.Object, System.Int32>(id
+#line 12 "..\..\Views\AutoCompleteTextBox.cshtml"
+, Tuple.Create(Tuple.Create("", 300), Tuple.Create<System.Object, System.Int32>(id
 
 #line default
 #line hidden
-, 281), false)
+, 300), false)
 );
 
 WriteLiteralTo(__razor_helper_writer, " class=\"form-control\"");
 
-WriteAttributeTo(__razor_helper_writer, "value", Tuple.Create(" value=\"", 306), Tuple.Create("\"", 328)
+WriteAttributeTo(__razor_helper_writer, "value", Tuple.Create(" value=\"", 325), Tuple.Create("\"", 347)
 
-#line 9 "..\..\Views\AutoCompleteTextBox.cshtml"
-, Tuple.Create(Tuple.Create("", 314), Tuple.Create<System.Object, System.Int32>(model.Value
+#line 12 "..\..\Views\AutoCompleteTextBox.cshtml"
+, Tuple.Create(Tuple.Create("", 333), Tuple.Create<System.Object, System.Int32>(model.Value
 
 #line default
 #line hidden
-, 314), false)
+, 333), false)
 );
 
-WriteAttributeTo(__razor_helper_writer, "name", Tuple.Create(" name=\"", 329), Tuple.Create("\"", 339)
+WriteAttributeTo(__razor_helper_writer, "name", Tuple.Create(" name=\"", 348), Tuple.Create("\"", 358)
 
-#line 9 "..\..\Views\AutoCompleteTextBox.cshtml"
-, Tuple.Create(Tuple.Create("", 336), Tuple.Create<System.Object, System.Int32>(id
+#line 12 "..\..\Views\AutoCompleteTextBox.cshtml"
+, Tuple.Create(Tuple.Create("", 355), Tuple.Create<System.Object, System.Int32>(id
 
 #line default
 #line hidden
-, 336), false)
+, 355), false)
 );
 
 WriteLiteralTo(__razor_helper_writer, " />\r\n");
@@ -105,7 +104,7 @@ WriteLiteralTo(__razor_helper_writer, "><!--\r\n\t\t$(function () {\r\n\t\t\tfun
 "\t$(\"#");
 
 
-#line 18 "..\..\Views\AutoCompleteTextBox.cshtml"
+#line 21 "..\..\Views\AutoCompleteTextBox.cshtml"
 WriteTo(__razor_helper_writer, id);
 
 
@@ -124,8 +123,8 @@ WriteLiteralTo(__razor_helper_writer, @""")
 						$.getJSON('");
 
 
-#line 28 "..\..\Views\AutoCompleteTextBox.cshtml"
-WriteTo(__razor_helper_writer, model.RequestUrl);
+#line 31 "..\..\Views\AutoCompleteTextBox.cshtml"
+      WriteTo(__razor_helper_writer, model.RequestUrl);
 
 
 #line default
@@ -164,28 +163,18 @@ WriteLiteralTo(__razor_helper_writer, @"', {
 ");
 
 
-#line 59 "..\..\Views\AutoCompleteTextBox.cshtml"
+#line 62 "..\..\Views\AutoCompleteTextBox.cshtml"
 
 
 #line default
 #line hidden
 });
 
-#line 59 "..\..\Views\AutoCompleteTextBox.cshtml"
+#line 62 "..\..\Views\AutoCompleteTextBox.cshtml"
 }
 #line default
 #line hidden
 
-        public _Views_AutoCompleteTextBox_cshtml()
-        {
-        }
-        public override void Execute()
-        {
-WriteLiteral("\r\n");
-
-WriteLiteral("\r\n");
-
-        }
     }
 }
 #pragma warning restore 1591

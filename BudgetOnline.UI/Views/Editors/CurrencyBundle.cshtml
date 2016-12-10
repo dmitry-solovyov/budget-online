@@ -1,10 +1,14 @@
-﻿@using System.Web.Mvc
+﻿@*
+    Generator: MvcHelper
+    GeneratePrettyNames : true
+*@
+
 @using System.Globalization
-@functions {}
+@using BudgetOnline.UI.Helpers
 
 @helper Render(BudgetOnline.UI.Models.Editors.CurrencyBundle model, string propertyName, ModelState state, IDictionary<string, object> additionalValues)
     {
-        var id = Html.GetUniqId(10);
+        var id = UIHelper.GenerateRandomCode(10);
 
         var placeholder = "";
         if (additionalValues.ContainsKey("placeholder"))
@@ -35,7 +39,7 @@
     <div id="@id">
         <div class="row">
             <div class="col-md-4">
-                @(new _Views_Editors_SelectList_cshtml().Render(model.Account.Items, propertyName + ".Account", cssAccountListClass, false))
+                @BudgetOnline.UI.Views.Editors.SelectList.Render(model.Account.Items, propertyName + ".Account", cssAccountListClass, false)
             </div>
             <div class="col-md-1">
             </div>
@@ -53,7 +57,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                @(new _Views_Editors_SelectList_cshtml().Render(model.Currency.Items, propertyName + ".Currency", cssCurrencyListClass, false))
+                @BudgetOnline.UI.Views.Editors.SelectList.Render(model.Currency.Items, propertyName + ".Currency", cssCurrencyListClass, false))
             </div>
         </div>
     </div>

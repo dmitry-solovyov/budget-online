@@ -1,11 +1,14 @@
-﻿@using BudgetOnline.UI.Models
-@* Generator: MvcHelper *@
-@functions {
-}
+﻿@*
+    Generator: MvcHelper
+    GeneratePrettyNames : true
+*@
+
+@using BudgetOnline.UI.Helpers
+@using BudgetOnline.UI.Models
 
 @helper Render(PaginationModel model)
 {
-    var id = string.IsNullOrWhiteSpace(model.Name) ? Html.GetUniqId(10) : model.Name;
+    var id = string.IsNullOrWhiteSpace(model.Name) ? UIHelper.GenerateRandomCode(10) : model.Name;
 
 	<li class="dropdown">
 		<a data-toggle="dropdown" class="dropdown-toggle" href="#">Title <b class="caret"></b></a>

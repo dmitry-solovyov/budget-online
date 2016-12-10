@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASP
+namespace BudgetOnline.UI.Views
 {
     using System;
     using System.Collections.Generic;
@@ -27,31 +27,24 @@ namespace ASP
     using System.Web.UI;
     using System.Web.WebPages;
     
-    #line 1 "..\..\Views\DynamicContainer.cshtml"
+    #line 6 "..\..\Views\DynamicContainer.cshtml"
     using BudgetOnline.UI.Models;
     
     #line default
     #line hidden
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
-    [System.Web.WebPages.PageVirtualPathAttribute("~/Views/DynamicContainer.cshtml")]
-    public partial class _Views_DynamicContainer_cshtml : System.Web.Mvc.WebViewPage<dynamic>
+    public class DynamicContainer : System.Web.WebPages.HelperPage
     {
-        
-        #line 2 "..\..\Views\DynamicContainer.cshtml"
-            
 
-        #line default
-        #line hidden
-
-#line 4 "..\..\Views\DynamicContainer.cshtml"
-public System.Web.WebPages.HelperResult Render(DynamicContainerModel model)
+#line 8 "..\..\Views\DynamicContainer.cshtml"
+public static System.Web.WebPages.HelperResult Render(DynamicContainerModel model)
     {
 #line default
 #line hidden
 return new System.Web.WebPages.HelperResult(__razor_helper_writer => {
 
-#line 5 "..\..\Views\DynamicContainer.cshtml"
+#line 9 "..\..\Views\DynamicContainer.cshtml"
      
 
 
@@ -59,14 +52,14 @@ return new System.Web.WebPages.HelperResult(__razor_helper_writer => {
 #line hidden
 WriteLiteralTo(__razor_helper_writer, "    <div");
 
-WriteAttributeTo(__razor_helper_writer, "id", Tuple.Create(" id=\"", 108), Tuple.Create("\"", 129)
+WriteAttributeTo(__razor_helper_writer, "id", Tuple.Create(" id=\"", 161), Tuple.Create("\"", 182)
 
-#line 6 "..\..\Views\DynamicContainer.cshtml"
-, Tuple.Create(Tuple.Create("", 113), Tuple.Create<System.Object, System.Int32>(model.UniqeId
+#line 10 "..\..\Views\DynamicContainer.cshtml"
+, Tuple.Create(Tuple.Create("", 166), Tuple.Create<System.Object, System.Int32>(model.UniqeId
 
 #line default
 #line hidden
-, 113), false)
+, 166), false)
 );
 
 WriteLiteralTo(__razor_helper_writer, " class=\"dyn-box\"");
@@ -74,7 +67,7 @@ WriteLiteralTo(__razor_helper_writer, " class=\"dyn-box\"");
 WriteLiteralTo(__razor_helper_writer, " data-name=\"");
 
 
-#line 6 "..\..\Views\DynamicContainer.cshtml"
+#line 10 "..\..\Views\DynamicContainer.cshtml"
                              WriteTo(__razor_helper_writer, model.Name);
 
 
@@ -85,7 +78,7 @@ WriteLiteralTo(__razor_helper_writer, "\"");
 WriteLiteralTo(__razor_helper_writer, " data-dynamic-url=\'");
 
 
-#line 6 "..\..\Views\DynamicContainer.cshtml"
+#line 10 "..\..\Views\DynamicContainer.cshtml"
                                                               WriteTo(__razor_helper_writer, model.RequestUrl);
 
 
@@ -96,7 +89,7 @@ WriteLiteralTo(__razor_helper_writer, "\'");
 WriteLiteralTo(__razor_helper_writer, " data-autoload=\'");
 
 
-#line 6 "..\..\Views\DynamicContainer.cshtml"
+#line 10 "..\..\Views\DynamicContainer.cshtml"
                                                                                                   WriteTo(__razor_helper_writer, model.IsAutoload.ToString().ToLower());
 
 
@@ -107,7 +100,7 @@ WriteLiteralTo(__razor_helper_writer, "\'");
 WriteLiteralTo(__razor_helper_writer, " \r\n             data-autoload-delay=\'");
 
 
-#line 7 "..\..\Views\DynamicContainer.cshtml"
+#line 11 "..\..\Views\DynamicContainer.cshtml"
      WriteTo(__razor_helper_writer, model.IsAutoload && model.AutoloadDelay > 0 ? model.AutoloadDelay.ToString() : "0");
 
 
@@ -118,13 +111,13 @@ WriteLiteralTo(__razor_helper_writer, "\'");
 WriteLiteralTo(__razor_helper_writer, ">\r\n");
 
 
-#line 8 "..\..\Views\DynamicContainer.cshtml"
+#line 12 "..\..\Views\DynamicContainer.cshtml"
         
 
 #line default
 #line hidden
 
-#line 8 "..\..\Views\DynamicContainer.cshtml"
+#line 12 "..\..\Views\DynamicContainer.cshtml"
          if (!string.IsNullOrWhiteSpace(model.Caption.ToHtmlString()))
         {
 
@@ -150,7 +143,7 @@ WriteLiteralTo(__razor_helper_writer, " class=\"\"");
 WriteLiteralTo(__razor_helper_writer, ">");
 
 
-#line 13 "..\..\Views\DynamicContainer.cshtml"
+#line 17 "..\..\Views\DynamicContainer.cshtml"
             WriteTo(__razor_helper_writer, model.Caption);
 
 
@@ -174,7 +167,7 @@ WriteLiteralTo(__razor_helper_writer, ">\r\n                        </i></a>\r\n
 "</div>\r\n            </div>\r\n");
 
 
-#line 21 "..\..\Views\DynamicContainer.cshtml"
+#line 25 "..\..\Views\DynamicContainer.cshtml"
         }
 
 
@@ -187,13 +180,13 @@ WriteLiteralTo(__razor_helper_writer, " class=\"content\"");
 WriteLiteralTo(__razor_helper_writer, ">\r\n");
 
 
-#line 23 "..\..\Views\DynamicContainer.cshtml"
+#line 27 "..\..\Views\DynamicContainer.cshtml"
             
 
 #line default
 #line hidden
 
-#line 23 "..\..\Views\DynamicContainer.cshtml"
+#line 27 "..\..\Views\DynamicContainer.cshtml"
              if (model.Content != null && !string.IsNullOrWhiteSpace(model.Content.ToHtmlString()))
             {
                 
@@ -201,14 +194,14 @@ WriteLiteralTo(__razor_helper_writer, ">\r\n");
 #line default
 #line hidden
 
-#line 25 "..\..\Views\DynamicContainer.cshtml"
+#line 29 "..\..\Views\DynamicContainer.cshtml"
 WriteTo(__razor_helper_writer, new HtmlString(model.Content.ToHtmlString()));
 
 
 #line default
 #line hidden
 
-#line 25 "..\..\Views\DynamicContainer.cshtml"
+#line 29 "..\..\Views\DynamicContainer.cshtml"
                                                                
             }
 
@@ -228,7 +221,7 @@ WriteLiteralTo(__razor_helper_writer, ">\r\n");
 WriteLiteralTo(__razor_helper_writer, "                ");
 
 
-#line 30 "..\..\Views\DynamicContainer.cshtml"
+#line 34 "..\..\Views\DynamicContainer.cshtml"
 WriteTo(__razor_helper_writer, DateTime.Now);
 
 
@@ -237,24 +230,18 @@ WriteTo(__razor_helper_writer, DateTime.Now);
 WriteLiteralTo(__razor_helper_writer, "\r\n            </span>\r\n        </div>\r\n    </div>\r\n");
 
 
-#line 34 "..\..\Views\DynamicContainer.cshtml"
+#line 38 "..\..\Views\DynamicContainer.cshtml"
 
 
 #line default
 #line hidden
 });
 
-#line 34 "..\..\Views\DynamicContainer.cshtml"
+#line 38 "..\..\Views\DynamicContainer.cshtml"
 }
 #line default
 #line hidden
 
-        public _Views_DynamicContainer_cshtml()
-        {
-        }
-        public override void Execute()
-        {
-        }
     }
 }
 #pragma warning restore 1591

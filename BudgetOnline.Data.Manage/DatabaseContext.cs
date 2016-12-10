@@ -1,8 +1,6 @@
 ﻿using System.Configuration;
 using System.Data.SqlClient;
 using BudgetOnline.Data.MSSQL;
-using StackExchange.Profiling;
-using StackExchange.Profiling.Data;
 
 namespace BudgetOnline.Data.Manage
 {
@@ -17,10 +15,8 @@ namespace BudgetOnline.Data.Manage
                 throw new ConfigurationErrorsException("Could not find configuration of SQL connection");
 
             var connection = new SqlConnection(ConfigurationManager.ConnectionStrings[ConnectionStringSettingName].ConnectionString);
-            var profiledConn = new ProfiledDbConnection(connection, MiniProfiler.Current);
 
-
-            var context = new BudgetOnlineDBDataContext(profiledConn)
+            var context = new BudgetOnlineDBDataContext(connection)
                               {
                                   ObjectTrackingEnabled = true,
                                   DeferredLoadingEnabled = false

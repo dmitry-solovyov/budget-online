@@ -1,10 +1,13 @@
-﻿@using BudgetOnline.UI.Models
-@* Namespace: Views GeneratePrettyNames: true TrimLeadingUnderscores: false *@
-@functions {
-}
+﻿@*
+    Generator: MvcHelper
+    GeneratePrettyNames : true
+*@
+
+@using BudgetOnline.UI.Helpers
+@using BudgetOnline.UI.Models
 
 @helper Render(AutoCompleteTextBoxModel model){
-	var id = string.IsNullOrWhiteSpace(model.Name) ? Html.GetUniqId(10) : model.Name;
+    var id = string.IsNullOrWhiteSpace(model.Name) ? UIHelper.GenerateRandomCode(10) : model.Name;
     
 	<input id="@id" class="form-control" value="@(model.Value)" name="@id" />
 	<script type="text/javascript" language="javascript"><!--

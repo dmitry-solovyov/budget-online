@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASP
+namespace BudgetOnline.UI.Views.ListViewCommands
 {
     using System;
     using System.Collections.Generic;
@@ -27,21 +27,15 @@ namespace ASP
     using System.Web.UI;
     using System.Web.WebPages;
     
-    #line 3 "..\..\Views\ListViewCommands\RedirectViewCommand.cshtml"
+    #line 6 "..\..\Views\ListViewCommands\RedirectViewCommand.cshtml"
     using BudgetOnline.UI.Models.ViewCommands;
     
     #line default
     #line hidden
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
-    public class _Views_ListViewCommands_RedirectViewCommand_cshtml : System.Web.WebPages.HelperPage
+    public class RedirectViewCommand : System.Web.WebPages.HelperPage
     {
-        
-        #line 5 "..\..\Views\ListViewCommands\RedirectViewCommand.cshtml"
-            
-
-        #line default
-        #line hidden
 
 #line 8 "..\..\Views\ListViewCommands\RedirectViewCommand.cshtml"
 public static System.Web.WebPages.HelperResult Render(ViewCommandUIModel command)
@@ -76,34 +70,34 @@ return new System.Web.WebPages.HelperResult(__razor_helper_writer => {
 #line hidden
 WriteLiteralTo(__razor_helper_writer, "\t<a");
 
-WriteAttributeTo(__razor_helper_writer, "href", Tuple.Create(" href=\"", 603), Tuple.Create("\"", 615)
+WriteAttributeTo(__razor_helper_writer, "href", Tuple.Create(" href=\"", 622), Tuple.Create("\"", 634)
 
 #line 28 "..\..\Views\ListViewCommands\RedirectViewCommand.cshtml"
-, Tuple.Create(Tuple.Create("", 610), Tuple.Create<System.Object, System.Int32>(href
+, Tuple.Create(Tuple.Create("", 629), Tuple.Create<System.Object, System.Int32>(href
 
 #line default
 #line hidden
-, 610), false)
+, 629), false)
 );
 
 WriteLiteralTo(__razor_helper_writer, "><i");
 
-WriteAttributeTo(__razor_helper_writer, "class", Tuple.Create(" class=\"", 619), Tuple.Create("\"", 647)
-, Tuple.Create(Tuple.Create("", 627), Tuple.Create("glyphicon", 627), true)
+WriteAttributeTo(__razor_helper_writer, "class", Tuple.Create(" class=\"", 638), Tuple.Create("\"", 666)
+, Tuple.Create(Tuple.Create("", 646), Tuple.Create("glyphicon", 646), true)
 
 #line 28 "..\..\Views\ListViewCommands\RedirectViewCommand.cshtml"
-, Tuple.Create(Tuple.Create(" ", 636), Tuple.Create<System.Object, System.Int32>(iconClass
+, Tuple.Create(Tuple.Create(" ", 655), Tuple.Create<System.Object, System.Int32>(iconClass
 
 #line default
 #line hidden
-, 637), false)
+, 656), false)
 );
 
 WriteLiteralTo(__razor_helper_writer, "></i>");
 
 
 #line 28 "..\..\Views\ListViewCommands\RedirectViewCommand.cshtml"
-                       WriteTo(__razor_helper_writer, command.Text);
+                          WriteTo(__razor_helper_writer, command.Text);
 
 
 #line default

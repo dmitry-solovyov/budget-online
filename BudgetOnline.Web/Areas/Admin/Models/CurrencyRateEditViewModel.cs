@@ -5,7 +5,7 @@ using System.Web.Mvc;
 using BudgetOnline.UI.Attributes;
 using BudgetOnline.UI.Models;
 using BudgetOnline.UI.Models.SelectItems;
-using BudgetOnline.Web.UI.Controls.Attributes;
+using BudgetOnline.Web.Infrastructure.Controls.Attributes;
 
 namespace BudgetOnline.Web.Areas.Admin.Models
 {

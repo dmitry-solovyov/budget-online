@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Web;
 
-namespace BudgetOnline.UI.Controls
+namespace BudgetOnline.UI.Controls.Tables
 {
 	public class TableBaseColumnBuilder<TModel, TBuilderType> : IMultiBuilder<ColumnRenderParts, TModel>
 		where TModel : class

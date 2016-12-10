@@ -1,6 +1,10 @@
-﻿@using BudgetOnline.UI.Models
-@functions {
-}
+﻿@*
+    Generator: MvcHelper
+    GeneratePrettyNames : true
+*@
+
+@using BudgetOnline.UI.Models
+
 @helper Render(DynamicContainerModel model)
     {
     <div id="@(model.UniqeId)" class="dyn-box" data-name="@(model.Name)" data-dynamic-url='@(model.RequestUrl)' data-autoload='@(model.IsAutoload.ToString().ToLower())' 

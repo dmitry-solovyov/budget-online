@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Web.Http;
 using System.Web.Mvc;
 using BudgetOnline.Data.Manage;
 using BudgetOnline.Data.Manage.Contracts;
@@ -8,7 +7,7 @@ using BudgetOnline.Data.Manage.Types.Simple;
 
 namespace BudgetOnline.Web.Controllers.Api
 {
-    public class TransactionsController : ApiController
+    public class TransactionsController9 : Controller
     {
         public ITransactionRepository TransactionRepository { get; set; }
 
@@ -31,16 +30,6 @@ namespace BudgetOnline.Web.Controllers.Api
                 return null;
 
             return t;
-        }
-
-        // POST api/<controller>
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
         }
 
         // DELETE api/<controller>/5

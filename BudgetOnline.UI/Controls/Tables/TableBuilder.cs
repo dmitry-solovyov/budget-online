@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using BudgetOnline.Common;
 
-namespace BudgetOnline.UI.Controls
+namespace BudgetOnline.UI.Controls.Tables
 {
 	public class TableBuilder<T> : IBuilder
 		where T : class

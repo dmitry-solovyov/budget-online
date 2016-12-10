@@ -1,4 +1,6 @@
-﻿namespace System.Web.Mvc
+﻿using System.Web.Mvc;
+
+namespace BudgetOnline.UI.Extensions
 {
 	public static class ModelMetadataExtensions
 	{

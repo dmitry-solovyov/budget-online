@@ -8,6 +8,7 @@ using BudgetOnline.Common.Enums;
 using BudgetOnline.Data.Manage;
 using BudgetOnline.Data.Manage.Contracts;
 using BudgetOnline.Data.Manage.Types.Simple;
+using BudgetOnline.UI.Extensions;
 using BudgetOnline.Web.ViewModels.Budgeting;
 
 namespace BudgetOnline.Web.Controllers

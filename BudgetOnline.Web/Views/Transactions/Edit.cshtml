@@ -1,11 +1,13 @@
 ﻿@using System.Globalization
 @using BudgetOnline.UI.Controls.Buttons
-@using BudgetOnline.Web.UI.Controls
+@using BudgetOnline.UI.Helpers
+@using BudgetOnline.Web.Infrastructure.Controls
+
 @model BudgetOnline.Web.ViewModels.TransactionEditViewModel
 @{
     ViewBag.Title = "Редактирование";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var editorId = Html.GetUniqId(10);
+    var editorId = UIHelper.GenerateRandomCode(10);
 }
 @Html.AlertGenerator()
 <div class="row">

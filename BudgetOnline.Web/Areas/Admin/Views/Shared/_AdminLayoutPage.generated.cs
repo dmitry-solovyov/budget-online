@@ -28,7 +28,7 @@ namespace ASP
     using System.Web.WebPages;
     
     #line 6 "..\..\Areas\Admin\Views\Shared\_AdminLayoutPage.cshtml"
-    using BudgetOnline.Web.UI.Controls;
+    using BudgetOnline.Web.Infrastructure.Controls;
     
     #line default
     #line hidden

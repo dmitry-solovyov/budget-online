@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using BudgetOnline.Data.Manage;
 using BudgetOnline.Data.Manage.Contracts;
 using BudgetOnline.Data.Manage.Types.Simple;
+using BudgetOnline.UI.Extensions;
 using BudgetOnline.Web.Infrastructure.Security;
 
 namespace BudgetOnline.Web.Models.StatisticsReports

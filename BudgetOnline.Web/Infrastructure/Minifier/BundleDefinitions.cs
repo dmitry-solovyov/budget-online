@@ -19,15 +19,15 @@ namespace BudgetOnline.Web.Infrastructure.Minifier
 
 
             var mainScriptsBundle = new Bundle("~/js", new JsMinify());
-            mainScriptsBundle.Include("~/Scripts/jquery-2.1.1.min.js");
+            mainScriptsBundle.Include("~/Scripts/jquery-{version}.min.js");
 
             BundleTable.Bundles.Add(mainScriptsBundle);
 
 
             var otherScriptsBundle = new Bundle("~/js2", new JsMinify());
-            otherScriptsBundle.Include("~/Scripts/jquery-ui-1.10.4.min.js");
+            otherScriptsBundle.Include("~/Scripts/jquery-ui-{version}.min.js");
             otherScriptsBundle.Include("~/Scripts/jquery-ui-i18n.min.js");
-            otherScriptsBundle.Include("~/Scripts/modernizr-2.7.2.js");
+            otherScriptsBundle.Include("~/Scripts/modernizr-{version}.js");
             otherScriptsBundle.Include("~/Scripts/bootstrap.min.js");
             otherScriptsBundle.Include("~/Scripts/bootstrap-select/bootstrap-select.js");
             otherScriptsBundle.Include("~/Scripts/jquery.validate.js");
