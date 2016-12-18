@@ -2,7 +2,7 @@
 
 namespace BudgetOnline.Web
 {
-    public class BundleConfig
+    public static class BundleConfig
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
@@ -14,8 +14,11 @@ namespace BudgetOnline.Web
                 "~/Content/themes/flick/jquery-ui.css", 
                 "~/Content/themes/flick/jquery.ui.theme.css"));
 
-            bundles.Add(new ScriptBundle("~/js")
+            bundles.Add(new ScriptBundle("~/jquery")
                 .Include("~/Scripts/jquery-{version}.js"));
+
+            bundles.Add(new ScriptBundle("~/highcharts")
+                .Include("~/Scripts/Highcharts-4.0.1/js/highcharts-all.js"));
 
             bundles.Add(new ScriptBundle("~/js2").Include(
                 "~/Scripts/jquery-ui-{version}.js", 

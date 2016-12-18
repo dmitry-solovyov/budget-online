@@ -16,17 +16,15 @@
     {
         foreach (var item in model.Items)
         {
-            <div class="">
-                <label class="checkbox form-inline">
-                    <input type="checkbox" id="@item.Value" value="@item.Value" @(new HtmlString(item.Selected ? "checked='checked'" : string.Empty)) />
-                    @item.Text
-                </label>
-            </div>
+            <label class="checkbox form-inline">
+                <input type="checkbox" id="@item.Value" value="@item.Value" @(new HtmlString(item.Selected ? "checked='checked'" : string.Empty)) />
+                @item.Text
+            </label>
         }
     }
     else
     {
-        <select class="form-control @cssClass" id="@id" name="@propertyName" @(new HtmlString(multiSelect ? "multiple='multiple'" : string.Empty))>
+        <select class="form-control @cssClass" id="@id" name="@propertyName">
             @foreach (var item in model.Items)
             {
                 <option data-icon="@item.Icon" value="@item.Value" @(new HtmlString(item.Selected ? "selected='selected'" : string.Empty))>@item.Text</option>

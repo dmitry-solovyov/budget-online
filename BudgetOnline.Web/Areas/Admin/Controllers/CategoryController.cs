@@ -9,7 +9,6 @@ using BudgetOnline.Data.Manage.Types.Simple;
 using BudgetOnline.UI.Models.ViewCommands;
 using BudgetOnline.Web.Areas.Admin.Models;
 using BudgetOnline.Web.Controllers;
-using BudgetOnline.Web.Infrastructure.Core;
 
 namespace BudgetOnline.Web.Areas.Admin.Controllers
 {
@@ -17,6 +16,7 @@ namespace BudgetOnline.Web.Areas.Admin.Controllers
     {
         public ICategoryRepository CategoryRepository { get; set; }
         public IDictionaries Dictionaries { get; set; }
+        public IMapper Mapper { get; set; }
 
         [HttpGet]
         public ActionResult List()
@@ -34,7 +34,7 @@ namespace BudgetOnline.Web.Areas.Admin.Controllers
                 return HttpNotFound();
             }
 
-            var model = Mapper.DynamicMap<Category, CategoryEditViewModel>(category);
+            var model = Mapper.Map<Category, CategoryEditViewModel>(category);
 
             return View(model);
         }
@@ -44,7 +44,7 @@ namespace BudgetOnline.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var category = Mapper.DynamicMap<CategoryEditViewModel, Category>(model);
+                var category = Mapper.Map<CategoryEditViewModel, Category>(model);
                 category.UpdatedBy = MembershipHelper.CurrentUser.Id;
                 if (category.IsDefault && category.IsDisabled)
                     category.IsDefault = false;
@@ -75,7 +75,7 @@ namespace BudgetOnline.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var category = Mapper.DynamicMap<CategoryEditViewModel, Category>(model);
+                var category = Mapper.Map<CategoryEditViewModel, Category>(model);
                 category.CreatedWhen = DateTime.UtcNow;
                 category.CreatedBy = MembershipHelper.CurrentUser.Id;
                 category.UpdatedBy = null;

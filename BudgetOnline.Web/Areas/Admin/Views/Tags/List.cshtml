@@ -1,4 +1,5 @@
 ﻿@using BudgetOnline.Web.Areas.Admin.Models
+@using BudgetOnline.Web.Infrastructure.Controls
 @model IEnumerable<TagListViewModel>
 @{
     ViewBag.Title = "Метки";
@@ -14,11 +15,11 @@
     .Css("table table-striped")
     .Rows(Model)
     .Columns(columns =>
-                {
-                    columns.Icon().IconCss(m => m.IsDisabled ? "glyphicon glyphicon-lock" : "").Span(1);
-                    columns.Bound(m => m.Name).Span(7);
-                    columns.Bound(m => m.Hits).Span(2);
-                    columns.Commands().Cell(m => m.Commands).Span(2);
-                })
+    {
+        columns.Icon().IconCss(m => m.IsDisabled ? "glyphicon glyphicon-lock" : "").Span(1);
+        columns.Bound(m => m.Name).Span(5);
+        columns.Bound(m => m.Hits).Span(2);
+        columns.Commands().Cell(m => m.Commands).Span(2);
+    })
     .Build()
     )

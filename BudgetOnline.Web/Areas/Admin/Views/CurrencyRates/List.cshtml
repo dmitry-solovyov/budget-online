@@ -1,5 +1,6 @@
-﻿@using BudgetOnline.UI.Controls
+﻿@using BudgetOnline.UI.Controls.Tables
 @using BudgetOnline.Web.Areas.Admin.Models
+@using BudgetOnline.Web.Infrastructure.Controls
 @model IEnumerable<CurrencyRateListViewModel>
 @{
     ViewBag.Title = "Курсы валют";
@@ -17,11 +18,11 @@
     .Rows(Model)
     .Columns(columns =>
                 {
-                    columns.Bound(m => m.Date).Span(3).Formatter<DateTime>(o => o.ToLocalTime().ToShortDateString());
+                    columns.Bound(m => m.Date).Span(1).Formatter<DateTime>(o => o.ToLocalTime().ToShortDateString());
                     columns.Icon().IconCss(m => m.IsDisabled ? "glyphicon-lock" : (m.IsDisabled ? "glyphicon-lock" : "")).Span(1);
-                    columns.Bound(m => m.BaseCurrencyName).Span(3);
-                    columns.Bound(m => m.TargetCurrencyName).Span(3);
-                    columns.Bound(m => m.Rate).Span(3);
-                    columns.Commands().Cell(m => m.Commands).Span(2);
+                    columns.Bound(m => m.BaseCurrencyName).Span(1);
+                    columns.Bound(m => m.TargetCurrencyName).Span(1);
+                    columns.Bound(m => m.Rate).Span(2);
+                    columns.Commands().Cell(m => m.Commands).Span(3);
                 })
     .Build())

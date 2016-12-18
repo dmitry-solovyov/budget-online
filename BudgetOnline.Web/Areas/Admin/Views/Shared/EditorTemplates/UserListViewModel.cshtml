@@ -1,5 +1,5 @@
 ﻿@using BudgetOnline.UI.Models.ViewCommands
-@model IEnumerable<BudgetOnline.Web.Areas.Admin.Models.UserListViewModel>
+@model BudgetOnline.Web.Areas.Admin.Models.UserListViewModel
 
 <table class="table table-striped">
 	<thead>
@@ -21,7 +21,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		@foreach (var item in Model)
+		@foreach (var item in Model.Items)
   {
 			<tr>
 				<td class="col-md-1">

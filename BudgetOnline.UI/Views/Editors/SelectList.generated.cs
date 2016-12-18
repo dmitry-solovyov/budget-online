@@ -78,62 +78,58 @@ WriteLiteralTo(__razor_helper_writer, "></select>\r\n");
 
 #line default
 #line hidden
-WriteLiteralTo(__razor_helper_writer, "            <div");
-
-WriteLiteralTo(__razor_helper_writer, " class=\"\"");
-
-WriteLiteralTo(__razor_helper_writer, ">\r\n                <label");
+WriteLiteralTo(__razor_helper_writer, "            <label");
 
 WriteLiteralTo(__razor_helper_writer, " class=\"checkbox form-inline\"");
 
-WriteLiteralTo(__razor_helper_writer, ">\r\n                    <input");
+WriteLiteralTo(__razor_helper_writer, ">\r\n                <input");
 
 WriteLiteralTo(__razor_helper_writer, " type=\"checkbox\"");
 
-WriteAttributeTo(__razor_helper_writer, "id", Tuple.Create(" id=\"", 571), Tuple.Create("\"", 587)
+WriteAttributeTo(__razor_helper_writer, "id", Tuple.Create(" id=\"", 535), Tuple.Create("\"", 551)
 
-#line 21 "..\..\Views\Editors\SelectList.cshtml"
-, Tuple.Create(Tuple.Create("", 576), Tuple.Create<System.Object, System.Int32>(item.Value
+#line 20 "..\..\Views\Editors\SelectList.cshtml"
+, Tuple.Create(Tuple.Create("", 540), Tuple.Create<System.Object, System.Int32>(item.Value
 
 #line default
 #line hidden
-, 576), false)
+, 540), false)
 );
 
-WriteAttributeTo(__razor_helper_writer, "value", Tuple.Create(" value=\"", 588), Tuple.Create("\"", 607)
+WriteAttributeTo(__razor_helper_writer, "value", Tuple.Create(" value=\"", 552), Tuple.Create("\"", 571)
 
-#line 21 "..\..\Views\Editors\SelectList.cshtml"
-, Tuple.Create(Tuple.Create("", 596), Tuple.Create<System.Object, System.Int32>(item.Value
+#line 20 "..\..\Views\Editors\SelectList.cshtml"
+, Tuple.Create(Tuple.Create("", 560), Tuple.Create<System.Object, System.Int32>(item.Value
 
 #line default
 #line hidden
-, 596), false)
+, 560), false)
 );
 
 WriteLiteralTo(__razor_helper_writer, " ");
 
 
-#line 21 "..\..\Views\Editors\SelectList.cshtml"
-                                                   WriteTo(__razor_helper_writer, new HtmlString(item.Selected ? "checked='checked'" : string.Empty));
+#line 20 "..\..\Views\Editors\SelectList.cshtml"
+                                               WriteTo(__razor_helper_writer, new HtmlString(item.Selected ? "checked='checked'" : string.Empty));
 
 
 #line default
 #line hidden
 WriteLiteralTo(__razor_helper_writer, " />\r\n");
 
-WriteLiteralTo(__razor_helper_writer, "                    ");
+WriteLiteralTo(__razor_helper_writer, "                ");
 
 
-#line 22 "..\..\Views\Editors\SelectList.cshtml"
+#line 21 "..\..\Views\Editors\SelectList.cshtml"
 WriteTo(__razor_helper_writer, item.Text);
 
 
 #line default
 #line hidden
-WriteLiteralTo(__razor_helper_writer, "\r\n                </label>\r\n            </div>\r\n");
+WriteLiteralTo(__razor_helper_writer, "\r\n            </label>\r\n");
 
 
-#line 25 "..\..\Views\Editors\SelectList.cshtml"
+#line 23 "..\..\Views\Editors\SelectList.cshtml"
         }
     }
     else
@@ -144,56 +140,47 @@ WriteLiteralTo(__razor_helper_writer, "\r\n                </label>\r\n         
 #line hidden
 WriteLiteralTo(__razor_helper_writer, "        <select");
 
-WriteAttributeTo(__razor_helper_writer, "class", Tuple.Create(" class=\"", 811), Tuple.Create("\"", 841)
-, Tuple.Create(Tuple.Create("", 819), Tuple.Create("form-control", 819), true)
+WriteAttributeTo(__razor_helper_writer, "class", Tuple.Create(" class=\"", 747), Tuple.Create("\"", 777)
+, Tuple.Create(Tuple.Create("", 755), Tuple.Create("form-control", 755), true)
 
-#line 29 "..\..\Views\Editors\SelectList.cshtml"
-, Tuple.Create(Tuple.Create(" ", 831), Tuple.Create<System.Object, System.Int32>(cssClass
+#line 27 "..\..\Views\Editors\SelectList.cshtml"
+, Tuple.Create(Tuple.Create(" ", 767), Tuple.Create<System.Object, System.Int32>(cssClass
 
 #line default
 #line hidden
-, 832), false)
+, 768), false)
 );
 
-WriteAttributeTo(__razor_helper_writer, "id", Tuple.Create(" id=\"", 842), Tuple.Create("\"", 850)
+WriteAttributeTo(__razor_helper_writer, "id", Tuple.Create(" id=\"", 778), Tuple.Create("\"", 786)
 
-#line 29 "..\..\Views\Editors\SelectList.cshtml"
-, Tuple.Create(Tuple.Create("", 847), Tuple.Create<System.Object, System.Int32>(id
+#line 27 "..\..\Views\Editors\SelectList.cshtml"
+, Tuple.Create(Tuple.Create("", 783), Tuple.Create<System.Object, System.Int32>(id
 
 #line default
 #line hidden
-, 847), false)
+, 783), false)
 );
 
-WriteAttributeTo(__razor_helper_writer, "name", Tuple.Create(" name=\"", 851), Tuple.Create("\"", 871)
+WriteAttributeTo(__razor_helper_writer, "name", Tuple.Create(" name=\"", 787), Tuple.Create("\"", 807)
 
-#line 29 "..\..\Views\Editors\SelectList.cshtml"
-, Tuple.Create(Tuple.Create("", 858), Tuple.Create<System.Object, System.Int32>(propertyName
+#line 27 "..\..\Views\Editors\SelectList.cshtml"
+, Tuple.Create(Tuple.Create("", 794), Tuple.Create<System.Object, System.Int32>(propertyName
 
 #line default
 #line hidden
-, 858), false)
+, 794), false)
 );
 
-WriteLiteralTo(__razor_helper_writer, " ");
-
-
-#line 29 "..\..\Views\Editors\SelectList.cshtml"
-                                                WriteTo(__razor_helper_writer, new HtmlString(multiSelect ? "multiple='multiple'" : string.Empty));
-
-
-#line default
-#line hidden
 WriteLiteralTo(__razor_helper_writer, ">\r\n");
 
 
-#line 30 "..\..\Views\Editors\SelectList.cshtml"
+#line 28 "..\..\Views\Editors\SelectList.cshtml"
             
 
 #line default
 #line hidden
 
-#line 30 "..\..\Views\Editors\SelectList.cshtml"
+#line 28 "..\..\Views\Editors\SelectList.cshtml"
              foreach (var item in model.Items)
             {
 
@@ -205,7 +192,7 @@ WriteLiteralTo(__razor_helper_writer, "                <option");
 WriteLiteralTo(__razor_helper_writer, " data-icon=\"");
 
 
-#line 32 "..\..\Views\Editors\SelectList.cshtml"
+#line 30 "..\..\Views\Editors\SelectList.cshtml"
      WriteTo(__razor_helper_writer, item.Icon);
 
 
@@ -213,20 +200,20 @@ WriteLiteralTo(__razor_helper_writer, " data-icon=\"");
 #line hidden
 WriteLiteralTo(__razor_helper_writer, "\"");
 
-WriteAttributeTo(__razor_helper_writer, "value", Tuple.Create(" value=\"", 1054), Tuple.Create("\"", 1073)
+WriteAttributeTo(__razor_helper_writer, "value", Tuple.Create(" value=\"", 920), Tuple.Create("\"", 939)
 
-#line 32 "..\..\Views\Editors\SelectList.cshtml"
-, Tuple.Create(Tuple.Create("", 1062), Tuple.Create<System.Object, System.Int32>(item.Value
+#line 30 "..\..\Views\Editors\SelectList.cshtml"
+, Tuple.Create(Tuple.Create("", 928), Tuple.Create<System.Object, System.Int32>(item.Value
 
 #line default
 #line hidden
-, 1062), false)
+, 928), false)
 );
 
 WriteLiteralTo(__razor_helper_writer, " ");
 
 
-#line 32 "..\..\Views\Editors\SelectList.cshtml"
+#line 30 "..\..\Views\Editors\SelectList.cshtml"
                                       WriteTo(__razor_helper_writer, new HtmlString(item.Selected ? "selected='selected'" : string.Empty));
 
 
@@ -235,7 +222,7 @@ WriteLiteralTo(__razor_helper_writer, " ");
 WriteLiteralTo(__razor_helper_writer, ">");
 
 
-#line 32 "..\..\Views\Editors\SelectList.cshtml"
+#line 30 "..\..\Views\Editors\SelectList.cshtml"
                                                                                                              WriteTo(__razor_helper_writer, item.Text);
 
 
@@ -244,7 +231,7 @@ WriteLiteralTo(__razor_helper_writer, ">");
 WriteLiteralTo(__razor_helper_writer, "</option>\r\n");
 
 
-#line 33 "..\..\Views\Editors\SelectList.cshtml"
+#line 31 "..\..\Views\Editors\SelectList.cshtml"
             }
 
 
@@ -253,7 +240,7 @@ WriteLiteralTo(__razor_helper_writer, "</option>\r\n");
 WriteLiteralTo(__razor_helper_writer, "        </select>\r\n");
 
 
-#line 35 "..\..\Views\Editors\SelectList.cshtml"
+#line 33 "..\..\Views\Editors\SelectList.cshtml"
     }
 
 
@@ -261,7 +248,7 @@ WriteLiteralTo(__razor_helper_writer, "        </select>\r\n");
 #line hidden
 });
 
-#line 36 "..\..\Views\Editors\SelectList.cshtml"
+#line 34 "..\..\Views\Editors\SelectList.cshtml"
 }
 #line default
 #line hidden

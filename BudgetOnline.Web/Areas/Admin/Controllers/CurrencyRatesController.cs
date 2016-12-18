@@ -12,7 +12,6 @@ using BudgetOnline.UI.Models.ViewCommands;
 using BudgetOnline.Web.Areas.Admin.Models;
 using BudgetOnline.Web.Controllers;
 using BudgetOnline.Web.Infrastructure.Binders;
-using BudgetOnline.Web.Infrastructure.Core;
 
 namespace BudgetOnline.Web.Areas.Admin.Controllers
 {
@@ -21,6 +20,7 @@ namespace BudgetOnline.Web.Areas.Admin.Controllers
         public ICurrencyRateRepository CurrencyRateRepository { get; set; }
         public ICurrencyRepository CurrencyRepository { get; set; }
         public IDictionaries Dictionaries { get; set; }
+        public IMapper Mapper { get; set; }
 
         [HttpGet]
         public ActionResult List()
@@ -38,7 +38,7 @@ namespace BudgetOnline.Web.Areas.Admin.Controllers
                 return HttpNotFound();
             }
 
-            var model = Mapper.DynamicMap<CurrencyRate, CurrencyRateEditViewModel>(currencyRate);
+            var model = Mapper.Map<CurrencyRate, CurrencyRateEditViewModel>(currencyRate);
             model.BaseCurrency.Id = currencyRate.BaseCurrencyId;
             model.TargetCurrency.Id = currencyRate.TargetCurrencyId;
 
@@ -52,7 +52,7 @@ namespace BudgetOnline.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var currencyRate = Mapper.DynamicMap<CurrencyRateEditViewModel, CurrencyRate>(model);
+                var currencyRate = Mapper.Map<CurrencyRateEditViewModel, CurrencyRate>(model);
                 currencyRate.UpdatedBy = MembershipHelper.CurrentUser.Id;
 
                 CurrencyRateRepository.Update(currencyRate);
@@ -80,7 +80,7 @@ namespace BudgetOnline.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var currencyRate = Mapper.DynamicMap<CurrencyRateEditViewModel, CurrencyRate>(model);
+                var currencyRate = Mapper.Map<CurrencyRateEditViewModel, CurrencyRate>(model);
                 currencyRate.CreatedWhen = DateTime.UtcNow;
                 currencyRate.CreatedBy = MembershipHelper.CurrentUser.Id;
                 currencyRate.UpdatedBy = null;

@@ -1,21 +1,24 @@
 ﻿@using System.Globalization
 @using BudgetOnline.UI.Extensions
 @using BudgetOnline.UI.Models
+@using BudgetOnline.Web.Infrastructure.Controls
 @using BudgetOnline.Web.ViewModels
-@model BudgetOnline.Web.ViewModels.TransactionListViewModel
+
+@model TransactionListViewModel
+
 @{
     ViewBag.Title = "Transactions";
     Layout = null;
 }
 <input type="hidden" value="@Model.Search.CurrentPage"/>
 
-@(new BudgetOnline.UI.Views.Paginator().Render(new PaginationModel
-                                                        {
-                                                            Page = !string.IsNullOrWhiteSpace(Request.QueryString["page"]) ? int.Parse(Request.QueryString["page"]) : 1, 
-                                                            PagesCount = Model.Search.PagesCount.Value,
-                                                            PageSize = Model.Search.PageSize.Value,
-                                                            PageSizes = new[]{10, 25, 50, 100, 200}
-                                                        }))
+@(BudgetOnline.UI.Views.Paginator.Render(new PaginationModel
+{
+    Page = !string.IsNullOrWhiteSpace(Request.QueryString["page"]) ? int.Parse(Request.QueryString["page"]) : 1, 
+    PagesCount = Model.Search.PagesCount.Value,
+    PageSize = Model.Search.PageSize.Value,
+    PageSizes = new[]{10, 25, 50, 100, 200}
+}))
 
 @foreach (var group in Model.Groups)
 {
@@ -97,13 +100,13 @@
         </div>
     </div>
 }
-@(new BudgetOnline.UI.Views.Paginator().Render(new PaginationModel
-                                                        {
-                                                            Page = !string.IsNullOrWhiteSpace(Request.QueryString["page"]) ? int.Parse(Request.QueryString["page"]) : 1, 
-                                                            PagesCount = Model.Search.PagesCount.Value,
-                                                            PageSize = Model.Search.PageSize.Value,
-                                                            PageSizes = new[]{10, 25, 50, 100}
-                                                        }))
+@(BudgetOnline.UI.Views.Paginator.Render(new PaginationModel
+{
+    Page = !string.IsNullOrWhiteSpace(Request.QueryString["page"]) ? int.Parse(Request.QueryString["page"]) : 1, 
+    PagesCount = Model.Search.PagesCount.Value,
+    PageSize = Model.Search.PageSize.Value,
+    PageSizes = new[]{10, 25, 50, 100}
+}))
 @{
     var statisticsItems = Model.Totals;
 }

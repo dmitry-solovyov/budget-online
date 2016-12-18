@@ -99,7 +99,7 @@ WriteLiteralTo(__razor_helper_writer, " class=\"dropdown-toggle\"");
 
 WriteLiteralTo(__razor_helper_writer, " data-toggle=\"dropdown\"");
 
-WriteLiteralTo(__razor_helper_writer, " rolw=\"button\"");
+WriteLiteralTo(__razor_helper_writer, " role=\"button\"");
 
 WriteLiteralTo(__razor_helper_writer, " aria-expanded=\"false\"");
 

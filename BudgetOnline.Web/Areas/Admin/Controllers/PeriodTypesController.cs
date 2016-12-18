@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
@@ -9,9 +8,6 @@ using BudgetOnline.Data.Manage.Types.Simple;
 using BudgetOnline.UI.Models.ViewCommands;
 using BudgetOnline.Web.Areas.Admin.Models;
 using BudgetOnline.Web.Controllers;
-using BudgetOnline.Web.Infrastructure.Core;
-using BudgetOnline.Web.Models;
-using BudgetOnline.Web.ViewModels;
 
 namespace BudgetOnline.Web.Areas.Admin.Controllers
 {
@@ -19,6 +15,7 @@ namespace BudgetOnline.Web.Areas.Admin.Controllers
     {
         public IPeriodTypeRepository PeriodTypeRepository { get; set; }
         public IDictionaries Dictionaries { get; set; }
+        public IMapper Mapper { get; set; }
 
         [HttpGet]
         public ActionResult List()
@@ -36,7 +33,7 @@ namespace BudgetOnline.Web.Areas.Admin.Controllers
             //    return HttpNotFound();
             //}
 
-            var model = Mapper.DynamicMap<PeriodType, PeriodTypeEditViewModel>(PeriodType);
+            var model = Mapper.Map<PeriodType, PeriodTypeEditViewModel>(PeriodType);
 
             return View(model);
         }
@@ -46,7 +43,7 @@ namespace BudgetOnline.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var PeriodType = Mapper.DynamicMap<PeriodTypeEditViewModel, PeriodType>(model);
+                var PeriodType = Mapper.Map<PeriodTypeEditViewModel, PeriodType>(model);
                 //PeriodType.UpdatedBy = MembershipHelper.CurrentUser.Id;
 
                 PeriodTypeRepository.Update(PeriodType);
@@ -72,7 +69,7 @@ namespace BudgetOnline.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var periodType = Mapper.DynamicMap<PeriodTypeEditViewModel, PeriodType>(model);
+                var periodType = Mapper.Map<PeriodTypeEditViewModel, PeriodType>(model);
                 //PeriodType.CreatedWhen = DateTime.UtcNow;
                 //PeriodType.CreatedBy = MembershipHelper.CurrentUser.Id;
                 //PeriodType.UpdatedBy = null;

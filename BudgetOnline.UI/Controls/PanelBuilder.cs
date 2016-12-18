@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Security.Policy;
 using System.Web;
 using System.Web.WebPages;
 using BudgetOnline.UI.Models;
+using BudgetOnline.UI.Views;
 
 namespace BudgetOnline.UI.Controls
 {
@@ -171,13 +171,11 @@ namespace BudgetOnline.UI.Controls
                 };
 
             if (model.Content != null)
+            {
                 model.IsAutoload = false;
+            }
 
-            //var container = new _Views_DynamicContainer_cshtml();
-            
-            //return new HtmlString(container.Render(model).ToHtmlString());
-
-            return new HtmlString("");
+            return new HtmlString(DynamicContainer.Render(model).ToHtmlString());
         }
     }
 }

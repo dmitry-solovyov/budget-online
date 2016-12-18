@@ -1,9 +1,10 @@
-﻿@model BudgetOnline.Web.ViewModels.Charts.TagsByDatesViewModel
-@{
-}
+﻿@using System.Web.Optimization
+@using BudgetOnline.Web.Infrastructure.Controls
+@model BudgetOnline.Web.ViewModels.Charts.TagsByDatesViewModel
+
 @section Header
 {
-    <script src="@Url.Content("~/Scripts/Highcharts-3.0.1/js/highcharts.js")" type="text/javascript"></script>
+    @Scripts.Render("~/highcharts")
 }
 <div class="darkback border-bt" style="padding-bottom: 1em">
     <form method="POST">

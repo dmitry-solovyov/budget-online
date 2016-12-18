@@ -1,11 +1,12 @@
-﻿@model BudgetOnline.Web.Areas.Admin.Models.UserEditViewModel
+﻿@using BudgetOnline.Web.Infrastructure.Controls
+@model BudgetOnline.Web.Areas.Admin.Models.UserEditViewModel
 @{
 	ViewBag.Title = "Создание пользователя";
 	Layout = "~/Areas/Admin/Views/Shared/_AdminLayoutPage.cshtml";
 }
 <h3>
 	Новый пользователь</h3>
-<div class="container">
+<div>
 	@(Html.BudgetOnlineWeb().Form()
        	.Content(@<text>
 				  	@Html.EditorForModel("~/Views/Shared/EditorTemplates/Object.cshtml")

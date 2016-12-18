@@ -1,5 +1,5 @@
 ﻿@using BudgetOnline.Web.Areas.Admin.Models
-@using BudgetOnline.Web.UI.Controls
+@using BudgetOnline.Web.Infrastructure.Controls
 @model UserListViewModel
 @{
     ViewBag.Title = "List";
@@ -42,7 +42,7 @@
                     ).Span(1);
                     columns.Bound(m => m.Name).Span(4);
                     columns.Bound(m => m.Email).Span(2);
-                    columns.Bound(m => m.WhenLastConnected).Span(4);
+                    columns.Bound(m => m.WhenLastConnected).Span(2);
                     columns.Commands().Cell(m => m.Commands).Span(2);
                 })
     .Build()

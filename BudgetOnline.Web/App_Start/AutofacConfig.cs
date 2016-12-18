@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
+using AutoMapper;
 using BudgetOnline.BusinessLayer.Helpers;
 using BudgetOnline.Common;
 using BudgetOnline.Common.Logger;
@@ -26,12 +27,19 @@ namespace BudgetOnline.Web
             RegisterBusinessLayerBindings(builder);
             RegisterDataLayerBindings(builder);
             RegisterSecurity(builder);
+            RegisterAutomapper(builder);
 
             builder.RegisterFilterProvider();
 
             var container = builder.Build();
 
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+        }
+
+        private static void RegisterAutomapper(ContainerBuilder builder)
+        {
+            var mapper = WebMapperProfile.Initialize().CreateMapper();
+            builder.RegisterInstance<IMapper>(mapper);
         }
 
         private static void RegisterCommonBindings(ContainerBuilder builder)

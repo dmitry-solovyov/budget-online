@@ -9,7 +9,6 @@ using BudgetOnline.Data.Manage.Types.Simple;
 using BudgetOnline.UI.Models.ViewCommands;
 using BudgetOnline.Web.Areas.Admin.Models;
 using BudgetOnline.Web.Controllers;
-using BudgetOnline.Web.Infrastructure.Core;
 
 namespace BudgetOnline.Web.Areas.Admin.Controllers
 {
@@ -17,6 +16,7 @@ namespace BudgetOnline.Web.Areas.Admin.Controllers
     {
         public IAccountRepository AccountRepository { get; set; }
         public IDictionaries Dictionaries { get; set; }
+        public IMapper Mapper { get; set; }
 
         [HttpGet]
         public ActionResult List()
@@ -34,7 +34,7 @@ namespace BudgetOnline.Web.Areas.Admin.Controllers
                 return HttpNotFound();
             }
 
-            var model = Mapper.DynamicMap<Account, AccountEditViewModel>(account);
+            var model = Mapper.Map<Account, AccountEditViewModel>(account);
 
             return View(model);
         }
@@ -44,7 +44,7 @@ namespace BudgetOnline.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var account = Mapper.DynamicMap<AccountEditViewModel, Account>(model);
+                var account = Mapper.Map<AccountEditViewModel, Account>(model);
                 account.UpdatedBy = MembershipHelper.CurrentUser.Id;
                 if (account.IsDefault && account.IsDisabled)
                     account.IsDefault = false;
@@ -75,7 +75,7 @@ namespace BudgetOnline.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var account = Mapper.DynamicMap<AccountEditViewModel, Account>(model);
+                var account = Mapper.Map<AccountEditViewModel, Account>(model);
                 account.CreatedWhen = DateTime.UtcNow;
                 account.CreatedBy = MembershipHelper.CurrentUser.Id;
                 account.UpdatedBy = null;

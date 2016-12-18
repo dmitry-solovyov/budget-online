@@ -25,7 +25,7 @@
 	@foreach(var item in Model)
 	{
 		<li>
-			<input id="Permissions_@(item.Value)" name="Permissions.@(item.Value)" type="checkbox" value="false"></input>
+		    <input id="Permissions_@(item.Value)" name="Permissions.@(item.Value)" type="checkbox" value="false"/>
 			@item.Text
 		</li>
 	}

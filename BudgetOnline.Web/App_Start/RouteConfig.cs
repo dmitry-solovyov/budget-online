@@ -9,6 +9,8 @@ namespace BudgetOnline.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            AreaRegistration.RegisterAllAreas();
+
             routes.MapRoute(
                 "Statistics", // Route name
                 "statistics/transactions/{action}/{id}", // URL with parameters

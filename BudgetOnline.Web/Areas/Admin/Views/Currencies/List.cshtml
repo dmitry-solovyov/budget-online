@@ -1,4 +1,5 @@
 ﻿@using BudgetOnline.Web.Areas.Admin.Models
+@using BudgetOnline.Web.Infrastructure.Controls
 @model IEnumerable<CurrencyListViewModel>
 @{
     ViewBag.Title = "Валюты";
@@ -17,8 +18,8 @@
                 {
                     columns.Icon().IconCss(m => m.IsDisabled ? "glyphicon-lock" : (m.IsDefault ? "glyphicon-star" : "")).Span(1);
                     columns.Bound(m => m.Symbol).Span(2);
-                    columns.Bound(m => m.Name).Span(7);
-                    columns.Commands().Cell(m => m.Commands).Span(2);
+                    columns.Bound(m => m.Name).Span(5);
+                    columns.Commands().Cell(m => m.Commands).Span(3);
                 })
     .Build()
     )

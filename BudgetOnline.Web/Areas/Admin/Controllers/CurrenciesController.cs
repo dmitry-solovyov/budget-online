@@ -9,9 +9,6 @@ using BudgetOnline.Data.Manage.Types.Simple;
 using BudgetOnline.UI.Models.ViewCommands;
 using BudgetOnline.Web.Areas.Admin.Models;
 using BudgetOnline.Web.Controllers;
-using BudgetOnline.Web.Infrastructure.Core;
-using BudgetOnline.Web.Models;
-using BudgetOnline.Web.ViewModels;
 
 namespace BudgetOnline.Web.Areas.Admin.Controllers
 {
@@ -19,6 +16,7 @@ namespace BudgetOnline.Web.Areas.Admin.Controllers
     {
         public ICurrencyRepository CurrencyRepository { get; set; }
         public IDictionaries Dictionaries { get; set; }
+        public IMapper Mapper { get; set; }
 
         [HttpGet]
         public ActionResult List()
@@ -36,7 +34,7 @@ namespace BudgetOnline.Web.Areas.Admin.Controllers
                 return HttpNotFound();
             }
 
-            var model = Mapper.DynamicMap<Currency, CurrencyEditViewModel>(currency);
+            var model = Mapper.Map<Currency, CurrencyEditViewModel>(currency);
 
             return View(model);
         }
@@ -46,7 +44,7 @@ namespace BudgetOnline.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var currency = Mapper.DynamicMap<CurrencyEditViewModel, Currency>(model);
+                var currency = Mapper.Map<CurrencyEditViewModel, Currency>(model);
                 currency.UpdatedBy = MembershipHelper.CurrentUser.Id;
                 if (currency.IsDefault && currency.IsDisabled)
                     currency.IsDefault = false;
@@ -77,7 +75,7 @@ namespace BudgetOnline.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var currency = Mapper.DynamicMap<CurrencyEditViewModel, Currency>(model);
+                var currency = Mapper.Map<CurrencyEditViewModel, Currency>(model);
                 currency.CreatedWhen = DateTime.UtcNow;
                 currency.CreatedBy = MembershipHelper.CurrentUser.Id;
                 currency.UpdatedBy = null;

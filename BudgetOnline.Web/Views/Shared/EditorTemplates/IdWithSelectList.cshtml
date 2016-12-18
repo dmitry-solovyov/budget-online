@@ -1,8 +1,10 @@
 ﻿@using BudgetOnline.UI.Extensions
+
 @model BudgetOnline.UI.Models.IdWithSelectList
+
 @{
-    ModelState state = ViewData.ModelState[ViewData.ModelMetadata.PropertyName];
-    var cssClass = ViewData.ModelMetadata.GetSpan("col-md-8");
+    var state = ViewData.ModelState[ViewData.ModelMetadata.PropertyName];
+    var cssClass = ViewData.ModelMetadata.GetSpan("");
     if (state != null && state.Errors.Count > 0)
     {
         cssClass += " input-validation-error";
@@ -13,37 +15,4 @@
         cssClass += " selectpicker";
     }
 }
-@(new BudgetOnline.UI.Views.Editors.SelectList().Render(Model.Items, ViewData.ModelMetadata.PropertyName, cssClass, false))
-@*@{
-    ModelState state = ViewData.ModelState[ViewData.ModelMetadata.PropertyName];
-
-    var cssClass = ViewData.ModelMetadata.GetSpan("col-md-6");
-    if (state != null && state.Errors.Count > 0)
-    {
-        cssClass += " input-validation-error";
-    }
-}
-@if (Model == null)
-{
-    <select class="@cssClass">
-    </select>
-}
-else
-{
-    @Html.DropDownList("", newItems, new { @class = cssClass })
-
-    @*<select class="@cssClass selectpicker" id="@ViewData.ModelMetadata.PropertyName" name="@ViewData.ModelMetadata.PropertyName">
-        @foreach (var item in Model.Items)
-        {
-            if (item.Selected)
-            {
-            <option data-icon="cus-page" selected="selected" value="@item.Value">@item.Text</option>
-            }
-            else
-            {
-            <option data-icon="cus-world" value="@item.Value">@item.Text</option>
-            }
-        }
-    </select>
-
-}*@
+@BudgetOnline.UI.Views.Editors.SelectList.Render(Model.Items, ViewData.ModelMetadata.PropertyName, cssClass, false)

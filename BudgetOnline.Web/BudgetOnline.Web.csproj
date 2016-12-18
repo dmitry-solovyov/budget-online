@@ -160,6 +160,32 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CurrenciesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CurrencyRatesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PeriodTypesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TagsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Admin\Models\AccountEditViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\AccountListViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\CategoryEditViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\CategoryListViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\CurrencyEditViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\CurrencyListViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\CurrencyRateEditViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\CurrencyRateListViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\EnableDisableUserViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\PeriodTypeEditViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\PeriodTypeListViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\TagEditViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\TagListSearchViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\TagListViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\UserEditViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\UserListItemsViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\UserListSearchViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\UserListViewModel.cs" />
     <Compile Include="Controllers\Api\TransactionsController.cs" />
     <Compile Include="Controllers\BudgetingController.cs" />
     <Compile Include="Controllers\CurrentUserController.cs" />
@@ -227,6 +253,7 @@
     <Compile Include="Infrastructure\Security\IMembershipHelper.cs" />
     <Compile Include="Infrastructure\Security\MembershipHelper.cs" />
     <Compile Include="Infrastructure\Security\RestrictRoleAttribute.cs" />
+    <Compile Include="Infrastructure\WebMapperProfile.cs" />
     <Compile Include="Models\ListWithMultiSelects.cs" />
     <Compile Include="Models\CurrencyRateModel.cs" />
     <Compile Include="Models\CurrencyWithFormula.cs" />
@@ -308,8 +335,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-responsive.css" />
-    <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap-select.css" />
     <Content Include="Content\bootstrap-select.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -432,20 +457,35 @@
     <Content Include="Scripts\Highcharts\themes\dark-green.js" />
     <Content Include="Scripts\Highcharts\themes\gray.js" />
     <Content Include="Scripts\Highcharts\themes\grid.js" />
-    <Content Include="Scripts\images\ajax-loader.gif" />
-    <Content Include="Scripts\images\back1.jpg" />
-    <Content Include="Scripts\images\back2.jpg" />
-    <Content Include="Scripts\images\calendar_icon.gif" />
-    <Content Include="Scripts\images\calendar_icon.jpg" />
-    <Content Include="Scripts\images\famfamfam-icons.png" />
-    <Content Include="Scripts\images\glyphicons-halflings-white.png" />
-    <Content Include="Scripts\images\glyphicons-halflings.png" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Areas\Admin\Views\Accounts\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Accounts\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Accounts\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Currencies\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Currencies\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Currencies\List.cshtml" />
+    <Content Include="Areas\Admin\Views\CurrencyRates\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CurrencyRates\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\CurrencyRates\List.cshtml" />
+    <Content Include="Areas\Admin\Views\PeriodTypes\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\UserListViewModel.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminLayoutPage.cshtml" />
+    <Content Include="Areas\Admin\Views\Tags\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Tags\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Disable.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Enable.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Web.config" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -577,6 +617,7 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>_Layout.generated.cs</LastGenOutput>
     </Content>
+    <Content Include="Views\Welcome\React.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\CurrentUser\LoggedOnName.cshtml">
@@ -701,7 +742,6 @@
     <Content Include="Views\TransactionCharts\CategoriesByPeriodPercents.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\" />
     <Folder Include="Infrastructure\Enums\" />
     <Folder Include="ViewModels\Api\" />
   </ItemGroup>

@@ -7,34 +7,34 @@
 @using BudgetOnline.UI.Helpers
 
 @helper Render(BudgetOnline.UI.Models.Editors.CurrencyBundle model, string propertyName, ModelState state, IDictionary<string, object> additionalValues)
+{
+    var id = UIHelper.GenerateRandomCode(10);
+
+    var placeholder = "";
+    if (additionalValues.ContainsKey("placeholder"))
     {
-        var id = UIHelper.GenerateRandomCode(10);
+        placeholder = additionalValues["placeholder"].ToString();
+    }
 
-        var placeholder = "";
-        if (additionalValues.ContainsKey("placeholder"))
-        {
-            placeholder = additionalValues["placeholder"].ToString();
-        }
+    var value = model.Sum.ToString(CultureInfo.CurrentUICulture);
 
-        var value = model.Sum.ToString(CultureInfo.CurrentUICulture);
+    var cssFormulaClass = " col-md-10 data-type-calculator form-control";
+    if (state != null && state.Errors.Count > 0)
+    {
+        cssFormulaClass += " input-validation-error";
+    }
 
-        var cssFormulaClass = " col-md-10 data-type-calculator form-control";
-        if (state != null && state.Errors.Count > 0)
-        {
-            cssFormulaClass += " input-validation-error";
-        }
+    var cssCurrencyListClass = " data-type-calculator form-control";
+    if (state != null && state.Errors.Count > 0)
+    {
+        cssCurrencyListClass += " input-validation-error";
+    }
 
-        var cssCurrencyListClass = " data-type-calculator form-control";
-        if (state != null && state.Errors.Count > 0)
-        {
-            cssCurrencyListClass += " input-validation-error";
-        }
-
-        var cssAccountListClass = " data-type-calculator form-control";
-        if (state != null && state.Errors.Count > 0)
-        {
-            cssAccountListClass += " input-validation-error";
-        }
+    var cssAccountListClass = " data-type-calculator form-control";
+    if (state != null && state.Errors.Count > 0)
+    {
+        cssAccountListClass += " input-validation-error";
+    }
 
     <div id="@id">
         <div class="row">
@@ -57,7 +57,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                @BudgetOnline.UI.Views.Editors.SelectList.Render(model.Currency.Items, propertyName + ".Currency", cssCurrencyListClass, false))
+                @BudgetOnline.UI.Views.Editors.SelectList.Render(model.Currency.Items, propertyName + ".Currency", cssCurrencyListClass, false)
             </div>
         </div>
     </div>

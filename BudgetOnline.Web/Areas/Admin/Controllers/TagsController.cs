@@ -8,14 +8,13 @@ using BudgetOnline.Data.Manage.Types.Simple;
 using BudgetOnline.UI.Models.ViewCommands;
 using BudgetOnline.Web.Areas.Admin.Models;
 using BudgetOnline.Web.Controllers;
-using BudgetOnline.Web.Models;
-using BudgetOnline.Web.ViewModels;
 
 namespace BudgetOnline.Web.Areas.Admin.Controllers
 {
 	public class TagsController : ListController
     {
         public ITagRepository TagRepository { get; set; }
+        public IMapper Mapper { get; set; }
 
         [HttpGet]
         public ActionResult List()
@@ -33,7 +32,7 @@ namespace BudgetOnline.Web.Areas.Admin.Controllers
                 return HttpNotFound();
             }
 
-            var model = Mapper.DynamicMap<Tag, TagEditViewModel>(Tag);
+            var model = Mapper.Map<Tag, TagEditViewModel>(Tag);
 
             return View(model);
         }
@@ -43,7 +42,7 @@ namespace BudgetOnline.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var tag = Mapper.DynamicMap<TagEditViewModel, Tag>(model);
+                var tag = Mapper.Map<TagEditViewModel, Tag>(model);
                 tag.UpdatedBy = MembershipHelper.CurrentUser.Id;
 
                 TagRepository.Update(tag);
@@ -67,7 +66,7 @@ namespace BudgetOnline.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var tag = Mapper.DynamicMap<TagEditViewModel, Tag>(model);
+                var tag = Mapper.Map<TagEditViewModel, Tag>(model);
                 tag.CreatedWhen = DateTime.UtcNow;
                 tag.CreatedBy = MembershipHelper.CurrentUser.Id;
                 tag.UpdatedBy = null;

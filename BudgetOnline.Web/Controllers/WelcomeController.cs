@@ -9,6 +9,11 @@ namespace BudgetOnline.Web.Controllers
 			return View("~/Views/Welcome/Index.cshtml");
 		}
 
+        public ActionResult React()
+		{
+            return View("~/Views/Welcome/React.cshtml");
+		}
+
 		public ActionResult TestCallback()
 		{
 			return Content("AAA");

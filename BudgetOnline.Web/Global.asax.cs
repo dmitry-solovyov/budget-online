@@ -3,7 +3,6 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using BudgetOnline.Common.Contracts;
-using BudgetOnline.Web.Infrastructure.Minifier;
 
 namespace BudgetOnline.Web
 {
@@ -14,8 +13,6 @@ namespace BudgetOnline.Web
     {
         protected void Application_Start()
         {
-            AreaRegistration.RegisterAllAreas();
-            
             AutofacConfig.ConfigureContainer();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);

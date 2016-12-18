@@ -7,7 +7,7 @@
 		placeholder = ViewData.ModelMetadata.AdditionalValues["placeholder"].ToString();
 	}
 	
-    var value = (Model.HasValue ? Model.Value : 0).ToString(CultureInfo.CurrentUICulture);
+    var value = (Model ?? 0).ToString(CultureInfo.CurrentUICulture);
 
     dynamic attributes;
 

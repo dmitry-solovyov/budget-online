@@ -10,7 +10,7 @@ namespace BudgetOnline.UI.Controls.Tables
 		where T : class
 	{
 
-		private Type _memberType = null;
+		private Type _memberType;
 
 		public TableBoundColumnBuilder()
 		{
@@ -23,11 +23,9 @@ namespace BudgetOnline.UI.Controls.Tables
 		}
 
 		private Func<object, string> _formatter;
-		private Type _targetType;
-		public virtual TableBoundColumnBuilder<T> Formatter<TargetType>(Expression<Func<TargetType, string>> formatter)
+		public virtual TableBoundColumnBuilder<T> Formatter<TTargetType>(Expression<Func<TTargetType, string>> formatter)
 		{
-			_formatter = o => formatter.Compile().Invoke((TargetType)o);
-			_targetType = typeof(TargetType);
+			_formatter = o => formatter.Compile().Invoke((TTargetType)o);
 			return this;
 		}
 
@@ -128,7 +126,7 @@ namespace BudgetOnline.UI.Controls.Tables
 				}
 				catch
 				{
-
+				    //ignore
 				}
 			}
 
