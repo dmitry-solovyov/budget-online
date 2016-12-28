@@ -9,7 +9,7 @@
 
 <div class="collapse navbar-collapse">
     <ul class="nav navbar-nav">
-        <li class="dropdown" id="language-switch0">
+        <li class="dropdown" id="language-switch">
             <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" href="#">@lang<b class="caret"></b></a>
             <ul class="dropdown-menu" aria-labelledby="dLabel">
                 <li><a href="#" data-lang="ru-RU">RU</a></li>
@@ -19,5 +19,13 @@
     </ul>
 </div>
 <script type="text/javascript">
-    
+    <!--
+        $(function () {
+            $('#language-switch ul.dropdown-menu li a').click(function (e) {
+                e.preventDefault();
+                var lang = $(this).attr('data-lang');
+                changeLang(lang);
+            });
+        });
+    //-->
 </script>

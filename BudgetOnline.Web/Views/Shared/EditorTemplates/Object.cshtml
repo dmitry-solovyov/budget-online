@@ -14,9 +14,11 @@ else
 		</text>*@
     }
 
-    var props = ViewData.ModelMetadata.Properties.Where(pm => pm.ShowForEdit && !ViewData.TemplateInfo.Visited(pm));
-    foreach (var prop in props)
+    var props = ViewData.ModelMetadata.Properties.Where(pm => pm.ShowForEdit && !ViewData.TemplateInfo.Visited(pm)).ToArray();
+    foreach (var p in props)
     {
+        var prop = p;
+        
         ModelState state = ViewData.ModelState[prop.PropertyName];
         //var rowHeader = prop.AdditionalValues.GetEntry("ControlHeader");
         var rowId = prop.AdditionalValues.GetEntry("ControlRowId");

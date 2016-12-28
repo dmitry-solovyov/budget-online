@@ -1,0 +1,16 @@
+﻿@using System.Globalization
+<script type="text/javascript">
+    @{
+        var culture = CultureInfo.CurrentUICulture;
+    }
+
+    window.globalSettings = {
+        shortCulture: "@culture.TwoLetterISOLanguageName",
+        formats: {
+            decimalSeparator: "@culture.NumberFormat.NumberDecimalSeparator",
+            dateFormat: "@culture.DateTimeFormat.ShortDatePattern",
+            dateTimeFormat: "@culture.DateTimeFormat.ShortDatePattern @culture.DateTimeFormat.ShortTimePattern",
+            momentDateFormat: "@culture.DateTimeFormat.ShortDatePattern.Replace("MM", "M").Replace("M", "MM").Replace("dd", "d").Replace("d", "DD").Replace("yyyy", "yy").Replace("yy", "y").Replace("y", "YYYY")"
+        }
+    };
+</script>

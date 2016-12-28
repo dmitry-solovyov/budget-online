@@ -53,7 +53,7 @@
         </div>
         <div class="col-md-3">
             <div class="pull-right" style="text-align: right">
-                <span class="sum-@(item.Sum > 0 ? "in" : "out")">@item.Sum.ToString("### ### ##0.00")<span
+                <span class="sum-@(item.Sum > 0 ? "in" : "out")">@item.Sum.ToString(System.Threading.Thread.CurrentThread.CurrentUICulture)<span
                     class="currency-smb">@item.Currency</span></span>
                 <br />
                 <small>@item.PeriodType</small>

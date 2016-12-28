@@ -4,13 +4,14 @@ using BudgetOnline.Web.Infrastructure.Filters;
 
 namespace BudgetOnline.Web
 {
-    public class FilterConfig
+    public static class FilterConfig
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
             filters.Add(new GlobalExecuteActionFilterAttribute());
             filters.Add(new HandleViewErrorsAttribute());
+            filters.Add(new LocalizationActionFilterAttribute());
         }
     }
 }

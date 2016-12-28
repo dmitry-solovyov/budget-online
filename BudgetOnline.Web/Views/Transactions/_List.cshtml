@@ -44,7 +44,7 @@
                     </td>
                     <td class="col-md-3">
                         <div class="pull-right" style="text-align: right">
-                            <span class="sum-@(item.SumSource > 0 ? "in" : "out")"><span class="currency-smb">@item.CurrencySource</span>
+                            <span class="sum-@(item.SumSource > 0 ? "in" : "out")"><span class="currency-smb">@item.CurrencySource.ToString(CultureInfo.CurrentUICulture)</span>
                                 @item.SumSource.ToHtmlString(HtmlOutputFormatterExtensions.OutputLengthType.Normal)
                             </span>
                             @if (item.SumTarget.HasValue)

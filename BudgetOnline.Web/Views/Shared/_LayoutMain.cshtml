@@ -10,21 +10,9 @@
 </head>
 <body>
     @Html.BudgetOnlineWeb().ProgressIndicator().BackgroundUrl(@Url.Content("~/Content/images/back1.jpg")).IndicatorUrl(@Url.Content("~/Content/images/ajax-loader.gif")).Class("progress-indicator").Build()
+    @Html.Partial("~/Views/options.cshtml")
     <div class="container" id="container">
-        @*<div class="row">
-                <div class="col-md-7">
-                </div>
-                <div class="col-md-2">
-                    <div class="pull-right">
-                        @{ Html.RenderPartial("_LanguageSwitch"); }
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="pull-right">
-                        @{ Html.RenderAction("LoggedOnName", "CurrentUser", new { Area = "" }); }
-                    </div>
-                </div>
-            </div>*@
+
         <div class="row nav-offset">
             @{Html.RenderPartial("~/Views/Shared/TopNavligationMenu.cshtml");}
         </div>
@@ -43,16 +31,5 @@
     </div>
     @Scripts.Render("~/js2")
     @RenderSection("Header", false)
-    <script type="text/javascript">
-    <!--
-        $(function () {
-            $('#language-switch ul.dropdown-menuli a').click(function (e) {
-                e.preventDefault();
-                var lang = $(this).attr('data-lang');
-                changeLang(lang);
-            });
-        });
-    //-->
-    </script>
 </body>
 </html>

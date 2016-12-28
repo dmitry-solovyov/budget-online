@@ -1,15 +1,5 @@
 ﻿'use strict';
 
-var budgetGlobals = {
-    settings: {
-        dateFormat: 'DD.MM.YYYY',
-        dateFormatUtc: 'DD.MM.YYYY UTC',
-        timeFormat: 'HH:MM'
-    }
-};
-
-//$.datepicker.setDefaults($.datepicker.regional['en']); 
-
 // ************ ON READY
 
 $(document).ready(function () {
@@ -25,12 +15,11 @@ $(document).ready(function () {
 function turnOn_numeric() {
     $('.data-type-numeric').keypress(
 		function (event) {
-		    //debugger;
 		    var allowedKeys = [37, 39, 8, 32, 9, 36, 35, 45, 46];
 		    var regex = new RegExp("^[0-9\,\.]+$");
 		    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
 		    if (!(event.ctrlKey || event.metaKey)
-				&& allowedKeys.indexOf(event.keyCode) == -1
+				&& allowedKeys.indexOf(event.keyCode) === -1
 				&& key.length > 0 && !regex.test(key)) {
 		        event.preventDefault();
 		        return false;
@@ -54,31 +43,31 @@ function turnOn_datetime() {
 
     $('.date-picker').each(function () {
         var control = $(this);
-        control.datepicker({
-            dateFormat: "dd.mm.yy",
+        var datePickerOptions = $.extend({
+            dateFormat: window.globalSettings.formats.dateFormat,
             changeMonth: true,
             changeYear: true,
             showButtonPanel: true
-        });
-        control.datepicker("option", $.datepicker.regional['ru']);
+        }, $.datepicker.regional[window.globalSettings.shortCulture]);
+
+        control.datepicker(datePickerOptions);
 
         var conrtainer = control.parent().parent();
-        conrtainer.find('*[data-direction="left"]').click(function (event) {
+        conrtainer.find('button[data-direction]').on("click", function (event) {
             event.preventDefault();
 
-            var dt = moment(control.val(), budgetGlobals.settings.dateFormat).subtract('d', 1);
+            var dt;
+            var tg = (event.target.tagName !== "BUTTON") ? $(event.target).closest("button[data-direction]") : $(event.target);;
+            if (tg.attr('data-direction') === "left") {
+                dt = moment(control.val(), window.globalSettings.formats.momentDateFormat).add(-1, 'd');
+            } else {
+                dt = moment(control.val(), window.globalSettings.formats.momentDateFormat).add(1, 'd');
+            }
 
-            control.val(dt.format(budgetGlobals.settings.dateFormat));
+            control.val(dt.format(window.globalSettings.formats.dateFormat));
             control.datepicker("setDate", dt.toDate());
         });
-        conrtainer.find('*[data-direction="right"]').click(function (event) {
-            event.preventDefault();
 
-            var dt = moment(control.val(), budgetGlobals.settings.dateFormat).add('d', 1);
-
-            control.val(dt.format(budgetGlobals.settings.dateFormat));
-            control.datepicker("setDate", dt.toDate());
-        });
         conrtainer.find('span[data-select]').click(function (event) {
             event.preventDefault();
             
@@ -100,21 +89,23 @@ function turnOn_datetime() {
 
         var newEntry = $('<div id="datepicker" class="unhidden" style="position: absolute; border: 2px solid darkgray; z-index: 999;"></div>');
         lastDynamicdatepicker = $(newEntry).appendTo($(self).parent());
-        lastDynamicdatepicker.datepicker({
+
+        var datePickerOptions = $.extend({
             inline: true,
-            dateFormat: 'dd.mm.yy',
+            dateFormat: window.globalSettings.formats.dateFormat,
             onSelect: function (date) {
-                //alert(date);
                 input.val(date);
                 self.innerHTML = date;
                 hideDynamicdatepicker();
             }
-        });
+        }, $.datepicker.regional[window.globalSettings.shortCulture]);
+        lastDynamicdatepicker.datepicker(datePickerOptions);
 
         if (input.val() !== '') {
             lastDynamicdatepicker.datepicker("setDate", input.val()).datepicker('show');
-        } else
+        } else {
             lastDynamicdatepicker.datepicker('show');
+        }
     });
 
     $('a[data-type="date-deselect"]').click(function (event) {
@@ -145,7 +136,7 @@ function turnOn_dynamicBox() {
 		    if (url && url.length > 0) {
 		        showIndicatorFor(container.find('.content'), 'progress');
 
-		        var jqxhr = $.ajax({
+		        $.ajax({
 		            url: url,
 		            type: "GET",
 		            cache: false,
@@ -178,7 +169,7 @@ function turnOn_dynamicBox() {
 }
 
 function turnOn_calculator(id) {
-    if (typeof (id) == undefined)
+    if (typeof (id) === "undefined")
         return;
 
     $('#' + id + ' input.data-type-calculator').keypress(
@@ -187,7 +178,7 @@ function turnOn_calculator(id) {
 		    var regex = new RegExp("^[0-9+-/\*]+$");
 		    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
 		    if (!(event.ctrlKey || event.metaKey)
-				&& allowedKeys.indexOf(event.keyCode) == -1
+				&& allowedKeys.indexOf(event.keyCode) === -1
 				&& key.length > 0 && !regex.test(key)) {
 		        event.preventDefault();
 		        return false;
@@ -199,22 +190,24 @@ function turnOn_calculator(id) {
     $('#' + id + ' input.data-type-calculator').bind("keyup change",
 		function (event) {
 		    var target = $('#' + id + ' .calculator-result');
-		    if (typeof (target) == undefined)
+		    if (typeof (target) == "undefined")
 		        return;
-		    var errorText = '#ошибка';
 
+		    var errorText = '#ошибка';
 		    try {
 		        var txt = $(this).val();
-		        if (txt.length > 1 && new RegExp("^[+-/\*]+$").test(txt.substr(txt.length - 1)))
-		            txt = txt.substring(0, txt.length - 2);
-		        if (txt.length > 1 && new RegExp("^[/\*]+$").test(txt.substring(0, 1)))
-		            txt = txt.substring(1, txt.length - 2);
+		        //if (txt.length > 1 && new RegExp("^[+-/\*]+$").test(txt.substr(txt.length - 1)))
+		        //    txt = txt.substring(0, txt.length - 2);
+		        //if (txt.length > 1 && new RegExp("^[/\*]+$").test(txt.substring(0, 1)))
+		        //    txt = txt.substring(1, txt.length - 2);
 
-		        var expr = eval(txt);
-		        if (typeof (expr) != undefined)
+		        var expr = (eval(txt.replace(window.globalSettings.formats.decimalSeparator, ".")) + "").replace(".", window.globalSettings.formats.decimalSeparator);
+		        if (typeof (expr) != "undefined") {
 		            target.val(expr);
-		        else
+		        } else {
 		            target.val(errorText);
+		        }
+
 		    } catch (z) {
 		        target.val(errorText);
 		    }
@@ -242,7 +235,7 @@ function clearForm(form) {
 
 function showIndicatorFor(container, id) {
     var newIndicator = $(container).find('.progress-indicator');
-    if (newIndicator == null || newIndicator.length == 0)
+    if (newIndicator == null || newIndicator.length === 0)
         newIndicator = $('.progress-indicator').clone();
 
     newIndicator.attr('id', id);
@@ -265,7 +258,13 @@ function hideIndicatorFor(container, id) {
 }
 
 function changeLang(lang) {
-    $.cookie('lang', lang);
+    var cookieName = 'lang';
+    var parts = window.location.pathname.split('/');
+    var cookiePath = parts[0] + "/" + parts[1];
+
+    $.removeCookie(cookieName, { path: cookiePath });
+    $.cookie(cookieName, lang, { path: cookiePath });
+
     window.location.reload();
     return false;
 }

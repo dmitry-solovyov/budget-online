@@ -80,25 +80,25 @@
                     <a target="_blank" href="@Url.Action("list", "planning", new { applyDate = group.Date.ToShortDateString() })">@(group.Date.ToString("MMMM yyyy", CultureInfo.CurrentUICulture))</a></div>
                 <div class="col-md-2">
                     <div class="pull-right" style="text-align: right">
-                        <span class="sum-@(item.BalanceNegative > 0 ? "in" : "out")">@item.BalanceNegative.ToString("### ### ### ##0.00")<span
+                        <span class="sum-@(item.BalanceNegative > 0 ? "in" : "out")">@item.BalanceNegative.ToString(CultureInfo.CurrentUICulture)<span
                             class="currency-smb">@item.CurrencySymbol</span></span>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="pull-right" style="text-align: right">
-                        <span class="sum-@(item.BalancePositive > 0 ? "in" : "out")">@item.BalancePositive.ToString("### ### ### ##0.00", CultureInfo.CurrentUICulture)<span
+                        <span class="sum-@(item.BalancePositive > 0 ? "in" : "out")">@item.BalancePositive.ToString(CultureInfo.CurrentUICulture)<span
                             class="currency-smb">@item.CurrencySymbol</span></span>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="pull-right" style="text-align: right">
-                        <span class="sum-@(item.BalancePositive + item.BalanceNegative > 0 ? "in" : "out")">@((item.BalancePositive + item.BalanceNegative).ToString("### ### ### ##0.00", CultureInfo.CurrentUICulture))<span
+                        <span class="sum-@(item.BalancePositive + item.BalanceNegative > 0 ? "in" : "out")">@((item.BalancePositive + item.BalanceNegative).ToString(CultureInfo.CurrentUICulture))<span
                             class="currency-smb">@item.CurrencySymbol</span></span>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="pull-right" style="text-align: right">
-                        <span class="sum-@(amountAccumulative > 0 ? "in" : "out")">@amountAccumulative.ToString("### ### ### ##0.00", CultureInfo.CurrentUICulture)<span
+                        <span class="sum-@(amountAccumulative > 0 ? "in" : "out")">@amountAccumulative.ToString(CultureInfo.CurrentUICulture)<span
                             class="currency-smb">@item.CurrencySymbol</span></span>
                     </div>
                 </div>

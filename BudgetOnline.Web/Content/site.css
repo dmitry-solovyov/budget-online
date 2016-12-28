@@ -85,6 +85,10 @@ select[multiple*="multiple"]
     height: 128px;
 }
 
+#language-switch a {
+    color: #337ab7 !important;
+}
+
 .navbar.navbar-blue, .navbar.navbar-blue ul.nav > li > a, .navbar.navbar-blue ul.nav > li > a:visited  {
 }
 .navbar.navbar-blue ul.nav > li > a:hover, .navbar.navbar-blue ul.nav > li > a.active {

@@ -100,28 +100,37 @@ Write(Html.BudgetOnlineWeb().ProgressIndicator().BackgroundUrl(@Url.Content("~/C
             
             #line default
             #line hidden
+WriteLiteral("\r\n");
+
+WriteLiteral("    ");
+
+            
+            #line 13 "..\..\Views\Shared\_LayoutMain.cshtml"
+Write(Html.Partial("~/Views/options.cshtml"));
+
+            
+            #line default
+            #line hidden
 WriteLiteral("\r\n    <div");
 
 WriteLiteral(" class=\"container\"");
 
 WriteLiteral(" id=\"container\"");
 
-WriteLiteral(">\r\n        ");
-
-WriteLiteral("\r\n        <div");
+WriteLiteral(">\r\n\r\n        <div");
 
 WriteLiteral(" class=\"row nav-offset\"");
 
 WriteLiteral(">\r\n");
 
             
-            #line 29 "..\..\Views\Shared\_LayoutMain.cshtml"
+            #line 17 "..\..\Views\Shared\_LayoutMain.cshtml"
             
             
             #line default
             #line hidden
             
-            #line 29 "..\..\Views\Shared\_LayoutMain.cshtml"
+            #line 17 "..\..\Views\Shared\_LayoutMain.cshtml"
               Html.RenderPartial("~/Views/Shared/TopNavligationMenu.cshtml");
             
             #line default
@@ -139,7 +148,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                ");
 
             
-            #line 33 "..\..\Views\Shared\_LayoutMain.cshtml"
+            #line 21 "..\..\Views\Shared\_LayoutMain.cshtml"
            Write(RenderBody());
 
             
@@ -160,7 +169,7 @@ WriteLiteral(" class=\"text-center\"");
 WriteLiteral(">\r\n                    &copy; Company ");
 
             
-            #line 39 "..\..\Views\Shared\_LayoutMain.cshtml"
+            #line 27 "..\..\Views\Shared\_LayoutMain.cshtml"
                               Write(DateTime.Now.Year);
 
             
@@ -171,7 +180,7 @@ WriteLiteral("\r\n                </p>\r\n            </div>\r\n        </div>\r
 WriteLiteral("    ");
 
             
-            #line 44 "..\..\Views\Shared\_LayoutMain.cshtml"
+            #line 32 "..\..\Views\Shared\_LayoutMain.cshtml"
 Write(Scripts.Render("~/js2"));
 
             
@@ -182,30 +191,13 @@ WriteLiteral("\r\n");
 WriteLiteral("    ");
 
             
-            #line 45 "..\..\Views\Shared\_LayoutMain.cshtml"
+            #line 33 "..\..\Views\Shared\_LayoutMain.cshtml"
 Write(RenderSection("Header", false));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n    <script");
-
-WriteLiteral(" type=\"text/javascript\"");
-
-WriteLiteral(@">
-    <!--
-        $(function () {
-            $('#language-switch ul.dropdown-menuli a').click(function (e) {
-                e.preventDefault();
-                var lang = $(this).attr('data-lang');
-                changeLang(lang);
-            });
-        });
-    //-->
-    </script>
-</body>
-</html>
-");
+WriteLiteral("\r\n</body>\r\n</html>\r\n");
 
         }
     }
